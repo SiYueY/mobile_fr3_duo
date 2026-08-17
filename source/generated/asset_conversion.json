@@ -1,0 +1,347 @@
+{
+  "package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/visual/fr3_duo_cover.dae": {
+    "bounds": [
+      [
+        [
+          -0.11347030415663983,
+          -0.12558760667309876,
+          -0.04210175141989181
+        ],
+        [
+          0.12034780692470992,
+          0.12654350881811105,
+          0.10705610402288013
+        ]
+      ]
+    ],
+    "input_sha256": "9edcb6c7f801c012e98767b85230804f942fbf4f12e5043652663d22489a9302",
+    "n_faces": 32466,
+    "n_vertices": 65617,
+    "output_sha256": "5b1a459f5236f3902020dba310952c4c2e2d9c57c6cd5a381b98b5b7cdc57bef",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/visual/fr3_duo_mount.dae": {
+    "bounds": [
+      [
+        [
+          -0.11397150199538686,
+          -0.14289630805674136,
+          -0.030814200911227774
+        ],
+        [
+          0.07845397558915668,
+          0.14388071362107624,
+          0.11870190230551803
+        ]
+      ]
+    ],
+    "input_sha256": "1c8c15c350ae2e722aa6174847a829fd8a9b04344271eaac4434032035efc01d",
+    "n_faces": 222326,
+    "n_vertices": 404797,
+    "output_sha256": "e89b39825241e645b75e15d336f00585874f13220cef1ec3260c4037d97edd62",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/accessories/franka_head_v0_2/visual/franka_head.dae": {
+    "bounds": [
+      [
+        [
+          -0.025965581219871137,
+          -0.06331013408006791,
+          -0.006397717302929207
+        ],
+        [
+          0.0521962915416907,
+          0.032154100037979916,
+          0.24895571556011298
+        ]
+      ]
+    ],
+    "input_sha256": "8dec352a3f2bfb66ffb186644c2713af712655177baa740ec8312ba1d54eb50d",
+    "n_faces": 140290,
+    "n_vertices": 310700,
+    "output_sha256": "6001c45de6bda65594be20ae509cf17015ce65f760fbd78780b73584b0910b47",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/accessories/franka_spine_v0_1/visual/franka_spine.dae": {
+    "bounds": [
+      [
+        [
+          -0.12319999694824219,
+          -0.1505,
+          0.0
+        ],
+        [
+          0.14929998779296874,
+          0.1505,
+          1.11
+        ]
+      ]
+    ],
+    "input_sha256": "54ef715b45c5df1fdca7515edbd0fa50ccad029b063144f100b70dbe7c8b9c9e",
+    "n_faces": 2651,
+    "n_vertices": 2375,
+    "output_sha256": "2172bed391c56fc47dc83c10c07c198e518e3b12bd9cddf5f939eed21a6fcf95",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 0.001
+  },
+  "package://franka_description/meshes/robot_ee/franka_hand_white/visual/finger.dae": {
+    "bounds": [
+      [
+        [
+          -0.010500900447368622,
+          -8.376430196221918e-05,
+          0.00013333199603948742
+        ],
+        [
+          0.01050155982375145,
+          0.02634548954665661,
+          0.05389988049864769
+        ]
+      ]
+    ],
+    "input_sha256": "12c7bc9b55ffd0d1d0e3442d3e213ecc4fbebbced15259a20195af464f871fcd",
+    "n_faces": 624,
+    "n_vertices": 1744,
+    "output_sha256": "00d6cc933f10861b1da8db4c53f6831de027693193cb319ac2caee743cefb60e",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robot_ee/franka_hand_white/visual/hand.dae": {
+    "bounds": [
+      [
+        [
+          -0.03151952847838402,
+          -0.1039464995265007,
+          -0.02594578079879284
+        ],
+        [
+          0.031525131314992905,
+          0.10056989639997482,
+          0.06599997729063034
+        ]
+      ]
+    ],
+    "input_sha256": "1b50601d3157f810176aba6db7164d6bdb4ec8b6546a8a725baba2fa2a21c58a",
+    "n_faces": 7078,
+    "n_vertices": 19828,
+    "output_sha256": "bd588251e707a7cce034692368619af11460d91636dfc0fbc45bb2d37c175c57",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link0.dae": {
+    "bounds": [
+      [
+        [
+          -0.15407210509635227,
+          -0.09456233664479008,
+          -2.1997501470466397e-09
+        ],
+        [
+          0.0719974857195016,
+          0.09456233664479008,
+          0.14000000664964318
+        ]
+      ]
+    ],
+    "input_sha256": "2942c6609deb1412eacaebdaef5674b8a370caeb13d39bc34dc7d4604b5dc1c0",
+    "n_faces": 73716,
+    "n_vertices": 53342,
+    "output_sha256": "f65f6400955d7f4fd0602418c4759adf028d1126addea1ecab56ba9b82019fd1",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link1.dae": {
+    "bounds": [
+      [
+        [
+          -0.05500016282965259,
+          -0.13000000617466867,
+          -0.19200000911951065
+        ],
+        [
+          0.05500016282965259,
+          0.05500000261235982,
+          0.05499999116826748
+        ]
+      ]
+    ],
+    "input_sha256": "0017ad393987fe989aae6cd8a86f501ee928801d81084dd9c7435aa7ada5fed8",
+    "n_faces": 9514,
+    "n_vertices": 5762,
+    "output_sha256": "49fce1e6fd580dbbf0618e08ec74db0e221051ceb677390692180fef1c8358d7",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link2.dae": {
+    "bounds": [
+      [
+        [
+          -0.05500016282965259,
+          -0.19200000911951065,
+          -0.05500000261235982
+        ],
+        [
+          0.05500016282965259,
+          0.05499999116826748,
+          0.13000000617466867
+        ]
+      ]
+    ],
+    "input_sha256": "69075fd922c83532ecd1b566dba5a6da22253378b32cc98dc83ab6f16092c2bd",
+    "n_faces": 10146,
+    "n_vertices": 6402,
+    "output_sha256": "e7597bd630c996dd484f9d1e7955843eccc48f95d18075720ae7bfb16377be30",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link3.dae": {
+    "bounds": [
+      [
+        [
+          -0.05500000261235982,
+          -0.05500000261235982,
+          -0.12300000584218651
+        ],
+        [
+          0.13750290570095913,
+          0.113000005367212,
+          0.05495153306660061
+        ]
+      ]
+    ],
+    "input_sha256": "f60d3f5bbe778355ed3572ae934c3cf646d997e5c3677ec963257a095d94cc66",
+    "n_faces": 9904,
+    "n_vertices": 6123,
+    "output_sha256": "3aa0077b954eeb6999aa3119a606cf00151e32c7615442a125ca175803c3f882",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link4.dae": {
+    "bounds": [
+      [
+        [
+          -0.13750301251248764,
+          -0.05504829286733903,
+          -0.05500000261235982
+        ],
+        [
+          0.0549999110596211,
+          0.12290320407977617,
+          0.113000005367212
+        ]
+      ]
+    ],
+    "input_sha256": "cde9c576ddd543e2abbf18f9e70cdf2a3407640cf4a52ba503ccdde6a8f5aeab",
+    "n_faces": 10464,
+    "n_vertices": 6696,
+    "output_sha256": "1eebf3f3bb8fdd8a8f5e7befd9f7eb7cbffc2059487000fb4dd082749ca98c77",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link5.dae": {
+    "bounds": [
+      [
+        [
+          -0.055000082721006205,
+          -0.05500000261235982,
+          -0.2600968141117477
+        ],
+        [
+          0.055000082721006205,
+          0.1298253082903944,
+          0.04780332410891486
+        ]
+      ]
+    ],
+    "input_sha256": "73ca429bff20d4f1e500837b6602ba4cba5d99b0896108c462c3404d12342c6c",
+    "n_faces": 12198,
+    "n_vertices": 8954,
+    "output_sha256": "0caef0cee918cbe757b3a24a977a748165288510f5ac8f98208231e0115adc10",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link6.dae": {
+    "bounds": [
+      [
+        [
+          -0.04789588392776434,
+          -0.04954676291242688,
+          -0.04535108400220533
+        ],
+        [
+          0.13335001243730105,
+          0.08153884512044574,
+          0.05541297412855695
+        ]
+      ]
+    ],
+    "input_sha256": "f362b51dd85a03efb2e0e4d542c535ef52975019d22ca20d79255a676fd3d1fb",
+    "n_faces": 78072,
+    "n_vertices": 52370,
+    "output_sha256": "eb46bd17c58f7348fa7a0f125a19584f7f68ab463dc7104d44bffbfa8796d5ff",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/fr3v2_1/visual/link7.dae": {
+    "bounds": [
+      [
+        [
+          -0.04400000208988786,
+          -0.04400000208988786,
+          0.050350000865617695
+        ],
+        [
+          0.08127991108715094,
+          0.08128090290848711,
+          0.10700000508222729
+        ]
+      ]
+    ],
+    "input_sha256": "bbbf2024a9501df643273b7696dc4da8e007bbfef51299586e82e67e7e54eefd",
+    "n_faces": 42990,
+    "n_vertices": 31676,
+    "output_sha256": "86a9841af3ff1cefe6258e8c597880f8e8001b875a5a9bcb4772e25042540c8c",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 1.0
+  },
+  "package://franka_description/meshes/robots/tmrv0_2/visual/tmrv0_2.dae": {
+    "bounds": [
+      [
+        [
+          -0.4,
+          -0.2915068359375,
+          0.03
+        ],
+        [
+          0.40075,
+          0.2915068359375,
+          0.35000000000000003
+        ]
+      ]
+    ],
+    "input_sha256": "38b09909297f064a3441de6801479b760ad7213045d96a4f9c8edf72c4376d92",
+    "n_faces": 197515,
+    "n_vertices": 170340,
+    "output_sha256": "bff1d4d4c4d4e48d321b5bb5de9a206f277f001ed5f87dfcb4f173a1db4f6b21",
+    "status": "converted",
+    "tool": "trimesh 5.0.0",
+    "unit_scale": 0.001
+  }
+}

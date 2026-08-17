@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.9
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: format-xml
+        name: format-xml
+        entry: .venv/bin/python tools/format_xml.py --check
+        language: system
+        files: \.(xml|urdf)$

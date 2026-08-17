@@ -1,0 +1,6 @@
+<mujoco model="position_scene">
+  <include file="mobile_fr3_duo_position.xml"/>
+  <worldbody>
+    <geom name="ground" type="plane" size="50 50 0.1" pos="0 0 -0.001" group="1" condim="3" friction="1.0 0.005 0.0001" rgba="0.55 0.55 0.55 1"/>
+  </worldbody>
+</mujoco>

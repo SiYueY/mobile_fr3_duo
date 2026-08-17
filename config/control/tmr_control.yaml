@@ -1,0 +1,13 @@
+# TMR v0.2 control configuration (simulation-only parameters)
+steering:
+  motor_type: motor
+  ctrlrange: [-20.0, 20.0]
+  damping: 0.5
+  kp_external: 200.0   # external swerve controller, not a model parameter
+  kd_external: 20.0
+wheel:
+  motor_type: motor
+  ctrlrange: [-50.0, 50.0]
+  damping: 0.2
+controller_rate_hz: 500
+

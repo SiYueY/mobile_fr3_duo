@@ -1,0 +1,24 @@
+physics_rate_hz: 1000
+d455:
+  rate_hz: 30.0
+  width: 1280
+  height: 720
+  fovy_deg: 55.0
+  ideal_depth: true
+nanoscan3:
+  rate_hz: 50.0
+  angle_min: -0.7853981634
+  angle_max: 3.9269908170
+  range_min: 0.05
+  range_max: 10.0
+  gaussian_noise: 0.006
+  max_beams: 500
+imu:
+  rate_hz: 200.0
+  ideal: true
+zed_mini:
+  rate_hz: 30.0
+  baseline: 0.063
+  width: 1280
+  height: 720
+

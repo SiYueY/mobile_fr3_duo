@@ -1,0 +1,10 @@
+nanoscan3:
+  rate_hz: 50.0
+  enabled: true
+realsense_d455:
+  enabled: false
+zed_mini:
+  enabled: false
+imu:
+  enabled: true
+

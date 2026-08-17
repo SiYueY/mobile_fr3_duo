@@ -1,0 +1,8 @@
+device: zed_mini
+frames: [left_camera_frame, left_camera_optical_frame, right_camera_frame, right_camera_optical_frame, center]
+rate_hz: 30.0
+baseline: 0.063
+width: 1280
+height: 720
+synchronous: true
+

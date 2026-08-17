@@ -1,0 +1,699 @@
+generated_from: franka_description@2.8.1
+inertials:
+- link: base_inertia
+  mass: 88.954183
+  com_xyz:
+  - 0.006619
+  - -0.00221
+  - 0.184355
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 3.245524271774
+  ixy: 0.007060314402
+  ixz: -0.134604220439
+  iyy: 4.162370636125
+  iyz: -0.01077054763
+  izz: 5.841473351812
+- link: caster_front_left_fixed_link
+  mass: 0.3
+  com_xyz:
+  - -0.02365
+  - 5.0e-05
+  - -0.03651
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.00049538079
+  ixy: -4.2663e-07
+  ixz: 0.00020926011
+  iyy: 0.00070424109
+  iyz: -5.0221e-07
+  izz: 0.00048449394
+- link: caster_front_left_steering_link
+  mass: 0.2
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0001
+  iyz: 0.0
+  izz: 0.0001
+- link: caster_front_left_link
+  mass: 0.2
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0001
+  iyz: 0.0
+  izz: 0.0001
+- link: argo_drive_front_fixed_link
+  mass: 7.0
+  com_xyz:
+  - -0.00019
+  - 0.04522
+  - 0.02947
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.07060497424
+  ixy: -0.00025482709
+  ixz: -6.283102e-05
+  iyy: 0.03433835031
+  iyz: 0.00249596715
+  izz: 0.08926325955
+- link: argo_drive_front_steering_link
+  mass: 2.0
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.001
+  iyz: 0.0
+  izz: 0.001
+- link: argo_drive_front_link
+  mass: 2.5
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0018958333333333336
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0018958333333333336
+  iyz: 0.0
+  izz: 0.0031250000000000006
+- link: rocker_arm_link
+  mass: 5.183973
+  com_xyz:
+  - -0.000344
+  - -0.021232
+  - 0.038239
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.067087560015
+  ixy: -7.8335851e-05
+  ixz: 4.1831678e-05
+  iyy: 0.023113173265
+  iyz: 0.007148473123
+  izz: 0.081148329632
+- link: caster_rear_right_fixed_link
+  mass: 0.3
+  com_xyz:
+  - -0.02365
+  - 5.0e-05
+  - -0.03651
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.00049538079
+  ixy: -4.2663e-07
+  ixz: 0.00020926011
+  iyy: 0.00070424109
+  iyz: -5.0221e-07
+  izz: 0.00048449394
+- link: caster_rear_right_steering_link
+  mass: 0.2
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0001
+  iyz: 0.0
+  izz: 0.0001
+- link: caster_rear_right_link
+  mass: 0.2
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0001
+  iyz: 0.0
+  izz: 0.0001
+- link: argo_drive_rear_fixed_link
+  mass: 7.0
+  com_xyz:
+  - -0.00019
+  - -0.04522
+  - 0.02947
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.07060497424
+  ixy: -0.00025482709
+  ixz: 6.283102e-05
+  iyy: 0.03433835031
+  iyz: -0.00249596715
+  izz: 0.08926325955
+- link: argo_drive_rear_steering_link
+  mass: 2.0
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.001
+  iyz: 0.0
+  izz: 0.001
+- link: argo_drive_rear_link
+  mass: 2.5
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0018958333333333336
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0018958333333333336
+  iyz: 0.0
+  izz: 0.0031250000000000006
+- link: franka_spine_mounting_point
+  mass: 0.01
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0001
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0001
+  iyz: 0.0
+  izz: 0.0001
+- link: franka_spine
+  mass: 21.909124
+  com_xyz:
+  - 0.042358
+  - 0.000378
+  - 0.495198
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 3.338968145
+  ixy: -0.000642887
+  ixz: 0.299962762
+  iyy: 3.324560297
+  iyz: -0.004488422
+  izz: 0.281489258
+- link: fr3_duo_mount_mounting_point
+  mass: 4.093846
+  com_xyz:
+  - -0.011817
+  - -5.0e-05
+  - 0.044431
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.0224318121
+  ixy: 1.38076e-06
+  ixz: -0.0015719371
+  iyy: 0.0164193182
+  iyz: -1.442621e-06
+  izz: 0.0217407036
+- link: head_link
+  mass: 0.350865
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.003020352
+  ixy: -2.194e-05
+  ixz: 0.00016159
+  iyy: 0.003067069
+  iyz: -5.8102e-05
+  izz: 0.000160526
+- link: head_camera_mounting_point
+  mass: 0.001
+  com_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 1.0e-07
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 1.0e-07
+  iyz: 0.0
+  izz: 1.0e-07
+- link: left_fr3v2_1_link0
+  mass: 2.3966
+  com_xyz:
+  - -0.0172
+  - 0.0004
+  - 0.0745
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.009
+  ixy: 0.0
+  ixz: 0.002
+  iyy: 0.0115
+  iyz: 0.0
+  izz: 0.0085
+- link: left_fr3v2_1_link1
+  mass: 2.4377
+  com_xyz:
+  - -0.00458
+  - 0.027016
+  - -0.0618
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.02324
+  ixy: 0.000333
+  ixz: -0.000676
+  iyy: 0.02146
+  iyz: 0.003739
+  izz: 0.0055
+- link: left_fr3v2_1_link2
+  mass: 2.2375
+  com_xyz:
+  - -0.01063
+  - -0.184739
+  - -0.010479
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.019026
+  ixy: 0.001241
+  ixz: 0.000499
+  iyy: 0.00566
+  iyz: -0.001804
+  izz: 0.017114
+- link: left_fr3v2_1_link3
+  mass: 2.196382
+  com_xyz:
+  - 0.091995
+  - 0.023003
+  - 0.047348
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.010225
+  ixy: 0.001144
+  ixz: 0.003497
+  iyy: 0.012398
+  iyz: 0.002156
+  izz: 0.006877
+- link: left_fr3v2_1_link4
+  mass: 2.186422
+  com_xyz:
+  - -0.084334
+  - 0.096836
+  - 0.006248
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.008878
+  ixy: -0.003749
+  ixz: 0.001139
+  iyy: 0.007628
+  iyz: -0.00046
+  izz: 0.010295
+- link: left_fr3v2_1_link5
+  mass: 2.190783
+  com_xyz:
+  - 3.9e-05
+  - 0.011821
+  - -0.054936
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.031874
+  ixy: 0.000134
+  ixz: -0.000265
+  iyy: 0.029674
+  iyz: -0.004734
+  izz: 0.004751
+- link: left_fr3v2_1_link6
+  mass: 1.583583
+  com_xyz:
+  - 0.069627
+  - -0.016716
+  - -0.037235
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.00286
+  ixy: -0.000553
+  ixz: -0.000638
+  iyy: 0.00391
+  iyz: -0.00024
+  izz: 0.00453
+- link: left_fr3v2_1_link7
+  mass: 0.698686
+  com_xyz:
+  - -0.014555
+  - 0.00923
+  - 0.065858
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.000899
+  ixy: 0.0
+  ixz: -1.3e-05
+  iyy: 0.001099
+  iyz: -2.2e-05
+  izz: 0.000702
+- link: left_fr3v2_1_hand
+  mass: 0.6544
+  com_xyz:
+  - -3.76e-05
+  - 0.0119128
+  - 0.020726
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.00186
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0003
+  iyz: -2.0e-05
+  izz: 0.00174
+- link: left_fr3v2_1_leftfinger
+  mass: 0.0291
+  com_xyz:
+  - 0.0
+  - 0.015285
+  - 0.0219675
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 8.49e-06
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 8.53e-06
+  iyz: -1.06e-06
+  izz: 1.77e-06
+- link: left_fr3v2_1_rightfinger
+  mass: 0.0291
+  com_xyz:
+  - 0.0
+  - 0.015285
+  - 0.0219675
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 8.49e-06
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 8.53e-06
+  iyz: -1.06e-06
+  izz: 1.77e-06
+- link: right_fr3v2_1_link0
+  mass: 2.3966
+  com_xyz:
+  - -0.0172
+  - 0.0004
+  - 0.0745
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.009
+  ixy: 0.0
+  ixz: 0.002
+  iyy: 0.0115
+  iyz: 0.0
+  izz: 0.0085
+- link: right_fr3v2_1_link1
+  mass: 2.4377
+  com_xyz:
+  - -0.00458
+  - 0.027016
+  - -0.0618
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.02324
+  ixy: 0.000333
+  ixz: -0.000676
+  iyy: 0.02146
+  iyz: 0.003739
+  izz: 0.0055
+- link: right_fr3v2_1_link2
+  mass: 2.2375
+  com_xyz:
+  - -0.01063
+  - -0.184739
+  - -0.010479
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.019026
+  ixy: 0.001241
+  ixz: 0.000499
+  iyy: 0.00566
+  iyz: -0.001804
+  izz: 0.017114
+- link: right_fr3v2_1_link3
+  mass: 2.196382
+  com_xyz:
+  - 0.091995
+  - 0.023003
+  - 0.047348
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.010225
+  ixy: 0.001144
+  ixz: 0.003497
+  iyy: 0.012398
+  iyz: 0.002156
+  izz: 0.006877
+- link: right_fr3v2_1_link4
+  mass: 2.186422
+  com_xyz:
+  - -0.084334
+  - 0.096836
+  - 0.006248
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.008878
+  ixy: -0.003749
+  ixz: 0.001139
+  iyy: 0.007628
+  iyz: -0.00046
+  izz: 0.010295
+- link: right_fr3v2_1_link5
+  mass: 2.190783
+  com_xyz:
+  - 3.9e-05
+  - 0.011821
+  - -0.054936
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.031874
+  ixy: 0.000134
+  ixz: -0.000265
+  iyy: 0.029674
+  iyz: -0.004734
+  izz: 0.004751
+- link: right_fr3v2_1_link6
+  mass: 1.583583
+  com_xyz:
+  - 0.069627
+  - -0.016716
+  - -0.037235
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.00286
+  ixy: -0.000553
+  ixz: -0.000638
+  iyy: 0.00391
+  iyz: -0.00024
+  izz: 0.00453
+- link: right_fr3v2_1_link7
+  mass: 0.698686
+  com_xyz:
+  - -0.014555
+  - 0.00923
+  - 0.065858
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.000899
+  ixy: 0.0
+  ixz: -1.3e-05
+  iyy: 0.001099
+  iyz: -2.2e-05
+  izz: 0.000702
+- link: right_fr3v2_1_hand
+  mass: 0.6544
+  com_xyz:
+  - -3.76e-05
+  - 0.0119128
+  - 0.020726
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 0.00186
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 0.0003
+  iyz: -2.0e-05
+  izz: 0.00174
+- link: right_fr3v2_1_leftfinger
+  mass: 0.0291
+  com_xyz:
+  - 0.0
+  - 0.015285
+  - 0.0219675
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 8.49e-06
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 8.53e-06
+  iyz: -1.06e-06
+  izz: 1.77e-06
+- link: right_fr3v2_1_rightfinger
+  mass: 0.0291
+  com_xyz:
+  - 0.0
+  - 0.015285
+  - 0.0219675
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  ixx: 8.49e-06
+  ixy: 0.0
+  ixz: 0.0
+  iyy: 8.53e-06
+  iyz: -1.06e-06
+  izz: 1.77e-06

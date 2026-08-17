@@ -1,0 +1,1787 @@
+generated_from: franka_description@2.8.1
+joints:
+- name: base_inertia_joint
+  type: fixed
+  parent: base_link
+  child: base_inertia
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: caster_front_left_fixed_joint
+  type: fixed
+  parent: base_link
+  child: caster_front_left_fixed_link
+  origin_xyz:
+  - 0.3
+  - 0.2
+  - 0.08
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: caster_front_left_steering_joint
+  type: continuous
+  parent: caster_front_left_fixed_link
+  child: caster_front_left_steering_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 0.003
+  friction: 0.0
+  motor_inertia: null
+  gear_ratio: null
+- name: caster_front_left_joint
+  type: continuous
+  parent: caster_front_left_steering_link
+  child: caster_front_left_link
+  origin_xyz:
+  - -0.035
+  - 0.0
+  - -0.05
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 0.003
+  friction: 0.0
+  motor_inertia: null
+  gear_ratio: null
+- name: argo_drive_front_fixed_joint
+  type: fixed
+  parent: base_link
+  child: argo_drive_front_fixed_link
+  origin_xyz:
+  - 0.3
+  - -0.2
+  - 0.05
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: tmrv0_2_joint_0
+  type: continuous
+  parent: argo_drive_front_fixed_link
+  child: argo_drive_front_steering_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 20.0
+  friction: 5.0
+  motor_inertia: null
+  gear_ratio: null
+- name: tmrv0_2_joint_1
+  type: continuous
+  parent: argo_drive_front_steering_link
+  child: argo_drive_front_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 5.0
+  friction: 1.0
+  motor_inertia: null
+  gear_ratio: null
+- name: rocker_arm_joint
+  type: revolute
+  parent: base_link
+  child: rocker_arm_link
+  origin_xyz:
+  - -0.3
+  - 0.0
+  - 0.0845
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '1'
+  - '0'
+  - '0'
+  lower: -0.16
+  upper: 0.18
+  effort: 500.0
+  velocity: 20.0
+  damping: 0.003
+  friction: 0.0
+  motor_inertia: null
+  gear_ratio: null
+- name: caster_rear_right_fixed_joint
+  type: fixed
+  parent: rocker_arm_link
+  child: caster_rear_right_fixed_link
+  origin_xyz:
+  - 0.0
+  - -0.2
+  - -0.004500000000000004
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: caster_rear_right_steering_joint
+  type: continuous
+  parent: caster_rear_right_fixed_link
+  child: caster_rear_right_steering_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 0.003
+  friction: 0.0
+  motor_inertia: null
+  gear_ratio: null
+- name: caster_rear_right_joint
+  type: continuous
+  parent: caster_rear_right_steering_link
+  child: caster_rear_right_link
+  origin_xyz:
+  - -0.035
+  - 0.0
+  - -0.05
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 0.003
+  friction: 0.0
+  motor_inertia: null
+  gear_ratio: null
+- name: argo_drive_rear_fixed_joint
+  type: fixed
+  parent: rocker_arm_link
+  child: argo_drive_rear_fixed_link
+  origin_xyz:
+  - 0.0
+  - 0.2
+  - -0.0345
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: tmrv0_2_joint_2
+  type: continuous
+  parent: argo_drive_rear_fixed_link
+  child: argo_drive_rear_steering_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 20.0
+  friction: 5.0
+  motor_inertia: null
+  gear_ratio: null
+- name: tmrv0_2_joint_3
+  type: continuous
+  parent: argo_drive_rear_steering_link
+  child: argo_drive_rear_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: null
+  upper: null
+  effort: 500.0
+  velocity: 20.0
+  damping: 5.0
+  friction: 1.0
+  motor_inertia: null
+  gear_ratio: null
+- name: imu_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: imu_mounting_point
+  origin_xyz:
+  - 0.26
+  - 0.0
+  - 0.1478
+  origin_rpy:
+  - 3.141592653589793
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: front_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: front_mounting_point
+  origin_xyz:
+  - 0.380705
+  - 0.0
+  - 0.2345
+  origin_rpy:
+  - 3.141592653589793
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: rear_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: rear_mounting_point
+  origin_xyz:
+  - -0.380705
+  - 0.0
+  - 0.2345
+  origin_rpy:
+  - 3.141592653589793
+  - 0.0
+  - 3.141592653589793
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: right_mounting_point
+  origin_xyz:
+  - 0.0
+  - -0.272712
+  - 0.1145
+  origin_rpy:
+  - 3.141592653589793
+  - 0.0
+  - -1.5707963267948966
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: left_mounting_point
+  origin_xyz:
+  - 0.0
+  - 0.272712
+  - 0.1145
+  origin_rpy:
+  - 3.141592653589793
+  - 0.0
+  - 1.5707963267948966
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: lidar_front_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: lidar_front_mounting_point
+  origin_xyz:
+  - 0.3275
+  - 0.2175
+  - 0.19065
+  origin_rpy:
+  - -3.141592653589793
+  - 2.220446049250313e-16
+  - -0.7853981633974485
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: lidar_rear_mounting_point_joint
+  type: fixed
+  parent: base_link
+  child: lidar_rear_mounting_point
+  origin_xyz:
+  - -0.3275
+  - -0.2175
+  - 0.19065
+  origin_rpy:
+  - -3.141592653589793
+  - 4.440892098500626e-16
+  - 2.356194490192345
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: franka_spine_fixed_joint
+  type: fixed
+  parent: base_link
+  child: franka_spine
+  origin_xyz:
+  - 0.138289
+  - 0.0
+  - 0.35
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: franka_spine_vertical_joint
+  type: prismatic
+  parent: franka_spine
+  child: franka_spine_mounting_point
+  origin_xyz:
+  - 0.266711
+  - 0.0
+  - 0.1
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: 0.0
+  upper: 0.85
+  effort: 100.0
+  velocity: 0.1
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: fr3_duo_mount_origin_joint
+  type: fixed
+  parent: fr3_duo_mount_mounting_point
+  child: fr3_duo_mount_origin
+  origin_xyz:
+  - 0.037
+  - -0.0
+  - 0.05
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: fr3_duo_mount_left_joint
+  type: fixed
+  parent: fr3_duo_mount_origin
+  child: fr3_duo_mount_left
+  origin_xyz:
+  - 0.0
+  - 0.05018
+  - 0.0
+  origin_rpy:
+  - -0.8933480900000002
+  - -0.17456074
+  - -0.46334506
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: fr3_duo_mount_right_joint
+  type: fixed
+  parent: fr3_duo_mount_origin
+  child: fr3_duo_mount_right
+  origin_xyz:
+  - 0.0
+  - -0.05018
+  - 0.0
+  origin_rpy:
+  - 0.8933480900000002
+  - -0.17456074
+  - 0.46334506
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: mount_joint
+  type: fixed
+  parent: franka_spine_mounting_point
+  child: fr3_duo_mount_mounting_point
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: head_joint
+  type: fixed
+  parent: fr3_duo_mount_mounting_point
+  child: head_link
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.167
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: head_camera_mounting_point_joint
+  type: fixed
+  parent: head_link
+  child: head_camera_mounting_point
+  origin_xyz:
+  - 0.042463788936189344
+  - -0.014113
+  - 0.22352590079539492
+  origin_rpy:
+  - 0.0
+  - 0.7155999999999998
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_base_joint
+  type: fixed
+  parent: fr3_duo_mount_left
+  child: left_base
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_left_base_joint
+  type: fixed
+  parent: left_base
+  child: left_fr3v2_1_link0
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link0_accelerometer_top_joint
+  type: fixed
+  parent: left_fr3v2_1_link0
+  child: left_fr3v2_1_link0_accelerometer_top
+  origin_xyz:
+  - -0.017402
+  - -0.007872
+  - 0.04715
+  origin_rpy:
+  - -3.1415853071795863
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link0_accelerometer_bottom_joint
+  type: fixed
+  parent: left_fr3v2_1_link0
+  child: left_fr3v2_1_link0_accelerometer_bottom
+  origin_xyz:
+  - -0.019739
+  - 0.0015506
+  - 0.05075
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - -1.5708
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link1_accelerometer_top_joint
+  type: fixed
+  parent: left_fr3v2_1_link1
+  child: left_fr3v2_1_link1_accelerometer_top
+  origin_xyz:
+  - 0.017402
+  - -0.093352
+  - -0.00787
+  origin_rpy:
+  - -1.5707999999999998
+  - 0.0
+  - -3.1415853071795863
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link1_accelerometer_bottom_joint
+  type: fixed
+  parent: left_fr3v2_1_link1
+  child: left_fr3v2_1_link1_accelerometer_bottom
+  origin_xyz:
+  - 0.01974
+  - -0.08975
+  - 0.00155
+  origin_rpy:
+  - 1.5707926535906556
+  - 1.5707926535897934
+  - -3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_joint1
+  type: revolute
+  parent: left_fr3v2_1_link0
+  child: left_fr3v2_1_link1
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.333
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -2.9007400166666666
+  upper: 2.9007400166666666
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 4.206399e-05
+  gear_ratio: 120.0
+- name: left_fr3v2_1_link2_accelerometer_top_joint
+  type: fixed
+  parent: left_fr3v2_1_link2
+  child: left_fr3v2_1_link2_accelerometer_top
+  origin_xyz:
+  - 0.017403
+  - -0.11515
+  - 0.00787
+  origin_rpy:
+  - 1.5707999999999998
+  - 0.0
+  - -3.1415853071795863
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link2_accelerometer_bottom_joint
+  type: fixed
+  parent: left_fr3v2_1_link2
+  child: left_fr3v2_1_link2_accelerometer_bottom
+  origin_xyz:
+  - 0.019737
+  - -0.11875
+  - -0.00155
+  origin_rpy:
+  - -1.5707926535906556
+  - -1.5707926535897931
+  - -3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_joint2
+  type: revolute
+  parent: left_fr3v2_1_link1
+  child: left_fr3v2_1_link2
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - -1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -1.8360900166666667
+  upper: 1.8360900166666667
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 4.206399e-05
+  gear_ratio: 120.0
+- name: left_fr3v2_1_link3_accelerometer_top_joint
+  type: fixed
+  parent: left_fr3v2_1_link3
+  child: left_fr3v2_1_link3_accelerometer_top
+  origin_xyz:
+  - 0.065099
+  - 0.077352
+  - -0.00787
+  origin_rpy:
+  - -1.5708
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link3_accelerometer_bottom_joint
+  type: fixed
+  parent: left_fr3v2_1_link3
+  child: left_fr3v2_1_link3_accelerometer_bottom
+  origin_xyz:
+  - 0.062769
+  - 0.073756
+  - 0.00155
+  origin_rpy:
+  - -1.5707926535906556
+  - 1.5707926535897934
+  - 3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_joint3
+  type: revolute
+  parent: left_fr3v2_1_link2
+  child: left_fr3v2_1_link3
+  origin_xyz:
+  - 0.0
+  - -0.316
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -2.9007400166666666
+  upper: 2.9007400166666666
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 120.0
+- name: left_fr3v2_1_link4_accelerometer_top_joint
+  type: fixed
+  parent: left_fr3v2_1_link4
+  child: left_fr3v2_1_link4_accelerometer_top
+  origin_xyz:
+  - -0.0651
+  - 0.046152
+  - -0.00787
+  origin_rpy:
+  - -1.5707999999999998
+  - 0.0
+  - 3.1415853071795863
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link4_accelerometer_bottom_joint
+  type: fixed
+  parent: left_fr3v2_1_link4
+  child: left_fr3v2_1_link4_accelerometer_bottom
+  origin_xyz:
+  - -0.062775
+  - 0.049753
+  - 0.00155
+  origin_rpy:
+  - 1.5707926535906556
+  - 1.5707926535897934
+  - -3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_joint4
+  type: revolute
+  parent: left_fr3v2_1_link3
+  child: left_fr3v2_1_link4
+  origin_xyz:
+  - 0.0825
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -3.077020016666667
+  upper: -0.11693708333333333
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 120.0
+- name: left_fr3v2_1_link5_accelerometer_top_joint
+  type: fixed
+  parent: left_fr3v2_1_link5
+  child: left_fr3v2_1_link5_accelerometer_top
+  origin_xyz:
+  - -0.017363
+  - 0.085872
+  - -0.00795
+  origin_rpy:
+  - -1.5708
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_link5_accelerometer_bottom_joint
+  type: fixed
+  parent: left_fr3v2_1_link5
+  child: left_fr3v2_1_link5_accelerometer_bottom
+  origin_xyz:
+  - -0.019742
+  - 0.082275
+  - 0.00146
+  origin_rpy:
+  - -1.5707926535906556
+  - 1.5707926535897934
+  - 3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_joint5
+  type: revolute
+  parent: left_fr3v2_1_link4
+  child: left_fr3v2_1_link5
+  origin_xyz:
+  - -0.0825
+  - 0.384
+  - 0.0
+  origin_rpy:
+  - -1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -2.87630335
+  upper: 2.87630335
+  effort: 12.0
+  velocity: 5.26
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 80.0
+- name: left_fr3v2_1_joint6
+  type: revolute
+  parent: left_fr3v2_1_link5
+  child: left_fr3v2_1_link6
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: 0.43982265
+  upper: 4.62163335
+  effort: 12.0
+  velocity: 4.18
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 80.0
+- name: left_fr3v2_1_joint7
+  type: revolute
+  parent: left_fr3v2_1_link6
+  child: left_fr3v2_1_link7
+  origin_xyz:
+  - 0.088
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -3.05083335
+  upper: 3.05083335
+  effort: 12.0
+  velocity: 5.26
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 80.0
+- name: left_fr3v2_1_joint8
+  type: fixed
+  parent: left_fr3v2_1_link7
+  child: left_fr3v2_1_link8
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.107
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_hand_joint
+  type: fixed
+  parent: left_fr3v2_1_link8
+  child: left_fr3v2_1_hand
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - -0.7853981633974484
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_hand_tcp_joint
+  type: fixed
+  parent: left_fr3v2_1_hand
+  child: left_fr3v2_1_hand_tcp
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.1034
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_finger_joint1
+  type: prismatic
+  parent: left_fr3v2_1_hand
+  child: left_fr3v2_1_leftfinger
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0584
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: 0.0
+  upper: 0.04
+  effort: 100.0
+  velocity: 0.2
+  damping: 0.3
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: left_fr3v2_1_finger_joint2
+  type: prismatic
+  parent: left_fr3v2_1_hand
+  child: left_fr3v2_1_rightfinger
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0584
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 3.141592653589793
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: 0.0
+  upper: 0.04
+  effort: 100.0
+  velocity: 0.2
+  damping: 0.3
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_base_joint
+  type: fixed
+  parent: fr3_duo_mount_right
+  child: right_base
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_right_base_joint
+  type: fixed
+  parent: right_base
+  child: right_fr3v2_1_link0
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link0_accelerometer_top_joint
+  type: fixed
+  parent: right_fr3v2_1_link0
+  child: right_fr3v2_1_link0_accelerometer_top
+  origin_xyz:
+  - -0.017402
+  - -0.007872
+  - 0.04715
+  origin_rpy:
+  - -3.1415853071795863
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link0_accelerometer_bottom_joint
+  type: fixed
+  parent: right_fr3v2_1_link0
+  child: right_fr3v2_1_link0_accelerometer_bottom
+  origin_xyz:
+  - -0.019739
+  - 0.0015506
+  - 0.05075
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - -1.5708
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link1_accelerometer_top_joint
+  type: fixed
+  parent: right_fr3v2_1_link1
+  child: right_fr3v2_1_link1_accelerometer_top
+  origin_xyz:
+  - 0.017402
+  - -0.093352
+  - -0.00787
+  origin_rpy:
+  - -1.5707999999999998
+  - 0.0
+  - -3.1415853071795863
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link1_accelerometer_bottom_joint
+  type: fixed
+  parent: right_fr3v2_1_link1
+  child: right_fr3v2_1_link1_accelerometer_bottom
+  origin_xyz:
+  - 0.01974
+  - -0.08975
+  - 0.00155
+  origin_rpy:
+  - 1.5707926535906556
+  - 1.5707926535897934
+  - -3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_joint1
+  type: revolute
+  parent: right_fr3v2_1_link0
+  child: right_fr3v2_1_link1
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.333
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -2.9007400166666666
+  upper: 2.9007400166666666
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 4.206399e-05
+  gear_ratio: 120.0
+- name: right_fr3v2_1_link2_accelerometer_top_joint
+  type: fixed
+  parent: right_fr3v2_1_link2
+  child: right_fr3v2_1_link2_accelerometer_top
+  origin_xyz:
+  - 0.017403
+  - -0.11515
+  - 0.00787
+  origin_rpy:
+  - 1.5707999999999998
+  - 0.0
+  - -3.1415853071795863
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link2_accelerometer_bottom_joint
+  type: fixed
+  parent: right_fr3v2_1_link2
+  child: right_fr3v2_1_link2_accelerometer_bottom
+  origin_xyz:
+  - 0.019737
+  - -0.11875
+  - -0.00155
+  origin_rpy:
+  - -1.5707926535906556
+  - -1.5707926535897931
+  - -3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_joint2
+  type: revolute
+  parent: right_fr3v2_1_link1
+  child: right_fr3v2_1_link2
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - -1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -1.8360900166666667
+  upper: 1.8360900166666667
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 4.206399e-05
+  gear_ratio: 120.0
+- name: right_fr3v2_1_link3_accelerometer_top_joint
+  type: fixed
+  parent: right_fr3v2_1_link3
+  child: right_fr3v2_1_link3_accelerometer_top
+  origin_xyz:
+  - 0.065099
+  - 0.077352
+  - -0.00787
+  origin_rpy:
+  - -1.5708
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link3_accelerometer_bottom_joint
+  type: fixed
+  parent: right_fr3v2_1_link3
+  child: right_fr3v2_1_link3_accelerometer_bottom
+  origin_xyz:
+  - 0.062769
+  - 0.073756
+  - 0.00155
+  origin_rpy:
+  - -1.5707926535906556
+  - 1.5707926535897934
+  - 3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_joint3
+  type: revolute
+  parent: right_fr3v2_1_link2
+  child: right_fr3v2_1_link3
+  origin_xyz:
+  - 0.0
+  - -0.316
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -2.9007400166666666
+  upper: 2.9007400166666666
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 120.0
+- name: right_fr3v2_1_link4_accelerometer_top_joint
+  type: fixed
+  parent: right_fr3v2_1_link4
+  child: right_fr3v2_1_link4_accelerometer_top
+  origin_xyz:
+  - -0.0651
+  - 0.046152
+  - -0.00787
+  origin_rpy:
+  - -1.5707999999999998
+  - 0.0
+  - 3.1415853071795863
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link4_accelerometer_bottom_joint
+  type: fixed
+  parent: right_fr3v2_1_link4
+  child: right_fr3v2_1_link4_accelerometer_bottom
+  origin_xyz:
+  - -0.062775
+  - 0.049753
+  - 0.00155
+  origin_rpy:
+  - 1.5707926535906556
+  - 1.5707926535897934
+  - -3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_joint4
+  type: revolute
+  parent: right_fr3v2_1_link3
+  child: right_fr3v2_1_link4
+  origin_xyz:
+  - 0.0825
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -3.077020016666667
+  upper: -0.11693708333333333
+  effort: 87.0
+  velocity: 2.62
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 120.0
+- name: right_fr3v2_1_link5_accelerometer_top_joint
+  type: fixed
+  parent: right_fr3v2_1_link5
+  child: right_fr3v2_1_link5_accelerometer_top
+  origin_xyz:
+  - -0.017363
+  - 0.085872
+  - -0.00795
+  origin_rpy:
+  - -1.5708
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_link5_accelerometer_bottom_joint
+  type: fixed
+  parent: right_fr3v2_1_link5
+  child: right_fr3v2_1_link5_accelerometer_bottom
+  origin_xyz:
+  - -0.019742
+  - 0.082275
+  - 0.00146
+  origin_rpy:
+  - -1.5707926535906556
+  - 1.5707926535897934
+  - 3.1415926535889307
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_joint5
+  type: revolute
+  parent: right_fr3v2_1_link4
+  child: right_fr3v2_1_link5
+  origin_xyz:
+  - -0.0825
+  - 0.384
+  - 0.0
+  origin_rpy:
+  - -1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -2.87630335
+  upper: 2.87630335
+  effort: 12.0
+  velocity: 5.26
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 80.0
+- name: right_fr3v2_1_joint6
+  type: revolute
+  parent: right_fr3v2_1_link5
+  child: right_fr3v2_1_link6
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: 0.43982265
+  upper: 4.62163335
+  effort: 12.0
+  velocity: 4.18
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 80.0
+- name: right_fr3v2_1_joint7
+  type: revolute
+  parent: right_fr3v2_1_link6
+  child: right_fr3v2_1_link7
+  origin_xyz:
+  - 0.088
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 1.570796326794897
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '0'
+  - '1'
+  lower: -3.05083335
+  upper: 3.05083335
+  effort: 12.0
+  velocity: 5.26
+  damping: 0.003
+  friction: 0.2
+  motor_inertia: 3.211626e-05
+  gear_ratio: 80.0
+- name: right_fr3v2_1_joint8
+  type: fixed
+  parent: right_fr3v2_1_link7
+  child: right_fr3v2_1_link8
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.107
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_hand_joint
+  type: fixed
+  parent: right_fr3v2_1_link8
+  child: right_fr3v2_1_hand
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - -0.7853981633974484
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_hand_tcp_joint
+  type: fixed
+  parent: right_fr3v2_1_hand
+  child: right_fr3v2_1_hand_tcp
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.1034
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis: null
+  lower: null
+  upper: null
+  effort: null
+  velocity: null
+  damping: null
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_finger_joint1
+  type: prismatic
+  parent: right_fr3v2_1_hand
+  child: right_fr3v2_1_leftfinger
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0584
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 0.0
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: 0.0
+  upper: 0.04
+  effort: 100.0
+  velocity: 0.2
+  damping: 0.3
+  friction: null
+  motor_inertia: null
+  gear_ratio: null
+- name: right_fr3v2_1_finger_joint2
+  type: prismatic
+  parent: right_fr3v2_1_hand
+  child: right_fr3v2_1_rightfinger
+  origin_xyz:
+  - 0.0
+  - 0.0
+  - 0.0584
+  origin_rpy:
+  - 0.0
+  - 0.0
+  - 3.141592653589793
+  axis:
+  - '0'
+  - '1'
+  - '0'
+  lower: 0.0
+  upper: 0.04
+  effort: 100.0
+  velocity: 0.2
+  damping: 0.3
+  friction: null
+  motor_inertia: null
+  gear_ratio: null

@@ -1,0 +1,39 @@
+generated_by: tools/verify_official_model_files.py
+repos:
+  franka_description:
+    commit: 02afaae282d4a8e10d7d2f781b23b3515c303ce5
+    files:
+      end_effectors/common/franka_hand.xacro: ad5521d42b681e23f913105dfb5d3a39bf8fae264268db14707b3060233c27cf
+      end_effectors/franka_hand/franka_hand.srdf.xacro: aaf62f22ddb75037d2be41be957446c339418f7e2323f658b09d0c1b4c268b8c
+      end_effectors/franka_hand/franka_hand.urdf.xacro: 58c952f340c87b71524c3802689bc36898ac08ff5838bad7738692710b29a669
+      robots/common/franka_arm.srdf.xacro: 378698aefe1ce9510835ce22aa8450494e8b8ecce59cb7d9ba94b94fafba0c29
+      robots/fr3v2_1/dynamics.yaml: e65e145114b431bd17cdebc58b88c43505f0658472cca6ffbc9c32b7a198f79b
+      robots/fr3v2_1/fr3v2_1.srdf.xacro: 4095a74ff0ff09583e59b6734fe8df4201eef3cf720c830c134ef120b1e11977
+      robots/fr3v2_1/fr3v2_1.urdf.xacro: 478a8737b88377858a1c248624490ffa025958ea7e3d6ed0b7e70a47e67a988b
+      robots/fr3v2_1/inertials.yaml: 1b417777982a40ee058a4b9ae5d1a1de2f5c079e96dc4fe730b80eda71bdfbc6
+      robots/fr3v2_1/joint_limits.yaml: 34b78a3c1d500cfff3912750f6b4c19c677a223b03c22a074e49f0d5f1c1314c
+      robots/fr3v2_1/kinematics.yaml: 44326830a6773dd6611cdf9947045eeb3276ea4e3ca47a05272816c862c8e386
+      robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.srdf.xacro: 99d3205bd545d3afd3da8033c6b5994b0b6f462deea321d4a1e73c26e3977394
+      robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.urdf.xacro: f26fdba9ef336d72882e3d0ecc9d90755bcbf1af9a07ddb996688bb75718d137
+      robots/tmrv0_2/tmrv0_2.xacro: 3fc31e7631c5f9cc8a3e76cf479037bb6775ca1e4e880ac82852efde0548214a
+    tag: 2.8.1
+  franka_ros2:
+    commit: 9faaaaf6ad4e4cc177cb93716547cc8ab20c5bd2
+    files: {}
+    tag: v2.5.1
+  realsense-ros:
+    commit: 60c850958d651130fc2cc3d10efb37ff5be93da5
+    files:
+      realsense2_description/meshes/d455.stl: 47e8321db7cb42291810c69329ab10b601108d651dfcac28bfc12469fa142fa6
+    tag: 4.58.3
+  sick_safetyscanners2:
+    commit: c8d787f45d0679f11a75085553f39e7555c359b5
+    files:
+      description/meshes/NANS3.dae: 4d898d8016d91c9b7affda2cad4e3367814e4e7e6ce2d16ad8ac12ce700191f5
+      description/meshes/NANS3_collision.stl: 2e1d8be320bd605e6e3be5d5a26e738f9c22a7210641c84ba6707d5effa51122
+    tag: 1.0.5
+  zed-ros2-description:
+    commit: 449eef9566a49461cc37d6ac13230fe2886ff2be
+    files:
+      meshes/zedm.stl: bf0193e6b2f36a348e1cbe3c19e18adc3e90e4b054f4fce47286482380cd149c
+    tag: 0.1.5

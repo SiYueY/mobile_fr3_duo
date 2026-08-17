@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check-and-test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          python-version: "3.10"
+      - name: Sync dependencies
+        run: uv sync --all-extras
+      - name: Check
+        run: |
+          uv run ruff check .
+          uv run python tools/format_xml.py --check mobile_fr3_duo.xml mobile_fr3_duo_with_sensors.xml mobile_fr3_duo_position.xml mobile_fr3_duo_reduced.xml mobile_fr3_duo_planar_debug.xml scene.xml scene_with_sensors.xml scene_position.xml
+          uv run python tools/validate_assets.py
+          uv run python tools/verify_official_model_files.py --offline
+      - name: Test
+        run: uv run pytest -v

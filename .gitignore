@@ -214,5 +214,8 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# Mobile FR3 Duo build probes
+/.build_probe.xml
+
 # Streamlit
 .streamlit/secrets.toml

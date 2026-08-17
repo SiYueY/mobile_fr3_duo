@@ -1,0 +1,156 @@
+generated_from: franka_description@2.8.1
+frames:
+- name: imu_mounting_point
+  parent: base_link
+  xyz:
+  - 0.26
+  - 0.0
+  - 0.1478
+  quat:
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0
+- name: front_mounting_point
+  parent: base_link
+  xyz:
+  - 0.380705
+  - 0.0
+  - 0.2345
+  quat:
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0
+- name: rear_mounting_point
+  parent: base_link
+  xyz:
+  - -0.380705
+  - 0.0
+  - 0.2345
+  quat:
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0
+- name: left_mounting_point
+  parent: base_link
+  xyz:
+  - 0.0
+  - 0.272712
+  - 0.1145
+  quat:
+  - 0.0
+  - 0.707106781
+  - 0.707106781
+  - 0.0
+- name: right_mounting_point
+  parent: base_link
+  xyz:
+  - 0.0
+  - -0.272712
+  - 0.1145
+  quat:
+  - 0.0
+  - 0.707106781
+  - -0.707106781
+  - -0.0
+- name: lidar_front_mounting_point
+  parent: base_link
+  xyz:
+  - 0.3275
+  - 0.2175
+  - 0.19065
+  quat:
+  - 0.0
+  - -0.923879533
+  - 0.382683432
+  - 0.0
+- name: lidar_rear_mounting_point
+  parent: base_link
+  xyz:
+  - -0.3275
+  - -0.2175
+  - 0.19065
+  quat:
+  - -0.0
+  - -0.382683432
+  - -0.923879533
+  - 0.0
+- name: head_camera_mounting_point
+  parent: head_link
+  xyz:
+  - 0.447463789
+  - -0.014113
+  - 0.840525901
+  quat:
+  - 0.936669561
+  - 0.0
+  - 0.350214409
+  - 0.0
+- name: franka_spine_mounting_point
+  parent: franka_spine
+  xyz:
+  - 0.405
+  - 0.0
+  - 0.45
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+- name: fr3_duo_mount_mounting_point
+  parent: franka_spine_mounting_point
+  xyz:
+  - 0.405
+  - 0.0
+  - 0.45
+  quat:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+- name: left_fr3v2_1_hand_tcp
+  parent: left_fr3v2_1_hand
+  xyz:
+  - 0.725885615
+  - 0.624839086
+  - 1.023058937
+  quat:
+  - 0.395093722
+  - 0.892869819
+  - 0.106883439
+  - -0.187777443
+- name: right_fr3v2_1_hand_tcp
+  parent: right_fr3v2_1_hand
+  xyz:
+  - 0.725885615
+  - -0.624839086
+  - 1.023058937
+  quat:
+  - -0.412152153
+  - 0.706932308
+  - 0.555776299
+  - 0.146594746
+- name: left_fr3v2_1_link8
+  parent: left_fr3v2_1_link7
+  xyz:
+  - 0.751824919
+  - 0.701941893
+  - 1.08688581
+  quat:
+  - 0.436878319
+  - 0.865806672
+  - -0.242939065
+  - -0.022287915
+- name: right_fr3v2_1_link8
+  parent: right_fr3v2_1_link7
+  xyz:
+  - 0.751824919
+  - -0.701941893
+  - 1.08688581
+  quat:
+  - -0.436878319
+  - 0.865806672
+  - 0.242939065
+  - -0.022287915

@@ -1,0 +1,9 @@
+hand:
+  equality_type: joint
+  width_range: [0.0, 0.08]
+  motor_type: motor
+  ctrlrange: [-20.0, 20.0]
+  kp_external: 100.0
+  kd_external: 10.0
+controller_rate_hz: 500
+

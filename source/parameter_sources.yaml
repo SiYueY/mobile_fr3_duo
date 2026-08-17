@@ -1,0 +1,151 @@
+# Parameter source registry (document section 34.4)
+# classification: official-source | official-derived | project-authored | identified | estimated | simulation-only
+parameters:
+  - parameter: wheel_floor_friction
+    component: tmr
+    value: "pending calibration"
+    classification: simulation-only
+    reason: "TMR wheel-ground friction is not published; calibrated for stable B-grade dynamics."
+    test_reference: tests/test_mobile_base.py
+    introduced_in: "v0.5.0"
+  - parameter: tmr_steering_motor_ctrlrange
+    component: tmr
+    value: "-20 20"
+    classification: simulation-only
+    reason: "Actuator torque range chosen to be well below gearing limits; no official torque data."
+    test_reference: tests/test_mobile_base.py
+    introduced_in: "v0.5.0"
+  - parameter: tmr_wheel_motor_ctrlrange
+    component: tmr
+    value: "-50 50"
+    classification: simulation-only
+    reason: "Drive torque range; calibrated against contact stability."
+    test_reference: tests/test_mobile_base.py
+    introduced_in: "v0.5.0"
+  - parameter: spine_motor_ctrlrange
+    component: franka_spine_v0_1
+    value: "-600 600"
+    classification: simulation-only
+    reason: "Static upper-body load (mount + dual arms) is ~370 N from the
+      official inertials, exceeding the official joint_limits.yaml effort of
+      100 N; the motor range is raised so the spine can actually hold the
+      payload in simulation."
+    test_reference: tests/test_spine.py
+    introduced_in: "v1.0.0"
+  - parameter: fr3_joint_kp
+    component: fr3v2_1
+    value: "30.0"
+    classification: simulation-only
+    reason: "Joint-space PD gain for examples; not an official parameter."
+    test_reference: tests/test_arms.py
+    introduced_in: "v0.6.0"
+  - parameter: hand_width_range
+    component: franka_hand
+    value: "0.0 0.08"
+    classification: official-source
+    reason: "Franka Hand opening range from official description."
+    test_reference: tests/test_hands.py
+    introduced_in: "v0.3.0"
+  - parameter: nanoscan3_scan_config
+    component: sick_nanoscan3
+    value: "rate=50 angle_min=-0.7854 angle_max=3.9270 range_min=0.05 range_max=10.0 noise=0.006 beams=500"
+    classification: estimated
+    reason: "Document section 20 nominal scan reference parameters."
+    test_reference: tests/test_lidars.py
+    introduced_in: "v0.7.0"
+  - parameter: imu_noise
+    component: olv_imu01
+    value: "ideal"
+    classification: estimated
+    reason: "No hardware test data; bias/random-walk marked estimated when added."
+    test_reference: tests/test_imu.py
+    introduced_in: "v0.7.0"
+  - parameter: d455_update_rate
+    component: realsense_d455
+    value: "30.0"
+    classification: official-source
+    reason: "Nominal D455 RGB/depth stream rate."
+    test_reference: tests/test_cameras.py
+    introduced_in: "v0.7.0"
+  - parameter: zed_mini_baseline
+    component: zed_mini
+    value: "0.063"
+    classification: official-source
+    reason: "Nominal ZED Mini stereo baseline."
+    test_reference: tests/test_cameras.py
+    introduced_in: "v0.7.0"
+  - parameter: joint_axis_rotation_first
+    component: fr3v2_1
+    value: "rotation-first (T_child = R_axis(q) @ T_origin)"
+    classification: official-derived
+    reason: "Official DH kinematics (kinematics.yaml) rotate each joint about
+      its own frame axis before the origin transform; reproduced in MJCF via
+      an intermediate joint-frame body. Verified against PyKDL to 5e-11 m."
+    test_reference: tests/test_kinematics.py
+    introduced_in: "v1.0.0"
+  - parameter: finger_prismatic_axis_mirror
+    component: franka_hand
+    value: "axis = R(origin) @ axis_urdf"
+    classification: official-derived
+    reason: "Franka Hand fingers mirror about the palm; the prismatic axis is
+      rotated into the parent frame so q_finger1 == q_finger2 keeps the pads
+      symmetric."
+    test_reference: tests/test_hands.py
+    introduced_in: "v1.0.0"
+  - parameter: hand_finger_equality_polycoef
+    component: franka_hand
+    value: "polycoef = 0 1 -1 0 0 (c0 + c1*q1 + c2*q2 = 0)"
+    classification: official-derived
+    reason: "MuJoCo joint equality polynomial starts with the constant term;
+      q1 - q2 = 0 couples the two fingers."
+    test_reference: tests/test_hands.py
+    introduced_in: "v1.0.0"
+  - parameter: sc_shell_exclusions
+    component: collision
+    value: "see contact excludes in mobile_fr3_duo.xml"
+    classification: simulation-only
+    reason: "Inflated official SC shells overlap at legal dual-arm poses
+      (shoulders 0.1 m apart vs 0.09 m shell radius; wrist cluster). Shell-only
+      pairs excluded; all real-geometry pairs stay active."
+    test_reference: tests/test_contacts.py
+    introduced_in: "v1.0.0"
+  - parameter: spawn_clearance
+    component: tmr
+    value: "0.002 m"
+    classification: simulation-only
+    reason: "Wheel-ground initial clearance so keyframes have no initial
+      penetration."
+    test_reference: tests/test_initial_penetration.py
+    introduced_in: "v1.0.0"
+  - parameter: position_variant_kp_spine
+    component: franka_spine_v0_1
+    value: "30000"
+    classification: simulation-only
+    reason: "Demo position controller stiffness for the spine; not an official
+      parameter."
+    test_reference: tests/test_spine.py
+    introduced_in: "v1.0.0"
+  - parameter: position_variant_kp_arm
+    component: fr3v2_1
+    value: "500"
+    classification: simulation-only
+    reason: "Demo position controller stiffness for FR3 joints."
+    test_reference: tests/test_arms.py
+    introduced_in: "v1.0.0"
+  - parameter: urdf_box_half_extent_conversion
+    component: collision
+    value: "half = urdf_box_size / 2"
+    classification: official-derived
+    reason: "URDF <box size> is full extent; MuJoCo box size is half extent.
+      All primitive collision boxes converted accordingly."
+    test_reference: tests/test_structure.py
+    introduced_in: "v1.0.0"
+  - parameter: tmr_chassis_ground_contact
+    component: tmr
+    value: "chassis mesh may contact ground at rest"
+    classification: simulation-only
+    reason: "Official TMR chassis mesh bottom is near the wheel bottoms; with
+      free rocker/caster suspension the base settles low enough to touch.
+      Wheel-ground contact still drives the base."
+    test_reference: tests/test_mobile_base.py
+    introduced_in: "v1.0.0"

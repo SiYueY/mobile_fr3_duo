@@ -1,0 +1,14 @@
+# Reference values recorded from franka_ros2 v2.5.1 sensor_suite.xacro (non-binding)
+realsense_d455:
+  devices: 4
+  mounts: [front_mounting_point, rear_mounting_point, left_mounting_point, right_mounting_point]
+sick_nanoscan3:
+  devices: 2
+  mounts: [lidar_front_mounting_point, lidar_rear_mounting_point]
+olv_imu01:
+  devices: 1
+  mount: imu_mounting_point
+zed_mini:
+  devices: 1
+  mount: head_camera_mounting_point
+

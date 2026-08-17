@@ -1,0 +1,9 @@
+fr3:
+  motor_type: motor
+  ctrllimited: true
+  kp_external: 30.0
+  kd_external: 2.0
+  gravity_compensation: true
+controller_rate_hz: 1000
+joints: 7
+
