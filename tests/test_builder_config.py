@@ -7,6 +7,7 @@ import sys
 import mujoco
 import numpy as np
 import pytest
+import yaml
 from helpers import REPO_ROOT, load
 
 sys.path.insert(0, str(REPO_ROOT / "tools"))
@@ -60,3 +61,33 @@ def test_generated_keyframes_match_builder_config(base_model):
                 joint = f"{side}_fr3v2_1_joint{index}"
                 jid = mujoco.mj_name2id(base_model, mujoco.mjtObj.mjOBJ_JOINT, joint)
                 assert base_model.key_qpos[kid, base_model.jnt_qposadr[jid]] == pytest.approx(expected)
+
+
+def test_runtime_control_limits_are_not_mjcf_ctrlranges():
+    """Runtime command policy is separate from Builder actuator capability."""
+    controls = {
+        path.name: yaml.safe_load(path.read_text(encoding="utf-8"))
+        for path in (REPO_ROOT / "config" / "control").glob("*_control.yaml")
+    }
+    for payload in controls.values():
+        assert "ctrlrange" not in str(payload)
+    assert controls["tmr_control.yaml"]["wheel"]["command_limit"] == [-50.0, 50.0]
+    assert controls["hand_control.yaml"]["hand"]["command_limit"] == [-20.0, 20.0]
+    assert controls["spine_control.yaml"]["spine"]["command_limit"] == [-100.0, 100.0]
+
+
+def test_builder_has_no_legacy_module_duplicates():
+    source = (REPO_ROOT / "tools" / "build_model.py").read_text(encoding="utf-8")
+    for method in (
+        "_defaults",
+        "_assets",
+        "_children",
+        "_emit_joint",
+        "_emit_inertial",
+        "_emit_inertial_in_frame",
+        "_emit_visual",
+        "_emit_collision",
+        "_contacts",
+        "_equalities",
+    ):
+        assert f"def {method}(" not in source

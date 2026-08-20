@@ -790,6 +790,10 @@ config/
 
 其中官方参数和项目参数必须继续保持来源分类。
 
+`config/actuators.yaml` 的 `ctrlrange` 是 Builder 写入 MJCF 的 actuator 硬上限；
+`config/control/` 的 `command_limit` 则是外部控制器策略，允许更保守，且不得命名为
+`ctrlrange`。
+
 配置化的目的不是把所有常量都移动到 YAML，而是区分：
 
 ```text

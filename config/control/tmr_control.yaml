@@ -1,13 +1,13 @@
-# TMR v0.2 control configuration (simulation-only parameters)
+# Runtime controller policy.  command_limit is intentionally distinct from
+# the Builder's MJCF actuator ctrlrange in config/actuators.yaml.
 steering:
   motor_type: motor
-  ctrlrange: [-20.0, 20.0]
+  command_limit: [-20.0, 20.0]
   damping: 0.5
   kp_external: 200.0   # external swerve controller, not a model parameter
   kd_external: 20.0
 wheel:
   motor_type: motor
-  ctrlrange: [-50.0, 50.0]
+  command_limit: [-50.0, 50.0]
   damping: 0.2
 controller_rate_hz: 500
-
