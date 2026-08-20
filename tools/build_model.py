@@ -15,7 +15,6 @@ source/parameter_sources.yaml.
 from __future__ import annotations
 
 import argparse
-import copy
 import math
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -23,8 +22,10 @@ from pathlib import Path
 import mujoco
 import numpy as np
 import yaml
-from convert_visual_meshes import COMPONENT_MAP
 from format_xml import format_element
+from model_builder import BuildContext, contacts, dynamics, geometry
+from model_builder.geometry import mesh_asset
+from model_builder.urdf import UrdfModel, children, merge_sc_links
 from scipy.spatial.transform import Rotation
 from urdf_common import fmt, fmt_vec, origin_attrib
 
@@ -104,62 +105,13 @@ def _geom_origin(elem) -> tuple[str, str]:
     return fmt_vec(xyz), fmt_vec(quat)
 
 
-class UrdfModel:
-    """Parsed URDF structure needed for MJCF generation."""
-
-    def __init__(self, urdf_path: Path):
-        self.root = ET.parse(urdf_path).getroot()
-        self.links: dict[str, ET.Element] = {
-            el.get("name"): el for el in self.root.findall("link")
-        }
-        self.joints: dict[str, ET.Element] = {
-            j.get("name"): j for j in self.root.findall("joint")
-        }
-        children = {j.find("child").get("link") for j in self.joints.values()}
-        self.root_link = next(n for n in self.links if n not in children)
-        self.child_to_joint = {
-            j.find("child").get("link"): j for j in self.joints.values()
-        }
-
-
-def merge_sc_links(base: UrdfModel, sc: UrdfModel) -> UrdfModel:
-    """Merge *_sc self-collision bodies from the --with-sc URDF into the base."""
-    merged = copy.deepcopy(base)
-    for name, joint in sc.joints.items():
-        child = joint.find("child").get("link")
-        if child.endswith("_sc"):
-            merged.joints[name] = joint
-            merged.links[child] = sc.links[child]
-            merged.child_to_joint[child] = joint
-    return merged
-
-
-def mesh_asset(mesh_file: str) -> tuple[str, str] | None:
-    """Map a package:// franka_description mesh to (asset_name, asset_path)."""
-    if not mesh_file.startswith("package://franka_description/meshes/"):
-        return None
-    rel = mesh_file.removeprefix("package://franka_description/meshes/")
-    parts = rel.split("/")
-    if len(parts) == 3:
-        dirname, kind, filename = parts
-    elif len(parts) == 4:
-        dirname, kind, filename = f"{parts[0]}/{parts[1]}", parts[2], parts[3]
-    else:
-        return None
-    component = COMPONENT_MAP.get(dirname)
-    if component is None:
-        return None
-    stem = Path(filename).stem
-    suffix = ".obj" if kind == "visual" else ".stl"
-    return f"{stem}_{kind}", f"{component}/{kind}/{stem}{suffix}"
-
-
 class ModelBuilder:
     def __init__(self, opts: argparse.Namespace):
         self.opts = opts
         urdf_path = REDUCED_URDF if opts.reduced else VISUAL_URDF
         self.urdf = merge_sc_links(UrdfModel(urdf_path), UrdfModel(SC_URDF))
         self.actuator_mode = "position" if opts.position else "motor"
+        self.context = BuildContext(opts, self.urdf, self.actuator_mode, COLLISION_EXCLUSIONS)
 
     # ------------------------------------------------------------------
     def build(self) -> ET.Element:
@@ -188,8 +140,8 @@ class ModelBuilder:
                 gravity="0 0 -9.81",
             )
         )
-        mujoco_root.append(self._defaults())
-        mujoco_root.append(self._assets())
+        mujoco_root.append(geometry.defaults())
+        mujoco_root.append(geometry.assets(self.context))
 
         spawn_z = self.opts.spawn_z
         if spawn_z is None:
@@ -200,8 +152,8 @@ class ModelBuilder:
             self._attach_sensor_entities(worldbody)
         mujoco_root.append(worldbody)
 
-        mujoco_root.append(self._contacts())
-        mujoco_root.append(self._equalities())
+        mujoco_root.append(contacts.contacts(self.context))
+        mujoco_root.append(contacts.equalities(self.context))
         mujoco_root.append(self._actuators())
         mujoco_root.append(self._sensors())
         mujoco_root.append(self._keyframes(spawn_z))
@@ -347,18 +299,18 @@ class ModelBuilder:
             # R_axis(q).  Placing the joint on this child body preserves that
             # order.  A parent-origin wrapper would instead rotate the origin
             # translation, visibly pulling the two sides of each joint apart.
-            body.append(self._emit_joint(joint))
+            body.append(dynamics.joint(joint))
 
         inertial = link.find("inertial")
-        if inertial is not None and _inertial_mass(inertial) not in (None, 0):
-            body.append(self._emit_inertial(inertial))
+        if inertial is not None and dynamics.inertial_mass(inertial) not in (None, 0):
+            body.append(dynamics.inertial(inertial))
 
         for geom in link.findall("visual"):
-            g = self._emit_visual(geom)
+            g = geometry.visual(geom)
             if g is not None:
                 body.append(g)
         for geom in link.findall("collision"):
-            g = self._emit_collision(geom, name)
+            g = geometry.collision(geom, name)
             if g is not None:
                 body.append(g)
 
@@ -373,7 +325,7 @@ class ModelBuilder:
             body.append(_el("site", name="base_sensor_frame", size="0.002"))
 
         # Children in URDF joint order.
-        for child in self._children(name):
+        for child in children(self.urdf, name):
             body.append(self._emit_body(child, spawn_z))
         return body
 

@@ -6,7 +6,6 @@ import mujoco
 import numpy as np
 import pytest
 from helpers import apply_base_transform, mjcf_qpos_for_urdf
-from scipy.spatial.transform import Rotation
 
 
 def test_joint_counts(base_model, urdf):
@@ -33,22 +32,11 @@ def test_joint_types_axes_ranges(base_model, urdf):
             assert base_model.jnt_type[jid] == mujoco.mjtJoint.mjJNT_SLIDE
         else:
             assert base_model.jnt_type[jid] == mujoco.mjtJoint.mjJNT_HINGE
-        # The MJCF writes the URDF joint axis as-is on the intermediate
-        # joint-frame body (rotation-first convention, matching KDL);
-        # prismatic finger joints use the origin-rotated axis to keep the
-        # mirrored finger motion.
+        # The MJCF writes the URDF joint axis as-is on the child body, whose
+        # frame retains the URDF joint-origin rotation.  Applying that origin
+        # rotation a second time would reverse the mirrored finger motion.
         axis_urdf = np.array([float(v) for v in j.find("axis").get("xyz").split()])
-        if urdf_type == "prismatic":
-            origin = j.find("origin")
-            rpy = (
-                [float(v) for v in origin.get("rpy").split()]
-                if origin is not None and origin.get("rpy")
-                else [0.0, 0.0, 0.0]
-            )
-            expected = Rotation.from_euler("xyz", rpy).apply(axis_urdf)
-        else:
-            expected = axis_urdf
-        assert np.allclose(base_model.jnt_axis[jid], expected, atol=1e-9)
+        assert np.allclose(base_model.jnt_axis[jid], axis_urdf, atol=1e-9)
         limit = j.find("limit")
         if limit is not None and limit.get("lower") is not None:
             assert base_model.jnt_limited[jid]
