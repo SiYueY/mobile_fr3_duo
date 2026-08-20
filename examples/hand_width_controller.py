@@ -33,7 +33,7 @@ def demo() -> None:
     from pathlib import Path
 
     model = mujoco.MjModel.from_xml_path(
-        str(Path(__file__).resolve().parent.parent / "mobile_fr3_duo.xml")
+        str(Path(__file__).resolve().parent.parent / "models/mobile_fr3_duo.xml")
     )
     data = mujoco.MjData(model)
     controller = HandWidthController(model)

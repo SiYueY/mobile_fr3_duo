@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="link">
+  <compiler angle="radian" meshdir="assets" autolimits="true" inertiafromgeom="false" fusestatic="false"/>
+  <option timestep="0.001" integrator="implicitfast" solver="Newton" iterations="50" ls_iterations="10" gravity="0 0 -9.81"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" density="0"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.2 0.005 0.0001" density="0"/>
+    </default>
+    <default class="finger_pad">
+      <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4" contype="1" conaffinity="1" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="d455" file="visual/d455.stl"/>
+  </asset>
+  <worldbody>
+    <body name="link" pos="0.01115 0.0475 0.0145">
+      <geom class="visual" type="mesh" mesh="d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+      <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
+      <site name="depth_frame" size="0.001" pos="0 0 0"/>
+      <site name="depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
+      <site name="infra1_frame" size="0.001" pos="0 0 0"/>
+      <site name="infra1_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
+      <site name="infra2_frame" size="0.001" pos="0 -0.095 0"/>
+      <site name="infra2_optical_frame" size="0.001" pos="0 -0.095 0" quat="0.5 -0.5 0.5 -0.5"/>
+      <site name="color_frame" size="0.001" pos="0 -0.059 0"/>
+      <site name="color_optical_frame" size="0.001" pos="0 -0.059 0" quat="0.5 -0.5 0.5 -0.5"/>
+      <camera name="color" pos="0.005 -0.059 0" quat="-0.5 0.5 0.5 -0.5" fovy="55" resolution="1280 720"/>
+      <camera name="depth" pos="0.005 0 0" quat="-0.5 0.5 0.5 -0.5" fovy="55" resolution="1280 720"/>
+    </body>
+  </worldbody>
+</mujoco>

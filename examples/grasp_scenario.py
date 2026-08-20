@@ -40,13 +40,13 @@ OBJECT_GEOMS = {
 
 def _build_scene(shape: str) -> tuple[mujoco.MjModel, int]:
     geom, _ = OBJECT_GEOMS[shape]
-    root = ET.parse(REPO_ROOT / "scene.xml").getroot()
+    root = ET.parse(REPO_ROOT / "models/scene.xml").getroot()
     worldbody = root.find("worldbody")
     body = ET.SubElement(worldbody, "body", name="object", pos="0.8 0.42 0.8")
     ET.SubElement(body, "freejoint")
     for child in ET.fromstring(f"<root>{geom}</root>"):
         body.append(child)
-    path = REPO_ROOT / ".grasp_scenario.xml"
+    path = REPO_ROOT / "models/.grasp_scenario.xml"
     ET.ElementTree(root).write(path, encoding="utf-8")
     model = mujoco.MjModel.from_xml_path(str(path))
     return model, mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "object")
@@ -79,7 +79,7 @@ def run(shape: str, duration_s: float = 4.0) -> float:
             elif "spine" in name and i > steps // 2:
                 data.ctrl[a] = 100.0
         mujoco.mj_step(model, data)
-    (REPO_ROOT / ".grasp_scenario.xml").unlink(missing_ok=True)
+    (REPO_ROOT / "models/.grasp_scenario.xml").unlink(missing_ok=True)
     return float(data.xpos[obj_id][2])
 
 

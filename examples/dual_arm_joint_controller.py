@@ -62,7 +62,7 @@ def demo(duration_s: float = 5.0) -> None:
     import pathlib
 
     root = pathlib.Path(__file__).resolve().parent.parent
-    model = mujoco.MjModel.from_xml_path(str(root / "scene.xml"))
+    model = mujoco.MjModel.from_xml_path(str(root / "models/scene.xml"))
     data = mujoco.MjData(model)
     mujoco.mj_resetDataKeyframe(model, data, 0)
     controller = DualArmJointController(model)
@@ -85,7 +85,7 @@ def viewer_demo() -> None:
     import mujoco.viewer
 
     root = pathlib.Path(__file__).resolve().parent.parent
-    model = mujoco.MjModel.from_xml_path(str(root / "scene.xml"))
+    model = mujoco.MjModel.from_xml_path(str(root / "models/scene.xml"))
     data = mujoco.MjData(model)
     mujoco.mj_resetDataKeyframe(model, data, 0)
     controller = DualArmJointController(model)

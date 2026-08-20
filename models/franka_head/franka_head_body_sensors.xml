@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="head_link">
+  <compiler angle="radian" meshdir="assets" autolimits="true" inertiafromgeom="false" fusestatic="false"/>
+  <option timestep="0.001" integrator="implicitfast" solver="Newton" iterations="50" ls_iterations="10" gravity="0 0 -9.81"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" density="0"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.2 0.005 0.0001" density="0"/>
+    </default>
+    <default class="finger_pad">
+      <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4" contype="1" conaffinity="1" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="franka_head_visual_0" file="visual/franka_head.obj" inertia="shell"/>
+    <mesh name="franka_head_collision" file="collision/franka_head.stl"/>
+    <model name="zed_mini" file="dependencies/zed_mini/zed_mini.xml"/>
+  </asset>
+  <worldbody>
+    <body name="head_link" pos="0 0 0.167" quat="1 0 0 0">
+      <inertial pos="0 0 0" mass="0.350865" fullinertia="0.003020352 0.003067069 0.000160526 -2.194e-05 0.00016159 -5.8102e-05"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_head_visual_0"/>
+      <geom class="collision" type="mesh" mesh="franka_head_collision" pos="0 0 0" quat="1 0 0 0"/>
+      <body name="head_camera_mounting_point" pos="0.04246378894 -0.014113 0.2235259008" quat="0.9366695615 0 0.3502144094 0">
+        <inertial pos="0 0 0" mass="0.001" fullinertia="1e-07 1e-07 1e-07 0 0 0"/>
+        <site name="head_camera_mounting_point" size="0.002"/>
+        <attach model="zed_mini" body="head_zed" prefix=""/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

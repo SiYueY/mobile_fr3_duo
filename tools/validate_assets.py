@@ -19,15 +19,21 @@ import trimesh
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
+MODEL_ROOT = REPO_ROOT / "models"
 VARIANTS = [
-    "mobile_fr3_duo.xml",
-    "mobile_fr3_duo_with_sensors.xml",
-    "mobile_fr3_duo_position.xml",
-    "mobile_fr3_duo_reduced.xml",
-    "mobile_fr3_duo_planar_debug.xml",
-    "scene.xml",
-    "scene_with_sensors.xml",
-    "scene_position.xml",
+    *(f"{name}.xml" for name in (
+        "mobile_fr3_duo", "mobile_fr3_duo_with_sensors",
+        "mobile_fr3_duo_position", "mobile_fr3_duo_reduced",
+        "mobile_fr3_duo_planar_debug",
+    )),
+    *(f"{name}_flattened.xml" for name in (
+        "mobile_fr3_duo", "mobile_fr3_duo_with_sensors",
+        "mobile_fr3_duo_position", "mobile_fr3_duo_reduced",
+        "mobile_fr3_duo_planar_debug",
+    )),
+    "scene.xml", "scene_with_sensors.xml", "scene_position.xml",
+    "scene_flattened.xml", "scene_with_sensors_flattened.xml",
+    "scene_position_flattened.xml",
 ]
 
 MIN_EXTENT = 1e-4
@@ -36,8 +42,8 @@ MAX_EXTENT = 3.0
 
 def check_meshes() -> list[str]:
     problems = []
-    for f in sorted(REPO_ROOT.glob("assets/**/*.obj")) + sorted(
-        REPO_ROOT.glob("assets/**/*.stl")
+    for f in sorted(MODEL_ROOT.glob("**/assets/**/*.obj")) + sorted(
+        MODEL_ROOT.glob("**/assets/**/*.stl")
     ):
         try:
             mesh = trimesh.load(f, force="mesh")
@@ -58,6 +64,8 @@ def check_meshes() -> list[str]:
 
 def check_manifests() -> list[str]:
     problems = []
+    if (REPO_ROOT / "assets").exists():
+        problems.append("assets/: legacy root asset directory must not exist")
     expected = [
         "source/asset_manifest.yaml",
         "source/link_manifest.yaml",
@@ -77,12 +85,29 @@ def check_manifests() -> list[str]:
             problems.append(f"{rel}: missing")
     for rel in (
         "source/generated/asset_conversion.json",
+        "source/generated/asset_collision_conversion.json",
         "source/generated/sensor_asset_conversion.json",
     ):
         try:
             data = json.loads((REPO_ROOT / rel).read_text())
             if not data:
                 problems.append(f"{rel}: empty")
+                continue
+            records = data.values() if isinstance(data, dict) else ()
+            for record in records:
+                if not isinstance(record, dict):
+                    continue
+                paths = [record.get("path"), record.get("asset")]
+                paths.extend(
+                    item.get("path")
+                    for item in record.get("outputs", [])
+                    if isinstance(item, dict)
+                )
+                for asset_path in filter(None, paths):
+                    if not isinstance(asset_path, str) or not asset_path.startswith("models/"):
+                        problems.append(f"{rel}: invalid asset path {asset_path!r}")
+                    elif not (REPO_ROOT / asset_path).is_file():
+                        problems.append(f"{rel}: missing {asset_path}")
         except Exception as exc:  # noqa: BLE001
             problems.append(f"{rel}: invalid json: {exc}")
     return problems
@@ -91,13 +116,13 @@ def check_manifests() -> list[str]:
 def main() -> int:
     problems: list[str] = []
     for name in VARIANTS:
-        path = REPO_ROOT / name
+        path = MODEL_ROOT / name
         if not path.exists():
             problems.append(f"{name}: missing")
             continue
         text = path.read_text(encoding="utf-8")
         if "package://" in text:
-            problems.append(f"{name}: contains package:// URI")
+            problems.append(f"models/{name}: contains package:// URI")
         if "/home/" in text or "C:\\" in text:
             problems.append(f"{name}: contains absolute path")
         try:

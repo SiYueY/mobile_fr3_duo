@@ -1,0 +1,9 @@
+name: d455
+type: sensor
+source:
+  type: official-derived
+  version: franka_description@2.8.1
+root_body: link
+attachments:
+- name: mount
+  body: link

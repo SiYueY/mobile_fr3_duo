@@ -1,4 +1,4 @@
-"""Copy and validate official collision STL assets into assets/."""
+"""Copy official collision STL assets into their self-contained modules."""
 
 from __future__ import annotations
 
@@ -48,6 +48,7 @@ def convert_all(franka_root: Path, force: bool = False) -> dict:
         if dst.exists() and not force:
             records[uri] = {
                 "status": "up-to-date",
+                "path": dst.relative_to(REPO_ROOT).as_posix(),
                 "input_sha256": sha256(src),
                 "output_sha256": sha256(dst),
             }
@@ -56,6 +57,7 @@ def convert_all(franka_root: Path, force: bool = False) -> dict:
         validation = validate_stl(dst)
         records[uri] = {
             "status": "copied",
+            "path": dst.relative_to(REPO_ROOT).as_posix(),
             **validation,
             "input_sha256": sha256(src),
             "output_sha256": sha256(dst),

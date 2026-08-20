@@ -80,7 +80,9 @@ class PhysicsWorker:
 
 
 def demo(duration_s: float = 2.0) -> None:
-    model = mujoco.MjModel.from_xml_path(str(REPO_ROOT / "scene.xml"))
+    model = mujoco.MjModel.from_xml_path(
+        str(REPO_ROOT / "models/scene.xml")
+    )
     physics = PhysicsWorker(model)
     physics.start()
     t0 = time.time()

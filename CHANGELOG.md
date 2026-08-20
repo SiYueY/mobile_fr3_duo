@@ -2,6 +2,16 @@
 
 All notable changes to the Mobile FR3 Duo MuJoCo model are recorded here.
 
+## [Unreleased]
+
+- Runtime 模块、整机变体和 scene 统一迁入 `models/`；根目录旧 XML 与
+  `assets/` 已移除。
+- 模块目录采用 `franka_tmr`、`franka_spine`、`franka_head`、`franka_fr3`、
+  `franka_hand` 和 `sensors/<name>`，每个模块自带 assets、metadata 及 attach
+  依赖闭包，可独立分发加载。
+- visual、collision 和 sensor conversion manifest 改为记录 `models/...`
+  输出；flattened 发布模型使用模块资产的相对路径。
+
 ## [v1.0.0] - 2026-08-07
 
 ### v0.1.0 - 项目初始化与官方资源审计

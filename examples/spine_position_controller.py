@@ -26,26 +26,10 @@ class SpinePositionController:
 
 
 def demo(duration_s: float = 3.0) -> None:
-    import tempfile
     from pathlib import Path
 
-    path = Path(
-        tempfile.mktemp(
-            suffix=".xml", dir=Path(__file__).resolve().parent.parent
-        )
-    )
-    path.write_text(
-        '<mujoco model="position_scene">\n'
-        '  <include file="mobile_fr3_duo_position.xml"/>\n'
-        "  <worldbody>\n"
-        '    <geom name="ground" type="plane" size="50 50 0.1" pos="0 0 -0.001" '
-        'group="1" condim="3" friction="1.0 0.005 0.0001" '
-        'rgba="0.55 0.55 0.55 1"/>\n'
-        "  </worldbody>\n"
-        "</mujoco>\n"
-    )
     model = mujoco.MjModel.from_xml_path(
-        str(path)
+        str(Path(__file__).resolve().parent.parent / "models/scene_position.xml")
     )
     data = mujoco.MjData(model)
     mujoco.mj_resetDataKeyframe(model, data, 0)
@@ -54,7 +38,6 @@ def demo(duration_s: float = 3.0) -> None:
     for _ in range(int(duration_s / model.opt.timestep)):
         mujoco.mj_step(model, data)
     print(f"spine settled at {controller.height(data):.3f} m (target 0.6)")
-    path.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":

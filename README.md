@@ -181,8 +181,13 @@ Golden URDF 用于验证：
 正式发布目录复制到另一台安装相同 MuJoCo 版本的机器后，应能直接加载：
 
 ```bash
-simulate scene.xml
+simulate models/scene.xml
 ```
+
+`scene*.xml` 是薄环境层：它们通过 `<include>` 引用同目录的
+`mobile_fr3_duo*.xml`，只增加 Menagerie 风格的渐变天空、棋盘地面、主方向光和
+`preview` 相机。机器人、attach、执行器、传感器与 keyframe 始终由被 include 的
+机器人模型定义；`*_flattened` 场景则引用对应的 flattened 机器人 XML。
 
 ---
 
@@ -233,7 +238,8 @@ source/generated/
 
 生产 MJCF 构建阶段应优先消费这些被冻结的生成结果，而不是重新隐式访问开发者机器上的 `franka_description` checkout。
 `collision_exclusions.yaml` 是由固定版本 SRDF 提取并按生成 URDF 过滤后的
-disable-collision pair；正式 `python tools/build_model.py` 只读取这一仓库内输入。
+disable-collision pair；正式 `python tools/build_modules.py` 与
+`python tools/build_robot.py --all` 只读取这一仓库内输入。
 `franka_description` checkout 仅属于 source preparation 阶段。
 Source preparation 必须显式传入固定 checkout/cache 位置，例如：
 
@@ -268,7 +274,7 @@ MJCF
 而不是：
 
 ```text
-build_model.py
+build_modules.py + build_robot.py
         │
         ├── source/generated/
         │
@@ -280,11 +286,9 @@ build_model.py
 Visual 和 Collision 始终分离：
 
 ```text
-assets/
-├── ...
-│   ├── visual/
-│   └── collision/
-└── sensors/
+models/<module>/assets/
+├── visual/
+└── collision/
 ```
 
 Visual mesh 根据官方资产进行确定性转换。
@@ -307,37 +311,24 @@ unit conversion
 
 ### 3.4 MJCF 生成
 
-`build_model.py` 当前从完整官方 URDF body tree 递归生成原生 MJCF。
-
-这一架构继续保留：
-
-> 不要求为了“模块化”将最终机器人强制拆成大量 runtime XML。
-
-这里的“模块化”主要指 **生成器职责模块化**，而不是必须生成：
+`tools/build_modules.py` 从冻结的官方 URDF 构造 Canonical IR，并在明确的
+固定连接边界发射可独立加载的 runtime 模块。`tools/build_robot.py` 读取
+`config/robots/mobile_fr3_duo.yaml`，以 MuJoCo `<asset><model>` / `<attach>`
+组合模块；同一入口还会由 MuJoCo `MjSpec` 保存不依赖模块 XML 的
+`*_flattened.xml` 发布版本。
 
 ```text
-fr3.xml
-hand.xml
-spine.xml
-head.xml
-...
+Frozen official URDF → Canonical IR → runtime modules
+                                      ↓
+                         robot composition YAML → attach MJCF + flattened MJCF
 ```
 
-完整官方 URDF 已经定义了可靠的整机父子关系，由 Builder 直接生成完整 body tree 可以避免再次手工复制安装 transform。
+模块持有并发布自己的 assets；视觉 OBJ 与其多子网格映射仍以
+`source/generated/asset_conversion.json` 为事实来源。
 
-因此目标架构是：
-
-```text
-Complete Official URDF
-        │
-        ▼
-Modular Model Builder
-        │
-        ▼
-Complete Production MJCF
-```
-
-而不是重新手工拼接机器人结构。
+模块目录包含其 attach 依赖闭包：复制一个模块目录即可加载该模块。整机
+runtime XML 使用 `franka_tmr/franka_tmr.xml` 作为顶层 attach 入口；flattened
+XML 不依赖模块 XML，但继续使用 `models/<module>/assets/` 的相对资源路径。
 
 ---
 
@@ -345,7 +336,7 @@ Complete Production MJCF
 
 ### 4.1 模型变体
 
-当前正式维护：
+当前正式输出位于 `models/`：
 
 ```text
 mobile_fr3_duo.xml
@@ -353,6 +344,8 @@ mobile_fr3_duo_position.xml
 mobile_fr3_duo_with_sensors.xml
 mobile_fr3_duo_reduced.xml
 mobile_fr3_duo_planar_debug.xml
+
+每个机器人变体同时发布 `*_flattened.xml`，它不依赖 runtime 模块 XML。
 
 scene.xml
 scene_position.xml
@@ -712,7 +705,9 @@ documented sensor installation transform
 
 ### 7.1 Builder 模块化
 
-当前 `tools/build_model.py` 已承担：
+`tools/build_modules.py` 负责从 Canonical IR 发射结构模块；
+`tools/build_robot.py` 负责组合层的 contact、equality、actuator、sensor、
+keyframe 与 variant：
 
 * URDF parsing；
 * body generation；
@@ -726,30 +721,22 @@ documented sensor installation transform
 * keyframe；
 * model variants。
 
-随着模型继续演进，应将其拆成职责明确的模块。
-
-推荐：
+运行时模块目录为：
 
 ```text
-tools/
-├── build_model.py
-│
-└── model_builder/
-    ├── __init__.py
-    ├── model.py
-    ├── urdf.py
-    ├── geometry.py
-    ├── dynamics.py
-    ├── contacts.py
-    ├── actuators.py
-    ├── sensors.py
-    └── keyframes.py
+models/
+├── franka_tmr/
+├── franka_spine/
+├── franka_head/
+├── franka_fr3/
+├── franka_hand/
+└── sensors/
 ```
 
 其中：
 
 ```text
-build_model.py
+build_robot.py
 ```
 
 只承担：
@@ -762,7 +749,8 @@ select variant
 write output
 ```
 
-不要重新设计模型逻辑，只做等价重构，并始终保持现有测试通过。
+每个模块同时提供 `*.metadata.yaml`，声明 root body、可挂接接口与来源版本；
+组合 YAML 会在生成前校验未知模块、重复 prefix 和错误 mounting point。
 
 ### 7.2 配置与算法分离
 
@@ -834,7 +822,12 @@ zed_ros2_description
 `tools/generate_urdf.sh` 是需要固定 `franka_description@2.8.1` checkout 的 source
 preparation 入口；它同时生成 URDF 和 `collision_exclusions.yaml`。mesh conversion、
 sensor asset import 与官方文件校验也只在 preparation 阶段使用显式指定的固定 cache。
-之后可在没有第三方源码 checkout 的环境中运行 `python tools/build_model.py`。
+之后可在没有第三方源码 checkout 的环境中运行：
+
+```bash
+python tools/build_modules.py
+python tools/build_robot.py --all
+```
 
 这使得：
 

@@ -1,15 +1,9 @@
-"""Build native MJCF models for Mobile FR3 Duo from official URDFs.
+"""Internal whole-robot baseline emitter used by the runtime module builders.
 
-Generated deliverables:
-  mobile_fr3_duo.xml                base model (motor actuators, no sensor entities)
-  mobile_fr3_duo_position.xml       position-actuator variant
-  mobile_fr3_duo_with_sensors.xml   base + D455/nanoScan3/IMU/ZED entities
-  mobile_fr3_duo_reduced.xml        reduced TMR variant
-  mobile_fr3_duo_planar_debug.xml   planar proxy variant (debug only)
-  scene.xml / scene_with_sensors.xml
-
+This module preserves the official-URDF-to-MJCF semantic conversion.  Its CLI
+is retired: public generation uses ``build_modules.py`` and ``build_robot.py``.
 All parameters not marked official-source/derived are recorded in
-source/parameter_sources.yaml.
+``source/parameter_sources.yaml``.
 """
 
 from __future__ import annotations
@@ -80,7 +74,7 @@ class ModelBuilder:
             _el(
                 "compiler",
                 angle="radian",
-                meshdir="assets",
+                meshdir="models",
                 autolimits="true",
                 inertiafromgeom="false",
                 fusestatic="false",
@@ -749,104 +743,47 @@ def add_ground_and_light(worldbody: ET.Element) -> None:
             "geom",
             name="ground",
             type="plane",
-            size="50 50 0.1",
+            size="0 0 0.05",
             pos="0 0 -0.001",
             group="1",
             condim="3",
             friction="1.0 0.005 0.0001",
-            rgba="0.55 0.55 0.55 1",
+            margin="0.002",
+            solref="0.002 1",
+            solimp="0.99 0.999 0.0001",
+            material="groundplane",
         )
     )
-    # low-angle fill light so the wheel protrusions below the chassis are
-    # visible in preview renders (visualization only)
     worldbody.append(
         _el(
             "light",
+            pos="0 0 1.5",
+            dir="0 0 -1",
             directional="true",
-            diffuse="0.5 0.5 0.5",
-            specular="0.1 0.1 0.1",
-            pos="1.5 -1.2 -0.5",
-            dir="-0.6 0.5 0.6",
-            castshadow="false",
         )
     )
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--position", action="store_true", help="build position variant")
-    ap.add_argument("--sensors", action="store_true", help="build with-sensors variant")
-    ap.add_argument("--reduced", action="store_true", help="build reduced TMR variant")
-    ap.add_argument("--planar", action="store_true", help="build planar debug variant")
-    ap.add_argument("--spawn-z", type=float, default=None, help="override spawn height")
-    ap.add_argument("--all", action="store_true", help="build all variants")
-    args = ap.parse_args()
-
-    GENERATED.mkdir(parents=True, exist_ok=True)
-
-    variants = []
-    if args.all or not any([args.position, args.sensors, args.reduced, args.planar]):
-        variants.append(("base", argparse.Namespace(position=False, sensors=False, reduced=False, planar=False, spawn_z=args.spawn_z)))
-    if args.all or args.position:
-        variants.append(("position", argparse.Namespace(position=True, sensors=False, reduced=False, planar=False, spawn_z=args.spawn_z)))
-    if args.all or args.sensors:
-        variants.append(("sensors", argparse.Namespace(position=False, sensors=True, reduced=False, planar=False, spawn_z=args.spawn_z)))
-    if args.all or args.reduced:
-        variants.append(("reduced", argparse.Namespace(position=False, sensors=False, reduced=True, planar=False, spawn_z=args.spawn_z)))
-    if args.all or args.planar:
-        variants.append(("planar", argparse.Namespace(position=False, sensors=False, reduced=False, planar=True, spawn_z=args.spawn_z)))
-
-    names = {
-        "base": "mobile_fr3_duo.xml",
-        "position": "mobile_fr3_duo_position.xml",
-        "sensors": "mobile_fr3_duo_with_sensors.xml",
-        "reduced": "mobile_fr3_duo_reduced.xml",
-        "planar": "mobile_fr3_duo_planar_debug.xml",
-    }
-
-    for variant, opts in variants:
-        builder = ModelBuilder(opts)
-        if opts.planar:
-            opts.spawn_z = 0.0
-        if args.all and opts.spawn_z is None:
-            # Two-pass: compute spawn height from the base variant.
-            probe = ModelBuilder(argparse.Namespace(position=False, sensors=False, reduced=opts.reduced, planar=False, spawn_z=0.0))
-            opts.spawn_z = compute_spawn_z(probe.build())
-        elif opts.spawn_z is None:
-            opts.spawn_z = compute_spawn_z(builder.build())
-        root = builder.build()
-        out = REPO_ROOT / names[variant]
-        out.write_text(format_element(root), encoding="utf-8")
-        print(f"built {out.name} (spawn_z={opts.spawn_z:.4f})")
-
-    if args.all:
-        base_xml = (REPO_ROOT / "mobile_fr3_duo.xml").read_text(encoding="utf-8")
-        scene = _build_scene(base_xml, "mobile_fr3_duo.xml", "scene.xml")
-        (REPO_ROOT / "scene.xml").write_text(format_element(scene), encoding="utf-8")
-        sensors_xml = (REPO_ROOT / "mobile_fr3_duo_with_sensors.xml").read_text(
-            encoding="utf-8"
-        )
-        scene_sensors = _build_scene(
-            sensors_xml, "mobile_fr3_duo_with_sensors.xml", "scene_with_sensors.xml"
-        )
-        (REPO_ROOT / "scene_with_sensors.xml").write_text(
-            format_element(scene_sensors), encoding="utf-8"
-        )
-        position_xml = (REPO_ROOT / "mobile_fr3_duo_position.xml").read_text(
-            encoding="utf-8"
-        )
-        scene_position = _build_scene(
-            position_xml, "mobile_fr3_duo_position.xml", "scene_position.xml"
-        )
-        (REPO_ROOT / "scene_position.xml").write_text(
-            format_element(scene_position), encoding="utf-8"
-        )
-    return 0
+    raise SystemExit(
+        "tools/build_model.py is an internal baseline emitter; use "
+        "tools/build_modules.py then tools/build_robot.py --all"
+    )
 
 
-def _build_scene(robot_xml: str, include_file: str, model_name: str) -> ET.Element:
+def _build_scene(include_file: str) -> ET.Element:
     root = _el("mujoco", model="scene")
     root.append(_el("include", file=include_file))
+    visual = _el("visual")
+    visual.append(_el("headlight", diffuse="0.6 0.6 0.6", ambient="0.3 0.3 0.3", specular="0 0 0"))
+    visual.append(_el("rgba", haze="0.15 0.25 0.35 1"))
+    visual.append(_el("global", azimuth="120", elevation="-20"))
+    root.append(visual)
+    asset = _el("asset")
+    asset.append(_el("texture", type="skybox", builtin="gradient", rgb1="0.3 0.5 0.7", rgb2="0 0 0", width="512", height="3072"))
+    asset.append(_el("texture", type="2d", name="groundplane", builtin="checker", mark="edge", rgb1="0.2 0.3 0.4", rgb2="0.1 0.2 0.3", markrgb="0.8 0.8 0.8", width="300", height="300"))
+    asset.append(_el("material", name="groundplane", texture="groundplane", texuniform="true", texrepeat="5 5", reflectance="0.2"))
+    root.append(asset)
     worldbody = _el("worldbody")
     add_ground_and_light(worldbody)
     worldbody.append(
@@ -856,16 +793,6 @@ def _build_scene(robot_xml: str, include_file: str, model_name: str) -> ET.Eleme
             pos="2.2 -1.6 1.4",
             xyaxes="0.6644 0.7474 0 -0.1225 0.1089 0.9865",
             fovy="45",
-        )
-    )
-    worldbody.append(
-        _el(
-            "light",
-            directional="true",
-            diffuse="0.8 0.8 0.8",
-            specular="0.1 0.1 0.1",
-            pos="0 0 3",
-            dir="0 0 -1",
         )
     )
     root.append(worldbody)

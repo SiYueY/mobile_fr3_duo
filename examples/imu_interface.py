@@ -37,7 +37,7 @@ class ImuInterface:
 
 def demo(duration_s: float = 0.5) -> None:
     model = mujoco.MjModel.from_xml_path(
-        str(REPO_ROOT / "mobile_fr3_duo_with_sensors.xml")
+        str(REPO_ROOT / "models/mobile_fr3_duo_with_sensors.xml")
     )
     data = mujoco.MjData(model)
     imu = ImuInterface(model)

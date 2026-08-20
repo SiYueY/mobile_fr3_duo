@@ -1,28 +1,13 @@
 """Spine position control and full-travel checks (position variant)."""
 
-import tempfile
-
 import mujoco
 from helpers import REPO_ROOT
 
 
 def _load_position():
     """Grounded scene built from the position variant."""
-    path = tempfile.mktemp(suffix=".xml", dir=REPO_ROOT)
-    text = (
-        '<mujoco model="position_scene">\n'
-        '  <include file="mobile_fr3_duo_position.xml"/>\n'
-        "  <worldbody>\n"
-        '    <geom name="ground" type="plane" size="50 50 0.1" pos="0 0 -0.001" '
-        'group="1" condim="3" friction="1.0 0.005 0.0001" '
-        'rgba="0.55 0.55 0.55 1"/>\n'
-        "  </worldbody>\n"
-        "</mujoco>\n"
-    )
-    from pathlib import Path
-
-    Path(path).write_text(text)
-    return mujoco.MjModel.from_xml_path(path), path
+    path = REPO_ROOT / "models/scene_position.xml"
+    return mujoco.MjModel.from_xml_path(str(path)), None
 
 
 def _spine():
@@ -51,9 +36,7 @@ def test_spine_full_travel():
         # At the upper limit, the corrected dual-arm moment load leaves a
         # small static position error for this force-limited simulation model.
         assert abs(data.qpos[adr] - target) < 0.04, f"spine target {target}"
-    import os
-
-    os.unlink(path)
+    assert path is None
 
 
 def test_spine_height_hold_60s():
@@ -66,6 +49,4 @@ def test_spine_height_hold_60s():
     for _ in range(60000):
         mujoco.mj_step(model, data)
     assert abs(data.qpos[adr] - q0) < 0.05
-    import os
-
-    os.unlink(path)
+    assert path is None

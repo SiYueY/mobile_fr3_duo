@@ -55,25 +55,11 @@ class TmrSwerveController:
 
 
 def demo(duration_s: float = 3.0) -> None:
-    import tempfile
     from pathlib import Path
 
-    path = Path(
-        tempfile.mktemp(
-            suffix=".xml", dir=Path(__file__).resolve().parent.parent
-        )
+    model = mujoco.MjModel.from_xml_path(
+        str(Path(__file__).resolve().parent.parent / "models/scene_position.xml")
     )
-    path.write_text(
-        '<mujoco model="swerve_scene">\n'
-        '  <include file="mobile_fr3_duo_position.xml"/>\n'
-        "  <worldbody>\n"
-        '    <geom name="ground" type="plane" size="50 50 0.1" pos="0 0 -0.001" '
-        'group="1" condim="3" friction="1.0 0.005 0.0001" '
-        'rgba="0.55 0.55 0.55 1"/>\n'
-        "  </worldbody>\n"
-        "</mujoco>\n"
-    )
-    model = mujoco.MjModel.from_xml_path(str(path))
     data = mujoco.MjData(model)
     mujoco.mj_resetDataKeyframe(model, data, 0)
     controller = TmrSwerveController(model)
@@ -85,7 +71,6 @@ def demo(duration_s: float = 3.0) -> None:
         mujoco.mj_step(model, data)
     dx = np.linalg.norm((data.xpos[1] - x0)[:2])
     print(f"commanded 0.5 m/s forward for {duration_s}s -> moved {dx:.2f} m")
-    path.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":

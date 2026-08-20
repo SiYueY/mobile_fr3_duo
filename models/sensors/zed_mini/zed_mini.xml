@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="head_zed">
+  <compiler angle="radian" meshdir="assets" autolimits="true" inertiafromgeom="false" fusestatic="false"/>
+  <option timestep="0.001" integrator="implicitfast" solver="Newton" iterations="50" ls_iterations="10" gravity="0 0 -9.81"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" density="0"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.2 0.005 0.0001" density="0"/>
+    </default>
+    <default class="finger_pad">
+      <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4" contype="1" conaffinity="1" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="zed_mini" file="visual/zedm.stl"/>
+  </asset>
+  <worldbody>
+    <body name="head_zed">
+      <geom class="visual" type="mesh" mesh="zed_mini"/>
+      <geom class="sensor_collision" type="box" size="0.062 0.015 0.015"/>
+      <site name="head_zed_left_camera_frame" size="0.001" pos="-0.0315 0 0"/>
+      <site name="head_zed_left_camera_optical_frame" size="0.001" pos="-0.0315 0 0"/>
+      <camera name="head_zed_left" pos="-0.0315 0 0" quat="6.123233996e-17 0 1 0" fovy="60" resolution="1280 720"/>
+      <site name="head_zed_right_camera_frame" size="0.001" pos="0.0315 0 0"/>
+      <site name="head_zed_right_camera_optical_frame" size="0.001" pos="0.0315 0 0"/>
+      <camera name="head_zed_right" pos="0.0315 0 0" quat="6.123233996e-17 0 1 0" fovy="60" resolution="1280 720"/>
+      <site name="head_zed_center_frame" size="0.001"/>
+    </body>
+  </worldbody>
+</mujoco>

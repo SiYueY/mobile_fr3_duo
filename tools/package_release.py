@@ -23,14 +23,7 @@ TARBALL = DIST / f"mobile_fr3_duo_{VERSION}.tar.gz"
 
 def _top_level_entries() -> list[str]:
     return [
-        "mobile_fr3_duo.xml",
-        "mobile_fr3_duo_position.xml",
-        "mobile_fr3_duo_with_sensors.xml",
-        "mobile_fr3_duo_reduced.xml",
-        "mobile_fr3_duo_planar_debug.xml",
-        "scene.xml",
-        "scene_with_sensors.xml",
-        "scene_position.xml",
+        "models",
         "mobile_fr3_duo.png",
         "mobile_fr3_duo_manipulation.png",
         "mobile_fr3_duo_with_sensors.png",
@@ -41,7 +34,6 @@ def _top_level_entries() -> list[str]:
         "Makefile",
         "pyproject.toml",
         "uv.lock",
-        "assets",
         "source",
         "config",
         "examples",

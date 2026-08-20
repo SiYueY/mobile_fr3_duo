@@ -24,7 +24,7 @@ def test_frozen_collision_exclusions_are_valid():
     assert all(len(pair) == 2 and all(isinstance(link, str) for link in pair) for pair in pairs)
 
 
-def test_build_model_without_external_source_checkout(tmp_path):
+def test_build_robot_without_external_source_checkout(tmp_path):
     clone = tmp_path / "mobile_fr3_duo"
     shutil.copytree(
         REPO_ROOT,
@@ -34,7 +34,7 @@ def test_build_model_without_external_source_checkout(tmp_path):
     environment = os.environ.copy()
     environment.pop("MOBILE_FR3_CACHE_DIR", None)
     result = subprocess.run(
-        [sys.executable, "tools/build_model.py"],
+        [sys.executable, "tools/build_robot.py", "--all"],
         cwd=clone,
         env=environment,
         text=True,
@@ -43,7 +43,7 @@ def test_build_model_without_external_source_checkout(tmp_path):
     )
 
     assert result.returncode == 0, result.stderr
-    output = clone / "mobile_fr3_duo.xml"
+    output = clone / "models" / "mobile_fr3_duo.xml"
     assert output.is_file()
     assert ET.parse(output).find("contact") is not None
     model = mujoco.MjModel.from_xml_path(str(output))

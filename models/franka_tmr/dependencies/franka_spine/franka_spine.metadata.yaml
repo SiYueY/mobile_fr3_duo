@@ -1,0 +1,9 @@
+name: franka_spine
+type: accessory
+source:
+  type: official-derived
+  version: franka_description@2.8.1
+root_body: franka_spine
+attachments:
+- name: base_mount
+  body: franka_spine

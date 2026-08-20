@@ -126,7 +126,7 @@ def test_camera_render(sensor_model):
         "from mujoco import renderer as mjr\n"
         "from mujoco.egl import GLContext\n"
         "m = mujoco.MjModel.from_xml_path("
-        f"r'{REPO_ROOT / 'scene_with_sensors.xml'}')\n"
+        f"r'{REPO_ROOT / 'models/scene_with_sensors.xml'}')\n"
         "d = mujoco.MjData(m)\n"
         "mujoco.mj_resetDataKeyframe(m, d, 0)\n"
         "mujoco.mj_forward(m, d)\n"

@@ -1,0 +1,9 @@
+name: franka_tmr_sensors
+type: mobile_base
+source:
+  type: official-derived
+  version: franka_description@2.8.1
+root_body: base_link
+attachments:
+- name: world
+  body: base_link

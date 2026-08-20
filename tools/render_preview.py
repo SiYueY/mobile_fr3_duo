@@ -27,7 +27,9 @@ def render_preview(out: Path, xml: str, keyframe: int = 0) -> None:
     ctx = GLContext(1280, 720)
     try:
         ctx.make_current()
-        model = mujoco.MjModel.from_xml_path(str(REPO_ROOT / xml))
+        model = mujoco.MjModel.from_xml_path(
+            str(REPO_ROOT / "models" / xml)
+        )
         data = mujoco.MjData(model)
         mujoco.mj_resetDataKeyframe(model, data, keyframe)
         mujoco.mj_forward(model, data)

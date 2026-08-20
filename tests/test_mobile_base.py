@@ -68,6 +68,34 @@ def test_stationary_drift_small(scene_model):
     assert drift < 0.05, f"unexpected drift {drift}"
 
 
+def test_caster_wheels_remain_above_visible_ground(scene_model):
+    """The stiffened ground contact must not visually bury either caster."""
+    data = mujoco.MjData(scene_model)
+    mujoco.mj_resetDataKeyframe(scene_model, data, 0)
+    for _ in range(1000):
+        mujoco.mj_step(scene_model, data)
+    caster_distances = []
+    for contact in data.contact:
+        bodies = (
+            mujoco.mj_id2name(
+                scene_model,
+                mujoco.mjtObj.mjOBJ_BODY,
+                scene_model.geom_bodyid[contact.geom1],
+            )
+            or "",
+            mujoco.mj_id2name(
+                scene_model,
+                mujoco.mjtObj.mjOBJ_BODY,
+                scene_model.geom_bodyid[contact.geom2],
+            )
+            or "",
+        )
+        if any("caster_" in body for body in bodies):
+            caster_distances.append(contact.dist)
+    assert caster_distances
+    assert min(caster_distances) >= 0.0, caster_distances
+
+
 def test_brake_after_drive(scene_model):
     data = mujoco.MjData(scene_model)
     mujoco.mj_resetDataKeyframe(scene_model, data, 0)

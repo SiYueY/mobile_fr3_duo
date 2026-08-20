@@ -1,0 +1,9 @@
+name: zed_mini
+type: sensor
+source:
+  type: official-derived
+  version: franka_description@2.8.1
+root_body: head_zed
+attachments:
+- name: mount
+  body: head_zed

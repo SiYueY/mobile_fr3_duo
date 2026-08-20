@@ -97,11 +97,11 @@ def test_tmr_output_policy_merges_materialless_cad_parts():
 
 
 def test_up_to_date_records_preserve_dae_provenance():
-    outputs = [{"path": "assets/link0_0.obj", "sha256": "new"}]
+    outputs = [{"path": "models/franka_fr3/assets/visual/link0_0.obj", "sha256": "new"}]
     previous = {
         "outputs": [
             {
-                "path": "assets/link0_0.obj",
+                "path": "models/franka_fr3/assets/visual/link0_0.obj",
                 "sha256": "old",
                 "source_geometry": "link0_mesh",
                 "source_node": "link0_node",
@@ -111,7 +111,7 @@ def test_up_to_date_records_preserve_dae_provenance():
 
     assert converter.preserve_source_metadata(outputs, previous) == [
         {
-            "path": "assets/link0_0.obj",
+            "path": "models/franka_fr3/assets/visual/link0_0.obj",
             "sha256": "new",
             "source_geometry": "link0_mesh",
             "source_node": "link0_node",
@@ -121,7 +121,7 @@ def test_up_to_date_records_preserve_dae_provenance():
 
 def test_visual_manifest_drives_split_assets_and_geoms(tmp_path, monkeypatch):
     monkeypatch.setattr(geometry, "REPO_ROOT", tmp_path)
-    output_dir = tmp_path / "assets" / "fr3v2_1" / "visual"
+    output_dir = tmp_path / "models" / "franka_fr3" / "assets" / "visual"
     output_dir.mkdir(parents=True)
     for index in range(2):
         (output_dir / f"link6_{index}.obj").write_text("v 0 0 0\n")
@@ -134,8 +134,8 @@ def test_visual_manifest_drives_split_assets_and_geoms(tmp_path, monkeypatch):
                     "status": "converted",
                     "mesh_count": 2,
                     "outputs": [
-                        {"path": "assets/fr3v2_1/visual/link6_0.obj"},
-                        {"path": "assets/fr3v2_1/visual/link6_1.obj"},
+                        {"path": "models/franka_fr3/assets/visual/link6_0.obj"},
+                        {"path": "models/franka_fr3/assets/visual/link6_1.obj"},
                     ],
                 }
             }
@@ -144,12 +144,12 @@ def test_visual_manifest_drives_split_assets_and_geoms(tmp_path, monkeypatch):
 
     conversion = geometry.load_visual_conversion(manifest)
     assert geometry.mesh_assets(uri, conversion) == [
-        ("link6_visual_0", "fr3v2_1/visual/link6_0.obj"),
-        ("link6_visual_1", "fr3v2_1/visual/link6_1.obj"),
+        ("link6_visual_0", "franka_fr3/assets/visual/link6_0.obj"),
+        ("link6_visual_1", "franka_fr3/assets/visual/link6_1.obj"),
     ]
     collision_uri = "package://franka_description/meshes/robots/fr3v2_1/collision/link6.stl"
     assert geometry.mesh_assets(collision_uri, conversion) == [
-        ("link6_collision", "fr3v2_1/collision/link6.stl")
+        ("link6_collision", "franka_fr3/assets/collision/link6.stl")
     ]
 
     visual = ET.fromstring(

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="link">
+  <compiler angle="radian" meshdir="assets" autolimits="true" inertiafromgeom="false" fusestatic="false"/>
+  <option timestep="0.001" integrator="implicitfast" solver="Newton" iterations="50" ls_iterations="10" gravity="0 0 -9.81"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" density="0"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.2 0.005 0.0001" density="0"/>
+    </default>
+    <default class="finger_pad">
+      <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4" contype="1" conaffinity="1" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="nanoscan3_visual" file="visual/NANS3.obj"/>
+    <mesh name="nanoscan3_collision" file="visual/NANS3_collision.stl"/>
+  </asset>
+  <worldbody>
+    <body name="link" pos="-0.0803 0.053 0" quat="0.7071067812 0 0 -0.7071067812">
+      <geom class="visual" type="mesh" mesh="nanoscan3_visual" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
+      <geom class="sensor_collision" type="mesh" mesh="nanoscan3_collision" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
+      <site name="scan_frame" size="0.002"/>
+    </body>
+  </worldbody>
+</mujoco>

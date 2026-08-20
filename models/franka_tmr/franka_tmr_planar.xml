@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="base_link">
+  <compiler angle="radian" meshdir="assets" autolimits="true" inertiafromgeom="false" fusestatic="false"/>
+  <option timestep="0.001" integrator="implicitfast" solver="Newton" iterations="50" ls_iterations="10" gravity="0 0 -9.81"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" density="0"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.2 0.005 0.0001" density="0"/>
+    </default>
+    <default class="finger_pad">
+      <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4" contype="1" conaffinity="1" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="tmrv0_2_visual_0" file="visual/tmrv0_2.obj" inertia="shell"/>
+    <mesh name="tmrv0_2_collision" file="collision/tmrv0_2.stl"/>
+    <model name="spine" file="dependencies/franka_spine/franka_spine.xml"/>
+  </asset>
+  <worldbody>
+    <body name="base_link" pos="0 0 0" quat="1 0 0 0">
+      <joint name="planar_x_joint" type="slide" axis="1 0 0" limited="true" range="-50 50" damping="10"/>
+      <joint name="planar_y_joint" type="slide" axis="0 1 0" limited="true" range="-50 50" damping="10"/>
+      <joint name="planar_yaw_joint" type="hinge" axis="0 0 1" damping="5"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" rgba="1.0 1.0 1.0 1.0" type="mesh" mesh="tmrv0_2_visual_0"/>
+      <geom class="collision" type="mesh" mesh="tmrv0_2_collision" pos="0 0 0" quat="1 0 0 0"/>
+      <site name="base_sensor_frame" size="0.002"/>
+      <body name="base_inertia" pos="0 0 0" quat="1 0 0 0">
+        <inertial pos="0.006619 -0.00221 0.184355" mass="88.954183" fullinertia="3.24552427177 4.16237063612 5.84147335181 0.007060314402 -0.134604220439 -0.01077054763"/>
+      </body>
+      <body name="caster_front_left_fixed_link" pos="0.3 0.2 0.08" quat="1 0 0 0">
+        <inertial pos="-0.02365 5e-05 -0.03651" mass="0.3" fullinertia="0.00049538079 0.00070424109 0.00048449394 -4.2663e-07 0.00020926011 -5.0221e-07"/>
+        <geom class="visual" pos="0 0 -0.0015" quat="1 0 0 0" rgba="0.3 0.3 0.3 1.0" type="box" size="0.02 0.015 0.0015"/>
+        <geom class="collision" type="box" size="0.02 0.015 0.0015" pos="0 0 -0.0015" quat="1 0 0 0"/>
+        <body name="caster_front_left_steering_link" pos="0 0 0" quat="1 0 0 0">
+          <joint name="caster_front_left_steering_joint" type="hinge" axis="0 0 1" damping="0.003" frictionloss="0"/>
+          <inertial pos="0 0 0" mass="0.2" fullinertia="0.0001 0.0001 0.0001 0 0 0"/>
+          <body name="caster_front_left_link" pos="-0.035 0 -0.05" quat="1 0 0 0">
+            <joint name="caster_front_left_joint" type="hinge" axis="0 1 0" damping="0.003" frictionloss="0"/>
+            <inertial pos="0 0 0" mass="0.2" fullinertia="0.0001 0.0001 0.0001 0 0 0"/>
+            <geom class="visual" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0" rgba="1.0 0.5 0.0 1.0" type="cylinder" size="0.03 0.0075"/>
+            <geom class="wheel" type="cylinder" size="0.03 0.0075" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0"/>
+          </body>
+        </body>
+      </body>
+      <body name="argo_drive_front_fixed_link" pos="0.3 -0.2 0.05" quat="1 0 0 0">
+        <inertial pos="-0.00019 0.04522 0.02947" mass="7" fullinertia="0.07060497424 0.03433835031 0.08926325955 -0.00025482709 -6.283102e-05 0.00249596715"/>
+        <geom class="visual" pos="0 0.04 0.0345" quat="1 0 0 0" rgba="0.3 0.3 0.3 1.0" type="box" size="0.085 0.125 0.0385"/>
+        <geom class="collision" type="box" size="0.085 0.125 0.0385" pos="0 0.04 0.0345" quat="1 0 0 0"/>
+        <body name="argo_drive_front_steering_link" pos="0 0 0" quat="1 0 0 0">
+          <joint name="tmrv0_2_joint_0" type="hinge" axis="0 0 1" damping="20" frictionloss="5"/>
+          <inertial pos="0 0 0" mass="2" fullinertia="0.001 0.001 0.001 0 0 0"/>
+          <body name="argo_drive_front_link" pos="0 0 0" quat="1 0 0 0">
+            <joint name="tmrv0_2_joint_1" type="hinge" axis="0 1 0" damping="5" frictionloss="1"/>
+            <inertial pos="0 0 0" mass="2.5" fullinertia="0.00189583333333 0.00189583333333 0.003125 0 0 0"/>
+            <geom class="visual" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0" rgba="0.8 0.6 0.2 1.0" type="cylinder" size="0.05 0.02"/>
+            <geom class="wheel" type="cylinder" size="0.05 0.02" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0"/>
+          </body>
+        </body>
+      </body>
+      <body name="rocker_arm_link" pos="-0.3 0 0.0845" quat="1 0 0 0">
+        <joint name="rocker_arm_joint" type="hinge" axis="1 0 0" limited="true" range="-0.16 0.18" damping="0.003" frictionloss="0"/>
+        <inertial pos="-0.000344 -0.021232 0.038239" mass="5.183973" fullinertia="0.067087560015 0.023113173265 0.081148329632 -7.8335851e-05 4.1831678e-05 0.007148473123"/>
+        <geom class="visual" pos="0 0 0" quat="0.5 0.5 0.5 0.5" rgba="0.3 0.3 0.3 1.0" type="cylinder" size="0.015 0.01125"/>
+        <body name="caster_rear_right_fixed_link" pos="0 -0.2 -0.0045" quat="1 0 0 0">
+          <inertial pos="-0.02365 5e-05 -0.03651" mass="0.3" fullinertia="0.00049538079 0.00070424109 0.00048449394 -4.2663e-07 0.00020926011 -5.0221e-07"/>
+          <geom class="visual" pos="0 0 -0.0015" quat="1 0 0 0" rgba="0.3 0.3 0.3 1.0" type="box" size="0.02 0.015 0.0015"/>
+          <geom class="collision" type="box" size="0.02 0.015 0.0015" pos="0 0 -0.0015" quat="1 0 0 0"/>
+          <body name="caster_rear_right_steering_link" pos="0 0 0" quat="1 0 0 0">
+            <joint name="caster_rear_right_steering_joint" type="hinge" axis="0 0 1" damping="0.003" frictionloss="0"/>
+            <inertial pos="0 0 0" mass="0.2" fullinertia="0.0001 0.0001 0.0001 0 0 0"/>
+            <body name="caster_rear_right_link" pos="-0.035 0 -0.05" quat="1 0 0 0">
+              <joint name="caster_rear_right_joint" type="hinge" axis="0 1 0" damping="0.003" frictionloss="0"/>
+              <inertial pos="0 0 0" mass="0.2" fullinertia="0.0001 0.0001 0.0001 0 0 0"/>
+              <geom class="visual" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0" rgba="1.0 0.5 0.0 1.0" type="cylinder" size="0.03 0.0075"/>
+              <geom class="wheel" type="cylinder" size="0.03 0.0075" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0"/>
+            </body>
+          </body>
+        </body>
+        <body name="argo_drive_rear_fixed_link" pos="0 0.2 -0.0345" quat="1 0 0 0">
+          <inertial pos="-0.00019 -0.04522 0.02947" mass="7" fullinertia="0.07060497424 0.03433835031 0.08926325955 -0.00025482709 6.283102e-05 -0.00249596715"/>
+          <geom class="visual" pos="0 -0.04 0.0345" quat="1 0 0 0" rgba="0.3 0.3 0.3 1.0" type="box" size="0.085 0.125 0.0385"/>
+          <geom class="collision" type="box" size="0.085 0.125 0.0385" pos="0 -0.04 0.0345" quat="1 0 0 0"/>
+          <body name="argo_drive_rear_steering_link" pos="0 0 0" quat="1 0 0 0">
+            <joint name="tmrv0_2_joint_2" type="hinge" axis="0 0 1" damping="20" frictionloss="5"/>
+            <inertial pos="0 0 0" mass="2" fullinertia="0.001 0.001 0.001 0 0 0"/>
+            <body name="argo_drive_rear_link" pos="0 0 0" quat="1 0 0 0">
+              <joint name="tmrv0_2_joint_3" type="hinge" axis="0 1 0" damping="5" frictionloss="1"/>
+              <inertial pos="0 0 0" mass="2.5" fullinertia="0.00189583333333 0.00189583333333 0.003125 0 0 0"/>
+              <geom class="visual" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0" rgba="0.8 0.6 0.2 1.0" type="cylinder" size="0.05 0.02"/>
+              <geom class="wheel" type="cylinder" size="0.05 0.02" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="imu_mounting_point" pos="0.26 0 0.1478" quat="6.123233996e-17 1 0 0">
+        <site name="imu_mounting_point" size="0.002"/>
+      </body>
+      <body name="front_mounting_point" pos="0.380705 0 0.2345" quat="6.123233996e-17 1 0 0">
+        <site name="front_mounting_point" size="0.002"/>
+      </body>
+      <body name="rear_mounting_point" pos="-0.380705 0 0.2345" quat="3.749399457e-33 6.123233996e-17 1 6.123233996e-17">
+        <site name="rear_mounting_point" size="0.002"/>
+      </body>
+      <body name="right_mounting_point" pos="0 -0.272712 0.1145" quat="4.329780281e-17 0.7071067812 -0.7071067812 -4.329780281e-17">
+        <site name="right_mounting_point" size="0.002"/>
+      </body>
+      <body name="left_mounting_point" pos="0 0.272712 0.1145" quat="4.329780281e-17 0.7071067812 0.7071067812 4.329780281e-17">
+        <site name="left_mounting_point" size="0.002"/>
+      </body>
+      <body name="lidar_front_mounting_point" pos="0.3275 0.2175 0.19065" quat="2.343260203e-17 -0.9238795325 0.3826834324 5.657130561e-17">
+        <site name="lidar_front_mounting_point" size="0.002"/>
+      </body>
+      <body name="lidar_rear_mounting_point" pos="-0.3275 -0.2175 0.19065" quat="-5.657130561e-17 -0.3826834324 -0.9238795325 2.343260203e-17">
+        <site name="lidar_rear_mounting_point" size="0.002"/>
+      </body>
+      <attach model="spine" body="franka_spine" prefix=""/>
+    </body>
+  </worldbody>
+</mujoco>

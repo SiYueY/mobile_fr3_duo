@@ -29,7 +29,7 @@ import trimesh
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-ASSETS = REPO_ROOT / "assets"
+MODELS = REPO_ROOT / "models"
 GENERATED = REPO_ROOT / "source" / "generated"
 MIN_OUTPUT_EXTENT = 1e-4  # meters; matches tools/validate_assets.py
 
@@ -41,14 +41,14 @@ MERGED_VISUAL_SOURCES = {
 }
 
 # package://franka_description/meshes/<...>/<kind>/<file>
-#     -> assets/<component>/<kind>/<file>
+#     -> models/<module>/assets/<kind>/<file>
 COMPONENT_MAP = {
-    "accessories/fr3_duo_mount_v0_3": "fr3_duo_mount_v0_3",
-    "accessories/franka_head_v0_2": "franka_head_v0_2",
-    "accessories/franka_spine_v0_1": "franka_spine_v0_1",
-    "robots/fr3v2_1": "fr3v2_1",
-    "robots/tmrv0_2": "tmrv0_2",
-    "robot_ee/franka_hand_white": "franka_hand",
+    "accessories/fr3_duo_mount_v0_3": "franka_head/assets",
+    "accessories/franka_head_v0_2": "franka_head/assets",
+    "accessories/franka_spine_v0_1": "franka_spine/assets",
+    "robots/fr3v2_1": "franka_fr3/assets",
+    "robots/tmrv0_2": "franka_tmr/assets",
+    "robot_ee/franka_hand_white": "franka_hand/assets",
 }
 
 
@@ -100,7 +100,7 @@ def target_path(package_uri: str, suffix: str) -> Path | None:
         return None
 
     out_name = Path(filename).stem + suffix
-    return ASSETS / component / kind / out_name
+    return MODELS / component / kind / out_name
 
 
 def load_mesh_parts(src: Path) -> list[trimesh.Trimesh]:

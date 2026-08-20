@@ -19,7 +19,7 @@ jobs:
       - name: Check
         run: |
           uv run ruff check .
-          uv run python tools/format_xml.py --check mobile_fr3_duo.xml mobile_fr3_duo_with_sensors.xml mobile_fr3_duo_position.xml mobile_fr3_duo_reduced.xml mobile_fr3_duo_planar_debug.xml scene.xml scene_with_sensors.xml scene_position.xml
+          find models -name '*.xml' -print0 | xargs -0 uv run python tools/format_xml.py --check
           uv run python tools/validate_assets.py
           uv run python tools/verify_official_model_files.py --offline
       - name: Test

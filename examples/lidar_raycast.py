@@ -88,7 +88,7 @@ class LidarWorker:
 
 def demo(duration_s: float = 1.5) -> None:
     model = mujoco.MjModel.from_xml_path(
-        str(REPO_ROOT / "scene_with_sensors.xml")
+        str(REPO_ROOT / "models/scene_with_sensors.xml")
     )
     worker = LidarWorker(model)
     worker.start()

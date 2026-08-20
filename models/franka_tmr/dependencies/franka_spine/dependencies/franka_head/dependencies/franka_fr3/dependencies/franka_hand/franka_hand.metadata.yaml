@@ -1,0 +1,9 @@
+name: franka_hand
+type: end_effector
+source:
+  type: official-derived
+  version: franka_description@2.8.1
+root_body: fr3v2_1_hand
+attachments:
+- name: parent
+  body: fr3v2_1_hand

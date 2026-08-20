@@ -3,11 +3,11 @@
 import xml.etree.ElementTree as ET
 
 import mujoco
-from helpers import REPO_ROOT
+from helpers import MODEL_ROOT
 
 
 def test_contact_excludes_present(base_model):
-    root = ET.parse(REPO_ROOT / "mobile_fr3_duo.xml").getroot()
+    root = ET.parse(MODEL_ROOT / "mobile_fr3_duo.xml").getroot()
     contact = root.find("contact")
     assert contact is not None
     excludes = contact.findall("exclude")
@@ -16,7 +16,7 @@ def test_contact_excludes_present(base_model):
 
 def test_no_global_arm_exclusion(base_model):
     """Cross-arm and arm-vs-spine pairs are not globally excluded."""
-    root = ET.parse(REPO_ROOT / "mobile_fr3_duo.xml").getroot()
+    root = ET.parse(MODEL_ROOT / "mobile_fr3_duo.xml").getroot()
     excluded = {
         (e.get("body1"), e.get("body2"))
         for e in root.find("contact").findall("exclude")

@@ -157,7 +157,7 @@ Vision and Manipulation Kit 不属于基础模型 `v1.0.0` 的完成条件。
 正式交付目录复制到其他机器后，应可以直接执行：
 
 ```bash
-simulate scene.xml
+simulate models/scene.xml
 ```
 
 ## 4.3 参数来源必须分类
@@ -197,7 +197,10 @@ simulate scene.xml
 * 物体跟随；
 * 遥操作逻辑。
 
-Menagerie 的模型目录将机器人定义放在 `<model>.xml` 中，地面、灯光和额外对象放在 `scene.xml` 中。
+Menagerie 的模型目录将机器人定义放在 `<model>.xml` 中，地面、灯光和额外对象放在 `scene.xml` 中。本项目的 `scene*.xml` 也遵循该方式：每个场景只用 `<include>`
+引用对应的 `models/mobile_fr3_duo*.xml`，并定义渐变 skybox、checker 地面、主方向光
+和保留的 `preview` 相机；它不内联机器人 attach、asset、contact、actuator、sensor 或
+keyframe。对应的 `*_flattened` 场景 include flattened 机器人文件。
 
 ## 4.5 禁止非物理稳定手段
 
@@ -487,7 +490,7 @@ files:
 * 惯性和运动学是否一致；
 * 模型是否稳定。
 
-项目编写的 `mobile_fr3_duo.xml` 和派生 mesh 不得标记为官方原文件。
+项目编写的 `models/mobile_fr3_duo.xml` 和派生 mesh 不得标记为官方原文件。
 
 ---
 
@@ -534,22 +537,19 @@ Menagerie 的模型质量等级为：
 
 ---
 
-# 10. 推荐目录结构
+# 10. 当前发布目录结构
 
 ```text
 mobile_fr3_duo/
-├── assets/
-│   ├── tmrv0_2/
-│   ├── franka_spine_v0_1/
-│   ├── fr3_duo_mount_v0_3/
-│   ├── franka_head_v0_2/
-│   ├── fr3v2_1/
-│   ├── franka_hand/
-│   └── sensors/
-│       ├── realsense_d455/
-│       ├── sick_nanoscan3/
-│       ├── olv_imu01/
-│       └── zed_mini/
+├── models/
+│   ├── mobile_fr3_duo*.xml
+│   ├── scene*.xml
+│   ├── franka_tmr/{franka_tmr*.xml, assets/, dependencies/}
+│   ├── franka_spine/{franka_spine*.xml, assets/, dependencies/}
+│   ├── franka_head/{franka_head*.xml, assets/, dependencies/}
+│   ├── franka_fr3/{franka_fr3.xml, assets/, dependencies/}
+│   ├── franka_hand/{franka_hand.xml, assets/}
+│   └── sensors/<name>/{<name>.xml, assets/}
 │
 ├── config/
 │   ├── control/
@@ -586,7 +586,8 @@ mobile_fr3_duo/
 │   ├── extract_urdf_parameters.py
 │   ├── convert_visual_meshes.py
 │   ├── convert_collision_meshes.py
-│   ├── build_model.py
+│   ├── build_modules.py
+│   ├── build_robot.py
 │   ├── generate_contact_excludes.py
 │   ├── verify_official_model_files.py
 │   ├── validate_assets.py
@@ -629,14 +630,7 @@ mobile_fr3_duo/
 ├── README.md
 ├── pyproject.toml
 ├── Makefile
-├── mobile_fr3_duo.png
-├── mobile_fr3_duo.xml
-├── mobile_fr3_duo_with_sensors.xml
-├── mobile_fr3_duo_position.xml
-├── mobile_fr3_duo_reduced.xml
-├── mobile_fr3_duo_planar_debug.xml
-├── scene.xml
-└── scene_with_sensors.xml
+└── mobile_fr3_duo.png
 ```
 
 正式交付目录不得依赖开发期 `third_party/` 路径。
@@ -703,6 +697,26 @@ with_sc = false / true
 * `actuator`；
 * `sensor`；
 * `keyframe`。
+
+## 11.5 Runtime 模块与发布构建
+
+生产构建不读取第三方 checkout。官方资源准备完成并提交 URDF、资产和
+manifest 后，使用：
+
+```bash
+python tools/build_modules.py
+python tools/build_robot.py --all
+python tools/validate_assets.py
+```
+
+`build_modules.py` 从冻结 URDF 发射 `models/` 下的结构模块。每个模块在
+自身目录中保存 `assets/`、metadata 和运行时 attach 依赖闭包，因此可单独
+复制并加载。`build_robot.py` 生成顶层 attach XML、五个模型变体、三个 scene
+以及对应 `*_flattened.xml`；runtime scene 是仅 include 机器人 XML 的环境层，
+flattened 文件不依赖模块 XML，但仍相对 `models/` 定位模块资产。
+
+根目录不保留 `assets/`。visual、collision 和 sensor conversion manifest 中
+的输出路径均以 `models/` 开头，并由 `validate_assets.py` 校验。
 
 ## 11.6 自动验证
 
@@ -1906,9 +1920,9 @@ name_mapping.yaml
 ### 交付物
 
 ```text
-mobile_fr3_duo.xml 初始版本
-assets/
-scene.xml
+models/mobile_fr3_duo.xml 初始版本
+models/<module>/assets/
+models/scene.xml
 mobile_fr3_duo.png
 test_structure.py
 test_names.py

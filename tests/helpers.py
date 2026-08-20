@@ -10,11 +10,12 @@ import numpy as np
 from scipy.spatial.transform import Rotation
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+MODEL_ROOT = REPO_ROOT / "models"
 VISUAL_URDF = REPO_ROOT / "source" / "generated" / "mobile_fr3_duo_visual.urdf"
 
 
 def load(xml_name: str):
-    return mujoco.MjModel.from_xml_path(str(REPO_ROOT / xml_name))
+    return mujoco.MjModel.from_xml_path(str(MODEL_ROOT / xml_name))
 
 
 class UrdfModel:

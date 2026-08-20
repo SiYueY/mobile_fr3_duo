@@ -63,9 +63,9 @@ def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[s
         paths: list[str] = []
         for output in outputs:
             output_path = output.get("path") if isinstance(output, dict) else None
-            if not isinstance(output_path, str) or not output_path.startswith("assets/"):
+            if not isinstance(output_path, str) or not output_path.startswith("models/"):
                 raise RuntimeError(f"{path}: {uri} has an invalid output path: {output_path!r}")
-            rel = output_path.removeprefix("assets/")
+            rel = output_path.removeprefix("models/")
             if not rel.endswith(".obj") or Path(rel).is_absolute() or ".." in Path(rel).parts:
                 raise RuntimeError(f"{path}: {uri} has an unsafe OBJ output path: {output_path!r}")
             if not (REPO_ROOT / output_path).is_file():
@@ -143,10 +143,10 @@ def assets(ctx: BuildContext) -> ET.Element:
                     asset.append(el("mesh", **attrs))
     if ctx.opts.sensors:
         for name, path in (
-            ("d455", "sensors/realsense_d455/d455.stl"),
-            ("nanoscan3_visual", "sensors/sick_nanoscan3/NANS3.obj"),
-            ("nanoscan3_collision", "sensors/sick_nanoscan3/NANS3_collision.stl"),
-            ("zed_mini", "sensors/zed_mini/zedm.stl"),
+            ("d455", "sensors/d455/assets/visual/d455.stl"),
+            ("nanoscan3_visual", "sensors/nanoscan3/assets/visual/NANS3.obj"),
+            ("nanoscan3_collision", "sensors/nanoscan3/assets/visual/NANS3_collision.stl"),
+            ("zed_mini", "sensors/zed_mini/assets/visual/zedm.stl"),
         ):
             asset.append(el("mesh", name=name, file=path))
     return asset

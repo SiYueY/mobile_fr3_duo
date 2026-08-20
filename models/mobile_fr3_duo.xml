@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="mobile_fr3_duo">
+  <compiler angle="radian" meshdir="." autolimits="true" inertiafromgeom="false" fusestatic="false"/>
+  <option timestep="0.001" integrator="implicitfast" solver="Newton" iterations="50" ls_iterations="10" gravity="0 0 -9.81"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" density="0"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" contype="1" conaffinity="1" condim="3" friction="1.2 0.005 0.0001" density="0"/>
+    </default>
+    <default class="finger_pad">
+      <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4" contype="1" conaffinity="1" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <model name="mobile_base" file="franka_tmr/franka_tmr.xml"/>
+  </asset>
+  <worldbody>
+    <attach model="mobile_base" body="base_link" prefix=""/>
+  </worldbody>
+  <contact>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_front_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_front_steering_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="base_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="caster_front_left_fixed_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="caster_front_left_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="fr3_duo_mount_mounting_point"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="head_link"/>
+    <exclude body1="argo_drive_front_link" body2="argo_drive_front_steering_link"/>
+    <exclude body1="argo_drive_front_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="argo_drive_front_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_front_link" body2="base_link"/>
+    <exclude body1="argo_drive_front_link" body2="caster_front_left_fixed_link"/>
+    <exclude body1="argo_drive_front_link" body2="caster_front_left_link"/>
+    <exclude body1="argo_drive_front_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="argo_drive_front_link" body2="caster_rear_right_link"/>
+    <exclude body1="argo_drive_front_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_front_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_front_link" body2="head_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="argo_drive_rear_steering_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="base_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="caster_front_left_fixed_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="caster_front_left_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="head_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="rocker_arm_link"/>
+    <exclude body1="argo_drive_rear_link" body2="argo_drive_rear_steering_link"/>
+    <exclude body1="argo_drive_rear_link" body2="base_link"/>
+    <exclude body1="argo_drive_rear_link" body2="caster_front_left_fixed_link"/>
+    <exclude body1="argo_drive_rear_link" body2="caster_front_left_link"/>
+    <exclude body1="argo_drive_rear_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="argo_drive_rear_link" body2="caster_rear_right_link"/>
+    <exclude body1="argo_drive_rear_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_rear_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_rear_link" body2="head_link"/>
+    <exclude body1="base_inertia" body2="base_link"/>
+    <exclude body1="base_link" body2="caster_front_left_fixed_link"/>
+    <exclude body1="base_link" body2="caster_front_left_link"/>
+    <exclude body1="base_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="base_link" body2="caster_rear_right_link"/>
+    <exclude body1="base_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="base_link" body2="franka_spine"/>
+    <exclude body1="base_link" body2="front_mounting_point"/>
+    <exclude body1="base_link" body2="head_link"/>
+    <exclude body1="base_link" body2="imu_mounting_point"/>
+    <exclude body1="base_link" body2="left_mounting_point"/>
+    <exclude body1="base_link" body2="lidar_front_mounting_point"/>
+    <exclude body1="base_link" body2="lidar_rear_mounting_point"/>
+    <exclude body1="base_link" body2="rear_mounting_point"/>
+    <exclude body1="base_link" body2="right_mounting_point"/>
+    <exclude body1="base_link" body2="rocker_arm_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_front_left_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_front_left_steering_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_front_left_fixed_link" body2="franka_spine"/>
+    <exclude body1="caster_front_left_fixed_link" body2="head_link"/>
+    <exclude body1="caster_front_left_link" body2="caster_front_left_steering_link"/>
+    <exclude body1="caster_front_left_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="caster_front_left_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_front_left_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_front_left_link" body2="franka_spine"/>
+    <exclude body1="caster_front_left_link" body2="head_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="caster_rear_right_steering_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="franka_spine"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="head_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="rocker_arm_link"/>
+    <exclude body1="caster_rear_right_link" body2="caster_rear_right_steering_link"/>
+    <exclude body1="caster_rear_right_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_rear_right_link" body2="franka_spine"/>
+    <exclude body1="caster_rear_right_link" body2="head_link"/>
+    <exclude body1="fr3_duo_mount_left" body2="fr3_duo_mount_origin"/>
+    <exclude body1="fr3_duo_mount_left" body2="left_base"/>
+    <exclude body1="fr3_duo_mount_mounting_point" body2="fr3_duo_mount_origin"/>
+    <exclude body1="fr3_duo_mount_mounting_point" body2="franka_spine"/>
+    <exclude body1="fr3_duo_mount_mounting_point" body2="franka_spine_mounting_point"/>
+    <exclude body1="fr3_duo_mount_mounting_point" body2="head_link"/>
+    <exclude body1="fr3_duo_mount_origin" body2="fr3_duo_mount_right"/>
+    <exclude body1="fr3_duo_mount_origin" body2="franka_spine"/>
+    <exclude body1="fr3_duo_mount_origin" body2="head_link"/>
+    <exclude body1="fr3_duo_mount_right" body2="right_base"/>
+    <exclude body1="franka_spine" body2="franka_spine_mounting_point"/>
+    <exclude body1="franka_spine" body2="head_link"/>
+    <exclude body1="franka_spine" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="franka_spine" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="franka_spine" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="franka_spine" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="franka_spine" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="franka_spine" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="head_camera_mounting_point" body2="head_link"/>
+    <exclude body1="left_base" body2="left_fr3v2_1_link0"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_hand_tcp"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link0_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link0_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link1"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link2"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link1"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link2"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link1_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link1_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link2"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link2"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link2_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link2_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="right_base" body2="right_fr3v2_1_link0"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_hand_tcp"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link0_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link0_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link1"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link2"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link1"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link2"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link0_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link1_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link1_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link2"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link2"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link2_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link2_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_rightfinger"/>
+  </contact>
+  <equality>
+    <joint name="left_hand_finger_coupling" joint1="left_fr3v2_1_finger_joint1" joint2="left_fr3v2_1_finger_joint2" polycoef="0 1 -1 0 0"/>
+    <joint name="right_hand_finger_coupling" joint1="right_fr3v2_1_finger_joint1" joint2="right_fr3v2_1_finger_joint2" polycoef="0 1 -1 0 0"/>
+  </equality>
+  <actuator>
+    <motor name="front_steering_motor" joint="tmrv0_2_joint_0" gear="1" ctrllimited="true" ctrlrange="-20 20"/>
+    <motor name="front_wheel_motor" joint="tmrv0_2_joint_1" gear="1" ctrllimited="true" ctrlrange="-80 80"/>
+    <motor name="rear_steering_motor" joint="tmrv0_2_joint_2" gear="1" ctrllimited="true" ctrlrange="-20 20"/>
+    <motor name="rear_wheel_motor" joint="tmrv0_2_joint_3" gear="1" ctrllimited="true" ctrlrange="-80 80"/>
+    <motor name="franka_spine_motor" joint="franka_spine_vertical_joint" gear="1" ctrllimited="true" ctrlrange="-600 600"/>
+    <motor name="left_fr3v2_1_joint1_motor" joint="left_fr3v2_1_joint1" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721456"/>
+    <motor name="left_fr3v2_1_joint2_motor" joint="left_fr3v2_1_joint2" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721456"/>
+    <motor name="left_fr3v2_1_joint3_motor" joint="left_fr3v2_1_joint3" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474144"/>
+    <motor name="left_fr3v2_1_joint4_motor" joint="left_fr3v2_1_joint4" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474144"/>
+    <motor name="left_fr3v2_1_joint5_motor" joint="left_fr3v2_1_joint5" gear="1" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544064"/>
+    <motor name="left_fr3v2_1_joint6_motor" joint="left_fr3v2_1_joint6" gear="1" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544064"/>
+    <motor name="left_fr3v2_1_joint7_motor" joint="left_fr3v2_1_joint7" gear="1" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544064"/>
+    <motor name="right_fr3v2_1_joint1_motor" joint="right_fr3v2_1_joint1" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721456"/>
+    <motor name="right_fr3v2_1_joint2_motor" joint="right_fr3v2_1_joint2" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721456"/>
+    <motor name="right_fr3v2_1_joint3_motor" joint="right_fr3v2_1_joint3" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474144"/>
+    <motor name="right_fr3v2_1_joint4_motor" joint="right_fr3v2_1_joint4" gear="1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474144"/>
+    <motor name="right_fr3v2_1_joint5_motor" joint="right_fr3v2_1_joint5" gear="1" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544064"/>
+    <motor name="right_fr3v2_1_joint6_motor" joint="right_fr3v2_1_joint6" gear="1" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544064"/>
+    <motor name="right_fr3v2_1_joint7_motor" joint="right_fr3v2_1_joint7" gear="1" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544064"/>
+    <motor name="left_fr3v2_1_finger_motor" joint="left_fr3v2_1_finger_joint1" gear="1" ctrllimited="true" ctrlrange="-20 20" forcerange="-100 100"/>
+    <motor name="right_fr3v2_1_finger_motor" joint="right_fr3v2_1_finger_joint1" gear="1" ctrllimited="true" ctrlrange="-20 20" forcerange="-100 100"/>
+  </actuator>
+  <sensor>
+    <jointpos name="caster_front_left_steering_joint_pos" joint="caster_front_left_steering_joint"/>
+    <jointvel name="caster_front_left_steering_joint_vel" joint="caster_front_left_steering_joint"/>
+    <jointpos name="caster_front_left_joint_pos" joint="caster_front_left_joint"/>
+    <jointvel name="caster_front_left_joint_vel" joint="caster_front_left_joint"/>
+    <jointpos name="tmrv0_2_joint_0_pos" joint="tmrv0_2_joint_0"/>
+    <jointvel name="tmrv0_2_joint_0_vel" joint="tmrv0_2_joint_0"/>
+    <jointpos name="tmrv0_2_joint_1_pos" joint="tmrv0_2_joint_1"/>
+    <jointvel name="tmrv0_2_joint_1_vel" joint="tmrv0_2_joint_1"/>
+    <jointpos name="rocker_arm_joint_pos" joint="rocker_arm_joint"/>
+    <jointvel name="rocker_arm_joint_vel" joint="rocker_arm_joint"/>
+    <jointpos name="caster_rear_right_steering_joint_pos" joint="caster_rear_right_steering_joint"/>
+    <jointvel name="caster_rear_right_steering_joint_vel" joint="caster_rear_right_steering_joint"/>
+    <jointpos name="caster_rear_right_joint_pos" joint="caster_rear_right_joint"/>
+    <jointvel name="caster_rear_right_joint_vel" joint="caster_rear_right_joint"/>
+    <jointpos name="tmrv0_2_joint_2_pos" joint="tmrv0_2_joint_2"/>
+    <jointvel name="tmrv0_2_joint_2_vel" joint="tmrv0_2_joint_2"/>
+    <jointpos name="tmrv0_2_joint_3_pos" joint="tmrv0_2_joint_3"/>
+    <jointvel name="tmrv0_2_joint_3_vel" joint="tmrv0_2_joint_3"/>
+    <jointpos name="franka_spine_vertical_joint_pos" joint="franka_spine_vertical_joint"/>
+    <jointvel name="franka_spine_vertical_joint_vel" joint="franka_spine_vertical_joint"/>
+    <jointpos name="left_fr3v2_1_joint1_pos" joint="left_fr3v2_1_joint1"/>
+    <jointvel name="left_fr3v2_1_joint1_vel" joint="left_fr3v2_1_joint1"/>
+    <jointpos name="left_fr3v2_1_joint2_pos" joint="left_fr3v2_1_joint2"/>
+    <jointvel name="left_fr3v2_1_joint2_vel" joint="left_fr3v2_1_joint2"/>
+    <jointpos name="left_fr3v2_1_joint3_pos" joint="left_fr3v2_1_joint3"/>
+    <jointvel name="left_fr3v2_1_joint3_vel" joint="left_fr3v2_1_joint3"/>
+    <jointpos name="left_fr3v2_1_joint4_pos" joint="left_fr3v2_1_joint4"/>
+    <jointvel name="left_fr3v2_1_joint4_vel" joint="left_fr3v2_1_joint4"/>
+    <jointpos name="left_fr3v2_1_joint5_pos" joint="left_fr3v2_1_joint5"/>
+    <jointvel name="left_fr3v2_1_joint5_vel" joint="left_fr3v2_1_joint5"/>
+    <jointpos name="left_fr3v2_1_joint6_pos" joint="left_fr3v2_1_joint6"/>
+    <jointvel name="left_fr3v2_1_joint6_vel" joint="left_fr3v2_1_joint6"/>
+    <jointpos name="left_fr3v2_1_joint7_pos" joint="left_fr3v2_1_joint7"/>
+    <jointvel name="left_fr3v2_1_joint7_vel" joint="left_fr3v2_1_joint7"/>
+    <jointpos name="left_fr3v2_1_finger_joint1_pos" joint="left_fr3v2_1_finger_joint1"/>
+    <jointvel name="left_fr3v2_1_finger_joint1_vel" joint="left_fr3v2_1_finger_joint1"/>
+    <jointpos name="left_fr3v2_1_finger_joint2_pos" joint="left_fr3v2_1_finger_joint2"/>
+    <jointvel name="left_fr3v2_1_finger_joint2_vel" joint="left_fr3v2_1_finger_joint2"/>
+    <jointpos name="right_fr3v2_1_joint1_pos" joint="right_fr3v2_1_joint1"/>
+    <jointvel name="right_fr3v2_1_joint1_vel" joint="right_fr3v2_1_joint1"/>
+    <jointpos name="right_fr3v2_1_joint2_pos" joint="right_fr3v2_1_joint2"/>
+    <jointvel name="right_fr3v2_1_joint2_vel" joint="right_fr3v2_1_joint2"/>
+    <jointpos name="right_fr3v2_1_joint3_pos" joint="right_fr3v2_1_joint3"/>
+    <jointvel name="right_fr3v2_1_joint3_vel" joint="right_fr3v2_1_joint3"/>
+    <jointpos name="right_fr3v2_1_joint4_pos" joint="right_fr3v2_1_joint4"/>
+    <jointvel name="right_fr3v2_1_joint4_vel" joint="right_fr3v2_1_joint4"/>
+    <jointpos name="right_fr3v2_1_joint5_pos" joint="right_fr3v2_1_joint5"/>
+    <jointvel name="right_fr3v2_1_joint5_vel" joint="right_fr3v2_1_joint5"/>
+    <jointpos name="right_fr3v2_1_joint6_pos" joint="right_fr3v2_1_joint6"/>
+    <jointvel name="right_fr3v2_1_joint6_vel" joint="right_fr3v2_1_joint6"/>
+    <jointpos name="right_fr3v2_1_joint7_pos" joint="right_fr3v2_1_joint7"/>
+    <jointvel name="right_fr3v2_1_joint7_vel" joint="right_fr3v2_1_joint7"/>
+    <jointpos name="right_fr3v2_1_finger_joint1_pos" joint="right_fr3v2_1_finger_joint1"/>
+    <jointvel name="right_fr3v2_1_finger_joint1_vel" joint="right_fr3v2_1_finger_joint1"/>
+    <jointpos name="right_fr3v2_1_finger_joint2_pos" joint="right_fr3v2_1_finger_joint2"/>
+    <jointvel name="right_fr3v2_1_finger_joint2_vel" joint="right_fr3v2_1_finger_joint2"/>
+    <jointactuatorfrc name="tmrv0_2_joint_0_actuator_force" joint="tmrv0_2_joint_0"/>
+    <jointactuatorfrc name="tmrv0_2_joint_1_actuator_force" joint="tmrv0_2_joint_1"/>
+    <jointactuatorfrc name="tmrv0_2_joint_2_actuator_force" joint="tmrv0_2_joint_2"/>
+    <jointactuatorfrc name="tmrv0_2_joint_3_actuator_force" joint="tmrv0_2_joint_3"/>
+    <jointactuatorfrc name="franka_spine_vertical_joint_actuator_force" joint="franka_spine_vertical_joint"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint1_actuator_force" joint="left_fr3v2_1_joint1"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint2_actuator_force" joint="left_fr3v2_1_joint2"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint3_actuator_force" joint="left_fr3v2_1_joint3"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint4_actuator_force" joint="left_fr3v2_1_joint4"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint5_actuator_force" joint="left_fr3v2_1_joint5"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint6_actuator_force" joint="left_fr3v2_1_joint6"/>
+    <jointactuatorfrc name="left_fr3v2_1_joint7_actuator_force" joint="left_fr3v2_1_joint7"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint1_actuator_force" joint="right_fr3v2_1_joint1"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint2_actuator_force" joint="right_fr3v2_1_joint2"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint3_actuator_force" joint="right_fr3v2_1_joint3"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint4_actuator_force" joint="right_fr3v2_1_joint4"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint5_actuator_force" joint="right_fr3v2_1_joint5"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint6_actuator_force" joint="right_fr3v2_1_joint6"/>
+    <jointactuatorfrc name="right_fr3v2_1_joint7_actuator_force" joint="right_fr3v2_1_joint7"/>
+    <jointactuatorfrc name="left_fr3v2_1_finger_joint1_actuator_force" joint="left_fr3v2_1_finger_joint1"/>
+    <jointactuatorfrc name="right_fr3v2_1_finger_joint1_actuator_force" joint="right_fr3v2_1_finger_joint1"/>
+    <framepos name="base_pos" objtype="body" objname="base_link"/>
+    <framequat name="base_quat" objtype="body" objname="base_link"/>
+    <velocimeter name="base_linear_velocity" site="base_sensor_frame"/>
+    <gyro name="base_angular_velocity" site="base_sensor_frame"/>
+  </sensor>
+  <keyframe>
+    <key name="home" qpos="0 0 0.002 1 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 0.035 0.035 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035" ctrl="0 -8.881784197e-16 0 0 370.1923476 32.82975729 30.19791984 -7.261537431 -13.5438655 -1.116607609 1.906804069 -0.1237008333 -25.95265826 19.84837964 22.54995136 0.7270063964 2.297779314 1.18503161 -0.04221485396 0.2429006429 -0.01730155368"/>
+    <key name="transport" qpos="0 0 0.002 1 0 0 0 0 0 0 0 0 0 0 0 0 0.05 -0.086 -0.9075 -0.4216 -0.9392 0.1619 0.4792 0.0319 0.035 0.035 -0.1195 -1.144 -0.1388 -1.0382 0.1564 0.4504 -0.5358 0.035 0.035" ctrl="0 0 0 0 370.1923476 21.451656 27.29368743 -10.72079039 -10.17430721 -1.527937539 2.399407954 -0.09826004658 -26.48372354 24.21861129 19.38539254 -3.450478128 2.179731125 1.52323273 -0.06928890882 0.2251220478 0.05716416976"/>
+    <key name="manipulation" qpos="0 0 0.002 1 0 0 0 0 0 0 0 0 0 0 0 0 0.2 -0.5267 -0.8854 -0.7447 -1.1619 0.2071 0.8801 -0.6102 0.03 0.03 -0.6486 -1.1519 -0.7186 -1.4954 0.6431 0.9318 -0.5561 0.03 0.03" ctrl="0 0 0 0 370.1923476 22.022362 38.34249667 1.779720367 -11.93313658 -0.193193682 2.145262768 -0.1201726125 -25.31687699 4.817098326 24.15947345 12.3352468 2.649376141 -0.3258356446 -0.01599914807 0.2706405869 -0.07999366469"/>
+    <key name="wide_workspace" qpos="0 0 0.002 1 0 0 0 0 0 0 0 0 0 0 0 0 0.2 -0.2 -1.3066 -0.0563 -1.484 -0.0387 0.6381 0.0291 0.035 0.035 -0.2 -0.8106 -0.0984 -0.8767 0.0899 0.44 0.0276 0.035 0.035" ctrl="0 0 0 -1.776356839e-15 370.1923476 22.42070645 31.17829303 -19.71939179 -6.58684419 -2.034522498 1.952800378 -0.1038618612 -17.27574735 14.37712581 16.97460711 -0.3893424066 2.272786988 1.520614332 0.01319900369 0.2585884576 -0.1257494944"/>
+    <key name="spine_min" qpos="0 0 0.002 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 0.035 0.035 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035" ctrl="0 -8.881784197e-16 0 0 370.1923476 32.82975729 30.19791984 -7.261537431 -13.5438655 -1.116607609 1.906804069 -0.1237008333 -25.95265826 19.84837964 22.54995136 0.7270063964 2.297779314 1.18503161 -0.04221485396 0.2429006429 -0.01730155368"/>
+    <key name="spine_max" qpos="0 0 0.002 1 0 0 0 0 0 0 0 0 0 0 0 0 0.85 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 0.035 0.035 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035" ctrl="0 -8.881784197e-16 0 0 370.1923476 32.82975729 30.19791984 -7.261537431 -13.5438655 -1.116607609 1.906804069 -0.1237008333 -25.95265826 19.84837964 22.54995136 0.7270063964 2.297779314 1.18503161 -0.04221485396 0.2429006429 -0.01730155368"/>
+  </keyframe>
+</mujoco>

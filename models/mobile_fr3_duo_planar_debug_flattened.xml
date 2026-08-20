@@ -1,0 +1,1320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="mobile_fr3_duo">
+  <compiler angle="radian" meshdir="."/>
+  <option timestep="0.001" integrator="implicitfast" iterations="50" ls_iterations="10"/>
+  <size nkey="6"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2"/>
+    </default>
+    <default class="collision">
+      <geom group="3"/>
+    </default>
+    <default class="wheel">
+      <geom group="3" friction="1.2"/>
+    </default>
+    <default class="finger_pad">
+      <geom condim="4" group="3"/>
+    </default>
+    <default class="sensor_collision">
+      <geom group="4"/>
+    </default>
+    <default class="left_main">
+      <default class="left_visual">
+        <geom contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="left_collision">
+        <geom group="3"/>
+      </default>
+      <default class="left_wheel">
+        <geom group="3" friction="1.2"/>
+      </default>
+      <default class="left_finger_pad">
+        <geom condim="4" group="3"/>
+      </default>
+      <default class="left_sensor_collision">
+        <geom group="4"/>
+      </default>
+    </default>
+    <default class="right_main">
+      <default class="right_visual">
+        <geom contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="right_collision">
+        <geom group="3"/>
+      </default>
+      <default class="right_wheel">
+        <geom group="3" friction="1.2"/>
+      </default>
+      <default class="right_finger_pad">
+        <geom condim="4" group="3"/>
+      </default>
+      <default class="right_sensor_collision">
+        <geom group="4"/>
+      </default>
+    </default>
+  </default>
+  <asset>
+    <mesh name="tmrv0_2_visual_0" file="franka_tmr/assets/visual/tmrv0_2.obj" inertia="shell"/>
+    <mesh name="tmrv0_2_collision" file="franka_tmr/assets/collision/tmrv0_2.stl"/>
+    <mesh name="franka_spine_visual_0" file="franka_spine/assets/visual/franka_spine_0.obj" inertia="shell"/>
+    <mesh name="franka_spine_visual_1" file="franka_spine/assets/visual/franka_spine_1.obj" inertia="shell"/>
+    <mesh name="franka_spine_visual_2" file="franka_spine/assets/visual/franka_spine_2.obj" inertia="shell"/>
+    <mesh name="franka_spine_visual_3" file="franka_spine/assets/visual/franka_spine_3.obj" inertia="shell"/>
+    <mesh name="franka_spine_visual_4" file="franka_spine/assets/visual/franka_spine_4.obj" inertia="shell"/>
+    <mesh name="franka_spine_visual_5" file="franka_spine/assets/visual/franka_spine_5.obj" inertia="shell"/>
+    <mesh name="franka_spine_collision" file="franka_spine/assets/collision/franka_spine.stl"/>
+    <mesh name="fr3_duo_mount_visual_0" content_type="model/obj" file="franka_head/assets/visual/fr3_duo_mount.obj" inertia="shell"/>
+    <mesh name="fr3_duo_cover_visual_0" file="franka_head/assets/visual/fr3_duo_cover.obj" inertia="shell"/>
+    <mesh name="fr3_duo_mount_collision" file="franka_head/assets/collision/fr3_duo_mount.stl"/>
+    <mesh name="fr3_duo_cover_collision" file="franka_head/assets/collision/fr3_duo_cover.stl"/>
+    <mesh name="left_link0_visual_0" file="franka_fr3/assets/visual/link0_0.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_1" file="franka_fr3/assets/visual/link0_1.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_2" file="franka_fr3/assets/visual/link0_2.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_3" file="franka_fr3/assets/visual/link0_3.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_4" file="franka_fr3/assets/visual/link0_4.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_5" file="franka_fr3/assets/visual/link0_5.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_6" file="franka_fr3/assets/visual/link0_6.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_7" file="franka_fr3/assets/visual/link0_7.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_8" file="franka_fr3/assets/visual/link0_8.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_9" file="franka_fr3/assets/visual/link0_9.obj" inertia="shell"/>
+    <mesh name="left_link0_visual_10" file="franka_fr3/assets/visual/link0_10.obj" inertia="shell"/>
+    <mesh name="left_link0_collision" file="franka_fr3/assets/collision/link0.stl"/>
+    <mesh name="left_link1_visual_0" file="franka_fr3/assets/visual/link1_0.obj" inertia="shell"/>
+    <mesh name="left_link1_visual_1" file="franka_fr3/assets/visual/link1_1.obj" inertia="shell"/>
+    <mesh name="left_link1_visual_2" file="franka_fr3/assets/visual/link1_2.obj" inertia="shell"/>
+    <mesh name="left_link1_visual_3" file="franka_fr3/assets/visual/link1_3.obj" inertia="shell"/>
+    <mesh name="left_link1_collision" file="franka_fr3/assets/collision/link1.stl"/>
+    <mesh name="left_link2_visual_0" file="franka_fr3/assets/visual/link2_0.obj" inertia="shell"/>
+    <mesh name="left_link2_visual_1" file="franka_fr3/assets/visual/link2_1.obj" inertia="shell"/>
+    <mesh name="left_link2_visual_2" file="franka_fr3/assets/visual/link2_2.obj" inertia="shell"/>
+    <mesh name="left_link2_visual_3" file="franka_fr3/assets/visual/link2_3.obj" inertia="shell"/>
+    <mesh name="left_link2_collision" file="franka_fr3/assets/collision/link2.stl"/>
+    <mesh name="left_link3_visual_0" file="franka_fr3/assets/visual/link3_0.obj" inertia="shell"/>
+    <mesh name="left_link3_visual_1" file="franka_fr3/assets/visual/link3_1.obj" inertia="shell"/>
+    <mesh name="left_link3_visual_2" file="franka_fr3/assets/visual/link3_2.obj" inertia="shell"/>
+    <mesh name="left_link3_visual_3" file="franka_fr3/assets/visual/link3_3.obj" inertia="shell"/>
+    <mesh name="left_link3_collision" file="franka_fr3/assets/collision/link3.stl"/>
+    <mesh name="left_link4_visual_0" file="franka_fr3/assets/visual/link4_0.obj" inertia="shell"/>
+    <mesh name="left_link4_visual_1" file="franka_fr3/assets/visual/link4_1.obj" inertia="shell"/>
+    <mesh name="left_link4_visual_2" file="franka_fr3/assets/visual/link4_2.obj" inertia="shell"/>
+    <mesh name="left_link4_visual_3" file="franka_fr3/assets/visual/link4_3.obj" inertia="shell"/>
+    <mesh name="left_link4_collision" file="franka_fr3/assets/collision/link4.stl"/>
+    <mesh name="left_link5_visual_0" file="franka_fr3/assets/visual/link5_0.obj" inertia="shell"/>
+    <mesh name="left_link5_visual_1" file="franka_fr3/assets/visual/link5_1.obj" inertia="shell"/>
+    <mesh name="left_link5_visual_2" file="franka_fr3/assets/visual/link5_2.obj" inertia="shell"/>
+    <mesh name="left_link5_visual_3" file="franka_fr3/assets/visual/link5_3.obj" inertia="shell"/>
+    <mesh name="left_link5_visual_4" file="franka_fr3/assets/visual/link5_4.obj" inertia="shell"/>
+    <mesh name="left_link5_collision" file="franka_fr3/assets/collision/link5.stl"/>
+    <mesh name="left_link6_visual_0" file="franka_fr3/assets/visual/link6_0.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_1" file="franka_fr3/assets/visual/link6_1.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_2" file="franka_fr3/assets/visual/link6_2.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_3" file="franka_fr3/assets/visual/link6_3.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_4" file="franka_fr3/assets/visual/link6_4.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_5" file="franka_fr3/assets/visual/link6_5.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_6" file="franka_fr3/assets/visual/link6_6.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_7" file="franka_fr3/assets/visual/link6_7.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_8" file="franka_fr3/assets/visual/link6_8.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_9" file="franka_fr3/assets/visual/link6_9.obj" inertia="shell"/>
+    <mesh name="left_link6_visual_10" file="franka_fr3/assets/visual/link6_10.obj" inertia="shell"/>
+    <mesh name="left_link6_collision" file="franka_fr3/assets/collision/link6.stl"/>
+    <mesh name="left_link7_visual_0" file="franka_fr3/assets/visual/link7_0.obj" inertia="shell"/>
+    <mesh name="left_link7_visual_1" file="franka_fr3/assets/visual/link7_1.obj" inertia="shell"/>
+    <mesh name="left_link7_visual_2" file="franka_fr3/assets/visual/link7_2.obj" inertia="shell"/>
+    <mesh name="left_link7_visual_3" file="franka_fr3/assets/visual/link7_3.obj" inertia="shell"/>
+    <mesh name="left_link7_visual_4" file="franka_fr3/assets/visual/link7_4.obj" inertia="shell"/>
+    <mesh name="left_link7_visual_5" file="franka_fr3/assets/visual/link7_5.obj" inertia="shell"/>
+    <mesh name="left_link7_visual_6" file="franka_fr3/assets/visual/link7_6.obj" inertia="shell"/>
+    <mesh name="left_link7_collision" file="franka_fr3/assets/collision/link7.stl"/>
+    <mesh name="left_hand_visual_0" file="franka_hand/assets/visual/hand_0.obj" inertia="shell"/>
+    <mesh name="left_hand_visual_1" file="franka_hand/assets/visual/hand_1.obj" inertia="shell"/>
+    <mesh name="left_hand_visual_2" file="franka_hand/assets/visual/hand_2.obj" inertia="shell"/>
+    <mesh name="left_hand_visual_3" file="franka_hand/assets/visual/hand_3.obj" inertia="shell"/>
+    <mesh name="left_hand_visual_4" file="franka_hand/assets/visual/hand_4.obj" inertia="shell"/>
+    <mesh name="left_hand_collision" file="franka_hand/assets/collision/hand.stl"/>
+    <mesh name="left_finger_visual_0" file="franka_hand/assets/visual/finger_0.obj" inertia="shell"/>
+    <mesh name="left_finger_visual_1" file="franka_hand/assets/visual/finger_1.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_0" file="franka_fr3/assets/visual/link0_0.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_1" file="franka_fr3/assets/visual/link0_1.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_2" file="franka_fr3/assets/visual/link0_2.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_3" file="franka_fr3/assets/visual/link0_3.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_4" file="franka_fr3/assets/visual/link0_4.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_5" file="franka_fr3/assets/visual/link0_5.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_6" file="franka_fr3/assets/visual/link0_6.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_7" file="franka_fr3/assets/visual/link0_7.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_8" file="franka_fr3/assets/visual/link0_8.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_9" file="franka_fr3/assets/visual/link0_9.obj" inertia="shell"/>
+    <mesh name="right_link0_visual_10" file="franka_fr3/assets/visual/link0_10.obj" inertia="shell"/>
+    <mesh name="right_link0_collision" file="franka_fr3/assets/collision/link0.stl"/>
+    <mesh name="right_link1_visual_0" file="franka_fr3/assets/visual/link1_0.obj" inertia="shell"/>
+    <mesh name="right_link1_visual_1" file="franka_fr3/assets/visual/link1_1.obj" inertia="shell"/>
+    <mesh name="right_link1_visual_2" file="franka_fr3/assets/visual/link1_2.obj" inertia="shell"/>
+    <mesh name="right_link1_visual_3" file="franka_fr3/assets/visual/link1_3.obj" inertia="shell"/>
+    <mesh name="right_link1_collision" file="franka_fr3/assets/collision/link1.stl"/>
+    <mesh name="right_link2_visual_0" file="franka_fr3/assets/visual/link2_0.obj" inertia="shell"/>
+    <mesh name="right_link2_visual_1" file="franka_fr3/assets/visual/link2_1.obj" inertia="shell"/>
+    <mesh name="right_link2_visual_2" file="franka_fr3/assets/visual/link2_2.obj" inertia="shell"/>
+    <mesh name="right_link2_visual_3" file="franka_fr3/assets/visual/link2_3.obj" inertia="shell"/>
+    <mesh name="right_link2_collision" file="franka_fr3/assets/collision/link2.stl"/>
+    <mesh name="right_link3_visual_0" file="franka_fr3/assets/visual/link3_0.obj" inertia="shell"/>
+    <mesh name="right_link3_visual_1" file="franka_fr3/assets/visual/link3_1.obj" inertia="shell"/>
+    <mesh name="right_link3_visual_2" file="franka_fr3/assets/visual/link3_2.obj" inertia="shell"/>
+    <mesh name="right_link3_visual_3" file="franka_fr3/assets/visual/link3_3.obj" inertia="shell"/>
+    <mesh name="right_link3_collision" file="franka_fr3/assets/collision/link3.stl"/>
+    <mesh name="right_link4_visual_0" file="franka_fr3/assets/visual/link4_0.obj" inertia="shell"/>
+    <mesh name="right_link4_visual_1" file="franka_fr3/assets/visual/link4_1.obj" inertia="shell"/>
+    <mesh name="right_link4_visual_2" file="franka_fr3/assets/visual/link4_2.obj" inertia="shell"/>
+    <mesh name="right_link4_visual_3" file="franka_fr3/assets/visual/link4_3.obj" inertia="shell"/>
+    <mesh name="right_link4_collision" file="franka_fr3/assets/collision/link4.stl"/>
+    <mesh name="right_link5_visual_0" file="franka_fr3/assets/visual/link5_0.obj" inertia="shell"/>
+    <mesh name="right_link5_visual_1" file="franka_fr3/assets/visual/link5_1.obj" inertia="shell"/>
+    <mesh name="right_link5_visual_2" file="franka_fr3/assets/visual/link5_2.obj" inertia="shell"/>
+    <mesh name="right_link5_visual_3" file="franka_fr3/assets/visual/link5_3.obj" inertia="shell"/>
+    <mesh name="right_link5_visual_4" file="franka_fr3/assets/visual/link5_4.obj" inertia="shell"/>
+    <mesh name="right_link5_collision" file="franka_fr3/assets/collision/link5.stl"/>
+    <mesh name="right_link6_visual_0" file="franka_fr3/assets/visual/link6_0.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_1" file="franka_fr3/assets/visual/link6_1.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_2" file="franka_fr3/assets/visual/link6_2.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_3" file="franka_fr3/assets/visual/link6_3.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_4" file="franka_fr3/assets/visual/link6_4.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_5" file="franka_fr3/assets/visual/link6_5.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_6" file="franka_fr3/assets/visual/link6_6.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_7" file="franka_fr3/assets/visual/link6_7.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_8" file="franka_fr3/assets/visual/link6_8.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_9" file="franka_fr3/assets/visual/link6_9.obj" inertia="shell"/>
+    <mesh name="right_link6_visual_10" file="franka_fr3/assets/visual/link6_10.obj" inertia="shell"/>
+    <mesh name="right_link6_collision" file="franka_fr3/assets/collision/link6.stl"/>
+    <mesh name="right_link7_visual_0" file="franka_fr3/assets/visual/link7_0.obj" inertia="shell"/>
+    <mesh name="right_link7_visual_1" file="franka_fr3/assets/visual/link7_1.obj" inertia="shell"/>
+    <mesh name="right_link7_visual_2" file="franka_fr3/assets/visual/link7_2.obj" inertia="shell"/>
+    <mesh name="right_link7_visual_3" file="franka_fr3/assets/visual/link7_3.obj" inertia="shell"/>
+    <mesh name="right_link7_visual_4" file="franka_fr3/assets/visual/link7_4.obj" inertia="shell"/>
+    <mesh name="right_link7_visual_5" file="franka_fr3/assets/visual/link7_5.obj" inertia="shell"/>
+    <mesh name="right_link7_visual_6" file="franka_fr3/assets/visual/link7_6.obj" inertia="shell"/>
+    <mesh name="right_link7_collision" file="franka_fr3/assets/collision/link7.stl"/>
+    <mesh name="right_hand_visual_0" file="franka_hand/assets/visual/hand_0.obj" inertia="shell"/>
+    <mesh name="right_hand_visual_1" file="franka_hand/assets/visual/hand_1.obj" inertia="shell"/>
+    <mesh name="right_hand_visual_2" file="franka_hand/assets/visual/hand_2.obj" inertia="shell"/>
+    <mesh name="right_hand_visual_3" file="franka_hand/assets/visual/hand_3.obj" inertia="shell"/>
+    <mesh name="right_hand_visual_4" file="franka_hand/assets/visual/hand_4.obj" inertia="shell"/>
+    <mesh name="right_hand_collision" file="franka_hand/assets/collision/hand.stl"/>
+    <mesh name="right_finger_visual_0" file="franka_hand/assets/visual/finger_0.obj" inertia="shell"/>
+    <mesh name="right_finger_visual_1" file="franka_hand/assets/visual/finger_1.obj" inertia="shell"/>
+    <mesh name="franka_head_visual_0" file="franka_head/assets/visual/franka_head.obj" inertia="shell"/>
+    <mesh name="franka_head_collision" file="franka_head/assets/collision/franka_head.stl"/>
+  </asset>
+  <worldbody>
+    <body name="base_link">
+      <joint name="planar_x_joint" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-50 50" damping="10"/>
+      <joint name="planar_y_joint" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="-50 50" damping="10"/>
+      <joint name="planar_yaw_joint" pos="0 0 0" axis="0 0 1" damping="5"/>
+      <geom class="visual" type="mesh" rgba="1 1 1 1" mesh="tmrv0_2_visual_0"/>
+      <geom class="collision" type="mesh" mesh="tmrv0_2_collision"/>
+      <site name="base_sensor_frame" pos="0 0 0" size="0.002"/>
+      <body name="base_inertia">
+        <inertial pos="0.006619 -0.00221 0.184355" quat="2.93233e-05 0.6886 -0.0048197 0.725125" mass="88.9542" diaginertia="5.84851 4.16234 3.23852"/>
+      </body>
+      <body name="caster_front_left_fixed_link" pos="0.3 0.2 0.08">
+        <inertial pos="-0.02365 5e-05 -0.03651" quat="0.611471 -0.283001 -0.248575 0.695862" mass="0.3" diaginertia="0.000704326 0.000699183 0.000280606"/>
+        <geom class="visual" size="0.02 0.015 0.0015" pos="0 0 -0.0015" type="box" rgba="0.3 0.3 0.3 1"/>
+        <geom class="collision" size="0.02 0.015 0.0015" pos="0 0 -0.0015" type="box"/>
+        <body name="caster_front_left_steering_link">
+          <inertial pos="0 0 0" mass="0.2" diaginertia="0.0001 0.0001 0.0001"/>
+          <joint name="caster_front_left_steering_joint" pos="0 0 0" axis="0 0 1" damping="0.003"/>
+          <body name="caster_front_left_link" pos="-0.035 0 -0.05">
+            <inertial pos="0 0 0" mass="0.2" diaginertia="0.0001 0.0001 0.0001"/>
+            <joint name="caster_front_left_joint" pos="0 0 0" axis="0 1 0" damping="0.003"/>
+            <geom class="visual" size="0.03 0.0075" quat="0.707107 0.707107 0 0" type="cylinder" rgba="1 0.5 0 1"/>
+            <geom class="wheel" size="0.03 0.0075" quat="0.707107 0.707107 0 0" type="cylinder"/>
+          </body>
+        </body>
+      </body>
+      <body name="argo_drive_front_fixed_link" pos="0.3 -0.2 0.05">
+        <inertial pos="-0.00019 0.04522 0.02947" quat="0.511876 0.485802 -0.491273 0.510519" mass="7" diaginertia="0.0893767 0.0706064 0.0342234"/>
+        <geom class="visual" size="0.085 0.125 0.0385" pos="0 0.04 0.0345" type="box" rgba="0.3 0.3 0.3 1"/>
+        <geom class="collision" size="0.085 0.125 0.0385" pos="0 0.04 0.0345" type="box"/>
+        <body name="argo_drive_front_steering_link">
+          <inertial pos="0 0 0" mass="2" diaginertia="0.001 0.001 0.001"/>
+          <joint name="tmrv0_2_joint_0" pos="0 0 0" axis="0 0 1" damping="20" frictionloss="5"/>
+          <body name="argo_drive_front_link">
+            <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="2.5" diaginertia="0.003125 0.00189583 0.00189583"/>
+            <joint name="tmrv0_2_joint_1" pos="0 0 0" axis="0 1 0" damping="5" frictionloss="1"/>
+            <geom class="visual" size="0.05 0.02" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.8 0.6 0.2 1"/>
+            <geom class="wheel" size="0.05 0.02" quat="0.707107 0.707107 0 0" type="cylinder"/>
+          </body>
+        </body>
+      </body>
+      <body name="rocker_arm_link" pos="-0.3 0 0.0845">
+        <inertial pos="-0.000344 -0.021232 0.038239" quat="0.530264 0.46893 -0.468899 0.52826" mass="5.18397" diaginertia="0.0820159 0.0670876 0.0222455"/>
+        <joint name="rocker_arm_joint" pos="0 0 0" axis="1 0 0" limited="true" range="-0.16 0.18" damping="0.003"/>
+        <geom class="visual" size="0.015 0.01125" quat="0.5 0.5 0.5 0.5" type="cylinder" rgba="0.3 0.3 0.3 1"/>
+        <body name="caster_rear_right_fixed_link" pos="0 -0.2 -0.0045">
+          <inertial pos="-0.02365 5e-05 -0.03651" quat="0.611471 -0.283001 -0.248575 0.695862" mass="0.3" diaginertia="0.000704326 0.000699183 0.000280606"/>
+          <geom class="visual" size="0.02 0.015 0.0015" pos="0 0 -0.0015" type="box" rgba="0.3 0.3 0.3 1"/>
+          <geom class="collision" size="0.02 0.015 0.0015" pos="0 0 -0.0015" type="box"/>
+          <body name="caster_rear_right_steering_link">
+            <inertial pos="0 0 0" mass="0.2" diaginertia="0.0001 0.0001 0.0001"/>
+            <joint name="caster_rear_right_steering_joint" pos="0 0 0" axis="0 0 1" damping="0.003"/>
+            <body name="caster_rear_right_link" pos="-0.035 0 -0.05">
+              <inertial pos="0 0 0" mass="0.2" diaginertia="0.0001 0.0001 0.0001"/>
+              <joint name="caster_rear_right_joint" pos="0 0 0" axis="0 1 0" damping="0.003"/>
+              <geom class="visual" size="0.03 0.0075" quat="0.707107 0.707107 0 0" type="cylinder" rgba="1 0.5 0 1"/>
+              <geom class="wheel" size="0.03 0.0075" quat="0.707107 0.707107 0 0" type="cylinder"/>
+            </body>
+          </body>
+        </body>
+        <body name="argo_drive_rear_fixed_link" pos="0 0.2 -0.0345">
+          <inertial pos="-0.00019 -0.04522 0.02947" quat="0.491273 0.510519 -0.511876 0.485802" mass="7" diaginertia="0.0893767 0.0706064 0.0342234"/>
+          <geom class="visual" size="0.085 0.125 0.0385" pos="0 -0.04 0.0345" type="box" rgba="0.3 0.3 0.3 1"/>
+          <geom class="collision" size="0.085 0.125 0.0385" pos="0 -0.04 0.0345" type="box"/>
+          <body name="argo_drive_rear_steering_link">
+            <inertial pos="0 0 0" mass="2" diaginertia="0.001 0.001 0.001"/>
+            <joint name="tmrv0_2_joint_2" pos="0 0 0" axis="0 0 1" damping="20" frictionloss="5"/>
+            <body name="argo_drive_rear_link">
+              <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="2.5" diaginertia="0.003125 0.00189583 0.00189583"/>
+              <joint name="tmrv0_2_joint_3" pos="0 0 0" axis="0 1 0" damping="5" frictionloss="1"/>
+              <geom class="visual" size="0.05 0.02" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.8 0.6 0.2 1"/>
+              <geom class="wheel" size="0.05 0.02" quat="0.707107 0.707107 0 0" type="cylinder"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="imu_mounting_point" pos="0.26 0 0.1478" quat="0 1 0 0">
+        <site name="imu_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="front_mounting_point" pos="0.380705 0 0.2345" quat="0 1 0 0">
+        <site name="front_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="rear_mounting_point" pos="-0.380705 0 0.2345" quat="0 0 1 0">
+        <site name="rear_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="right_mounting_point" pos="0 -0.272712 0.1145" quat="0 0.707107 -0.707107 0">
+        <site name="right_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="left_mounting_point" pos="0 0.272712 0.1145" quat="0 0.707107 0.707107 0">
+        <site name="left_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="lidar_front_mounting_point" pos="0.3275 0.2175 0.19065" quat="0 -0.92388 0.382683 0">
+        <site name="lidar_front_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="lidar_rear_mounting_point" pos="-0.3275 -0.2175 0.19065" quat="0 -0.382683 -0.92388 0">
+        <site name="lidar_rear_mounting_point" pos="0 0 0" size="0.002"/>
+      </body>
+      <body name="franka_spine" pos="0.138289 0 0.35">
+        <inertial pos="0.042358 0.000378 0.495198" quat="0.998751 -0.000119517 -0.0484248 -0.0123402" mass="21.9091" diaginertia="3.36815 3.32454 0.252332"/>
+        <geom class="visual" type="mesh" mesh="franka_spine_visual_0"/>
+        <geom class="visual" type="mesh" mesh="franka_spine_visual_1"/>
+        <geom class="visual" type="mesh" mesh="franka_spine_visual_2"/>
+        <geom class="visual" type="mesh" mesh="franka_spine_visual_3"/>
+        <geom class="visual" type="mesh" mesh="franka_spine_visual_4"/>
+        <geom class="visual" type="mesh" mesh="franka_spine_visual_5"/>
+        <geom class="collision" type="mesh" mesh="franka_spine_collision"/>
+        <body name="franka_spine_mounting_point" pos="0.266711 0 0.1">
+          <inertial pos="0 0 0" mass="0.01" diaginertia="0.0001 0.0001 0.0001"/>
+          <joint name="franka_spine_vertical_joint" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.85"/>
+          <site name="franka_spine_mounting_point" pos="0 0 0" size="0.002"/>
+          <body name="fr3_duo_mount_mounting_point">
+            <inertial pos="-0.011817 -5e-05 0.044431" quat="0.666904 0.66701 0.234963 -0.234796" mass="4.09385" diaginertia="0.0236957 0.0204768 0.0164193"/>
+            <geom class="visual" type="mesh" mesh="fr3_duo_mount_visual_0"/>
+            <geom class="visual" pos="0 0 0.068" quat="1 0 0 0" type="mesh" mesh="fr3_duo_cover_visual_0"/>
+            <geom class="collision" type="mesh" mesh="fr3_duo_mount_collision"/>
+            <geom class="collision" pos="0 0 0.068" quat="1 0 0 0" type="mesh" mesh="fr3_duo_cover_collision"/>
+            <site name="fr3_duo_mount_mounting_point" pos="0 0 0" size="0.002"/>
+            <body name="fr3_duo_mount_origin" pos="0.037 0 0.05">
+              <body name="fr3_duo_mount_left" pos="0 0.05018 0" quat="0.865807 -0.436878 0.0222879 -0.242939">
+                <body name="left_base">
+                  <body name="left_fr3v2_1_link0">
+                    <inertial pos="-0.0172 0.0004 0.0745" quat="0.661377 -0.250161 -0.250161 0.661377" mass="2.3966" diaginertia="0.0115 0.0107656 0.00673444"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_0"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_1"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_2"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_3"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_4"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_5"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_6"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_7"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_8"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_9"/>
+                    <geom class="left_visual" type="mesh" mesh="left_link0_visual_10"/>
+                    <geom class="left_collision" type="mesh" mesh="left_link0_collision"/>
+                    <body name="left_fr3v2_1_link0_accelerometer_top" pos="-0.017402 -0.007872 0.04715" quat="-3.67321e-06 1 0 0"/>
+                    <body name="left_fr3v2_1_link0_accelerometer_bottom" pos="-0.019739 0.0015506 0.05075" quat="0.707105 0 0 -0.707108"/>
+                    <body name="left_fr3v2_1_link1" pos="0 0 0.333">
+                      <inertial pos="-0.00458 0.027016 -0.0618" quat="0.989811 0.110789 0.00992127 0.0888923" mass="2.4377" diaginertia="0.0233003 0.0222611 0.00463865"/>
+                      <joint name="left_fr3v2_1_joint1" pos="0 0 0" axis="0 0 1" limited="true" range="-2.90074 2.90074" damping="0.003" frictionloss="0.2"/>
+                      <geom class="left_visual" type="mesh" mesh="left_link1_visual_0"/>
+                      <geom class="left_visual" type="mesh" mesh="left_link1_visual_1"/>
+                      <geom class="left_visual" type="mesh" mesh="left_link1_visual_2"/>
+                      <geom class="left_visual" type="mesh" mesh="left_link1_visual_3"/>
+                      <geom class="left_collision" type="mesh" mesh="left_link1_collision"/>
+                      <body name="left_fr3v2_1_link1_accelerometer_top" pos="0.017402 -0.093352 -0.00787" quat="-2.59734e-06 2.59735e-06 -0.707108 0.707105"/>
+                      <body name="left_fr3v2_1_link1_accelerometer_bottom" pos="0.01974 -0.08975 0.00155" quat="0.499998 -0.5 0.5 0.500002"/>
+                      <body name="left_fr3v2_1_link2" quat="0.707107 -0.707107 0 0">
+                        <inertial pos="-0.01063 -0.184739 -0.010479" quat="0.644329 0.758803 -0.0323054 0.0895283" mass="2.2375" diaginertia="0.0192001 0.0173406 0.0052593"/>
+                        <joint name="left_fr3v2_1_joint2" pos="0 0 0" axis="0 0 1" limited="true" range="-1.83609 1.83609" damping="0.003" frictionloss="0.2"/>
+                        <geom class="left_visual" type="mesh" mesh="left_link2_visual_0"/>
+                        <geom class="left_visual" type="mesh" mesh="left_link2_visual_1"/>
+                        <geom class="left_visual" type="mesh" mesh="left_link2_visual_2"/>
+                        <geom class="left_visual" type="mesh" mesh="left_link2_visual_3"/>
+                        <geom class="left_collision" type="mesh" mesh="left_link2_collision"/>
+                        <body name="left_fr3v2_1_link2_accelerometer_top" pos="0.017403 -0.11515 0.00787" quat="-2.59734e-06 -2.59735e-06 0.707108 0.707105"/>
+                        <body name="left_fr3v2_1_link2_accelerometer_bottom" pos="0.019737 -0.11875 -0.00155" quat="0.499998 0.5 -0.5 0.500002"/>
+                        <body name="left_fr3v2_1_link3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0">
+                          <inertial pos="0.091995 0.023003 0.047348" quat="0.877348 -0.0280595 -0.265819 0.398514" mass="2.19638" diaginertia="0.0146052 0.0104212 0.00447362"/>
+                          <joint name="left_fr3v2_1_joint3" pos="0 0 0" axis="0 0 1" limited="true" range="-2.90074 2.90074" damping="0.003" frictionloss="0.2"/>
+                          <geom class="left_visual" type="mesh" mesh="left_link3_visual_0"/>
+                          <geom class="left_visual" type="mesh" mesh="left_link3_visual_1"/>
+                          <geom class="left_visual" type="mesh" mesh="left_link3_visual_2"/>
+                          <geom class="left_visual" type="mesh" mesh="left_link3_visual_3"/>
+                          <geom class="left_collision" type="mesh" mesh="left_link3_collision"/>
+                          <body name="left_fr3v2_1_link3_accelerometer_top" pos="0.065099 0.077352 -0.00787" quat="0.707105 -0.707108 0 0"/>
+                          <body name="left_fr3v2_1_link3_accelerometer_bottom" pos="0.062769 0.073756 0.00155" quat="0.499998 0.5 0.5 -0.500002"/>
+                          <body name="left_fr3v2_1_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0">
+                            <inertial pos="-0.084334 0.096836 0.006248" quat="0.725019 0.567552 -0.379628 -0.0900828" mass="2.18642" diaginertia="0.0126388 0.00973606 0.00442618"/>
+                            <joint name="left_fr3v2_1_joint4" pos="0 0 0" axis="0 0 1" limited="true" range="-3.07702 -0.116937" damping="0.003" frictionloss="0.2"/>
+                            <geom class="left_visual" type="mesh" mesh="left_link4_visual_0"/>
+                            <geom class="left_visual" type="mesh" mesh="left_link4_visual_1"/>
+                            <geom class="left_visual" type="mesh" mesh="left_link4_visual_2"/>
+                            <geom class="left_visual" type="mesh" mesh="left_link4_visual_3"/>
+                            <geom class="left_collision" type="mesh" mesh="left_link4_collision"/>
+                            <body name="left_fr3v2_1_link4_accelerometer_top" pos="-0.0651 0.046152 -0.00787" quat="-2.59734e-06 2.59735e-06 0.707108 -0.707105"/>
+                            <body name="left_fr3v2_1_link4_accelerometer_bottom" pos="-0.062775 0.049753 0.00155" quat="0.499998 -0.5 0.5 0.500002"/>
+                            <body name="left_fr3v2_1_link5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0">
+                              <inertial pos="3.9e-05 0.011821 -0.054936" quat="0.993747 -0.0901363 0.0101557 0.0651102" mass="2.19078" diaginertia="0.0318998 0.0305191 0.0038801"/>
+                              <joint name="left_fr3v2_1_joint5" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8763 2.8763" damping="0.003" frictionloss="0.2"/>
+                              <geom class="left_visual" type="mesh" mesh="left_link5_visual_0"/>
+                              <geom class="left_visual" type="mesh" mesh="left_link5_visual_1"/>
+                              <geom class="left_visual" type="mesh" mesh="left_link5_visual_2"/>
+                              <geom class="left_visual" type="mesh" mesh="left_link5_visual_3"/>
+                              <geom class="left_visual" type="mesh" mesh="left_link5_visual_4"/>
+                              <geom class="left_collision" type="mesh" mesh="left_link5_collision"/>
+                              <body name="left_fr3v2_1_link5_accelerometer_top" pos="-0.017363 0.085872 -0.00795" quat="0.707105 -0.707108 0 0"/>
+                              <body name="left_fr3v2_1_link5_accelerometer_bottom" pos="-0.019742 0.082275 0.00146" quat="0.499998 0.5 0.5 -0.500002"/>
+                              <body name="left_fr3v2_1_link6" quat="0.707107 0.707107 0 0">
+                                <inertial pos="0.069627 -0.016716 -0.037235" quat="-0.141552 0.574736 0.130817 0.795317" mass="1.58358" diaginertia="0.0047496 0.0041461 0.0024043"/>
+                                <joint name="left_fr3v2_1_joint6" pos="0 0 0" axis="0 0 1" limited="true" range="0.439823 4.62163" damping="0.003" frictionloss="0.2"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_0"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_1"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_2"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_3"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_4"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_5"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_6"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_7"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_8"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_9"/>
+                                <geom class="left_visual" type="mesh" mesh="left_link6_visual_10"/>
+                                <geom class="left_collision" type="mesh" mesh="left_link6_collision"/>
+                                <body name="left_fr3v2_1_link7" pos="0.088 0 0" quat="0.707107 0.707107 0 0">
+                                  <inertial pos="-0.014555 0.00923 0.065858" quat="0.70836 0.00347393 0.0424735 0.704564" mass="0.698686" diaginertia="0.00110022 0.000899844 0.000699938"/>
+                                  <joint name="left_fr3v2_1_joint7" pos="0 0 0" axis="0 0 1" limited="true" range="-3.05083 3.05083" damping="0.003" frictionloss="0.2"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_0"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_1"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_2"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_3"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_4"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_5"/>
+                                  <geom class="left_visual" type="mesh" mesh="left_link7_visual_6"/>
+                                  <geom class="left_collision" type="mesh" mesh="left_link7_collision"/>
+                                  <body name="left_fr3v2_1_link8" pos="0 0 0.107">
+                                    <body name="left_fr3v2_1_hand" quat="0.92388 0 0 -0.382683">
+                                      <inertial pos="-3.76e-05 0.0119128 0.020726" quat="0.702181 0.711999 0 0" mass="0.6544" diaginertia="0.00186 0.00174028 0.000299722"/>
+                                      <geom class="left_visual" type="mesh" mesh="left_hand_visual_0"/>
+                                      <geom class="left_visual" type="mesh" mesh="left_hand_visual_1"/>
+                                      <geom class="left_visual" type="mesh" mesh="left_hand_visual_2"/>
+                                      <geom class="left_visual" type="mesh" mesh="left_hand_visual_3"/>
+                                      <geom class="left_visual" type="mesh" mesh="left_hand_visual_4"/>
+                                      <geom class="left_collision" type="mesh" mesh="left_hand_collision"/>
+                                      <body name="left_fr3v2_1_hand_tcp" pos="0 0 0.1034">
+                                        <site name="left_fr3v2_1_hand_tcp" pos="0 0 0" size="0.002"/>
+                                      </body>
+                                      <body name="left_fr3v2_1_leftfinger" pos="0 0 0.0584">
+                                        <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
+                                        <joint name="left_fr3v2_1_finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0 0.04" damping="0.3"/>
+                                        <geom class="left_visual" type="mesh" mesh="left_finger_visual_0"/>
+                                        <geom class="left_visual" type="mesh" mesh="left_finger_visual_1"/>
+                                        <geom class="left_finger_pad" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
+                                        <geom class="left_finger_pad" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
+                                        <geom class="left_finger_pad" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.965926 0.258819 0 0" type="box"/>
+                                        <geom class="left_finger_pad" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" type="box"/>
+                                      </body>
+                                      <body name="left_fr3v2_1_rightfinger" pos="0 0 0.0584" quat="0 0 0 1">
+                                        <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
+                                        <joint name="left_fr3v2_1_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0 0.04" damping="0.3"/>
+                                        <geom class="left_visual" type="mesh" mesh="left_finger_visual_0"/>
+                                        <geom class="left_visual" type="mesh" mesh="left_finger_visual_1"/>
+                                        <geom class="left_finger_pad" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
+                                        <geom class="left_finger_pad" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
+                                        <geom class="left_finger_pad" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0 0 -0.258819 0.965926" type="box"/>
+                                        <geom class="left_finger_pad" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" type="box"/>
+                                      </body>
+                                      <body name="left_fr3v2_1_hand_sc">
+                                        <geom class="left_collision" size="0.07 0.05" pos="0 0 0.04" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                                        <geom class="left_collision" size="0.07" pos="0 0.05 0.04"/>
+                                        <geom class="left_collision" size="0.07" pos="0 -0.05 0.04"/>
+                                        <geom class="left_collision" size="0.05 0.05" pos="0 0 0.1" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                                        <geom class="left_collision" size="0.05" pos="0 0.05 0.1"/>
+                                        <geom class="left_collision" size="0.05" pos="0 -0.05 0.1"/>
+                                      </body>
+                                    </body>
+                                  </body>
+                                  <body name="left_fr3v2_1_link7_sc" quat="0.92388 0 0 0.382683">
+                                    <geom class="left_collision" size="0.07 0.07" pos="0 0 0.01" type="cylinder"/>
+                                    <geom class="left_collision" size="0.07" pos="0 0 0.08"/>
+                                    <geom class="left_collision" size="0.07" pos="0 0 -0.06"/>
+                                    <geom class="left_collision" size="0.06 0.005" pos="0.06 0 0.082" quat="0.707107 0 0.707107 0" type="cylinder"/>
+                                    <geom class="left_collision" size="0.06" pos="0.065 0 0.082"/>
+                                    <geom class="left_collision" size="0.06" pos="0.055 0 0.082"/>
+                                  </body>
+                                </body>
+                                <body name="left_fr3v2_1_link6_sc">
+                                  <geom class="left_collision" size="0.08 0.04" pos="0 0 -0.03" type="cylinder"/>
+                                  <geom class="left_collision" size="0.08" pos="0 0 0.01"/>
+                                  <geom class="left_collision" size="0.08" pos="0 0 -0.07"/>
+                                </body>
+                              </body>
+                              <body name="left_fr3v2_1_link5_sc">
+                                <geom class="left_collision" size="0.09 0.05" pos="0 0 -0.26" type="cylinder"/>
+                                <geom class="left_collision" size="0.09" pos="0 0 -0.21"/>
+                                <geom class="left_collision" size="0.09" pos="0 0 -0.31"/>
+                                <geom class="left_collision" size="0.055 0.07" pos="0 0.08 -0.13" quat="0.9992 0 0 0.0399893" type="cylinder"/>
+                                <geom class="left_collision" size="0.055" pos="0 0.08 -0.06"/>
+                                <geom class="left_collision" size="0.055" pos="0 0.08 -0.2"/>
+                              </body>
+                            </body>
+                            <body name="left_fr3v2_1_link4_sc">
+                              <geom class="left_collision" size="0.09 0.06" type="cylinder"/>
+                              <geom class="left_collision" size="0.09" pos="0 0 0.06"/>
+                              <geom class="left_collision" size="0.09" pos="0 0 -0.06"/>
+                            </body>
+                          </body>
+                          <body name="left_fr3v2_1_link3_sc">
+                            <geom class="left_collision" size="0.09 0.075" pos="0 0 -0.145" type="cylinder"/>
+                            <geom class="left_collision" size="0.09" pos="0 0 -0.07"/>
+                            <geom class="left_collision" size="0.09" pos="0 0 -0.22"/>
+                          </body>
+                        </body>
+                        <body name="left_fr3v2_1_link2_sc">
+                          <geom class="left_collision" size="0.09 0.06" type="cylinder"/>
+                          <geom class="left_collision" size="0.09" pos="0 0 0.06"/>
+                          <geom class="left_collision" size="0.09" pos="0 0 -0.06"/>
+                        </body>
+                      </body>
+                      <body name="left_fr3v2_1_link1_sc">
+                        <geom class="left_collision" size="0.09 0.1415" pos="0 0 -0.1915" type="cylinder"/>
+                        <geom class="left_collision" size="0.09" pos="0 0 -0.05"/>
+                        <geom class="left_collision" size="0.09" pos="0 0 -0.333"/>
+                      </body>
+                    </body>
+                    <body name="left_fr3v2_1_link0_sc">
+                      <geom class="left_collision" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.707107 0 0.707107 0" type="cylinder"/>
+                      <geom class="left_collision" size="0.09" pos="-0.06 0 0.06"/>
+                      <geom class="left_collision" size="0.09" pos="-0.09 0 0.06"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="fr3_duo_mount_right" pos="0 -0.05018 0" quat="0.865807 0.436878 0.0222879 0.242939">
+                <body name="right_base">
+                  <body name="right_fr3v2_1_link0">
+                    <inertial pos="-0.0172 0.0004 0.0745" quat="0.661377 -0.250161 -0.250161 0.661377" mass="2.3966" diaginertia="0.0115 0.0107656 0.00673444"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_0"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_1"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_2"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_3"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_4"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_5"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_6"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_7"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_8"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_9"/>
+                    <geom class="right_visual" type="mesh" mesh="right_link0_visual_10"/>
+                    <geom class="right_collision" type="mesh" mesh="right_link0_collision"/>
+                    <body name="right_fr3v2_1_link0_accelerometer_top" pos="-0.017402 -0.007872 0.04715" quat="-3.67321e-06 1 0 0"/>
+                    <body name="right_fr3v2_1_link0_accelerometer_bottom" pos="-0.019739 0.0015506 0.05075" quat="0.707105 0 0 -0.707108"/>
+                    <body name="right_fr3v2_1_link1" pos="0 0 0.333">
+                      <inertial pos="-0.00458 0.027016 -0.0618" quat="0.989811 0.110789 0.00992127 0.0888923" mass="2.4377" diaginertia="0.0233003 0.0222611 0.00463865"/>
+                      <joint name="right_fr3v2_1_joint1" pos="0 0 0" axis="0 0 1" limited="true" range="-2.90074 2.90074" damping="0.003" frictionloss="0.2"/>
+                      <geom class="right_visual" type="mesh" mesh="right_link1_visual_0"/>
+                      <geom class="right_visual" type="mesh" mesh="right_link1_visual_1"/>
+                      <geom class="right_visual" type="mesh" mesh="right_link1_visual_2"/>
+                      <geom class="right_visual" type="mesh" mesh="right_link1_visual_3"/>
+                      <geom class="right_collision" type="mesh" mesh="right_link1_collision"/>
+                      <body name="right_fr3v2_1_link1_accelerometer_top" pos="0.017402 -0.093352 -0.00787" quat="-2.59734e-06 2.59735e-06 -0.707108 0.707105"/>
+                      <body name="right_fr3v2_1_link1_accelerometer_bottom" pos="0.01974 -0.08975 0.00155" quat="0.499998 -0.5 0.5 0.500002"/>
+                      <body name="right_fr3v2_1_link2" quat="0.707107 -0.707107 0 0">
+                        <inertial pos="-0.01063 -0.184739 -0.010479" quat="0.644329 0.758803 -0.0323054 0.0895283" mass="2.2375" diaginertia="0.0192001 0.0173406 0.0052593"/>
+                        <joint name="right_fr3v2_1_joint2" pos="0 0 0" axis="0 0 1" limited="true" range="-1.83609 1.83609" damping="0.003" frictionloss="0.2"/>
+                        <geom class="right_visual" type="mesh" mesh="right_link2_visual_0"/>
+                        <geom class="right_visual" type="mesh" mesh="right_link2_visual_1"/>
+                        <geom class="right_visual" type="mesh" mesh="right_link2_visual_2"/>
+                        <geom class="right_visual" type="mesh" mesh="right_link2_visual_3"/>
+                        <geom class="right_collision" type="mesh" mesh="right_link2_collision"/>
+                        <body name="right_fr3v2_1_link2_accelerometer_top" pos="0.017403 -0.11515 0.00787" quat="-2.59734e-06 -2.59735e-06 0.707108 0.707105"/>
+                        <body name="right_fr3v2_1_link2_accelerometer_bottom" pos="0.019737 -0.11875 -0.00155" quat="0.499998 0.5 -0.5 0.500002"/>
+                        <body name="right_fr3v2_1_link3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0">
+                          <inertial pos="0.091995 0.023003 0.047348" quat="0.877348 -0.0280595 -0.265819 0.398514" mass="2.19638" diaginertia="0.0146052 0.0104212 0.00447362"/>
+                          <joint name="right_fr3v2_1_joint3" pos="0 0 0" axis="0 0 1" limited="true" range="-2.90074 2.90074" damping="0.003" frictionloss="0.2"/>
+                          <geom class="right_visual" type="mesh" mesh="right_link3_visual_0"/>
+                          <geom class="right_visual" type="mesh" mesh="right_link3_visual_1"/>
+                          <geom class="right_visual" type="mesh" mesh="right_link3_visual_2"/>
+                          <geom class="right_visual" type="mesh" mesh="right_link3_visual_3"/>
+                          <geom class="right_collision" type="mesh" mesh="right_link3_collision"/>
+                          <body name="right_fr3v2_1_link3_accelerometer_top" pos="0.065099 0.077352 -0.00787" quat="0.707105 -0.707108 0 0"/>
+                          <body name="right_fr3v2_1_link3_accelerometer_bottom" pos="0.062769 0.073756 0.00155" quat="0.499998 0.5 0.5 -0.500002"/>
+                          <body name="right_fr3v2_1_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0">
+                            <inertial pos="-0.084334 0.096836 0.006248" quat="0.725019 0.567552 -0.379628 -0.0900828" mass="2.18642" diaginertia="0.0126388 0.00973606 0.00442618"/>
+                            <joint name="right_fr3v2_1_joint4" pos="0 0 0" axis="0 0 1" limited="true" range="-3.07702 -0.116937" damping="0.003" frictionloss="0.2"/>
+                            <geom class="right_visual" type="mesh" mesh="right_link4_visual_0"/>
+                            <geom class="right_visual" type="mesh" mesh="right_link4_visual_1"/>
+                            <geom class="right_visual" type="mesh" mesh="right_link4_visual_2"/>
+                            <geom class="right_visual" type="mesh" mesh="right_link4_visual_3"/>
+                            <geom class="right_collision" type="mesh" mesh="right_link4_collision"/>
+                            <body name="right_fr3v2_1_link4_accelerometer_top" pos="-0.0651 0.046152 -0.00787" quat="-2.59734e-06 2.59735e-06 0.707108 -0.707105"/>
+                            <body name="right_fr3v2_1_link4_accelerometer_bottom" pos="-0.062775 0.049753 0.00155" quat="0.499998 -0.5 0.5 0.500002"/>
+                            <body name="right_fr3v2_1_link5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0">
+                              <inertial pos="3.9e-05 0.011821 -0.054936" quat="0.993747 -0.0901363 0.0101557 0.0651102" mass="2.19078" diaginertia="0.0318998 0.0305191 0.0038801"/>
+                              <joint name="right_fr3v2_1_joint5" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8763 2.8763" damping="0.003" frictionloss="0.2"/>
+                              <geom class="right_visual" type="mesh" mesh="right_link5_visual_0"/>
+                              <geom class="right_visual" type="mesh" mesh="right_link5_visual_1"/>
+                              <geom class="right_visual" type="mesh" mesh="right_link5_visual_2"/>
+                              <geom class="right_visual" type="mesh" mesh="right_link5_visual_3"/>
+                              <geom class="right_visual" type="mesh" mesh="right_link5_visual_4"/>
+                              <geom class="right_collision" type="mesh" mesh="right_link5_collision"/>
+                              <body name="right_fr3v2_1_link5_accelerometer_top" pos="-0.017363 0.085872 -0.00795" quat="0.707105 -0.707108 0 0"/>
+                              <body name="right_fr3v2_1_link5_accelerometer_bottom" pos="-0.019742 0.082275 0.00146" quat="0.499998 0.5 0.5 -0.500002"/>
+                              <body name="right_fr3v2_1_link6" quat="0.707107 0.707107 0 0">
+                                <inertial pos="0.069627 -0.016716 -0.037235" quat="-0.141552 0.574736 0.130817 0.795317" mass="1.58358" diaginertia="0.0047496 0.0041461 0.0024043"/>
+                                <joint name="right_fr3v2_1_joint6" pos="0 0 0" axis="0 0 1" limited="true" range="0.439823 4.62163" damping="0.003" frictionloss="0.2"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_0"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_1"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_2"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_3"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_4"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_5"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_6"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_7"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_8"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_9"/>
+                                <geom class="right_visual" type="mesh" mesh="right_link6_visual_10"/>
+                                <geom class="right_collision" type="mesh" mesh="right_link6_collision"/>
+                                <body name="right_fr3v2_1_link7" pos="0.088 0 0" quat="0.707107 0.707107 0 0">
+                                  <inertial pos="-0.014555 0.00923 0.065858" quat="0.70836 0.00347393 0.0424735 0.704564" mass="0.698686" diaginertia="0.00110022 0.000899844 0.000699938"/>
+                                  <joint name="right_fr3v2_1_joint7" pos="0 0 0" axis="0 0 1" limited="true" range="-3.05083 3.05083" damping="0.003" frictionloss="0.2"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_0"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_1"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_2"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_3"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_4"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_5"/>
+                                  <geom class="right_visual" type="mesh" mesh="right_link7_visual_6"/>
+                                  <geom class="right_collision" type="mesh" mesh="right_link7_collision"/>
+                                  <body name="right_fr3v2_1_link8" pos="0 0 0.107">
+                                    <body name="right_fr3v2_1_hand" quat="0.92388 0 0 -0.382683">
+                                      <inertial pos="-3.76e-05 0.0119128 0.020726" quat="0.702181 0.711999 0 0" mass="0.6544" diaginertia="0.00186 0.00174028 0.000299722"/>
+                                      <geom class="right_visual" type="mesh" mesh="right_hand_visual_0"/>
+                                      <geom class="right_visual" type="mesh" mesh="right_hand_visual_1"/>
+                                      <geom class="right_visual" type="mesh" mesh="right_hand_visual_2"/>
+                                      <geom class="right_visual" type="mesh" mesh="right_hand_visual_3"/>
+                                      <geom class="right_visual" type="mesh" mesh="right_hand_visual_4"/>
+                                      <geom class="right_collision" type="mesh" mesh="right_hand_collision"/>
+                                      <body name="right_fr3v2_1_hand_tcp" pos="0 0 0.1034">
+                                        <site name="right_fr3v2_1_hand_tcp" pos="0 0 0" size="0.002"/>
+                                      </body>
+                                      <body name="right_fr3v2_1_leftfinger" pos="0 0 0.0584">
+                                        <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
+                                        <joint name="right_fr3v2_1_finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0 0.04" damping="0.3"/>
+                                        <geom class="right_visual" type="mesh" mesh="right_finger_visual_0"/>
+                                        <geom class="right_visual" type="mesh" mesh="right_finger_visual_1"/>
+                                        <geom class="right_finger_pad" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
+                                        <geom class="right_finger_pad" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
+                                        <geom class="right_finger_pad" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.965926 0.258819 0 0" type="box"/>
+                                        <geom class="right_finger_pad" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" type="box"/>
+                                      </body>
+                                      <body name="right_fr3v2_1_rightfinger" pos="0 0 0.0584" quat="0 0 0 1">
+                                        <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
+                                        <joint name="right_fr3v2_1_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0 0.04" damping="0.3"/>
+                                        <geom class="right_visual" type="mesh" mesh="right_finger_visual_0"/>
+                                        <geom class="right_visual" type="mesh" mesh="right_finger_visual_1"/>
+                                        <geom class="right_finger_pad" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
+                                        <geom class="right_finger_pad" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
+                                        <geom class="right_finger_pad" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0 0 -0.258819 0.965926" type="box"/>
+                                        <geom class="right_finger_pad" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" type="box"/>
+                                      </body>
+                                      <body name="right_fr3v2_1_hand_sc">
+                                        <geom class="right_collision" size="0.07 0.05" pos="0 0 0.04" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                                        <geom class="right_collision" size="0.07" pos="0 0.05 0.04"/>
+                                        <geom class="right_collision" size="0.07" pos="0 -0.05 0.04"/>
+                                        <geom class="right_collision" size="0.05 0.05" pos="0 0 0.1" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                                        <geom class="right_collision" size="0.05" pos="0 0.05 0.1"/>
+                                        <geom class="right_collision" size="0.05" pos="0 -0.05 0.1"/>
+                                      </body>
+                                    </body>
+                                  </body>
+                                  <body name="right_fr3v2_1_link7_sc" quat="0.92388 0 0 0.382683">
+                                    <geom class="right_collision" size="0.07 0.07" pos="0 0 0.01" type="cylinder"/>
+                                    <geom class="right_collision" size="0.07" pos="0 0 0.08"/>
+                                    <geom class="right_collision" size="0.07" pos="0 0 -0.06"/>
+                                    <geom class="right_collision" size="0.06 0.005" pos="0.06 0 0.082" quat="0.707107 0 0.707107 0" type="cylinder"/>
+                                    <geom class="right_collision" size="0.06" pos="0.065 0 0.082"/>
+                                    <geom class="right_collision" size="0.06" pos="0.055 0 0.082"/>
+                                  </body>
+                                </body>
+                                <body name="right_fr3v2_1_link6_sc">
+                                  <geom class="right_collision" size="0.08 0.04" pos="0 0 -0.03" type="cylinder"/>
+                                  <geom class="right_collision" size="0.08" pos="0 0 0.01"/>
+                                  <geom class="right_collision" size="0.08" pos="0 0 -0.07"/>
+                                </body>
+                              </body>
+                              <body name="right_fr3v2_1_link5_sc">
+                                <geom class="right_collision" size="0.09 0.05" pos="0 0 -0.26" type="cylinder"/>
+                                <geom class="right_collision" size="0.09" pos="0 0 -0.21"/>
+                                <geom class="right_collision" size="0.09" pos="0 0 -0.31"/>
+                                <geom class="right_collision" size="0.055 0.07" pos="0 0.08 -0.13" quat="0.9992 0 0 0.0399893" type="cylinder"/>
+                                <geom class="right_collision" size="0.055" pos="0 0.08 -0.06"/>
+                                <geom class="right_collision" size="0.055" pos="0 0.08 -0.2"/>
+                              </body>
+                            </body>
+                            <body name="right_fr3v2_1_link4_sc">
+                              <geom class="right_collision" size="0.09 0.06" type="cylinder"/>
+                              <geom class="right_collision" size="0.09" pos="0 0 0.06"/>
+                              <geom class="right_collision" size="0.09" pos="0 0 -0.06"/>
+                            </body>
+                          </body>
+                          <body name="right_fr3v2_1_link3_sc">
+                            <geom class="right_collision" size="0.09 0.075" pos="0 0 -0.145" type="cylinder"/>
+                            <geom class="right_collision" size="0.09" pos="0 0 -0.07"/>
+                            <geom class="right_collision" size="0.09" pos="0 0 -0.22"/>
+                          </body>
+                        </body>
+                        <body name="right_fr3v2_1_link2_sc">
+                          <geom class="right_collision" size="0.09 0.06" type="cylinder"/>
+                          <geom class="right_collision" size="0.09" pos="0 0 0.06"/>
+                          <geom class="right_collision" size="0.09" pos="0 0 -0.06"/>
+                        </body>
+                      </body>
+                      <body name="right_fr3v2_1_link1_sc">
+                        <geom class="right_collision" size="0.09 0.1415" pos="0 0 -0.1915" type="cylinder"/>
+                        <geom class="right_collision" size="0.09" pos="0 0 -0.05"/>
+                        <geom class="right_collision" size="0.09" pos="0 0 -0.333"/>
+                      </body>
+                    </body>
+                    <body name="right_fr3v2_1_link0_sc">
+                      <geom class="right_collision" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.707107 0 0.707107 0" type="cylinder"/>
+                      <geom class="right_collision" size="0.09" pos="-0.06 0 0.06"/>
+                      <geom class="right_collision" size="0.09" pos="-0.09 0 0.06"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="head_link" pos="0 0 0.167">
+              <inertial pos="0 0 0" quat="0.528325 -0.0289488 -0.0065557 0.848523" mass="0.350865" diaginertia="0.00308057 0.00301706 0.000150319"/>
+              <geom class="visual" type="mesh" mesh="franka_head_visual_0"/>
+              <geom class="collision" type="mesh" mesh="franka_head_collision"/>
+              <body name="head_camera_mounting_point" pos="0.0424638 -0.014113 0.223526" quat="0.93667 0 0.350214 0">
+                <inertial pos="0 0 0" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+                <site name="head_camera_mounting_point" pos="0 0 0" size="0.002"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <contact>
+    <exclude body1="base_link" body2="base_inertia"/>
+    <exclude body1="base_link" body2="caster_front_left_fixed_link"/>
+    <exclude body1="base_link" body2="caster_front_left_link"/>
+    <exclude body1="base_link" body2="argo_drive_front_fixed_link"/>
+    <exclude body1="base_link" body2="argo_drive_front_link"/>
+    <exclude body1="base_link" body2="rocker_arm_link"/>
+    <exclude body1="base_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="base_link" body2="caster_rear_right_link"/>
+    <exclude body1="base_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="base_link" body2="argo_drive_rear_link"/>
+    <exclude body1="base_link" body2="imu_mounting_point"/>
+    <exclude body1="base_link" body2="front_mounting_point"/>
+    <exclude body1="base_link" body2="rear_mounting_point"/>
+    <exclude body1="base_link" body2="right_mounting_point"/>
+    <exclude body1="base_link" body2="left_mounting_point"/>
+    <exclude body1="base_link" body2="lidar_front_mounting_point"/>
+    <exclude body1="base_link" body2="lidar_rear_mounting_point"/>
+    <exclude body1="base_link" body2="franka_spine"/>
+    <exclude body1="base_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="base_link" body2="head_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_front_left_steering_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_front_left_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="argo_drive_front_fixed_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="argo_drive_front_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="argo_drive_rear_link"/>
+    <exclude body1="caster_front_left_fixed_link" body2="franka_spine"/>
+    <exclude body1="caster_front_left_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_front_left_fixed_link" body2="head_link"/>
+    <exclude body1="caster_front_left_steering_link" body2="caster_front_left_link"/>
+    <exclude body1="caster_front_left_link" body2="argo_drive_front_fixed_link"/>
+    <exclude body1="caster_front_left_link" body2="argo_drive_front_link"/>
+    <exclude body1="caster_front_left_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="caster_front_left_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_front_left_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="caster_front_left_link" body2="argo_drive_rear_link"/>
+    <exclude body1="caster_front_left_link" body2="franka_spine"/>
+    <exclude body1="caster_front_left_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_front_left_link" body2="head_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_front_steering_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_front_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="fr3_duo_mount_mounting_point"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_front_fixed_link" body2="head_link"/>
+    <exclude body1="argo_drive_front_steering_link" body2="argo_drive_front_link"/>
+    <exclude body1="argo_drive_front_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="argo_drive_front_link" body2="caster_rear_right_link"/>
+    <exclude body1="argo_drive_front_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="argo_drive_front_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_front_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_front_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_front_link" body2="head_link"/>
+    <exclude body1="rocker_arm_link" body2="caster_rear_right_fixed_link"/>
+    <exclude body1="rocker_arm_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="caster_rear_right_steering_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="argo_drive_rear_link"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="franka_spine"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_rear_right_fixed_link" body2="head_link"/>
+    <exclude body1="caster_rear_right_steering_link" body2="caster_rear_right_link"/>
+    <exclude body1="caster_rear_right_link" body2="argo_drive_rear_fixed_link"/>
+    <exclude body1="caster_rear_right_link" body2="argo_drive_rear_link"/>
+    <exclude body1="caster_rear_right_link" body2="franka_spine"/>
+    <exclude body1="caster_rear_right_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="caster_rear_right_link" body2="head_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="argo_drive_rear_steering_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_rear_fixed_link" body2="head_link"/>
+    <exclude body1="argo_drive_rear_steering_link" body2="argo_drive_rear_link"/>
+    <exclude body1="argo_drive_rear_link" body2="franka_spine"/>
+    <exclude body1="argo_drive_rear_link" body2="fr3_duo_mount_origin"/>
+    <exclude body1="argo_drive_rear_link" body2="head_link"/>
+    <exclude body1="franka_spine" body2="franka_spine_mounting_point"/>
+    <exclude body1="franka_spine" body2="fr3_duo_mount_mounting_point"/>
+    <exclude body1="franka_spine" body2="fr3_duo_mount_origin"/>
+    <exclude body1="franka_spine" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="franka_spine" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="franka_spine" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="franka_spine" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="franka_spine" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="franka_spine" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="franka_spine" body2="head_link"/>
+    <exclude body1="franka_spine_mounting_point" body2="fr3_duo_mount_mounting_point"/>
+    <exclude body1="fr3_duo_mount_mounting_point" body2="fr3_duo_mount_origin"/>
+    <exclude body1="fr3_duo_mount_mounting_point" body2="head_link"/>
+    <exclude body1="fr3_duo_mount_origin" body2="fr3_duo_mount_left"/>
+    <exclude body1="fr3_duo_mount_origin" body2="fr3_duo_mount_right"/>
+    <exclude body1="fr3_duo_mount_origin" body2="head_link"/>
+    <exclude body1="fr3_duo_mount_left" body2="left_base"/>
+    <exclude body1="left_base" body2="left_fr3v2_1_link0"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link0_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link0_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link1"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link2"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link0" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link1_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link1_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link2"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link1" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link2_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link2_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link2" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link3" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link4" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5_accelerometer_top"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5_accelerometer_bottom"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link5" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link6"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link6" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link7"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link7" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link8"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link8" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_hand"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_hand_tcp"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_hand" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_leftfinger"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_leftfinger" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_rightfinger"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_rightfinger" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_hand_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_hand_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link7_sc"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link7_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link6_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link6_sc" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link5_sc"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link5_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link4_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link4_sc" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link3_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link3_sc" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link2_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="left_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link1_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="left_fr3v2_1_link0_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="fr3_duo_mount_right" body2="right_base"/>
+    <exclude body1="right_base" body2="right_fr3v2_1_link0"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link0_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link0_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link1"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link2"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link0" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link1_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link1_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link2"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link1" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link2_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link2_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link2" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link3" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link4" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5_accelerometer_top"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5_accelerometer_bottom"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link5" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link6"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link6" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link7"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link7" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link8"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link8" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_hand"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_hand_tcp"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_hand" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_leftfinger"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_leftfinger" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_rightfinger"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_rightfinger" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_hand_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_hand_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link7_sc"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link7_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link6_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link6_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link5_sc"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link5_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link4_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link4_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link3_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link2_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link3_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link1_sc"/>
+    <exclude body1="right_fr3v2_1_link2_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="right_fr3v2_1_link1_sc" body2="right_fr3v2_1_link0_sc"/>
+    <exclude body1="head_link" body2="head_camera_mounting_point"/>
+  </contact>
+  <equality>
+    <joint name="left_hand_finger_coupling" joint1="left_fr3v2_1_finger_joint1" joint2="left_fr3v2_1_finger_joint2" polycoef="0 1 -1 0 0"/>
+    <joint name="right_hand_finger_coupling" joint1="right_fr3v2_1_finger_joint1" joint2="right_fr3v2_1_finger_joint2" polycoef="0 1 -1 0 0"/>
+  </equality>
+  <actuator>
+    <general name="planar_x_joint_actuator" joint="planar_x_joint" ctrllimited="true" ctrlrange="-50 50" biastype="affine" gainprm="1000" biasprm="0 -1000"/>
+    <general name="planar_y_joint_actuator" joint="planar_y_joint" ctrllimited="true" ctrlrange="-50 50" biastype="affine" gainprm="1000" biasprm="0 -1000"/>
+    <general name="planar_yaw_joint_actuator" joint="planar_yaw_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" biastype="affine" gainprm="1000" biasprm="0 -1000"/>
+    <general name="front_steering_motor" joint="tmrv0_2_joint_0" ctrllimited="true" ctrlrange="-20 20"/>
+    <general name="front_wheel_motor" joint="tmrv0_2_joint_1" ctrllimited="true" ctrlrange="-80 80"/>
+    <general name="rear_steering_motor" joint="tmrv0_2_joint_2" ctrllimited="true" ctrlrange="-20 20"/>
+    <general name="rear_wheel_motor" joint="tmrv0_2_joint_3" ctrllimited="true" ctrlrange="-80 80"/>
+    <general name="franka_spine_motor" joint="franka_spine_vertical_joint" ctrllimited="true" ctrlrange="-600 600"/>
+    <general name="left_fr3v2_1_joint1_motor" joint="left_fr3v2_1_joint1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721"/>
+    <general name="left_fr3v2_1_joint2_motor" joint="left_fr3v2_1_joint2" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721"/>
+    <general name="left_fr3v2_1_joint3_motor" joint="left_fr3v2_1_joint3" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474"/>
+    <general name="left_fr3v2_1_joint4_motor" joint="left_fr3v2_1_joint4" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474"/>
+    <general name="left_fr3v2_1_joint5_motor" joint="left_fr3v2_1_joint5" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544"/>
+    <general name="left_fr3v2_1_joint6_motor" joint="left_fr3v2_1_joint6" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544"/>
+    <general name="left_fr3v2_1_joint7_motor" joint="left_fr3v2_1_joint7" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544"/>
+    <general name="right_fr3v2_1_joint1_motor" joint="right_fr3v2_1_joint1" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721"/>
+    <general name="right_fr3v2_1_joint2_motor" joint="right_fr3v2_1_joint2" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.605721"/>
+    <general name="right_fr3v2_1_joint3_motor" joint="right_fr3v2_1_joint3" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474"/>
+    <general name="right_fr3v2_1_joint4_motor" joint="right_fr3v2_1_joint4" ctrllimited="true" ctrlrange="-87 87" forcerange="-87 87" armature="0.462474"/>
+    <general name="right_fr3v2_1_joint5_motor" joint="right_fr3v2_1_joint5" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544"/>
+    <general name="right_fr3v2_1_joint6_motor" joint="right_fr3v2_1_joint6" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544"/>
+    <general name="right_fr3v2_1_joint7_motor" joint="right_fr3v2_1_joint7" ctrllimited="true" ctrlrange="-12 12" forcerange="-12 12" armature="0.205544"/>
+    <general name="left_fr3v2_1_finger_motor" joint="left_fr3v2_1_finger_joint1" ctrllimited="true" ctrlrange="-20 20" forcerange="-100 100"/>
+    <general name="right_fr3v2_1_finger_motor" joint="right_fr3v2_1_finger_joint1" ctrllimited="true" ctrlrange="-20 20" forcerange="-100 100"/>
+  </actuator>
+  <sensor>
+    <jointpos joint="planar_x_joint" name="planar_x_joint_pos"/>
+    <jointvel joint="planar_x_joint" name="planar_x_joint_vel"/>
+    <jointpos joint="planar_y_joint" name="planar_y_joint_pos"/>
+    <jointvel joint="planar_y_joint" name="planar_y_joint_vel"/>
+    <jointpos joint="planar_yaw_joint" name="planar_yaw_joint_pos"/>
+    <jointvel joint="planar_yaw_joint" name="planar_yaw_joint_vel"/>
+    <jointpos joint="caster_front_left_steering_joint" name="caster_front_left_steering_joint_pos"/>
+    <jointvel joint="caster_front_left_steering_joint" name="caster_front_left_steering_joint_vel"/>
+    <jointpos joint="caster_front_left_joint" name="caster_front_left_joint_pos"/>
+    <jointvel joint="caster_front_left_joint" name="caster_front_left_joint_vel"/>
+    <jointpos joint="tmrv0_2_joint_0" name="tmrv0_2_joint_0_pos"/>
+    <jointvel joint="tmrv0_2_joint_0" name="tmrv0_2_joint_0_vel"/>
+    <jointpos joint="tmrv0_2_joint_1" name="tmrv0_2_joint_1_pos"/>
+    <jointvel joint="tmrv0_2_joint_1" name="tmrv0_2_joint_1_vel"/>
+    <jointpos joint="rocker_arm_joint" name="rocker_arm_joint_pos"/>
+    <jointvel joint="rocker_arm_joint" name="rocker_arm_joint_vel"/>
+    <jointpos joint="caster_rear_right_steering_joint" name="caster_rear_right_steering_joint_pos"/>
+    <jointvel joint="caster_rear_right_steering_joint" name="caster_rear_right_steering_joint_vel"/>
+    <jointpos joint="caster_rear_right_joint" name="caster_rear_right_joint_pos"/>
+    <jointvel joint="caster_rear_right_joint" name="caster_rear_right_joint_vel"/>
+    <jointpos joint="tmrv0_2_joint_2" name="tmrv0_2_joint_2_pos"/>
+    <jointvel joint="tmrv0_2_joint_2" name="tmrv0_2_joint_2_vel"/>
+    <jointpos joint="tmrv0_2_joint_3" name="tmrv0_2_joint_3_pos"/>
+    <jointvel joint="tmrv0_2_joint_3" name="tmrv0_2_joint_3_vel"/>
+    <jointpos joint="franka_spine_vertical_joint" name="franka_spine_vertical_joint_pos"/>
+    <jointvel joint="franka_spine_vertical_joint" name="franka_spine_vertical_joint_vel"/>
+    <jointpos joint="left_fr3v2_1_joint1" name="left_fr3v2_1_joint1_pos"/>
+    <jointvel joint="left_fr3v2_1_joint1" name="left_fr3v2_1_joint1_vel"/>
+    <jointpos joint="left_fr3v2_1_joint2" name="left_fr3v2_1_joint2_pos"/>
+    <jointvel joint="left_fr3v2_1_joint2" name="left_fr3v2_1_joint2_vel"/>
+    <jointpos joint="left_fr3v2_1_joint3" name="left_fr3v2_1_joint3_pos"/>
+    <jointvel joint="left_fr3v2_1_joint3" name="left_fr3v2_1_joint3_vel"/>
+    <jointpos joint="left_fr3v2_1_joint4" name="left_fr3v2_1_joint4_pos"/>
+    <jointvel joint="left_fr3v2_1_joint4" name="left_fr3v2_1_joint4_vel"/>
+    <jointpos joint="left_fr3v2_1_joint5" name="left_fr3v2_1_joint5_pos"/>
+    <jointvel joint="left_fr3v2_1_joint5" name="left_fr3v2_1_joint5_vel"/>
+    <jointpos joint="left_fr3v2_1_joint6" name="left_fr3v2_1_joint6_pos"/>
+    <jointvel joint="left_fr3v2_1_joint6" name="left_fr3v2_1_joint6_vel"/>
+    <jointpos joint="left_fr3v2_1_joint7" name="left_fr3v2_1_joint7_pos"/>
+    <jointvel joint="left_fr3v2_1_joint7" name="left_fr3v2_1_joint7_vel"/>
+    <jointpos joint="left_fr3v2_1_finger_joint1" name="left_fr3v2_1_finger_joint1_pos"/>
+    <jointvel joint="left_fr3v2_1_finger_joint1" name="left_fr3v2_1_finger_joint1_vel"/>
+    <jointpos joint="left_fr3v2_1_finger_joint2" name="left_fr3v2_1_finger_joint2_pos"/>
+    <jointvel joint="left_fr3v2_1_finger_joint2" name="left_fr3v2_1_finger_joint2_vel"/>
+    <jointpos joint="right_fr3v2_1_joint1" name="right_fr3v2_1_joint1_pos"/>
+    <jointvel joint="right_fr3v2_1_joint1" name="right_fr3v2_1_joint1_vel"/>
+    <jointpos joint="right_fr3v2_1_joint2" name="right_fr3v2_1_joint2_pos"/>
+    <jointvel joint="right_fr3v2_1_joint2" name="right_fr3v2_1_joint2_vel"/>
+    <jointpos joint="right_fr3v2_1_joint3" name="right_fr3v2_1_joint3_pos"/>
+    <jointvel joint="right_fr3v2_1_joint3" name="right_fr3v2_1_joint3_vel"/>
+    <jointpos joint="right_fr3v2_1_joint4" name="right_fr3v2_1_joint4_pos"/>
+    <jointvel joint="right_fr3v2_1_joint4" name="right_fr3v2_1_joint4_vel"/>
+    <jointpos joint="right_fr3v2_1_joint5" name="right_fr3v2_1_joint5_pos"/>
+    <jointvel joint="right_fr3v2_1_joint5" name="right_fr3v2_1_joint5_vel"/>
+    <jointpos joint="right_fr3v2_1_joint6" name="right_fr3v2_1_joint6_pos"/>
+    <jointvel joint="right_fr3v2_1_joint6" name="right_fr3v2_1_joint6_vel"/>
+    <jointpos joint="right_fr3v2_1_joint7" name="right_fr3v2_1_joint7_pos"/>
+    <jointvel joint="right_fr3v2_1_joint7" name="right_fr3v2_1_joint7_vel"/>
+    <jointpos joint="right_fr3v2_1_finger_joint1" name="right_fr3v2_1_finger_joint1_pos"/>
+    <jointvel joint="right_fr3v2_1_finger_joint1" name="right_fr3v2_1_finger_joint1_vel"/>
+    <jointpos joint="right_fr3v2_1_finger_joint2" name="right_fr3v2_1_finger_joint2_pos"/>
+    <jointvel joint="right_fr3v2_1_finger_joint2" name="right_fr3v2_1_finger_joint2_vel"/>
+    <jointactuatorfrc joint="tmrv0_2_joint_0" name="tmrv0_2_joint_0_actuator_force"/>
+    <jointactuatorfrc joint="tmrv0_2_joint_1" name="tmrv0_2_joint_1_actuator_force"/>
+    <jointactuatorfrc joint="tmrv0_2_joint_2" name="tmrv0_2_joint_2_actuator_force"/>
+    <jointactuatorfrc joint="tmrv0_2_joint_3" name="tmrv0_2_joint_3_actuator_force"/>
+    <jointactuatorfrc joint="franka_spine_vertical_joint" name="franka_spine_vertical_joint_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint1" name="left_fr3v2_1_joint1_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint2" name="left_fr3v2_1_joint2_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint3" name="left_fr3v2_1_joint3_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint4" name="left_fr3v2_1_joint4_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint5" name="left_fr3v2_1_joint5_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint6" name="left_fr3v2_1_joint6_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_joint7" name="left_fr3v2_1_joint7_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint1" name="right_fr3v2_1_joint1_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint2" name="right_fr3v2_1_joint2_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint3" name="right_fr3v2_1_joint3_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint4" name="right_fr3v2_1_joint4_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint5" name="right_fr3v2_1_joint5_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint6" name="right_fr3v2_1_joint6_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_joint7" name="right_fr3v2_1_joint7_actuator_force"/>
+    <jointactuatorfrc joint="left_fr3v2_1_finger_joint1" name="left_fr3v2_1_finger_joint1_actuator_force"/>
+    <jointactuatorfrc joint="right_fr3v2_1_finger_joint1" name="right_fr3v2_1_finger_joint1_actuator_force"/>
+    <framepos objtype="body" objname="base_link" name="base_pos"/>
+    <framequat objtype="body" objname="base_link" name="base_quat"/>
+    <velocimeter site="base_sensor_frame" name="base_linear_velocity"/>
+    <gyro site="base_sensor_frame" name="base_angular_velocity"/>
+  </sensor>
+  <keyframe>
+    <key name="home" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0.2 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 0.035 0.035 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035" ctrl="0 0 0 0 0.2 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035 0 0 0"/>
+    <key name="transport" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0.05 -0.086 -0.9075 -0.4216 -0.9392 0.1619 0.4792 0.0319 0.035 0.035 -0.1195 -1.144 -0.1388 -1.0382 0.1564 0.4504 -0.5358 0.035 0.035" ctrl="0 0 0 0 0.05 -0.086 -0.9075 -0.4216 -0.9392 0.1619 0.4792 0.0319 -0.1195 -1.144 -0.1388 -1.0382 0.1564 0.4504 -0.5358 0.035 0.035 0 0 0"/>
+    <key name="manipulation" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0.2 -0.5267 -0.8854 -0.7447 -1.1619 0.2071 0.8801 -0.6102 0.03 0.03 -0.6486 -1.1519 -0.7186 -1.4954 0.6431 0.9318 -0.5561 0.03 0.03" ctrl="0 0 0 0 0.2 -0.5267 -0.8854 -0.7447 -1.1619 0.2071 0.8801 -0.6102 -0.6486 -1.1519 -0.7186 -1.4954 0.6431 0.9318 -0.5561 0.03 0.03 0 0 0"/>
+    <key name="wide_workspace" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0.2 -0.2 -1.3066 -0.0563 -1.484 -0.0387 0.6381 0.0291 0.035 0.035 -0.2 -0.8106 -0.0984 -0.8767 0.0899 0.44 0.0276 0.035 0.035" ctrl="0 0 0 0 0.2 -0.2 -1.3066 -0.0563 -1.484 -0.0387 0.6381 0.0291 -0.2 -0.8106 -0.0984 -0.8767 0.0899 0.44 0.0276 0.035 0.035 0 0 0"/>
+    <key name="spine_min" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 0.035 0.035 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035" ctrl="0 0 0 0 0 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035 0 0 0"/>
+    <key name="spine_max" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0.85 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 0.035 0.035 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035" ctrl="0 0 0 0 0.85 0.0261 -1.2125 -0.607 -0.9266 0.001 0.8389 0.0281 -0.2357 -1.1902 -0.2823 -1.2111 0.3914 0.4848 -0.2972 0.035 0.035 0 0 0"/>
+  </keyframe>
+</mujoco>
