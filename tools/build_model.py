@@ -62,7 +62,13 @@ class ModelBuilder:
         self.urdf = merge_sc_links(UrdfModel(urdf_path), UrdfModel(SC_URDF))
         self.actuator_mode = "position" if opts.position else "motor"
         self.config: BuilderConfig = load_builder_config(REPO_ROOT / "config")
-        self.context = BuildContext(opts, self.urdf, self.actuator_mode, COLLISION_EXCLUSIONS)
+        self.context = BuildContext(
+            opts,
+            self.urdf,
+            self.actuator_mode,
+            COLLISION_EXCLUSIONS,
+            geometry.load_visual_conversion(),
+        )
 
     # ------------------------------------------------------------------
     def build(self) -> ET.Element:
@@ -172,8 +178,7 @@ class ModelBuilder:
             body.append(dynamics.inertial(inertial))
 
         for geom in link.findall("visual"):
-            g = geometry.visual(geom)
-            if g is not None:
+            for g in geometry.visual(geom, self.context.visual_conversion):
                 body.append(g)
         for geom in link.findall("collision"):
             g = geometry.collision(geom, name)

@@ -1,8 +1,6 @@
 # https://github.com/mikedh/trimesh
-mtllib material.mtl
 
 o _51008_Duo_Cover_Bracket_fp_001-mesh
-usemtl material_0
 v -0.11047030 0.06349283 0.01143560
 v -0.11247030 -0.06250717 0.00943560
 v -0.11247030 0.06349283 0.00943560

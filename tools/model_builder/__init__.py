@@ -15,6 +15,7 @@ class BuildContext:
     urdf: Any
     actuator_mode: str
     collision_exclusions: Path
+    visual_conversion: dict[str, list[str]]
 
 
 def el(tag: str, **attrs: object):

@@ -1,345 +1,1518 @@
 {
   "package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/visual/fr3_duo_cover.dae": {
-    "bounds": [
-      [
-        [
-          -0.11347030415663983,
-          -0.12558760667309876,
-          -0.04210175141989181
-        ],
-        [
-          0.12034780692470992,
-          0.12654350881811105,
-          0.10705610402288013
-        ]
-      ]
-    ],
     "input_sha256": "9edcb6c7f801c012e98767b85230804f942fbf4f12e5043652663d22489a9302",
+    "mesh_count": 1,
     "n_faces": 32466,
     "n_vertices": 65617,
-    "output_sha256": "5b1a459f5236f3902020dba310952c4c2e2d9c57c6cd5a381b98b5b7cdc57bef",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.11347030415663983,
+            -0.12558760667309876,
+            -0.04210175141989181
+          ],
+          [
+            0.12034780692470992,
+            0.12654350881811105,
+            0.10705610402288013
+          ]
+        ],
+        "n_faces": 32466,
+        "n_vertices": 65617,
+        "path": "assets/fr3_duo_mount_v0_3/visual/fr3_duo_cover.obj",
+        "sha256": "66ff9468773767c917b949137141bf58b14b65f6f63ded78caee9463474a405d",
+        "source_geometry": "_51008_Duo_Cover_Bracket_fp_001-mesh",
+        "source_node": "_51008_Duo_Cover_Bracket_fp_001-mesh"
+      }
+    ],
+    "source_mesh_count": 1,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/visual/fr3_duo_mount.dae": {
-    "bounds": [
-      [
-        [
-          -0.11397150199538686,
-          -0.14289630805674136,
-          -0.030814200911227774
-        ],
-        [
-          0.07845397558915668,
-          0.14388071362107624,
-          0.11870190230551803
-        ]
-      ]
-    ],
     "input_sha256": "1c8c15c350ae2e722aa6174847a829fd8a9b04344271eaac4434032035efc01d",
+    "mesh_count": 1,
     "n_faces": 222326,
     "n_vertices": 404797,
-    "output_sha256": "e89b39825241e645b75e15d336f00585874f13220cef1ec3260c4037d97edd62",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.11397150199538686,
+            -0.14289630805674136,
+            -0.030814200911227774
+          ],
+          [
+            0.07845397558915668,
+            0.14388071362107624,
+            0.11870190230551803
+          ]
+        ],
+        "n_faces": 222326,
+        "n_vertices": 404797,
+        "path": "assets/fr3_duo_mount_v0_3/visual/fr3_duo_mount.obj",
+        "sha256": "c335ac1077f230df026e62540df324e3bf537a7d82e4504430eaad4e1a402c59",
+        "source_geometry": "FR3_Duo_Mount_v0_3_FR3DuoBase_001-mesh",
+        "source_node": "FR3_Duo_Mount_v0_3_FR3DuoBase_001-mesh"
+      }
+    ],
+    "source_mesh_count": 1,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/accessories/franka_head_v0_2/visual/franka_head.dae": {
-    "bounds": [
-      [
-        [
-          -0.025965581219871137,
-          -0.06331013408006791,
-          -0.006397717302929207
-        ],
-        [
-          0.0521962915416907,
-          0.032154100037979916,
-          0.24895571556011298
-        ]
-      ]
-    ],
     "input_sha256": "8dec352a3f2bfb66ffb186644c2713af712655177baa740ec8312ba1d54eb50d",
+    "mesh_count": 1,
     "n_faces": 140290,
     "n_vertices": 310700,
-    "output_sha256": "6001c45de6bda65594be20ae509cf17015ce65f760fbd78780b73584b0910b47",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.025965581219871137,
+            -0.06331013408006791,
+            -0.006397717302929207
+          ],
+          [
+            0.0521962915416907,
+            0.032154100037979916,
+            0.24895571556011298
+          ]
+        ],
+        "n_faces": 140290,
+        "n_vertices": 310700,
+        "path": "assets/franka_head_v0_2/visual/franka_head.obj",
+        "sha256": "445130108d6b988ac3657fa5a957abf7dc267ce0efbaf98f4309c642cd31aacd",
+        "source_geometry": "_51022_Camera_Head_fp_002-mesh",
+        "source_node": "_51022_Camera_Head_fp_002-mesh"
+      }
+    ],
+    "source_mesh_count": 1,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/accessories/franka_spine_v0_1/visual/franka_spine.dae": {
-    "bounds": [
-      [
-        [
-          -0.12319999694824219,
-          -0.1505,
-          0.0
-        ],
-        [
-          0.14929998779296874,
-          0.1505,
-          1.11
-        ]
-      ]
-    ],
     "input_sha256": "54ef715b45c5df1fdca7515edbd0fa50ccad029b063144f100b70dbe7c8b9c9e",
+    "mesh_count": 6,
     "n_faces": 2651,
     "n_vertices": 2375,
-    "output_sha256": "2172bed391c56fc47dc83c10c07c198e518e3b12bd9cddf5f939eed21a6fcf95",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            0.12129998779296876,
+            -0.0455,
+            0.0725
+          ],
+          [
+            0.13979998779296876,
+            0.0455,
+            1.081
+          ]
+        ],
+        "n_faces": 82,
+        "n_vertices": 74,
+        "path": "assets/franka_spine_v0_1/visual/franka_spine_0.obj",
+        "sha256": "77dd2ebce87e9db35a52a340222bd777d4084811d252b6211997ce6ab5a36f93",
+        "source_geometry": "mesh-a0a8fa41-fbd7-46ce-b300-9bf655957ffe",
+        "source_node": "mesh-a0a8fa41-fbd7-46ce-b300-9bf655957ffe"
+      },
+      {
+        "bounds": [
+          [
+            -0.004949999809265137,
+            -0.14925,
+            1.1095
+          ],
+          [
+            0.14804998779296874,
+            0.14925,
+            1.11
+          ]
+        ],
+        "n_faces": 162,
+        "n_vertices": 152,
+        "path": "assets/franka_spine_v0_1/visual/franka_spine_1.obj",
+        "sha256": "3d0ba98fa32189cbda0ff644c903fa3b7226dff3e65e69ee89803427895ac9ca",
+        "source_geometry": "mesh-a14ba348-8635-437b-b890-9a29c6ec2daf",
+        "source_node": "mesh-a14ba348-8635-437b-b890-9a29c6ec2daf"
+      },
+      {
+        "bounds": [
+          [
+            -0.12319999694824219,
+            -0.1505,
+            0.0
+          ],
+          [
+            0.07154998779296876,
+            0.1505,
+            0.3035
+          ]
+        ],
+        "n_faces": 421,
+        "n_vertices": 384,
+        "path": "assets/franka_spine_v0_1/visual/franka_spine_2.obj",
+        "sha256": "d269bb837f459dd771051357c5c6abe9199957fb15fd963a1c4107ea56f65ac8",
+        "source_geometry": "mesh-a2f30e0b-d52f-4c3c-ad24-02f852976c82",
+        "source_node": "mesh-a2f30e0b-d52f-4c3c-ad24-02f852976c82"
+      },
+      {
+        "bounds": [
+          [
+            -0.12199998474121095,
+            -0.14930001831054687,
+            0.303
+          ],
+          [
+            0.08679999542236329,
+            0.14929998779296874,
+            0.3035
+          ]
+        ],
+        "n_faces": 530,
+        "n_vertices": 475,
+        "path": "assets/franka_spine_v0_1/visual/franka_spine_3.obj",
+        "sha256": "24fbfcbff35170f8b3302c06b891769ef2f5c894b320833ec5bf73ac4f1a6fe8",
+        "source_geometry": "mesh-e8c8217c-1d19-49e3-8a64-669e427fdb33",
+        "source_node": "mesh-e8c8217c-1d19-49e3-8a64-669e427fdb33"
+      },
+      {
+        "bounds": [
+          [
+            -0.006199999809265137,
+            0.00025,
+            0.0
+          ],
+          [
+            0.14929998779296874,
+            0.1505,
+            1.11
+          ]
+        ],
+        "n_faces": 728,
+        "n_vertices": 645,
+        "path": "assets/franka_spine_v0_1/visual/franka_spine_4.obj",
+        "sha256": "3b961b4109e2b1e115373b515c47308f04d65b6f918aa7c7b8b082a76b42e6b5",
+        "source_geometry": "mesh-c922fbd1-ad62-438d-87b6-cbe1a8f560b3",
+        "source_node": "mesh-c922fbd1-ad62-438d-87b6-cbe1a8f560b3"
+      },
+      {
+        "bounds": [
+          [
+            -0.006199999809265137,
+            -0.1505,
+            0.0
+          ],
+          [
+            0.14929998779296874,
+            -0.00025,
+            1.11
+          ]
+        ],
+        "n_faces": 728,
+        "n_vertices": 645,
+        "path": "assets/franka_spine_v0_1/visual/franka_spine_5.obj",
+        "sha256": "f777b97c2436f3a8df76cd43a51960bd915e473911408f862ac10959f4febc7f",
+        "source_geometry": "mesh-e62c8e83-2208-4234-ad70-330de91d4183",
+        "source_node": "mesh-e62c8e83-2208-4234-ad70-330de91d4183"
+      }
+    ],
+    "source_mesh_count": 6,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 0.001
   },
   "package://franka_description/meshes/robot_ee/franka_hand_white/visual/finger.dae": {
-    "bounds": [
-      [
-        [
-          -0.010500900447368622,
-          -8.376430196221918e-05,
-          0.00013333199603948742
-        ],
-        [
-          0.01050155982375145,
-          0.02634548954665661,
-          0.05389988049864769
-        ]
-      ]
-    ],
     "input_sha256": "12c7bc9b55ffd0d1d0e3442d3e213ecc4fbebbced15259a20195af464f871fcd",
+    "mesh_count": 2,
     "n_faces": 624,
     "n_vertices": 1744,
-    "output_sha256": "00d6cc933f10861b1da8db4c53f6831de027693193cb319ac2caee743cefb60e",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.008930683135986328,
+            -8.376430196221918e-05,
+            0.03609037026762962
+          ],
+          [
+            0.008931337855756283,
+            0.010906689800322056,
+            0.05389988049864769
+          ]
+        ],
+        "n_faces": 262,
+        "n_vertices": 722,
+        "path": "assets/franka_hand/visual/finger_0.obj",
+        "sha256": "edbb155a06c7cfdd8fb9bc9687cc2aebee69d015ad7aa4b6fb952d50c00773f2",
+        "source_geometry": "Part__Feature_007-mesh",
+        "source_node": "Part__Feature_007-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.010500900447368622,
+            0.002482414012774825,
+            0.00013333199603948742
+          ],
+          [
+            0.01050155982375145,
+            0.02634548954665661,
+            0.05385756120085716
+          ]
+        ],
+        "n_faces": 362,
+        "n_vertices": 1022,
+        "path": "assets/franka_hand/visual/finger_1.obj",
+        "sha256": "a1cd6a8fb1c6383ccaef53e5ee9157f85d6c38a13f83816edc036b0050b57bdf",
+        "source_geometry": "Part__Feature001_006-mesh",
+        "source_node": "Part__Feature001_006-mesh"
+      }
+    ],
+    "source_mesh_count": 2,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robot_ee/franka_hand_white/visual/hand.dae": {
-    "bounds": [
-      [
-        [
-          -0.03151952847838402,
-          -0.1039464995265007,
-          -0.02594578079879284
-        ],
-        [
-          0.031525131314992905,
-          0.10056989639997482,
-          0.06599997729063034
-        ]
-      ]
-    ],
     "input_sha256": "1b50601d3157f810176aba6db7164d6bdb4ec8b6546a8a725baba2fa2a21c58a",
+    "mesh_count": 5,
     "n_faces": 7078,
     "n_vertices": 19828,
-    "output_sha256": "bd588251e707a7cce034692368619af11460d91636dfc0fbc45bb2d37c175c57",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.03151952847838402,
+            -0.05484914034605026,
+            -0.0025005340576171875
+          ],
+          [
+            0.031525131314992905,
+            0.05484991893172264,
+            0.010114659555256367
+          ]
+        ],
+        "n_faces": 690,
+        "n_vertices": 1628,
+        "path": "assets/franka_hand/visual/hand_0.obj",
+        "sha256": "023ba61e6f5cf8c1f20e134ff795e610d8ca445c3b61855b3f3804cbe59e164f",
+        "source_geometry": "Part__Feature002_011-mesh",
+        "source_node": "Part__Feature002_011-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.02861594967544079,
+            -0.10296150296926498,
+            -0.01448982022702694
+          ],
+          [
+            0.02861594967544079,
+            0.10056989639997482,
+            0.06599997729063034
+          ]
+        ],
+        "n_faces": 3548,
+        "n_vertices": 10005,
+        "path": "assets/franka_hand/visual/hand_1.obj",
+        "sha256": "93cacc3ffea84de79c6d790fa33af0bb7e178d1965cf6239deb16ecef60f849a",
+        "source_geometry": "Part__Feature005_005-mesh",
+        "source_node": "Part__Feature005_005-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.00574040412902832,
+            -0.08878599852323532,
+            -0.02594578079879284
+          ],
+          [
+            0.005747437011450529,
+            -0.0454898402094841,
+            -0.014404949732124805
+          ]
+        ],
+        "n_faces": 2310,
+        "n_vertices": 6793,
+        "path": "assets/franka_hand/visual/hand_2.obj",
+        "sha256": "a0defaf920f9d810b966499a6978897afed341d3a19189285f633c281e5e96c3",
+        "source_geometry": "Part__Feature_011-mesh",
+        "source_node": "Part__Feature_011-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.0020108220633119345,
+            -0.1039464995265007,
+            -0.022249339148402214
+          ],
+          [
+            0.002040683990344405,
+            -0.08099997043609619,
+            0.018695050850510597
+          ]
+        ],
+        "n_faces": 488,
+        "n_vertices": 1356,
+        "path": "assets/franka_hand/visual/hand_3.obj",
+        "sha256": "40cb4e198ef618ea85a4e001611327442b94d02ff111e9d26004f5d7799373e8",
+        "source_geometry": "Part__Feature001_011-mesh",
+        "source_node": "Part__Feature001_011-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.015255509875714779,
+            -0.07197289913892746,
+            0.011061370372772217
+          ],
+          [
+            0.015255509875714779,
+            0.07196158170700073,
+            0.026441270485520363
+          ]
+        ],
+        "n_faces": 42,
+        "n_vertices": 46,
+        "path": "assets/franka_hand/visual/hand_4.obj",
+        "sha256": "385a9eb2f6482841844693149a94aa3cec4efcc747c5fdd4fe66af8b01c0edf8",
+        "source_geometry": "Part__Feature005_000-mesh",
+        "source_node": "Part__Feature005_000-mesh"
+      }
+    ],
+    "source_mesh_count": 5,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link0.dae": {
-    "bounds": [
-      [
-        [
-          -0.15407210509635227,
-          -0.09456233664479008,
-          -2.1997501470466397e-09
-        ],
-        [
-          0.0719974857195016,
-          0.09456233664479008,
-          0.14000000664964318
-        ]
-      ]
-    ],
     "input_sha256": "2942c6609deb1412eacaebdaef5674b8a370caeb13d39bc34dc7d4604b5dc1c0",
+    "mesh_count": 11,
     "n_faces": 73716,
     "n_vertices": 53342,
-    "output_sha256": "f65f6400955d7f4fd0602418c4759adf028d1126addea1ecab56ba9b82019fd1",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            0.0017932361024013133,
+            -0.07229299507191644,
+            0.008503438399802277
+          ],
+          [
+            0.020766270670182774,
+            0.07229299507191644,
+            0.0833021050918914
+          ]
+        ],
+        "n_faces": 465,
+        "n_vertices": 329,
+        "path": "assets/fr3v2_1/visual/link0_0.obj",
+        "sha256": "dc818c9d4e4ce4e5a6b14ff9278db9f2288a542ffdd4a073111f791141517091",
+        "source_geometry": "FR3_Version2_Link0_8-mesh",
+        "source_node": "FR3_Version2_Link0_8-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.0013890391055876306,
+            0.0764875829786682,
+            0.007952972313018114
+          ],
+          [
+            0.007143755298416599,
+            0.088487125784944,
+            0.008171273619621
+          ]
+        ],
+        "n_faces": 100,
+        "n_vertices": 104,
+        "path": "assets/fr3v2_1/visual/link0_1.obj",
+        "sha256": "a4d70ada5c9b297162e4eca497d448a88ef919554600cab991226983a450e122",
+        "source_geometry": "FR3_Version2_Link0_7-mesh",
+        "source_node": "FR3_Version2_Link0_7-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.1508297038192996,
+            -0.0013277691041270467,
+            0.009500000451225787
+          ],
+          [
+            -0.1388273076193336,
+            0.007134578566871108,
+            0.009500000451225787
+          ]
+        ],
+        "n_faces": 105,
+        "n_vertices": 109,
+        "path": "assets/fr3v2_1/visual/link0_2.obj",
+        "sha256": "bc7ab640ac017486643d816cabe84a0a714157412c15125e1d96bce698336834",
+        "source_geometry": "FR3_Version2_Link0_6-mesh",
+        "source_node": "FR3_Version2_Link0_6-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0013991720148900239,
+            0.13400000636465847
+          ],
+          [
+            0.054500002588611096,
+            0.0013991720148900239,
+            0.13800000655464828
+          ]
+        ],
+        "n_faces": 27,
+        "n_vertices": 29,
+        "path": "assets/fr3v2_1/visual/link0_3.obj",
+        "sha256": "520056a91300966ce58369fd4e9e5cdcc8651ebb48ff6711fbfd765909377389",
+        "source_geometry": "FR3_Version2_Link0_5-mesh",
+        "source_node": "FR3_Version2_Link0_5-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.006068326284628944,
+            0.06500000308733433,
+            0.027000001282431185
+          ],
+          [
+            0.005992937372661933,
+            0.06500000308733433,
+            0.03230000077122819
+          ]
+        ],
+        "n_faces": 49,
+        "n_vertices": 51,
+        "path": "assets/fr3v2_1/visual/link0_4.obj",
+        "sha256": "98615f73edbc7e475615158c3b5077851a8d2ffdc385cb296c7af3a99e4c630e",
+        "source_geometry": "FR3_Version2_Link0_4-mesh",
+        "source_node": "FR3_Version2_Link0_4-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.15357291378846227,
+            -0.09405915516337071,
+            0.0
+          ],
+          [
+            0.07146703678073241,
+            0.09405915516337071,
+            0.004000000189989805
+          ]
+        ],
+        "n_faces": 140,
+        "n_vertices": 143,
+        "path": "assets/fr3v2_1/visual/link0_5.obj",
+        "sha256": "4c45534c935d95843b5212321b3eace631e416b51067e679b4996c3c7e8cc40b",
+        "source_geometry": "FR3_Version2_Link0_3-mesh",
+        "source_node": "FR3_Version2_Link0_3-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.07773941409281449,
+            -0.0786611746956778,
+            0.02400000113993883
+          ],
+          [
+            -0.014743050321839313,
+            0.07548443199107968,
+            0.0720000034198165
+          ]
+        ],
+        "n_faces": 5459,
+        "n_vertices": 4494,
+        "path": "assets/fr3v2_1/visual/link0_6.obj",
+        "sha256": "0f2775bcb2c7f3ca133437f9959218cd3c716adc4d456cfc335fb5760a08c21b",
+        "source_geometry": "FR3_Version2_Link0_2-mesh",
+        "source_node": "FR3_Version2_Link0_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.07462170001650836,
+            -0.07652680569781634,
+            0.025199342017216964
+          ],
+          [
+            -0.019978831286467935,
+            0.07652284604186654,
+            0.06696598371049856
+          ]
+        ],
+        "n_faces": 9903,
+        "n_vertices": 8278,
+        "path": "assets/fr3v2_1/visual/link0_7.obj",
+        "sha256": "075e345fc50e288099b1b8bd6b85ec44144c760939c11beb7815a1a357328c28",
+        "source_geometry": "FR3_Version2_Link0_1-mesh",
+        "source_node": "FR3_Version2_Link0_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.07559161735994024,
+            -0.05971916100911523,
+            0.08500000403728336
+          ],
+          [
+            0.05972256371923779,
+            0.05971916100911523,
+            0.14000000664964318
+          ]
+        ],
+        "n_faces": 7901,
+        "n_vertices": 6509,
+        "path": "assets/fr3v2_1/visual/link0_8.obj",
+        "sha256": "1a1238e0d890485756364e0b3e5c1005817583f4786b47a678600f2c795ce769",
+        "source_geometry": "FR3_Version2_Link0_0-mesh",
+        "source_node": "FR3_Version2_Link0_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.15407210509635227,
+            -0.09456233664479008,
+            -2.1997501470466397e-09
+          ],
+          [
+            0.0719974857195016,
+            0.09456233664479008,
+            0.14000000664964318
+          ]
+        ],
+        "n_faces": 26901,
+        "n_vertices": 20763,
+        "path": "assets/fr3v2_1/visual/link0_9.obj",
+        "sha256": "e5eba340bac8a9ca7691c9c15769eda8239d3a0367bfd3a7227956d977673306",
+        "source_geometry": "FR3_Version2_Link0_001-mesh",
+        "source_node": "FR3_Version2_Link0_001-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.07966934582510632,
+            -0.03889710038877281,
+            0.1149447076080179
+          ],
+          [
+            -0.059545142140986496,
+            0.04355919091172389,
+            0.13505530426634493
+          ]
+        ],
+        "n_faces": 22666,
+        "n_vertices": 12533,
+        "path": "assets/fr3v2_1/visual/link0_10.obj",
+        "sha256": "a394067faa7c1a5f3a55167cee8f9f938e2249c1e65440af1f945533d54ca240",
+        "source_geometry": "FR3_Version2_Link0-mesh",
+        "source_node": "FR3_Version2_Link0-mesh"
+      }
+    ],
+    "source_mesh_count": 11,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link1.dae": {
-    "bounds": [
-      [
-        [
-          -0.05500016282965259,
-          -0.13000000617466867,
-          -0.19200000911951065
-        ],
-        [
-          0.05500016282965259,
-          0.05500000261235982,
-          0.05499999116826748
-        ]
-      ]
-    ],
     "input_sha256": "0017ad393987fe989aae6cd8a86f501ee928801d81084dd9c7435aa7ada5fed8",
+    "mesh_count": 4,
     "n_faces": 9514,
     "n_vertices": 5762,
-    "output_sha256": "49fce1e6fd580dbbf0618e08ec74db0e221051ceb677390692180fef1c8358d7",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.05500016282965259,
+            -0.13000000617466867,
+            -0.19200000911951065
+          ],
+          [
+            0.05500016282965259,
+            0.05500000261235982,
+            0.05499999116826748
+          ]
+        ],
+        "n_faces": 9299,
+        "n_vertices": 5548,
+        "path": "assets/fr3v2_1/visual/link1_0.obj",
+        "sha256": "e8617b10d8f5a13e8e1c2abae3a00dbc59280db359c41317314aaa4d9fde6a11",
+        "source_geometry": "FR3_Version2_Link1_2-mesh",
+        "source_node": "FR3_Version2_Link1_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.05227896366475804,
+            -0.015400000349991005,
+            -0.19000000902451575
+          ],
+          [
+            0.05329437127524317,
+            0.015400000349991005,
+            -0.18600000883452594
+          ]
+        ],
+        "n_faces": 124,
+        "n_vertices": 117,
+        "path": "assets/fr3v2_1/visual/link1_1.obj",
+        "sha256": "4ab3eb2a55ff61e68b741fb40ad1883e78aa8e0dff5e960bf9380cc493a531ec",
+        "source_geometry": "FR3_Version2_Link1_1-mesh",
+        "source_node": "FR3_Version2_Link1_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0065000003087334335,
+            -0.19000000902451575
+          ],
+          [
+            0.054500002588611096,
+            0.0013991720148900239,
+            0.0013991940686096382
+          ]
+        ],
+        "n_faces": 54,
+        "n_vertices": 58,
+        "path": "assets/fr3v2_1/visual/link1_2.obj",
+        "sha256": "05785909b55ae5ab076a16d4f334678d25d6d3b770eb9c8765d6d44bc8c8462f",
+        "source_geometry": "FR3_Version2_Link1_0-mesh",
+        "source_node": "FR3_Version2_Link1_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0014000000426545728,
+            -0.18400000873953104
+          ],
+          [
+            0.054500002588611096,
+            0.0006000000523403298,
+            -0.18000000854954123
+          ]
+        ],
+        "n_faces": 37,
+        "n_vertices": 39,
+        "path": "assets/fr3v2_1/visual/link1_3.obj",
+        "sha256": "3d7d1a9796d370ef0abb97042aac3fbb21beb91ecfb85072ee20ab2f7231e8db",
+        "source_geometry": "FR3_Version2_Link1-mesh",
+        "source_node": "FR3_Version2_Link1-mesh"
+      }
+    ],
+    "source_mesh_count": 4,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link2.dae": {
-    "bounds": [
-      [
-        [
-          -0.05500016282965259,
-          -0.19200000911951065,
-          -0.05500000261235982
-        ],
-        [
-          0.05500016282965259,
-          0.05499999116826748,
-          0.13000000617466867
-        ]
-      ]
-    ],
     "input_sha256": "69075fd922c83532ecd1b566dba5a6da22253378b32cc98dc83ab6f16092c2bd",
+    "mesh_count": 4,
     "n_faces": 10146,
     "n_vertices": 6402,
-    "output_sha256": "e7597bd630c996dd484f9d1e7955843eccc48f95d18075720ae7bfb16377be30",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.05500016282965259,
+            -0.19200000911951065,
+            -0.05500000261235982
+          ],
+          [
+            0.05500016282965259,
+            0.05499999116826748,
+            0.13000000617466867
+          ]
+        ],
+        "n_faces": 9815,
+        "n_vertices": 6067,
+        "path": "assets/fr3v2_1/visual/link2_0.obj",
+        "sha256": "14a5be332b1bb3ea01596dec4bdd15640ad3f340847c68333c0eef615897f74b",
+        "source_geometry": "FR3_Version2_Link2_2-mesh",
+        "source_node": "FR3_Version2_Link2_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.05227798328751421,
+            -0.013999980637802723,
+            0.0025000001187436283
+          ],
+          [
+            0.0532936731856104,
+            0.015400020377152601,
+            0.0065000003087334335
+          ]
+        ],
+        "n_faces": 206,
+        "n_vertices": 204,
+        "path": "assets/fr3v2_1/visual/link2_1.obj",
+        "sha256": "76e764a74a99646326b54197a2eb39ad9085f79f80d42ee9747915ae90c7973d",
+        "source_geometry": "FR3_Version2_Link2_1-mesh",
+        "source_node": "FR3_Version2_Link2_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.19000000902451575,
+            -0.0013991720148900239
+          ],
+          [
+            0.054500002588611096,
+            0.0013991940686096382,
+            0.0065000003087334335
+          ]
+        ],
+        "n_faces": 54,
+        "n_vertices": 58,
+        "path": "assets/fr3v2_1/visual/link2_2.obj",
+        "sha256": "914b9fc7d09df9003f8d7553608c136b15ae8930bae1f388fbc57dbaf4deed42",
+        "source_geometry": "FR3_Version2_Link2_0-mesh",
+        "source_node": "FR3_Version2_Link2_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0019999770876009265,
+            0.008500000403728336
+          ],
+          [
+            0.054500002588611096,
+            0.002000022029505222,
+            0.011700000364985308
+          ]
+        ],
+        "n_faces": 71,
+        "n_vertices": 73,
+        "path": "assets/fr3v2_1/visual/link2_3.obj",
+        "sha256": "5d66a043f2339712bea3126c7f596088b5dbe2e074f2858a283ee85b662ea410",
+        "source_geometry": "FR3_Version2_Link2-mesh",
+        "source_node": "FR3_Version2_Link2-mesh"
+      }
+    ],
+    "source_mesh_count": 4,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link3.dae": {
-    "bounds": [
-      [
-        [
-          -0.05500000261235982,
-          -0.05500000261235982,
-          -0.12300000584218651
-        ],
-        [
-          0.13750290570095913,
-          0.113000005367212,
-          0.05495153306660061
-        ]
-      ]
-    ],
     "input_sha256": "f60d3f5bbe778355ed3572ae934c3cf646d997e5c3677ec963257a095d94cc66",
+    "mesh_count": 4,
     "n_faces": 9904,
     "n_vertices": 6123,
-    "output_sha256": "3aa0077b954eeb6999aa3119a606cf00151e32c7615442a125ca175803c3f882",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.05500000261235982,
+            -0.05500000261235982,
+            -0.12300000584218651
+          ],
+          [
+            0.13750290570095913,
+            0.113000005367212,
+            0.05495153306660061
+          ]
+        ],
+        "n_faces": 9601,
+        "n_vertices": 5823,
+        "path": "assets/fr3v2_1/visual/link3_0.obj",
+        "sha256": "1eb08593d155ba1b5d59841845c2614e0808fe9d24f5a237525972d8d698418d",
+        "source_geometry": "FR3_Version2_Link3_2-mesh",
+        "source_node": "FR3_Version2_Link3_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.05227896366475804,
+            -0.015400000349991005,
+            -0.12100000574719161
+          ],
+          [
+            0.05329437127524317,
+            0.015400000349991005,
+            -0.1170000055572018
+          ]
+        ],
+        "n_faces": 126,
+        "n_vertices": 119,
+        "path": "assets/fr3v2_1/visual/link3_1.obj",
+        "sha256": "28e52e56271ed6d79775a62754c49d5900bc49c1ced938c9737c50b1c3fa50b8",
+        "source_geometry": "FR3_Version2_Link3_1-mesh",
+        "source_node": "FR3_Version2_Link3_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0013991720148900239,
+            -0.12100000574719161
+          ],
+          [
+            0.12200760467200311,
+            0.0065000003087334335,
+            -0.03757316004878941
+          ]
+        ],
+        "n_faces": 92,
+        "n_vertices": 94,
+        "path": "assets/fr3v2_1/visual/link3_2.obj",
+        "sha256": "09e62d8b012f7a50a42e8ff36013c28c6035abd69e479c25c7e01e23c3a379ba",
+        "source_geometry": "FR3_Version2_Link3_0-mesh",
+        "source_node": "FR3_Version2_Link3_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0015993420645282058,
+            -0.1150000054622069
+          ],
+          [
+            0.054500002588611096,
+            0.0016000000998377811,
+            -0.1110000052722171
+          ]
+        ],
+        "n_faces": 85,
+        "n_vertices": 87,
+        "path": "assets/fr3v2_1/visual/link3_3.obj",
+        "sha256": "e7ec7d6f047cb95a35ad1a8676ff2d4fd5ae14abc5c02383df123d564e8cf290",
+        "source_geometry": "FR3_Version2_Link3-mesh",
+        "source_node": "FR3_Version2_Link3-mesh"
+      }
+    ],
+    "source_mesh_count": 4,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link4.dae": {
-    "bounds": [
-      [
-        [
-          -0.13750301251248764,
-          -0.05504829286733903,
-          -0.05500000261235982
-        ],
-        [
-          0.0549999110596211,
-          0.12290320407977617,
-          0.113000005367212
-        ]
-      ]
-    ],
     "input_sha256": "cde9c576ddd543e2abbf18f9e70cdf2a3407640cf4a52ba503ccdde6a8f5aeab",
+    "mesh_count": 4,
     "n_faces": 10464,
     "n_vertices": 6696,
-    "output_sha256": "1eebf3f3bb8fdd8a8f5e7befd9f7eb7cbffc2059487000fb4dd082749ca98c77",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.13750301251248764,
+            -0.05504829286733903,
+            -0.05500000261235982
+          ],
+          [
+            0.0549999110596211,
+            0.12290320407977617,
+            0.113000005367212
+          ]
+        ],
+        "n_faces": 10020,
+        "n_vertices": 6249,
+        "path": "assets/fr3v2_1/visual/link4_0.obj",
+        "sha256": "f68167868d3096fc9feff3f2f9e8332211b5a7a31eec2ea59328a21ade8a807a",
+        "source_geometry": "FR3_Version2_Link4_2-mesh",
+        "source_node": "FR3_Version2_Link4_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.026071252153845315,
+            0.027286061629270275,
+            0.0025000001187436283
+          ],
+          [
+            0.04714167246615997,
+            0.047803350811796985,
+            0.0065000003087334335
+          ]
+        ],
+        "n_faces": 197,
+        "n_vertices": 198,
+        "path": "assets/fr3v2_1/visual/link4_1.obj",
+        "sha256": "6cdd45b318460285c412f2698daeaea030d472872e9bac1553b8bf9eae675a50",
+        "source_geometry": "FR3_Version2_Link4_1-mesh",
+        "source_node": "FR3_Version2_Link4_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.028002980608634598,
+            0.03747640024805099,
+            -0.0013991720148900239
+          ],
+          [
+            0.03950463291884976,
+            0.12090320398478127,
+            0.0065000003087334335
+          ]
+        ],
+        "n_faces": 91,
+        "n_vertices": 94,
+        "path": "assets/fr3v2_1/visual/link4_2.obj",
+        "sha256": "d301c027def51193f66b24bf25c96f49f53cb4b34f62fbcbe197bf4eda392991",
+        "source_geometry": "FR3_Version2_Link4_0-mesh",
+        "source_node": "FR3_Version2_Link4_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.03706804070106706,
+            0.037023290485318494,
+            0.008500000403728336
+          ],
+          [
+            0.03990269278272729,
+            0.03985108374096935,
+            0.011700000364985308
+          ]
+        ],
+        "n_faces": 156,
+        "n_vertices": 155,
+        "path": "assets/fr3v2_1/visual/link4_3.obj",
+        "sha256": "8e481c50f67909e0479830f7335d00fdb71d1bc8b2376e723d0a65a85ae9ca91",
+        "source_geometry": "FR3_Version2_Link4-mesh",
+        "source_node": "FR3_Version2_Link4-mesh"
+      }
+    ],
+    "source_mesh_count": 4,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link5.dae": {
-    "bounds": [
-      [
-        [
-          -0.055000082721006205,
-          -0.05500000261235982,
-          -0.2600968141117477
-        ],
-        [
-          0.055000082721006205,
-          0.1298253082903944,
-          0.04780332410891486
-        ]
-      ]
-    ],
     "input_sha256": "73ca429bff20d4f1e500837b6602ba4cba5d99b0896108c462c3404d12342c6c",
+    "mesh_count": 5,
     "n_faces": 12198,
     "n_vertices": 8954,
-    "output_sha256": "0caef0cee918cbe757b3a24a977a748165288510f5ac8f98208231e0115adc10",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.017508381721496047,
+            0.09600871732872385,
+            -0.13845610704017908
+          ],
+          [
+            -0.010779750382310938,
+            0.11391720359192892,
+            -0.05344361368345485
+          ]
+        ],
+        "n_faces": 818,
+        "n_vertices": 830,
+        "path": "assets/fr3v2_1/visual/link5_0.obj",
+        "sha256": "67a947efb3fd8dea8101d17a366a64f2875dc484064b2ce7a82e5144ce7cf95c",
+        "source_geometry": "FR3_Version2_Link5_3-mesh",
+        "source_node": "FR3_Version2_Link5_3-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.055000082721006205,
+            -0.05500000261235982,
+            -0.2600968141117477
+          ],
+          [
+            0.055000082721006205,
+            0.1298253082903944,
+            0.04780332410891486
+          ]
+        ],
+        "n_faces": 11105,
+        "n_vertices": 7856,
+        "path": "assets/fr3v2_1/visual/link5_1.obj",
+        "sha256": "ad1f1b17ca3a20847867fd944962ab86b8cdb939a97c50e58fecefcc855ae638",
+        "source_geometry": "FR3_Version2_Link5_2-mesh",
+        "source_node": "FR3_Version2_Link5_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.05227896366475804,
+            -0.015400000349991005,
+            -0.2580968140167528
+          ],
+          [
+            0.05329437127524317,
+            0.015400000349991005,
+            -0.25409670701523446
+          ]
+        ],
+        "n_faces": 128,
+        "n_vertices": 121,
+        "path": "assets/fr3v2_1/visual/link5_2.obj",
+        "sha256": "d519014ebdb022a57b68af707885cf294c31211662fbc972a0552a11fd336cba",
+        "source_geometry": "FR3_Version2_Link5_1-mesh",
+        "source_node": "FR3_Version2_Link5_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.04438507290895899,
+            -0.0013991720148900239,
+            -0.2580968140167528
+          ],
+          [
+            0.054500002588611096,
+            0.02370100133936015,
+            -0.016731819947550797
+          ]
+        ],
+        "n_faces": 68,
+        "n_vertices": 66,
+        "path": "assets/fr3v2_1/visual/link5_3.obj",
+        "sha256": "731fd17c2e73d88ac0bd6fd0412ea950ef9f1b5181389fc4e476cf8350d350eb",
+        "source_geometry": "FR3_Version2_Link5_0-mesh",
+        "source_node": "FR3_Version2_Link5_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.054500002588611096,
+            -0.0015993420645282058,
+            -0.25209681373176807
+          ],
+          [
+            0.054500002588611096,
+            0.0016000000998377811,
+            -0.24809681354177826
+          ]
+        ],
+        "n_faces": 79,
+        "n_vertices": 81,
+        "path": "assets/fr3v2_1/visual/link5_4.obj",
+        "sha256": "424bf30b35ebba311490c026d4517d9f78e69662fe7dd4525d7ace6a20fa0daf",
+        "source_geometry": "FR3_Version2_Link5-mesh",
+        "source_node": "FR3_Version2_Link5-mesh"
+      }
+    ],
+    "source_mesh_count": 5,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link6.dae": {
-    "bounds": [
-      [
-        [
-          -0.04789588392776434,
-          -0.04954676291242688,
-          -0.04535108400220533
-        ],
-        [
-          0.13335001243730105,
-          0.08153884512044574,
-          0.05541297412855695
-        ]
-      ]
-    ],
     "input_sha256": "f362b51dd85a03efb2e0e4d542c535ef52975019d22ca20d79255a676fd3d1fb",
+    "mesh_count": 11,
     "n_faces": 78072,
     "n_vertices": 52370,
-    "output_sha256": "eb46bd17c58f7348fa7a0f125a19584f7f68ab463dc7104d44bffbfa8796d5ff",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            0.05262860357394317,
+            0.06132592301780537,
+            -0.034272042948635395
+          ],
+          [
+            0.12345780768277859,
+            0.08153884512044574,
+            0.03429804011173543
+          ]
+        ],
+        "n_faces": 60748,
+        "n_vertices": 40747,
+        "path": "assets/fr3v2_1/visual/link6_0.obj",
+        "sha256": "4a0ef23635f084fffaf05ce90c9a5476c2b855dd1b19dd2fd115e07bf6faa751",
+        "source_geometry": "FR3_Version2_Link6_9-mesh",
+        "source_node": "FR3_Version2_Link6_9-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.06191515262953251,
+            0.06982003352867583,
+            -0.0016336510957369599
+          ],
+          [
+            0.11586940552791525,
+            0.0815288353543453,
+            0.001664000113368036
+          ]
+        ],
+        "n_faces": 135,
+        "n_vertices": 135,
+        "path": "assets/fr3v2_1/visual/link6_1.obj",
+        "sha256": "ea40351a3009ea3188a4d05f5de50c9227386b8044e8552c9f24a37c0bddfe7a",
+        "source_geometry": "FR3_Version2_Link6_8-mesh",
+        "source_node": "FR3_Version2_Link6_8-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.04789588392776434,
+            -0.04954676291242688,
+            -0.04535108400220533
+          ],
+          [
+            0.13335001243730105,
+            0.0796607551264561,
+            0.05541297412855695
+          ]
+        ],
+        "n_faces": 12526,
+        "n_vertices": 7939,
+        "path": "assets/fr3v2_1/visual/link6_2.obj",
+        "sha256": "703d64eddf3ec0a572050507048c50bd71aef260041d0b93c5e70bd79a14474a",
+        "source_geometry": "FR3_Version2_Link6_7-mesh",
+        "source_node": "FR3_Version2_Link6_7-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.0755451009392738,
+            0.07534844565649568,
+            -0.012777980457690519
+          ],
+          [
+            0.10074240590805417,
+            0.08017124556818356,
+            0.012814000738332054
+          ]
+        ],
+        "n_faces": 2472,
+        "n_vertices": 1412,
+        "path": "assets/fr3v2_1/visual/link6_3.obj",
+        "sha256": "76356508a6148c2dd4a876964e75cb23ae814bd2baa0c81eb2fc01bfec46e9d7",
+        "source_geometry": "FR3_Version2_Link6_6-mesh",
+        "source_node": "FR3_Version2_Link6_6-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.08650434523422401,
+            0.07680487425350435,
+            0.023423010984969794
+          ],
+          [
+            0.08970318266643407,
+            0.0778289374124963,
+            0.02660499126916238
+          ]
+        ],
+        "n_faces": 22,
+        "n_vertices": 24,
+        "path": "assets/fr3v2_1/visual/link6_4.obj",
+        "sha256": "2c9b3bea6d5466d8d57570746e8e11ca956eecf3e51abdad097b3f5c14ca6b4e",
+        "source_geometry": "FR3_Version2_Link6_5-mesh",
+        "source_node": "FR3_Version2_Link6_5-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.013026900910187433,
+            -0.016377140823038427,
+            0.05150249344355151
+          ],
+          [
+            0.015687150746625522,
+            0.015622860696880014,
+            0.05474058411248928
+          ]
+        ],
+        "n_faces": 63,
+        "n_vertices": 123,
+        "path": "assets/fr3v2_1/visual/link6_5.obj",
+        "sha256": "9e2906a176011ed48fa967bf4026bd353e351e4dbde1378aaf7465cd28202ba3",
+        "source_geometry": "FR3_Version2_Link6_4-mesh",
+        "source_node": "FR3_Version2_Link6_4-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.08700021775533529,
+            0.07707235320908001,
+            -0.026536610910079528
+          ],
+          [
+            0.08969309660638469,
+            0.07770880496050125,
+            -0.023142501022915818
+          ]
+        ],
+        "n_faces": 5,
+        "n_vertices": 7,
+        "path": "assets/fr3v2_1/visual/link6_6.obj",
+        "sha256": "055e2a0bf26a5c04a65526a567b1c672208fe11a14dd65ab99d3f4dc99591b6f",
+        "source_geometry": "FR3_Version2_Link6_3-mesh",
+        "source_node": "FR3_Version2_Link6_3-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.0315446716032719,
+            0.03581666353591695,
+            -0.014701000911883089
+          ],
+          [
+            -0.004555785395526368,
+            0.04748564373493913,
+            -0.010701000721893283
+          ]
+        ],
+        "n_faces": 124,
+        "n_vertices": 116,
+        "path": "assets/fr3v2_1/visual/link6_7.obj",
+        "sha256": "0cbea6a54a50b5d55870888a476d9aec30cf2e06d9da91c6a1d14e0ce73938e3",
+        "source_geometry": "FR3_Version2_Link6_2-mesh",
+        "source_node": "FR3_Version2_Link6_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.04789588392776434,
+            -0.04954676291242688,
+            -0.016701060134688417
+          ],
+          [
+            0.0492093910702307,
+            0.04780175245356677,
+            0.01669938166781182
+          ]
+        ],
+        "n_faces": 1678,
+        "n_vertices": 1567,
+        "path": "assets/fr3v2_1/visual/link6_8.obj",
+        "sha256": "ea7e4056d5a74d51620a7920d0abbbe7b43c4bda2d693bb424ffd901fdcdf9c0",
+        "source_geometry": "FR3_Version2_Link6_1-mesh",
+        "source_node": "FR3_Version2_Link6_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.01961538026517662,
+            -0.047546762817431976,
+            -0.0402632503560052
+          ],
+          [
+            0.07283728373302267,
+            0.04467363188262574,
+            -0.010701000721893283
+          ]
+        ],
+        "n_faces": 60,
+        "n_vertices": 61,
+        "path": "assets/fr3v2_1/visual/link6_9.obj",
+        "sha256": "b2db56f49a59ee82023c705ee50af57903acabdaf8a46d979c70aa47b709ba79",
+        "source_geometry": "FR3_Version2_Link6_0-mesh",
+        "source_node": "FR3_Version2_Link6_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.02102784065941332,
+            0.042829572804559124,
+            -0.005201000460657301
+          ],
+          [
+            -0.016428490465369983,
+            0.04479138396341398,
+            -0.0019886641254852205
+          ]
+        ],
+        "n_faces": 239,
+        "n_vertices": 239,
+        "path": "assets/fr3v2_1/visual/link6_10.obj",
+        "sha256": "751b9b51fa3829b66c95981b46204add3266932c236a358ee21037527f025291",
+        "source_geometry": "FR3_Version2_Link6-mesh",
+        "source_node": "FR3_Version2_Link6-mesh"
+      }
+    ],
+    "source_mesh_count": 11,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/fr3v2_1/visual/link7.dae": {
-    "bounds": [
-      [
-        [
-          -0.04400000208988786,
-          -0.04400000208988786,
-          0.050350000865617695
-        ],
-        [
-          0.08127991108715094,
-          0.08128090290848711,
-          0.10700000508222729
-        ]
-      ]
-    ],
     "input_sha256": "bbbf2024a9501df643273b7696dc4da8e007bbfef51299586e82e67e7e54eefd",
+    "mesh_count": 7,
     "n_faces": 42990,
     "n_vertices": 31676,
-    "output_sha256": "86a9841af3ff1cefe6258e8c597880f8e8001b875a5a9bcb4772e25042540c8c",
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.04400000208988786,
+            -0.04400000208988786,
+            0.050350000865617695
+          ],
+          [
+            0.04400000208988786,
+            0.04400000208988786,
+            0.10700000508222729
+          ]
+        ],
+        "n_faces": 9616,
+        "n_vertices": 8672,
+        "path": "assets/fr3v2_1/visual/link7_0.obj",
+        "sha256": "20bfae7d4568299fb0688719944af6bfe38f4b41b75dbbcf98c35e65d6582d5b",
+        "source_geometry": "FR3_Version2_Link7_3-mesh",
+        "source_node": "FR3_Version2_Link7_3-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.02995994137968583,
+            -0.043874212441579186,
+            0.051980002011153825
+          ],
+          [
+            -0.0015044540881432172,
+            -0.03208756027041515,
+            0.05598000220114363
+          ]
+        ],
+        "n_faces": 122,
+        "n_vertices": 114,
+        "path": "assets/fr3v2_1/visual/link7_1.obj",
+        "sha256": "7fdbfe835547637d74b09b44a963cf4b27d42d646cd4191f3a8c2bb1d8775d20",
+        "source_geometry": "FR3_Version2_Link7_2-mesh",
+        "source_node": "FR3_Version2_Link7_2-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.018122219946452578,
+            -0.041165582704771886,
+            0.051980002011153825
+          ],
+          [
+            -0.015536890767869904,
+            -0.040094701764015195,
+            0.05598000220114363
+          ]
+        ],
+        "n_faces": 33,
+        "n_vertices": 32,
+        "path": "assets/fr3v2_1/visual/link7_2.obj",
+        "sha256": "d5bf0809025a25d722ff9ada9d1a2a77e3e1fc3e481e040e54fd8f6d62f9a678",
+        "source_geometry": "FR3_Version2_Link7_1-mesh",
+        "source_node": "FR3_Version2_Link7_1-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.018084690952970828,
+            -0.041073442502641555,
+            0.05945250221349063
+          ],
+          [
+            -0.01549783112703762,
+            -0.04000193213680614,
+            0.06345249477408554
+          ]
+        ],
+        "n_faces": 60,
+        "n_vertices": 59,
+        "path": "assets/fr3v2_1/visual/link7_3.obj",
+        "sha256": "eba27fef6c4b6234600ebbf5e0314e057811e7fbf0afc91a3f193f97d7cc992a",
+        "source_geometry": "FR3_Version2_Link7_0_001-mesh",
+        "source_node": "FR3_Version2_Link7_0_001-mesh"
+      },
+      {
+        "bounds": [
+          [
+            0.006469050237835894,
+            0.0064699834081988206,
+            0.06519239353836692
+          ],
+          [
+            0.07501662038438717,
+            0.07501721547718887,
+            0.0938974425092054
+          ]
+        ],
+        "n_faces": 9071,
+        "n_vertices": 6628,
+        "path": "assets/fr3v2_1/visual/link7_4.obj",
+        "sha256": "63c26140d51132c214d4031bd67b2a286fb86da275f2cf63ae694874010476e9",
+        "source_geometry": "FR3_Version2_Link7_0-mesh",
+        "source_node": "FR3_Version2_Link7_0-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.04062324335406098,
+            -0.040623331092102255,
+            0.08025006484682962
+          ],
+          [
+            -0.025703292160171864,
+            -0.025703381805561865,
+            0.0917500653930503
+          ]
+        ],
+        "n_faces": 6371,
+        "n_vertices": 4812,
+        "path": "assets/fr3v2_1/visual/link7_5.obj",
+        "sha256": "ae4d4a2f0a9d4a76af92d383e65b3393740833f62a26dbf9763079a91084ea01",
+        "source_geometry": "FR3_Version2_Link7_001-mesh",
+        "source_node": "FR3_Version2_Link7_001-mesh"
+      },
+      {
+        "bounds": [
+          [
+            -0.01370472019439628,
+            -0.013703720743665215,
+            0.06065333463747047
+          ],
+          [
+            0.08127991108715094,
+            0.08128090290848711,
+            0.09700000460725278
+          ]
+        ],
+        "n_faces": 17717,
+        "n_vertices": 11359,
+        "path": "assets/fr3v2_1/visual/link7_6.obj",
+        "sha256": "43e29d207287d53170650e86ae7905e3a986e54236daf8b1a2d84c488d52d1b1",
+        "source_geometry": "FR3_Version2_Link7-mesh",
+        "source_node": "FR3_Version2_Link7-mesh"
+      }
+    ],
+    "source_mesh_count": 7,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
   "package://franka_description/meshes/robots/tmrv0_2/visual/tmrv0_2.dae": {
-    "bounds": [
-      [
-        [
-          -0.4,
-          -0.2915068359375,
-          0.03
-        ],
-        [
-          0.40075,
-          0.2915068359375,
-          0.35000000000000003
-        ]
-      ]
-    ],
     "input_sha256": "38b09909297f064a3441de6801479b760ad7213045d96a4f9c8edf72c4376d92",
-    "n_faces": 197515,
-    "n_vertices": 170340,
-    "output_sha256": "bff1d4d4c4d4e48d321b5bb5de9a206f277f001ed5f87dfcb4f173a1db4f6b21",
+    "mesh_count": 1,
+    "n_faces": 196935,
+    "n_vertices": 169708,
+    "outputs": [
+      {
+        "bounds": [
+          [
+            -0.4,
+            -0.2915068359375,
+            0.03
+          ],
+          [
+            0.40075,
+            0.2915068359375,
+            0.35000000000000003
+          ]
+        ],
+        "n_faces": 196935,
+        "n_vertices": 169708,
+        "path": "assets/tmrv0_2/visual/tmrv0_2.obj",
+        "sha256": "ca3ebeddcd24bc2aabfc22b60fcffd26a3d48a68526966b3083f1acbe688f1b6"
+      }
+    ],
+    "source_mesh_count": 1118,
     "status": "converted",
     "tool": "trimesh 5.0.0",
     "unit_scale": 0.001
