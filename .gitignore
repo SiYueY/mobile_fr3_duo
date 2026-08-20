@@ -217,5 +217,9 @@ __marimo__/
 # Mobile FR3 Duo build probes
 /.build_probe.xml
 
+# MuJoCo-generated temporary files
+tmp*.xml
+MUJOCO_LOG.TXT
+
 # Streamlit
 .streamlit/secrets.toml
