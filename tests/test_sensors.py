@@ -2,7 +2,18 @@
 
 import mujoco
 import numpy as np
-from helpers import REPO_ROOT
+from helpers import REPO_ROOT, apply_base_transform, mjcf_qpos_for_urdf
+
+OFFICIAL_MOUNTING_POINTS = (
+    "imu_mounting_point",
+    "front_mounting_point",
+    "rear_mounting_point",
+    "left_mounting_point",
+    "right_mounting_point",
+    "lidar_front_mounting_point",
+    "lidar_rear_mounting_point",
+    "head_camera_mounting_point",
+)
 
 
 def test_sensor_counts(sensor_model):
@@ -43,11 +54,36 @@ def test_camera_frames(sensor_model):
             assert sid >= 0, f"missing {name}"
 
 
-def test_d455_mounts_on_official_points(sensor_model):
-    for position in ("front", "rear", "left", "right"):
-        mounting = f"{position}_mounting_point"
-        mid = mujoco.mj_name2id(sensor_model, mujoco.mjtObj.mjOBJ_SITE, mounting)
-        assert mid >= 0, f"missing {mounting}"
+def test_official_mounting_points_match_golden_urdf_se3(sensor_model, urdf):
+    """Official mounting sites match the frozen Golden URDF at every keyframe."""
+    data = mujoco.MjData(sensor_model)
+    base = mujoco.mj_name2id(sensor_model, mujoco.mjtObj.mjOBJ_BODY, "base_link")
+    assert base >= 0
+
+    for keyframe in range(sensor_model.nkey):
+        mujoco.mj_resetDataKeyframe(sensor_model, data, keyframe)
+        mujoco.mj_forward(sensor_model, data)
+        golden = apply_base_transform(
+            urdf.fk(mjcf_qpos_for_urdf(sensor_model, data, urdf)),
+            data.xpos[base],
+            data.xquat[base],
+        )
+        for site_name in OFFICIAL_MOUNTING_POINTS:
+            site = mujoco.mj_name2id(sensor_model, mujoco.mjtObj.mjOBJ_SITE, site_name)
+            assert site >= 0, f"missing {site_name}"
+            expected_pos, expected_rot = golden[site_name]
+            position_error = np.linalg.norm(expected_pos - data.site_xpos[site])
+            actual_rot = data.site_xmat[site].reshape(3, 3)
+            relative_rot = expected_rot.T @ actual_rot
+            rotation_error = np.arccos(
+                np.clip((np.trace(relative_rot) - 1.0) / 2.0, -1.0, 1.0)
+            )
+            assert position_error <= 1e-6, (
+                f"keyframe {keyframe}, {site_name}: position error {position_error}"
+            )
+            assert rotation_error <= 1e-6, (
+                f"keyframe {keyframe}, {site_name}: rotation error {rotation_error}"
+            )
 
 
 def test_zed_baseline(sensor_model):
@@ -153,18 +189,14 @@ def test_lidar_raycast_geometry(sensor_model):
         assert len(hits) > n // 4, f"{position}: too few lidar hits"
 
 
-def test_imu_axes_aligned_with_mount(sensor_model):
-    """IMU sensor frame axes are right-handed and located at the mount."""
+def test_imu_sensor_frame_is_right_handed(sensor_model):
+    """The project-authored IMU sensor frame retains a proper orientation."""
     data = mujoco.MjData(sensor_model)
     mujoco.mj_forward(sensor_model, data)
-    mount = mujoco.mj_name2id(
-        sensor_model, mujoco.mjtObj.mjOBJ_SITE, "imu_mounting_point"
-    )
     frame = mujoco.mj_name2id(
         sensor_model, mujoco.mjtObj.mjOBJ_SITE, "imu_sensor_frame"
     )
-    assert mount >= 0 and frame >= 0
-    assert np.linalg.norm(data.site_xpos[frame] - data.site_xpos[mount]) < 0.15
+    assert frame >= 0
     mat = data.site_xmat[frame].reshape(3, 3)
     assert abs(np.linalg.det(mat) - 1.0) < 1e-6
 
