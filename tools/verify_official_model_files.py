@@ -14,13 +14,13 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import subprocess
 from pathlib import Path
 
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CACHE = Path("/home/siyuey/workspace/mujoco/_third_party_cache")
 MANIFEST = REPO_ROOT / "source" / "official_model_files.yaml"
 
 
@@ -130,7 +130,12 @@ def check(cache: Path) -> tuple[list[str], dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
+    ap.add_argument(
+        "--cache",
+        type=Path,
+        default=(Path(os.environ["MOBILE_FR3_CACHE_DIR"]) if "MOBILE_FR3_CACHE_DIR" in os.environ else None),
+        help="third-party source cache (or MOBILE_FR3_CACHE_DIR)",
+    )
     ap.add_argument("--write-manifest", action="store_true")
     ap.add_argument(
         "--offline",
@@ -138,6 +143,21 @@ def main() -> int:
         help="validate the manifest structure only (CI without the cache)",
     )
     args = ap.parse_args()
+    if args.offline and args.write_manifest:
+        ap.error("--offline cannot be combined with --write-manifest")
+    if args.offline:
+        if not MANIFEST.exists():
+            print(f"manifest missing: {MANIFEST}; run with --write-manifest first")
+            return 2
+        manifest = yaml.safe_load(MANIFEST.read_text())
+        for repo, spec in manifest.get("repos", {}).items():
+            assert spec.get("tag"), f"{repo}: missing tag"
+            assert spec.get("commit"), f"{repo}: missing commit"
+            assert isinstance(spec.get("files"), dict), f"{repo}: invalid file list"
+        print("offline manifest validation passed")
+        return 0
+    if args.cache is None:
+        ap.error("pass --cache or set MOBILE_FR3_CACHE_DIR (or use --offline)")
     if args.write_manifest:
         MANIFEST.parent.mkdir(parents=True, exist_ok=True)
         manifest = build_manifest(args.cache)
@@ -147,14 +167,6 @@ def main() -> int:
     if not MANIFEST.exists():
         print(f"manifest missing: {MANIFEST}; run with --write-manifest first")
         return 2
-    if args.offline:
-        manifest = yaml.safe_load(MANIFEST.read_text())
-        for repo, spec in manifest.get("repos", {}).items():
-            assert spec.get("tag"), f"{repo}: missing tag"
-            assert spec.get("commit"), f"{repo}: missing commit"
-            assert spec.get("files"), f"{repo}: missing file list"
-        print("offline manifest validation passed")
-        return 0
     problems, status = check(args.cache)
     for repo, state in status.items():
         print(f"{repo}: {state}")

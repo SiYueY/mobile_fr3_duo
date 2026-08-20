@@ -220,6 +220,7 @@ __marimo__/
 # MuJoCo-generated temporary files
 tmp*.xml
 MUJOCO_LOG.TXT
+source/generated/mobile_fr3_duo_raw.xml
 
 # Streamlit
 .streamlit/secrets.toml

@@ -81,6 +81,7 @@ def viewer_demo() -> None:
     """Launch an interactive viewer with home pose actively held."""
     import pathlib
     import time
+
     import mujoco.viewer
 
     root = pathlib.Path(__file__).resolve().parent.parent

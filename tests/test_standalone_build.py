@@ -48,3 +48,42 @@ def test_build_model_without_external_source_checkout(tmp_path):
     assert ET.parse(output).find("contact") is not None
     model = mujoco.MjModel.from_xml_path(str(output))
     assert model.nbody > 0
+
+
+def test_source_preparation_requires_explicit_cache_path():
+    """Preparation CLIs never fall back to a developer-specific cache path."""
+    environment = os.environ.copy()
+    environment.pop("MOBILE_FR3_CACHE_DIR", None)
+    environment.pop("FRANKA_DESCRIPTION_ROOT", None)
+    commands = (
+        (["bash", "tools/generate_urdf.sh"], "MOBILE_FR3_CACHE_DIR"),
+        ([sys.executable, "tools/convert_visual_meshes.py"], "FRANKA_DESCRIPTION_ROOT"),
+        ([sys.executable, "tools/convert_collision_meshes.py"], "FRANKA_DESCRIPTION_ROOT"),
+        ([sys.executable, "tools/import_sensor_assets.py"], "MOBILE_FR3_CACHE_DIR"),
+        ([sys.executable, "tools/verify_official_model_files.py"], "MOBILE_FR3_CACHE_DIR"),
+    )
+    for command, expected in commands:
+        result = subprocess.run(
+            command,
+            cwd=REPO_ROOT,
+            env=environment,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        assert result.returncode == 2, result.stderr
+        assert expected in result.stderr
+
+
+def test_frozen_production_inputs_contain_no_absolute_paths():
+    generated = REPO_ROOT / "source" / "generated"
+    assert not (generated / "mobile_fr3_duo_raw.xml").exists()
+    for path in (
+        generated / "mobile_fr3_duo_visual.urdf",
+        generated / "mobile_fr3_duo_self_collision.urdf",
+        generated / "mobile_fr3_duo_reduced.urdf",
+        generated / "collision_exclusions.yaml",
+    ):
+        text = path.read_text(encoding="utf-8")
+        assert "/home/" not in text
+        assert "C:\\" not in text

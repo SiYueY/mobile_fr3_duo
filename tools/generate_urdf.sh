@@ -9,8 +9,25 @@
 # Requires ROS 2 Humble xacro and the fixed official checkout in the dev cache.
 set -e
 
+CACHE_DIR="${MOBILE_FR3_CACHE_DIR:-}"
+while (($#)); do
+  case "$1" in
+    --cache)
+      CACHE_DIR="${2:-}"
+      shift 2
+      ;;
+    *)
+      echo "usage: $0 [--cache <third-party-cache>]" >&2
+      exit 2
+      ;;
+  esac
+done
+if [[ -z "$CACHE_DIR" ]]; then
+  echo "error: pass --cache <third-party-cache> or set MOBILE_FR3_CACHE_DIR" >&2
+  exit 2
+fi
+
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CACHE_DIR="${MOBILE_FR3_CACHE_DIR:-/home/siyuey/workspace/mujoco/_third_party_cache}"
 FD_DIR="$CACHE_DIR/franka_description"
 OUT_DIR="$ROOT/source/generated"
 SRDF="$FD_DIR/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.srdf.xacro"

@@ -235,6 +235,13 @@ source/generated/
 `collision_exclusions.yaml` 是由固定版本 SRDF 提取并按生成 URDF 过滤后的
 disable-collision pair；正式 `python tools/build_model.py` 只读取这一仓库内输入。
 `franka_description` checkout 仅属于 source preparation 阶段。
+Source preparation 必须显式传入固定 checkout/cache 位置，例如：
+
+```bash
+tools/generate_urdf.sh --cache /path/to/third-party-cache
+```
+
+或设置 `MOBILE_FR3_CACHE_DIR`。任何 production build 命令均不读取该路径。
 
 如果后续 MJCF 构建还需要 SRDF、YAML 或其他官方语义数据，应在 source-generation 阶段将其：
 
@@ -820,9 +827,10 @@ zed_ros2_description
 
 分别 clone 在哪里。
 
-`tools/generate_urdf.sh` 是唯一需要固定 `franka_description@2.8.1` checkout 的
-source preparation 入口；它同时生成 URDF 和 `collision_exclusions.yaml`。之后可在
-没有第三方源码 checkout 的环境中运行 `python tools/build_model.py`。
+`tools/generate_urdf.sh` 是需要固定 `franka_description@2.8.1` checkout 的 source
+preparation 入口；它同时生成 URDF 和 `collision_exclusions.yaml`。mesh conversion、
+sensor asset import 与官方文件校验也只在 preparation 阶段使用显式指定的固定 cache。
+之后可在没有第三方源码 checkout 的环境中运行 `python tools/build_model.py`。
 
 这使得：
 

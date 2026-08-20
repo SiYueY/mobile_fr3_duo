@@ -579,15 +579,13 @@ mobile_fr3_duo/
 │   ├── name_mapping.yaml
 │   └── generated/
 │       ├── mobile_fr3_duo_visual.urdf
-│       ├── mobile_fr3_duo_self_collision.urdf
-│       └── mobile_fr3_duo_raw.xml
+│       └── mobile_fr3_duo_self_collision.urdf
 │
 ├── tools/
 │   ├── generate_urdf.sh
 │   ├── extract_urdf_parameters.py
 │   ├── convert_visual_meshes.py
 │   ├── convert_collision_meshes.py
-│   ├── generate_raw_mjcf.py
 │   ├── build_model.py
 │   ├── generate_contact_excludes.py
 │   ├── verify_official_model_files.py
@@ -691,17 +689,7 @@ with_sc = false / true
 * frame；
 * mounting point。
 
-## 11.4 生成 Raw MJCF
-
-允许使用 MuJoCo URDF importer 生成：
-
-```text
-source/generated/mobile_fr3_duo_raw.xml
-```
-
-该文件只能作为中间参考，不得直接发布。
-
-## 11.5 原生 MJCF 重构
+## 11.4 原生 MJCF 重构
 
 正式模型需要重新组织：
 
@@ -1783,7 +1771,7 @@ parameter_sources.yaml
 
 | 版本       | 内容                          |
 | -------- | --------------------------- |
-| `v0.1.0` | 官方资源、URDF 和 Raw MJCF        |
+| `v0.1.0` | 官方资源、URDF 和来源清单            |
 | `v0.2.0` | 完整机械结构和 visual              |
 | `v0.3.0` | 惯性、限制、actuator 和运动学测试       |
 | `v0.4.0` | Collision 和 self-collision  |
@@ -1870,16 +1858,14 @@ CI 配置
 2. 生成 self-collision URDF；
 3. 提取 link、joint、inertial 和 frame；
 4. 建立命名映射；
-5. 生成 Raw MJCF；
-6. 记录模型统计；
-7. 建立参数和资产清单。
+5. 记录模型统计；
+6. 建立参数和资产清单。
 
 ### 交付物
 
 ```text
 mobile_fr3_duo_visual.urdf
 mobile_fr3_duo_self_collision.urdf
-mobile_fr3_duo_raw.xml
 link_manifest.yaml
 joint_manifest.yaml
 inertial_manifest.yaml
@@ -1895,7 +1881,6 @@ name_mapping.yaml
 * 所有 joint 名称唯一；
 * 所有活动 joint 有轴和范围；
 * 所有有质量 link 有惯性；
-* Raw MJCF 可以加载。
 
 ---
 
@@ -2266,7 +2251,7 @@ v1.0.0 发布包
 | 里程碑       |     时间 | 阶段   | 结果                  |
 | --------- | -----: | ---- | ------------------- |
 | M0：项目可构建  |  第 2 周 | 阶段 0 | 版本、资源、CI 和验证完成      |
-| M1：官方基线冻结 |  第 4 周 | 阶段 1 | URDF、Raw MJCF 和清单完成 |
+| M1：官方基线冻结 |  第 4 周 | 阶段 1 | URDF 和清单完成 |
 | M2：整机可视化  |  第 7 周 | 阶段 2 | 完整机械模型可加载           |
 | M3：运动学可信  | 第 10 周 | 阶段 3 | FK、Jacobian 和惯性通过   |
 | M4：碰撞可信   | 第 13 周 | 阶段 4 | Collision 和自碰撞稳定    |
@@ -2292,7 +2277,6 @@ v1.0.0 发布包
 * 生成两种 URDF；
 * 提取 link、joint、inertial 和 frame；
 * 建立命名映射；
-* 生成 Raw MJCF；
 * 固定统计基线。
 
 ### 第 5～7 周：原生机械 MJCF

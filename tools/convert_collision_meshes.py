@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 from pathlib import Path
 
@@ -31,14 +32,14 @@ def validate_stl(path: Path) -> dict:
     }
 
 
-def convert_all(force: bool = False) -> dict:
+def convert_all(franka_root: Path, force: bool = False) -> dict:
     manifest = yaml.safe_load((REPO_ROOT / "source" / "asset_manifest.yaml").read_text())
     records: dict[str, dict] = {}
     for asset in manifest["assets"]:
         uri = asset["source"]
         if not uri.endswith(".stl"):
             continue
-        src = source_path(uri)
+        src = source_path(uri, franka_root)
         dst = target_path(uri, ".stl")
         if src is None or dst is None:
             print(f"skip (unmapped): {uri}")
@@ -66,10 +67,18 @@ def convert_all(force: bool = False) -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument(
+        "--franka-root",
+        type=Path,
+        default=(Path(os.environ["FRANKA_DESCRIPTION_ROOT"]) if "FRANKA_DESCRIPTION_ROOT" in os.environ else None),
+        help="fixed franka_description checkout (or FRANKA_DESCRIPTION_ROOT)",
+    )
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
+    if args.franka_root is None:
+        ap.error("pass --franka-root or set FRANKA_DESCRIPTION_ROOT")
     GENERATED.mkdir(parents=True, exist_ok=True)
-    records = convert_all(force=args.force)
+    records = convert_all(args.franka_root, force=args.force)
     out = GENERATED / "asset_collision_conversion.json"
     out.write_text(json.dumps(records, indent=2, sort_keys=True))
     print(f"wrote {out} ({len(records)} collision assets)")

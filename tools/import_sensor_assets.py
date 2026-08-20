@@ -6,15 +6,16 @@ needed and mesh auto-centering stays compensated.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
+import os
 import shutil
 from pathlib import Path
 
 import trimesh
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CACHE = Path("/home/siyuey/workspace/mujoco/_third_party_cache")
 ASSETS = REPO_ROOT / "assets" / "sensors"
 GENERATED = REPO_ROOT / "source" / "generated"
 
@@ -23,12 +24,12 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def copy_stl(src: Path, name: str, scale: float = 1.0) -> dict:
+def copy_stl(src: Path, name: str, cache: Path, scale: float = 1.0) -> dict:
     dst = ASSETS / name
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(src, dst)
     return {
-        "source": str(src.relative_to(CACHE)),
+        "source": str(src.relative_to(cache)),
         "asset": f"sensors/{name}",
         "scale": scale,
         "input_sha256": sha256(src),
@@ -36,7 +37,7 @@ def copy_stl(src: Path, name: str, scale: float = 1.0) -> dict:
     }
 
 
-def convert_stl_meters(src: Path, name: str, scale: float) -> dict:
+def convert_stl_meters(src: Path, name: str, cache: Path, scale: float) -> dict:
     """Copy an STL mesh applying a unit conversion so output is in meters."""
     dst = ASSETS / name
     dst.parent.mkdir(parents=True, exist_ok=True)
@@ -44,7 +45,7 @@ def convert_stl_meters(src: Path, name: str, scale: float) -> dict:
     mesh.apply_scale(scale)
     mesh.export(dst)
     return {
-        "source": str(src.relative_to(CACHE)),
+        "source": str(src.relative_to(cache)),
         "asset": f"sensors/{name}",
         "scale": scale,
         "input_sha256": sha256(src),
@@ -55,13 +56,13 @@ def convert_stl_meters(src: Path, name: str, scale: float) -> dict:
     }
 
 
-def convert_dae(src: Path, name: str) -> dict:
+def convert_dae(src: Path, name: str, cache: Path) -> dict:
     dst = ASSETS / name
     dst.parent.mkdir(parents=True, exist_ok=True)
     mesh = trimesh.load(src, force="mesh")
     mesh.export(dst)
     return {
-        "source": str(src.relative_to(CACHE)),
+        "source": str(src.relative_to(cache)),
         "asset": f"sensors/{name}",
         "input_sha256": sha256(src),
         "output_sha256": sha256(dst),
@@ -71,23 +72,38 @@ def convert_dae(src: Path, name: str) -> dict:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument(
+        "--cache",
+        type=Path,
+        default=(Path(os.environ["MOBILE_FR3_CACHE_DIR"]) if "MOBILE_FR3_CACHE_DIR" in os.environ else None),
+        help="third-party source cache (or MOBILE_FR3_CACHE_DIR)",
+    )
+    args = ap.parse_args()
+    if args.cache is None:
+        ap.error("pass --cache or set MOBILE_FR3_CACHE_DIR")
+    cache = args.cache
     records = {
         "realsense_d455": convert_stl_meters(
-            CACHE / "realsense-ros" / "realsense2_description" / "meshes" / "d455.stl",
+            cache / "realsense-ros" / "realsense2_description" / "meshes" / "d455.stl",
             "realsense_d455/d455.stl",
+            cache,
             scale=0.001,
         ),
         "sick_nanoscan3_visual": convert_dae(
-            CACHE / "sick_safetyscanners2" / "description" / "meshes" / "NANS3.dae",
+            cache / "sick_safetyscanners2" / "description" / "meshes" / "NANS3.dae",
             "sick_nanoscan3/NANS3.obj",
+            cache,
         ),
         "sick_nanoscan3_collision": copy_stl(
-            CACHE / "sick_safetyscanners2" / "description" / "meshes" / "NANS3_collision.stl",
+            cache / "sick_safetyscanners2" / "description" / "meshes" / "NANS3_collision.stl",
             "sick_nanoscan3/NANS3_collision.stl",
+            cache,
         ),
         "zed_mini": copy_stl(
-            CACHE / "zed-ros2-description" / "meshes" / "zedm.stl",
+            cache / "zed-ros2-description" / "meshes" / "zedm.stl",
             "zed_mini/zedm.stl",
+            cache,
             scale=1.0,
         ),
     }
