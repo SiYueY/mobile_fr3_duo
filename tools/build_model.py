@@ -24,6 +24,8 @@ import numpy as np
 import yaml
 from format_xml import format_element
 from model_builder import BuildContext, contacts, dynamics, geometry
+from model_builder.config import BuilderConfig
+from model_builder.config import load as load_builder_config
 from model_builder.geometry import mesh_asset
 from model_builder.urdf import UrdfModel, children, merge_sc_links
 from scipy.spatial.transform import Rotation
@@ -39,53 +41,8 @@ COLLISION_EXCLUSIONS = GENERATED / "collision_exclusions.yaml"
 
 SPAWN_CLEARANCE = 0.002  # meters, simulation-only
 
-# Semantic actuator names for the official TMR joints.
-TMR_ACTUATORS = [
-    ("tmrv0_2_joint_0", "front_steering_motor", -20.0, 20.0),
-    ("tmrv0_2_joint_1", "front_wheel_motor", -80.0, 80.0),
-    ("tmrv0_2_joint_2", "rear_steering_motor", -20.0, 20.0),
-    ("tmrv0_2_joint_3", "rear_wheel_motor", -80.0, 80.0),
-]
-
 ARM_PREFIXES = ["left_fr3v2_1", "right_fr3v2_1"]
 HAND_PREFIXES = ["left", "right"]
-
-# Keyframe poses verified collision-free on the rebuilt model: no deep
-# contacts between arms, spine, mount or sensors at any of the six poses
-# (see tests/test_initial_penetration.py).
-KEYFRAME_POSES = {
-    "home": {
-        "spine": 0.2, "finger": 0.035,
-        "arm_left": [0.0261, -1.2125, -0.607, -0.9266, 0.001, 0.8389, 0.0281],
-        "arm_right": [-0.2357, -1.1902, -0.2823, -1.2111, 0.3914, 0.4848, -0.2972],
-    },
-    "transport": {
-        "spine": 0.05, "finger": 0.035,
-        "arm_left": [-0.086, -0.9075, -0.4216, -0.9392, 0.1619, 0.4792, 0.0319],
-        "arm_right": [-0.1195, -1.144, -0.1388, -1.0382, 0.1564, 0.4504, -0.5358],
-    },
-    "manipulation": {
-        "spine": 0.2, "finger": 0.03,
-        "arm_left": [-0.5267, -0.8854, -0.7447, -1.1619, 0.2071, 0.8801, -0.6102],
-        "arm_right": [-0.6486, -1.1519, -0.7186, -1.4954, 0.6431, 0.9318, -0.5561],
-    },
-    "wide_workspace": {
-        "spine": 0.2, "finger": 0.035,
-        "arm_left": [-0.2, -1.3066, -0.0563, -1.484, -0.0387, 0.6381, 0.0291],
-        "arm_right": [-0.2, -0.8106, -0.0984, -0.8767, 0.0899, 0.44, 0.0276],
-    },
-    "spine_min": {
-        "spine": 0.0, "finger": 0.035,
-        "arm_left": [0.0261, -1.2125, -0.607, -0.9266, 0.001, 0.8389, 0.0281],
-        "arm_right": [-0.2357, -1.1902, -0.2823, -1.2111, 0.3914, 0.4848, -0.2972],
-    },
-    "spine_max": {
-        "spine": 0.85, "finger": 0.035,
-        "arm_left": [0.0261, -1.2125, -0.607, -0.9266, 0.001, 0.8389, 0.0281],
-        "arm_right": [-0.2357, -1.1902, -0.2823, -1.2111, 0.3914, 0.4848, -0.2972],
-    },
-}
-
 
 def _el(tag: str, **attrs) -> ET.Element:
     elem = ET.Element(tag)
@@ -111,6 +68,7 @@ class ModelBuilder:
         urdf_path = REDUCED_URDF if opts.reduced else VISUAL_URDF
         self.urdf = merge_sc_links(UrdfModel(urdf_path), UrdfModel(SC_URDF))
         self.actuator_mode = "position" if opts.position else "motor"
+        self.config: BuilderConfig = load_builder_config(REPO_ROOT / "config")
         self.context = BuildContext(opts, self.urdf, self.actuator_mode, COLLISION_EXCLUSIONS)
 
     # ------------------------------------------------------------------
@@ -661,19 +619,15 @@ class ModelBuilder:
     def _actuators(self) -> ET.Element:
         actuator = _el("actuator")
         if self.opts.planar:
-            for jname, ctrlrange in (
-                ("planar_x_joint", "-50 50"),
-                ("planar_y_joint", "-50 50"),
-                ("planar_yaw_joint", "-6.283185307 6.283185307"),
-            ):
+            for spec in self.config.planar:
                 actuator.append(
                     _el(
                         "position",
-                        name=f"{jname}_actuator",
-                        joint=jname,
+                        name=spec.name,
+                        joint=spec.joint,
                         kp="1000",
                         ctrllimited="true",
-                        ctrlrange=ctrlrange,
+                        ctrlrange=f"{fmt(spec.ctrlrange[0])} {fmt(spec.ctrlrange[1])}",
                     )
                 )
         if self.actuator_mode == "position":
@@ -706,31 +660,27 @@ class ModelBuilder:
             return actuator
 
         # Motor variant.
-        for jname, aname, lo, hi in TMR_ACTUATORS:
-            if jname not in self.urdf.joints:
+        for spec in self.config.tmr:
+            if spec.joint not in self.urdf.joints:
                 continue
             actuator.append(
                 _el(
                     "motor",
-                    name=aname,
-                    joint=jname,
+                    name=spec.name,
+                    joint=spec.joint,
                     gear="1",
                     ctrllimited="true",
-                    ctrlrange=f"{fmt(lo)} {fmt(hi)}",
+                    ctrlrange=f"{fmt(spec.ctrlrange[0])} {fmt(spec.ctrlrange[1])}",
                 )
             )
         actuator.append(
             _el(
                 "motor",
-                name="franka_spine_motor",
-                joint="franka_spine_vertical_joint",
+                name=self.config.spine.name,
+                joint=self.config.spine.joint,
                 gear="1",
                 ctrllimited="true",
-                # Static load of the upper body (mount + dual arms) is ~370 N
-                # from the official inertials; the official joint_limits.yaml
-                # effort (100 N) cannot hold it. Raised as a simulation-only
-                # calibrated range (see source/parameter_sources.yaml).
-                ctrlrange="-600 600",
+                ctrlrange=f"{fmt(self.config.spine.ctrlrange[0])} {fmt(self.config.spine.ctrlrange[1])}",
             )
         )
         for prefix in ARM_PREFIXES:
@@ -766,8 +716,8 @@ class ModelBuilder:
                         joint=jname,
                         gear="1",
                         ctrllimited="true",
-                        ctrlrange="-20 20",
-                        forcerange="-100 100",
+                        ctrlrange=f"{fmt(self.config.hand_ctrlrange[0])} {fmt(self.config.hand_ctrlrange[1])}",
+                        forcerange=f"{fmt(self.config.hand_forcerange[0])} {fmt(self.config.hand_forcerange[1])}",
                     )
                 )
         return actuator
@@ -817,8 +767,8 @@ class ModelBuilder:
         out = []
         if self.opts.planar:
             out += ["planar_x_joint", "planar_y_joint", "planar_yaw_joint"]
-        out += [a[0] for a in TMR_ACTUATORS]
-        out.append("franka_spine_vertical_joint")
+        out += [spec.joint for spec in self.config.tmr]
+        out.append(self.config.spine.joint)
         out += [f"{p}_joint{i}" for p in ARM_PREFIXES for i in range(1, 8)]
         out += [f"{s}_fr3v2_1_finger_joint1" for s in HAND_PREFIXES]
         return [j for j in out if j in self.urdf.joints]
@@ -831,7 +781,7 @@ class ModelBuilder:
             qpos_prefix = [0.0, 0.0, 0.0]
         else:
             qpos_prefix = [0.0, 0.0, spawn_z, 1.0, 0.0, 0.0, 0.0]
-        for name, pose in KEYFRAME_POSES.items():
+        for name, pose in self.config.keyframes.items():
             qpos = list(qpos_prefix)
             for jname in dof_order:
                 if jname.startswith("planar_"):
