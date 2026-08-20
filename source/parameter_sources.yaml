@@ -100,6 +100,16 @@ parameters:
       q1 - q2 = 0 couples the two fingers."
     test_reference: tests/test_hands.py
     introduced_in: "v1.0.0"
+  - parameter: fr3_actuator_armature
+    component: fr3v2_1
+    value: "J_reflected = motor_inertia * gear_ratio^2; MJCF motor gear = 1"
+    classification: official-derived
+    reason: "The actuator armature stores joint-side reflected rotor inertia.
+      If MJCF motor gear changes to the physical gear ratio, armature must use
+      motor_inertia instead and torque semantics must be revalidated to avoid
+      applying the gear ratio squared twice."
+    test_reference: tests/test_arms.py
+    introduced_in: "v1.0.0"
   - parameter: sc_shell_exclusions
     component: collision
     value: "see contact excludes in mobile_fr3_duo.xml"

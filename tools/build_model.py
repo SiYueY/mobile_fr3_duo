@@ -22,6 +22,7 @@ from pathlib import Path
 
 import mujoco
 import numpy as np
+import yaml
 from convert_visual_meshes import COMPONENT_MAP
 from format_xml import format_element
 from scipy.spatial.transform import Rotation
@@ -29,14 +30,11 @@ from urdf_common import fmt, fmt_vec, origin_attrib
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 GENERATED = REPO_ROOT / "source" / "generated"
-FRANKA_CACHE = Path(
-    "/home/siyuey/workspace/mujoco/_third_party_cache/franka_description"
-)
 
 VISUAL_URDF = GENERATED / "mobile_fr3_duo_visual.urdf"
 SC_URDF = GENERATED / "mobile_fr3_duo_self_collision.urdf"
 REDUCED_URDF = GENERATED / "mobile_fr3_duo_reduced.urdf"
-SRDF = FRANKA_CACHE / "robots" / "mobile_fr3_duo_v0_2" / "mobile_fr3_duo_v0_2.srdf.xacro"
+COLLISION_EXCLUSIONS = GENERATED / "collision_exclusions.yaml"
 
 SPAWN_CLEARANCE = 0.002  # meters, simulation-only
 
@@ -598,13 +596,11 @@ class ModelBuilder:
     def _contacts(self) -> ET.Element:
         contact = _el("contact")
         pairs: set[tuple[str, str]] = set()
-        # Official SRDF disable-collisions pairs.
-        if SRDF.exists():
-            srdf = ET.parse(SRDF).getroot()
-            for dc in srdf.findall(".//disable_collisions"):
-                l1, l2 = dc.get("link1"), dc.get("link2")
-                if l1 in self.urdf.links and l2 in self.urdf.links:
-                    pairs.add(tuple(sorted((l1, l2))))
+        # Official SRDF disable-collision pairs frozen during source preparation.
+        exclusions = yaml.safe_load(COLLISION_EXCLUSIONS.read_text(encoding="utf-8"))
+        for l1, l2 in exclusions["disable_collisions"]:
+            if l1 in self.urdf.links and l2 in self.urdf.links:
+                pairs.add(tuple(sorted((l1, l2))))
         # Official arm SRDF pairs (robots/common/franka_arm.srdf.xacro). The
         # mobile SRDF in franka_description@2.8.1 only covers the legacy
         # fr3v2 (non-v2_1) names, so we expand the canonical arm pair table
