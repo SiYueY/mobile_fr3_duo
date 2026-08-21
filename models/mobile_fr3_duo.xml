@@ -22,8 +22,8 @@
     <material name="dae_Metal_4126eddbf0" rgba="0.438325 0.438325 0.438325 1"/>
     <material name="dae_white_5795d0a484" rgba="1 0.9852707 0.8755715 1"/>
     <material name="dae_Material_Plastic__3_0d02030f73" rgba="0 0 0 1"/>
-    <material name="dae_Material_Plastic_14f2552f36" rgba="0.411765 0.411765 0.411765 1"/>
-    <material name="dae_Material_Plastic__2_9cede6a04e" rgba="0.980392 0.980392 0.980392 1"/>
+    <material name="dae_Material_Plastic_14f2552f36" rgba="1 1 1 1"/>
+    <material name="dae_Material_Plastic__2_9cede6a04e" rgba="1 1 1 1"/>
     <material name="dae_Part__Feature_007_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
     <material name="dae_Part__Feature001_006_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
     <material name="dae_Part__Feature002_005_005_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
