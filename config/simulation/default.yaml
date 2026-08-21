@@ -1,7 +1,0 @@
-profile: default
-timestep: 0.001
-integrator: implicitfast
-solver: Newton
-iterations: 50
-ls_iterations: 10
-gravity: [0.0, 0.0, -9.81]

@@ -9,8 +9,8 @@ verify-official-files:
 
 check:
 	.venv/bin/python -m ruff check .
-	find models -name '*.xml' -print0 | xargs -0 .venv/bin/python tools/format_xml.py --check
-	.venv/bin/python tools/validate.py
+	find models -name '*.xml' -print0 | xargs -0 .venv/bin/python tools/utils/xml.py --check
+	.venv/bin/python tools/validate_model.py
 	.venv/bin/python tools/verify_official_model_files.py --offline
 
 test:

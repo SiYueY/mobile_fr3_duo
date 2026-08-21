@@ -1,9 +1,0 @@
-spine:
-  motor_type: motor
-  command_limit: [-100.0, 100.0]
-  joint: franka_spine_vertical_joint
-  kp_external: 1500.0
-  kd_external: 100.0
-controller_rate_hz: 500
-range: [0.0, 0.85]
-velocity_limit: 0.5

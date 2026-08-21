@@ -1,5 +1,10 @@
 # Mobile FR3 Duo 原生 MuJoCo 高质量仿真模型设计方案
 
+> 当前发布形态已收敛为一个完整直接 MJCF：`models/mobile_fr3_duo.xml`，以及
+> 仅 include 它的 `models/scene.xml`。组件目录独立可加载但不进行 runtime attach。
+> 生成与验证入口分别是 `prepare_source.py`、`build_models.py`、
+> `validate_model.py` 和 `render_scene.py`。
+
 ## 1. 文档信息
 
 | 项目           | 内容                                         |
@@ -514,7 +519,7 @@ mobile_fr3_duo/
 │   ├── franka_head/{franka_head.xml, assets/}
 │   ├── franka_fr3/{franka_fr3.xml, assets/}
 │   ├── franka_hand/{franka_hand.xml, assets/}
-│   ├── d455/{d455.xml, assets/}
+│   ├── realsense_d455/{realsense_d455.xml, assets/}
 │   ├── imu/{imu.xml, assets/}
 │   ├── nanoscan3/{nanoscan3.xml, assets/}
 │   └── zed_mini/{zed_mini.xml, assets/}
@@ -546,13 +551,12 @@ mobile_fr3_duo/
 │   ├── extract_urdf_parameters.py
 │   ├── convert_visual_meshes.py
 │   ├── convert_collision_meshes.py
-│   ├── build_modules.py
-│   ├── build_robot.py
+│   ├── build_models.py
 │   ├── generate_contact_excludes.py
 │   ├── verify_official_model_files.py
-│   ├── validate.py
+│   ├── validate_model.py
 │   ├── format_xml.py
-│   └── render_preview.py
+│   └── render_scene.py
 │
 ├── examples/
 │   ├── tmr_swerve_controller.py

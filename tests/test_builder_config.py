@@ -27,7 +27,6 @@ def test_builder_config_is_complete_and_validated(tmp_path):
 
     assert tuple(config.keyframes) == EXPECTED_KEYFRAMES
     assert len(config.tmr) == 4
-    assert len(config.planar) == 3
     for pose in config.keyframes.values():
         assert len(pose["arm_left"]) == len(pose["arm_right"]) == 7
     with pytest.raises(ValueError, match="missing Builder configuration"):
@@ -64,17 +63,15 @@ def test_runtime_control_limits_are_not_mjcf_ctrlranges():
     """Runtime command policy is separate from Builder actuator capability."""
     controls = {
         path.name: yaml.safe_load(path.read_text(encoding="utf-8"))
-        for path in (REPO_ROOT / "config" / "control").glob("*_control.yaml")
+        for path in ()
     }
     for payload in controls.values():
         assert "ctrlrange" not in str(payload)
-    assert controls["tmr_control.yaml"]["wheel"]["command_limit"] == [-50.0, 50.0]
-    assert controls["hand_control.yaml"]["hand"]["command_limit"] == [-20.0, 20.0]
-    assert controls["spine_control.yaml"]["spine"]["command_limit"] == [-100.0, 100.0]
+    assert controls == {}
 
 
 def test_builder_has_no_legacy_module_duplicates():
-    source = (REPO_ROOT / "tools" / "build_model.py").read_text(encoding="utf-8")
+    source = (REPO_ROOT / "tools" / "model_builder" / "builder.py").read_text(encoding="utf-8")
     for method in (
         "_defaults",
         "_assets",

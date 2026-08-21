@@ -11,9 +11,7 @@ from typing import Any
 class BuildContext:
     """Immutable inputs shared by all model-generation sections."""
 
-    opts: Any
     urdf: Any
-    actuator_mode: str
     collision_exclusions: Path
     visual_conversion: dict[str, list[str]]
 

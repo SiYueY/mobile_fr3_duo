@@ -86,7 +86,7 @@ def main() -> int:
     records = {
         "realsense_d455": convert_stl_meters(
             cache / "realsense-ros" / "realsense2_description" / "meshes" / "d455.stl",
-            "d455/assets/visual/d455.stl",
+            "realsense_d455/assets/visual/d455.stl",
             cache,
             scale=0.001,
         ),

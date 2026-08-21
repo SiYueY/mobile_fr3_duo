@@ -7,13 +7,11 @@ import sys
 from xml.etree import ElementTree as ET
 
 import mujoco
-import pytest
 import yaml
 from helpers import MODEL_ROOT, REPO_ROOT
 
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
-from model_builder.composition import load_robot_config  # noqa: E402
 
 MODULES = sorted((REPO_ROOT / "models").glob("*/*.metadata.yaml"))
 
@@ -52,20 +50,3 @@ def test_formal_composition_has_full_sensor_set():
     model = mujoco.MjModel.from_xml_path(str(MODEL_ROOT / "mobile_fr3_duo.xml"))
     assert model.nbody == 109
     assert model.nsensor == 84
-
-
-def test_invalid_runtime_config_is_rejected(tmp_path):
-    payload = yaml.safe_load(
-        (REPO_ROOT / "config/robot/mobile_fr3_duo.yaml").read_text(encoding="utf-8")
-    )
-    payload["arms"]["right"]["prefix"] = payload["arms"]["left"]["prefix"]
-    path = tmp_path / "bad.yaml"
-    path.write_text(yaml.safe_dump(payload), encoding="utf-8")
-    with pytest.raises(ValueError, match="prefixes"):
-        load_robot_config(path)
-
-    payload["arms"]["right"]["prefix"] = "right_"
-    payload["sensors"][0]["mount"] = "not_a_mounting_point"
-    path.write_text(yaml.safe_dump(payload), encoding="utf-8")
-    with pytest.raises(ValueError, match="invalid sensor mount"):
-        load_robot_config(path)

@@ -39,6 +39,14 @@
       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3"/>
       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4"/>
       <geom class="collision" type="mesh" mesh="hand_collision" pos="0 0 0" quat="1 0 0 0"/>
+      <body name="fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
+        <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
+        <geom class="collision" type="sphere" size="0.07" pos="0 0.05 0.04" quat="1 0 0 0"/>
+        <geom class="collision" type="sphere" size="0.07" pos="0 -0.05 0.04" quat="1 0 0 0"/>
+        <geom class="collision" type="cylinder" size="0.05 0.05" pos="0 0 0.1" quat="0.7071067812 0.7071067812 0 0"/>
+        <geom class="collision" type="sphere" size="0.05" pos="0 0.05 0.1" quat="1 0 0 0"/>
+        <geom class="collision" type="sphere" size="0.05" pos="0 -0.05 0.1" quat="1 0 0 0"/>
+      </body>
       <body name="fr3v2_1_hand_tcp" pos="0 0 0.1034" quat="1 0 0 0">
         <site name="fr3v2_1_hand_tcp" size="0.002"/>
       </body>
@@ -61,14 +69,6 @@
         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="5.914589857e-17 -1.584809576e-17 -0.2588190451 0.9659258263"/>
         <geom class="finger_pad" type="box" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" quat="1 0 0 0"/>
-      </body>
-      <body name="fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
-        <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
-        <geom class="collision" type="sphere" size="0.07" pos="0 0.05 0.04" quat="1 0 0 0"/>
-        <geom class="collision" type="sphere" size="0.07" pos="0 -0.05 0.04" quat="1 0 0 0"/>
-        <geom class="collision" type="cylinder" size="0.05 0.05" pos="0 0 0.1" quat="0.7071067812 0.7071067812 0 0"/>
-        <geom class="collision" type="sphere" size="0.05" pos="0 0.05 0.1" quat="1 0 0 0"/>
-        <geom class="collision" type="sphere" size="0.05" pos="0 -0.05 0.1" quat="1 0 0 0"/>
       </body>
     </body>
   </worldbody>

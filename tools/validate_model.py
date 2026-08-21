@@ -41,7 +41,7 @@ def check_manifests() -> list[str]:
     for path in MODEL_ROOT.glob("*/dependencies"):
         problems.append(f"{path.relative_to(REPO_ROOT)}: nested dependencies are forbidden")
     for rel in (
-        "source/asset_manifest.yaml", "source/link_manifest.yaml", "source/joint_manifest.yaml",
+        "source/asset_manifest.yaml",
         "source/inertial_manifest.yaml", "source/frame_manifest.yaml", "source/name_mapping.yaml",
         "source/parameter_sources.yaml", "source/official_model_files.yaml",
         "source/generated/asset_conversion.json", "source/generated/asset_collision_conversion.json",

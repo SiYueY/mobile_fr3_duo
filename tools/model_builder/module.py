@@ -2,7 +2,7 @@
 
 Modules are distribution units, not a nested runtime composition mechanism.
 Each XML contains only its own component subtree and a local copy of every
-mesh it needs.  The complete robot is emitted separately by ``build_robot``.
+mesh it needs.  The complete robot is emitted separately by ``build_models``.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
-from format_xml import format_element
+from utils.xml import format_element
 
 from .canonical import CanonicalModel
 
@@ -111,7 +111,7 @@ def _write_module(repo_root: Path, spec: ModuleSpec, source: ET.Element, body: E
     # Remove only the namespace directories created by the superseded module
     # packager.  Do not remove visual/collision: for a module's own component
     # those files are also the immutable builder input.
-    for name in ("franka_tmr", "franka_spine", "franka_head", "franka_fr3", "franka_hand", "d455", "imu", "nanoscan3", "zed_mini"):
+    for name in ("franka_tmr", "franka_spine", "franka_head", "franka_fr3", "franka_hand", "realsense_d455", "imu", "nanoscan3", "zed_mini"):
         stale = assets / name
         if stale.is_dir():
             shutil.rmtree(stale)
@@ -131,7 +131,7 @@ def _write_module(repo_root: Path, spec: ModuleSpec, source: ET.Element, body: E
 
 def _sensor_specs() -> tuple[tuple[str, str, str, str], ...]:
     return (
-        ("d455", "camera_front_link", "camera_front_", "link"),
+        ("realsense_d455", "camera_front_link", "camera_front_", "link"),
         ("nanoscan3", "lidar_front", "lidar_front_", "link"),
         ("zed_mini", "head_zed", "", "head_zed"),
         ("imu", "imu_link", "", "imu_link"),
@@ -149,6 +149,13 @@ def build_modules(repo_root: Path, source_models: dict[str, ET.Element], canonic
         shutil.rmtree(stale)
     for stale in models_dir.glob("**/metadata.yaml"):
         stale.unlink()
+    for stale in (
+        models_dir / "franka_tmr/assets/visual/d455.stl",
+        models_dir / "franka_tmr/assets/visual/NANS3.obj",
+        models_dir / "franka_tmr/assets/visual/NANS3_collision.stl",
+        models_dir / "franka_head/assets/visual/zedm.stl",
+    ):
+        stale.unlink(missing_ok=True)
     for stale in (models_dir / "franka_head/franka_head_body.xml",):
         stale.unlink(missing_ok=True)
 
@@ -173,7 +180,7 @@ def build_modules(repo_root: Path, source_models: dict[str, ET.Element], canonic
     _write_module(repo_root, specs["franka_fr3"], base, arm)
 
     head = copy.deepcopy(_find_body(base, "fr3_duo_mount_mounting_point"))
-    _drop_component_children(head, {"left_base", "right_base"})
+    _drop_component_children(head, {"left_base", "right_base", "head_zed"})
     _write_module(repo_root, specs["franka_head"], base, head)
 
     spine = copy.deepcopy(_find_body(base, "franka_spine"))
@@ -181,7 +188,10 @@ def build_modules(repo_root: Path, source_models: dict[str, ET.Element], canonic
     _write_module(repo_root, specs["franka_spine"], base, spine)
 
     tmr = copy.deepcopy(_find_body(base, "base_link"))
-    _drop_component_children(tmr, {"franka_spine"})
+    _drop_component_children(tmr, {
+        "franka_spine", "imu_link", "camera_front_link", "camera_rear_link",
+        "camera_left_link", "camera_right_link", "lidar_front", "lidar_rear",
+    })
     _write_module(repo_root, specs["franka_tmr"], base, tmr)
 
     for key, source_body, prefix, root_name in _sensor_specs():

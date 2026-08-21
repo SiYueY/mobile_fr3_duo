@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 
 import numpy as np
 from scipy.spatial.transform import Rotation
-from urdf_common import fmt, fmt_vec, origin_attrib
+from utils.urdf import fmt, fmt_vec, origin_attrib
 
 from . import el
 

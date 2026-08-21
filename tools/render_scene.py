@@ -1,4 +1,4 @@
-"""Render fixed preview images for the model variants."""
+"""Render fixed preview images for the formal scene."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 import mujoco
 from mujoco import renderer as mjr
 from mujoco.egl import GLContext
-from pngio import write_png
+from utils.png import write_png
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -23,7 +23,7 @@ def _render(model: mujoco.MjModel, data: mujoco.MjData, width=1280, height=720):
     return image[:, :, :3]
 
 
-def render_preview(out: Path, xml: str, keyframe: int = 0) -> None:
+def render_scene(out: Path, xml: str, keyframe: int = 0) -> None:
     ctx = GLContext(1280, 720)
     try:
         ctx.make_current()
@@ -55,8 +55,8 @@ def main() -> int:
     args = ap.parse_args()
     out = args.out
     out.mkdir(parents=True, exist_ok=True)
-    render_preview(out / "mobile_fr3_duo.png", "scene.xml", 0)
-    render_preview(out / "mobile_fr3_duo_manipulation.png", "scene.xml", 2)
+    render_scene(out / "mobile_fr3_duo.png", "scene.xml", 0)
+    render_scene(out / "mobile_fr3_duo_manipulation.png", "scene.xml", 2)
     return 0
 
 

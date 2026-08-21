@@ -1,5 +1,20 @@
 # Mobile FR3 Duo 原生 MuJoCo 模型设计与生成规范
 
+## 当前正式入口
+
+本仓库发布一个直接、完整的机器人模型和一个环境场景：
+`models/mobile_fr3_duo.xml` 与 `models/scene.xml`。FR3、Hand、底盘和传感器
+目录是可独立加载的组件资产，不参与 runtime attach 组合。
+
+```bash
+python tools/prepare_source.py --franka-root /path/to/franka_description --cache /path/to/cache
+python tools/build_models.py
+python tools/validate_model.py
+python tools/render_scene.py
+```
+
+唯一冻结 URDF 为 `source/generated/mobile_fr3_duo.urdf`（完整 self-collision）。
+
 ## 1. 项目目标与边界
 
 `mobile_fr3_duo` 基于 Franka 官方机器人描述资源构建 Mobile FR3 Duo 的原生 MuJoCo MJCF 模型。
@@ -229,16 +244,13 @@ latest
 
 ```text
 source/generated/
-├── mobile_fr3_duo_visual.urdf
-├── mobile_fr3_duo_self_collision.urdf
-├── mobile_fr3_duo_reduced.urdf
+├── mobile_fr3_duo.urdf
 └── collision_exclusions.yaml
 ```
 
 生产 MJCF 构建阶段应优先消费这些被冻结的生成结果，而不是重新隐式访问开发者机器上的 `franka_description` checkout。
 `collision_exclusions.yaml` 是由固定版本 SRDF 提取并按生成 URDF 过滤后的
-disable-collision pair；正式 `python tools/build_modules.py` 与
-`python tools/build_robot.py` 只读取这一仓库内输入。
+disable-collision pair；正式 `python tools/build_models.py` 只读取这一仓库内输入。
 `franka_description` checkout 仅属于 source preparation 阶段。
 Source preparation 必须显式传入固定 checkout/cache 位置，例如：
 
@@ -273,7 +285,7 @@ MJCF
 而不是：
 
 ```text
-build_modules.py + build_robot.py
+build_models.py
         │
         ├── source/generated/
         │
@@ -310,10 +322,9 @@ unit conversion
 
 ### 3.4 MJCF 生成
 
-`tools/build_modules.py` 从冻结的官方 URDF 构造 Canonical IR，并在明确的
-固定连接边界发射可独立加载的 runtime 模块。`tools/build_robot.py` 读取
-`config/robot/mobile_fr3_duo.yaml`，生成唯一正式的完整机器人模型。模块用于
-独立分发与验证；正式模型直接表达全部连接关系，不包含子模型引用。
+`tools/build_models.py` 从冻结的官方 URDF 构造 Canonical IR，一次发射可独立
+加载的组件模块、唯一完整机器人与 scene。正式模型直接表达全部连接关系，
+不包含子模型引用。
 
 ```text
 Frozen official URDF → Canonical IR → independent component modules
@@ -701,7 +712,7 @@ models/
 ├── franka_head/
 ├── franka_fr3/
 ├── franka_hand/
-├── d455/
+├── realsense_d455/
 ├── imu/
 ├── nanoscan3/
 └── zed_mini/
@@ -710,7 +721,7 @@ models/
 其中：
 
 ```text
-build_robot.py
+build_models.py
 ```
 
 只承担：
@@ -752,9 +763,7 @@ config/
 
 其中官方参数和项目参数必须继续保持来源分类。
 
-`config/control/motor.yaml` 的 `ctrlrange` 是 Builder 写入 MJCF 的 actuator 硬上限；
-`config/control/` 的 `command_limit` 则是外部控制器策略，允许更保守，且不得命名为
-`ctrlrange`。
+`config/actuator.yaml` 的 `ctrlrange` 是 Builder 写入 MJCF 的 actuator 硬上限。
 
 配置化的目的不是把所有常量都移动到 YAML，而是区分：
 
@@ -799,8 +808,7 @@ sensor asset import 与官方文件校验也只在 preparation 阶段使用显�
 之后可在没有第三方源码 checkout 的环境中运行：
 
 ```bash
-python tools/build_modules.py
-python tools/build_robot.py
+python tools/build_models.py
 ```
 
 这使得：

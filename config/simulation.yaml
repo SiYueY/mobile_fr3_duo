@@ -1,4 +1,3 @@
-profile: reduced
 timestep: 0.001
 integrator: implicitfast
 solver: Newton

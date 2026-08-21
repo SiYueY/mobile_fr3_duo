@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from convert_visual_meshes import COMPONENT_MAP
-from urdf_common import fmt, fmt_vec, origin_attrib
+from utils.urdf import fmt, fmt_vec, origin_attrib
 
 from . import BuildContext, el
 
@@ -141,14 +141,13 @@ def assets(ctx: BuildContext) -> ET.Element:
                     if path.endswith(".obj"):
                         attrs["inertia"] = "shell"
                     asset.append(el("mesh", **attrs))
-    if ctx.opts.sensors:
-        for name, path in (
-            ("d455", "d455/assets/visual/d455.stl"),
+    for name, path in (
+            ("realsense_d455", "realsense_d455/assets/visual/d455.stl"),
             ("nanoscan3_visual", "nanoscan3/assets/visual/NANS3.obj"),
             ("nanoscan3_collision", "nanoscan3/assets/visual/NANS3_collision.stl"),
             ("zed_mini", "zed_mini/assets/visual/zedm.stl"),
-        ):
-            asset.append(el("mesh", name=name, file=path))
+    ):
+        asset.append(el("mesh", name=name, file=path))
     return asset
 
 

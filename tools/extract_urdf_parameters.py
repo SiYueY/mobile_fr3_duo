@@ -1,8 +1,7 @@
 """Extract normalized model parameters from the generated official URDFs.
 
 Writes `source/generated/model_parameters.json` and the source manifests:
-link_manifest, joint_manifest, inertial_manifest, frame_manifest,
-asset_manifest, name_mapping.
+inertial_manifest, frame_manifest, asset_manifest, name_mapping.
 """
 
 from __future__ import annotations
@@ -13,7 +12,7 @@ from pathlib import Path
 
 import numpy as np
 import yaml
-from urdf_common import load_links_and_joints, origin_attrib, quat_multiply
+from utils.urdf import load_links_and_joints, origin_attrib, quat_multiply
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 GENERATED = REPO_ROOT / "source" / "generated"
@@ -197,22 +196,17 @@ def collect_assets(*urdf_paths: Path) -> list[dict]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument(
-        "--visual",
+        "--urdf",
         type=Path,
-        default=GENERATED / "mobile_fr3_duo_visual.urdf",
-    )
-    ap.add_argument(
-        "--self-collision",
-        type=Path,
-        default=GENERATED / "mobile_fr3_duo_self_collision.urdf",
+        default=GENERATED / "mobile_fr3_duo.urdf",
     )
     args = ap.parse_args()
 
     GENERATED.mkdir(parents=True, exist_ok=True)
-    chain = build_chain(args.visual)
-    joints = collect_joints(args.visual)
-    inertials = collect_inertials(args.visual)
-    assets = collect_assets(args.visual, args.self_collision)
+    chain = build_chain(args.urdf)
+    joints = collect_joints(args.urdf)
+    inertials = collect_inertials(args.urdf)
+    assets = collect_assets(args.urdf, args.urdf)
 
     payload = {
         "root": next(iter(chain.values()))["name"] if chain else None,
@@ -235,25 +229,6 @@ def main() -> int:
 
 
 def _write_manifests(payload: dict, chain: dict[str, dict]) -> None:
-    _dump_yaml(SOURCE / "link_manifest.yaml", {
-        "generated_from": "franka_description@2.8.1",
-        "links": [
-            {
-                "name": link_el["name"],
-                "parent": link_el["parent"],
-                "joint": link_el["joint"],
-                "mass": link_el["mass"],
-                "has_inertial": link_el["has_inertial"],
-                "n_visual": link_el["n_visual"],
-                "n_collision": link_el["n_collision"],
-            }
-            for link_el in payload["links"]
-        ],
-    })
-    _dump_yaml(SOURCE / "joint_manifest.yaml", {
-        "generated_from": "franka_description@2.8.1",
-        "joints": payload["joints"],
-    })
     _dump_yaml(SOURCE / "inertial_manifest.yaml", {
         "generated_from": "franka_description@2.8.1",
         "inertials": payload["inertials"],

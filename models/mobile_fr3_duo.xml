@@ -102,7 +102,7 @@
     <mesh name="hand_collision" file="franka_hand/assets/collision/hand.stl"/>
     <mesh name="finger_visual_0" file="franka_hand/assets/visual/finger_0.obj" inertia="shell"/>
     <mesh name="finger_visual_1" file="franka_hand/assets/visual/finger_1.obj" inertia="shell"/>
-    <mesh name="d455" file="d455/assets/visual/d455.stl"/>
+    <mesh name="realsense_d455" file="realsense_d455/assets/visual/d455.stl"/>
     <mesh name="nanoscan3_visual" file="nanoscan3/assets/visual/NANS3.obj"/>
     <mesh name="nanoscan3_collision" file="nanoscan3/assets/visual/NANS3_collision.stl"/>
     <mesh name="zed_mini" file="zed_mini/assets/visual/zedm.stl"/>
@@ -192,7 +192,7 @@
       <body name="front_mounting_point" pos="0.380705 0 0.2345" quat="6.123233996e-17 1 0 0">
         <site name="front_mounting_point" size="0.002"/>
         <body name="camera_front_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_front_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_front_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -209,7 +209,7 @@
       <body name="rear_mounting_point" pos="-0.380705 0 0.2345" quat="3.749399457e-33 6.123233996e-17 1 6.123233996e-17">
         <site name="rear_mounting_point" size="0.002"/>
         <body name="camera_rear_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_rear_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_rear_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -226,7 +226,7 @@
       <body name="right_mounting_point" pos="0 -0.272712 0.1145" quat="4.329780281e-17 0.7071067812 -0.7071067812 -4.329780281e-17">
         <site name="right_mounting_point" size="0.002"/>
         <body name="camera_right_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_right_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_right_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -243,7 +243,7 @@
       <body name="left_mounting_point" pos="0 0.272712 0.1145" quat="4.329780281e-17 0.7071067812 0.7071067812 4.329780281e-17">
         <site name="left_mounting_point" size="0.002"/>
         <body name="camera_left_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_left_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_left_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -310,6 +310,11 @@
                     <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_9"/>
                     <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_10"/>
                     <geom class="collision" type="mesh" mesh="link0_collision" pos="0 0 0" quat="1 0 0 0"/>
+                    <body name="left_fr3v2_1_link0_sc" pos="0 0 0" quat="1 0 0 0">
+                      <geom class="collision" type="cylinder" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.7071067812 0 0.7071067812 0"/>
+                      <geom class="collision" type="sphere" size="0.09" pos="-0.06 0 0.06" quat="1 0 0 0"/>
+                      <geom class="collision" type="sphere" size="0.09" pos="-0.09 0 0.06" quat="1 0 0 0"/>
+                    </body>
                     <body name="left_fr3v2_1_link0_accelerometer_top" pos="-0.017402 -0.007872 0.04715" quat="-3.673205103e-06 1 0 0"/>
                     <body name="left_fr3v2_1_link0_accelerometer_bottom" pos="-0.019739 0.0015506 0.05075" quat="0.7071054825 0 0 -0.7071080799"/>
                     <body name="left_fr3v2_1_link1" pos="0 0 0.333" quat="1 0 0 0">
@@ -320,6 +325,11 @@
                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_2"/>
                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_3"/>
                       <geom class="collision" type="mesh" mesh="link1_collision" pos="0 0 0" quat="1 0 0 0"/>
+                      <body name="left_fr3v2_1_link1_sc" pos="0 0 0" quat="1 0 0 0">
+                        <geom class="collision" type="cylinder" size="0.09 0.1415" pos="0 0 -0.1915" quat="1 0 0 0"/>
+                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.05" quat="1 0 0 0"/>
+                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.333" quat="1 0 0 0"/>
+                      </body>
                       <body name="left_fr3v2_1_link1_accelerometer_top" pos="0.017402 -0.093352 -0.00787" quat="-2.597343467e-06 2.597353008e-06 -0.7071080799 0.7071054825"/>
                       <body name="left_fr3v2_1_link1_accelerometer_bottom" pos="0.01974 -0.08975 0.00155" quat="0.4999981634 -0.5 0.5 0.5000018366"/>
                       <body name="left_fr3v2_1_link2" pos="0 0 0" quat="0.7071067812 -0.7071067812 0 0">
@@ -330,6 +340,11 @@
                         <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_2"/>
                         <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_3"/>
                         <geom class="collision" type="mesh" mesh="link2_collision" pos="0 0 0" quat="1 0 0 0"/>
+                        <body name="left_fr3v2_1_link2_sc" pos="0 0 0" quat="1 0 0 0">
+                          <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
+                          <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
+                          <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
+                        </body>
                         <body name="left_fr3v2_1_link2_accelerometer_top" pos="0.017403 -0.11515 0.00787" quat="-2.597343467e-06 -2.597353008e-06 0.7071080799 0.7071054825"/>
                         <body name="left_fr3v2_1_link2_accelerometer_bottom" pos="0.019737 -0.11875 -0.00155" quat="0.4999981634 0.5 -0.5 0.5000018366"/>
                         <body name="left_fr3v2_1_link3" pos="0 -0.316 0" quat="0.7071067812 0.7071067812 0 0">
@@ -340,6 +355,11 @@
                           <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_2"/>
                           <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_3"/>
                           <geom class="collision" type="mesh" mesh="link3_collision" pos="0 0 0" quat="1 0 0 0"/>
+                          <body name="left_fr3v2_1_link3_sc" pos="0 0 0" quat="1 0 0 0">
+                            <geom class="collision" type="cylinder" size="0.09 0.075" pos="0 0 -0.145" quat="1 0 0 0"/>
+                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.07" quat="1 0 0 0"/>
+                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.22" quat="1 0 0 0"/>
+                          </body>
                           <body name="left_fr3v2_1_link3_accelerometer_top" pos="0.065099 0.077352 -0.00787" quat="0.7071054825 -0.7071080799 0 0"/>
                           <body name="left_fr3v2_1_link3_accelerometer_bottom" pos="0.062769 0.073756 0.00155" quat="0.4999981634 0.5 0.5 -0.5000018366"/>
                           <body name="left_fr3v2_1_link4" pos="0.0825 0 0" quat="0.7071067812 0.7071067812 0 0">
@@ -350,6 +370,11 @@
                             <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_2"/>
                             <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_3"/>
                             <geom class="collision" type="mesh" mesh="link4_collision" pos="0 0 0" quat="1 0 0 0"/>
+                            <body name="left_fr3v2_1_link4_sc" pos="0 0 0" quat="1 0 0 0">
+                              <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
+                              <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
+                              <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
+                            </body>
                             <body name="left_fr3v2_1_link4_accelerometer_top" pos="-0.0651 0.046152 -0.00787" quat="-2.597343467e-06 2.597353008e-06 0.7071080799 -0.7071054825"/>
                             <body name="left_fr3v2_1_link4_accelerometer_bottom" pos="-0.062775 0.049753 0.00155" quat="0.4999981634 -0.5 0.5 0.5000018366"/>
                             <body name="left_fr3v2_1_link5" pos="-0.0825 0.384 0" quat="0.7071067812 -0.7071067812 0 0">
@@ -361,6 +386,14 @@
                               <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_3"/>
                               <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_4"/>
                               <geom class="collision" type="mesh" mesh="link5_collision" pos="0 0 0" quat="1 0 0 0"/>
+                              <body name="left_fr3v2_1_link5_sc" pos="0 0 0" quat="1 0 0 0">
+                                <geom class="collision" type="cylinder" size="0.09 0.05" pos="0 0 -0.26" quat="1 0 0 0"/>
+                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.21" quat="1 0 0 0"/>
+                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.31" quat="1 0 0 0"/>
+                                <geom class="collision" type="cylinder" size="0.055 0.07" pos="0 0.08 -0.13" quat="0.9992001067 0 0 0.03998933419"/>
+                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.06" quat="1 0 0 0"/>
+                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.2" quat="1 0 0 0"/>
+                              </body>
                               <body name="left_fr3v2_1_link5_accelerometer_top" pos="-0.017363 0.085872 -0.00795" quat="0.7071054825 -0.7071080799 0 0"/>
                               <body name="left_fr3v2_1_link5_accelerometer_bottom" pos="-0.019742 0.082275 0.00146" quat="0.4999981634 0.5 0.5 -0.5000018366"/>
                               <body name="left_fr3v2_1_link6" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0">
@@ -378,6 +411,11 @@
                                 <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_9"/>
                                 <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_10"/>
                                 <geom class="collision" type="mesh" mesh="link6_collision" pos="0 0 0" quat="1 0 0 0"/>
+                                <body name="left_fr3v2_1_link6_sc" pos="0 0 0" quat="1 0 0 0">
+                                  <geom class="collision" type="cylinder" size="0.08 0.04" pos="0 0 -0.03" quat="1 0 0 0"/>
+                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 0.01" quat="1 0 0 0"/>
+                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 -0.07" quat="1 0 0 0"/>
+                                </body>
                                 <body name="left_fr3v2_1_link7" pos="0.088 0 0" quat="0.7071067812 0.7071067812 0 0">
                                   <joint name="left_fr3v2_1_joint7" type="hinge" axis="0 0 1" limited="true" range="-3.05083335 3.05083335" damping="0.003" frictionloss="0.2"/>
                                   <inertial pos="-0.014555 0.00923 0.065858" mass="0.698686" fullinertia="0.000899 0.001099 0.000702 0 -1.3e-05 -2.2e-05"/>
@@ -389,6 +427,14 @@
                                   <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_5"/>
                                   <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_6"/>
                                   <geom class="collision" type="mesh" mesh="link7_collision" pos="0 0 0" quat="1 0 0 0"/>
+                                  <body name="left_fr3v2_1_link7_sc" pos="0 0 0" quat="0.9238795325 0 0 0.3826834324">
+                                    <geom class="collision" type="cylinder" size="0.07 0.07" pos="0 0 0.01" quat="1 0 0 0"/>
+                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 0.08" quat="1 0 0 0"/>
+                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 -0.06" quat="1 0 0 0"/>
+                                    <geom class="collision" type="cylinder" size="0.06 0.005" pos="0.06 0 0.082" quat="0.7071067812 0 0.7071067812 0"/>
+                                    <geom class="collision" type="sphere" size="0.06" pos="0.065 0 0.082" quat="1 0 0 0"/>
+                                    <geom class="collision" type="sphere" size="0.06" pos="0.055 0 0.082" quat="1 0 0 0"/>
+                                  </body>
                                   <body name="left_fr3v2_1_link8" pos="0 0 0.107" quat="1 0 0 0">
                                     <body name="left_fr3v2_1_hand" pos="0 0 0" quat="0.9238795325 0 0 -0.3826834324">
                                       <inertial pos="-3.76e-05 0.0119128 0.020726" mass="0.6544" fullinertia="0.00186 0.0003 0.00174 0 0 -2e-05"/>
@@ -398,6 +444,14 @@
                                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3"/>
                                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4"/>
                                       <geom class="collision" type="mesh" mesh="hand_collision" pos="0 0 0" quat="1 0 0 0"/>
+                                      <body name="left_fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
+                                        <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.07" pos="0 0.05 0.04" quat="1 0 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.07" pos="0 -0.05 0.04" quat="1 0 0 0"/>
+                                        <geom class="collision" type="cylinder" size="0.05 0.05" pos="0 0 0.1" quat="0.7071067812 0.7071067812 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.05" pos="0 0.05 0.1" quat="1 0 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.05" pos="0 -0.05 0.1" quat="1 0 0 0"/>
+                                      </body>
                                       <body name="left_fr3v2_1_hand_tcp" pos="0 0 0.1034" quat="1 0 0 0">
                                         <site name="left_fr3v2_1_hand_tcp" size="0.002"/>
                                       </body>
@@ -421,68 +475,14 @@
                                         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="5.914589857e-17 -1.584809576e-17 -0.2588190451 0.9659258263"/>
                                         <geom class="finger_pad" type="box" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" quat="1 0 0 0"/>
                                       </body>
-                                      <body name="left_fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
-                                        <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.07" pos="0 0.05 0.04" quat="1 0 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.07" pos="0 -0.05 0.04" quat="1 0 0 0"/>
-                                        <geom class="collision" type="cylinder" size="0.05 0.05" pos="0 0 0.1" quat="0.7071067812 0.7071067812 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.05" pos="0 0.05 0.1" quat="1 0 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.05" pos="0 -0.05 0.1" quat="1 0 0 0"/>
-                                      </body>
                                     </body>
                                   </body>
-                                  <body name="left_fr3v2_1_link7_sc" pos="0 0 0" quat="0.9238795325 0 0 0.3826834324">
-                                    <geom class="collision" type="cylinder" size="0.07 0.07" pos="0 0 0.01" quat="1 0 0 0"/>
-                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 0.08" quat="1 0 0 0"/>
-                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 -0.06" quat="1 0 0 0"/>
-                                    <geom class="collision" type="cylinder" size="0.06 0.005" pos="0.06 0 0.082" quat="0.7071067812 0 0.7071067812 0"/>
-                                    <geom class="collision" type="sphere" size="0.06" pos="0.065 0 0.082" quat="1 0 0 0"/>
-                                    <geom class="collision" type="sphere" size="0.06" pos="0.055 0 0.082" quat="1 0 0 0"/>
-                                  </body>
-                                </body>
-                                <body name="left_fr3v2_1_link6_sc" pos="0 0 0" quat="1 0 0 0">
-                                  <geom class="collision" type="cylinder" size="0.08 0.04" pos="0 0 -0.03" quat="1 0 0 0"/>
-                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 0.01" quat="1 0 0 0"/>
-                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 -0.07" quat="1 0 0 0"/>
                                 </body>
                               </body>
-                              <body name="left_fr3v2_1_link5_sc" pos="0 0 0" quat="1 0 0 0">
-                                <geom class="collision" type="cylinder" size="0.09 0.05" pos="0 0 -0.26" quat="1 0 0 0"/>
-                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.21" quat="1 0 0 0"/>
-                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.31" quat="1 0 0 0"/>
-                                <geom class="collision" type="cylinder" size="0.055 0.07" pos="0 0.08 -0.13" quat="0.9992001067 0 0 0.03998933419"/>
-                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.06" quat="1 0 0 0"/>
-                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.2" quat="1 0 0 0"/>
-                              </body>
-                            </body>
-                            <body name="left_fr3v2_1_link4_sc" pos="0 0 0" quat="1 0 0 0">
-                              <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
-                              <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
-                              <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
                             </body>
                           </body>
-                          <body name="left_fr3v2_1_link3_sc" pos="0 0 0" quat="1 0 0 0">
-                            <geom class="collision" type="cylinder" size="0.09 0.075" pos="0 0 -0.145" quat="1 0 0 0"/>
-                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.07" quat="1 0 0 0"/>
-                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.22" quat="1 0 0 0"/>
-                          </body>
-                        </body>
-                        <body name="left_fr3v2_1_link2_sc" pos="0 0 0" quat="1 0 0 0">
-                          <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
-                          <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
-                          <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
                         </body>
                       </body>
-                      <body name="left_fr3v2_1_link1_sc" pos="0 0 0" quat="1 0 0 0">
-                        <geom class="collision" type="cylinder" size="0.09 0.1415" pos="0 0 -0.1915" quat="1 0 0 0"/>
-                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.05" quat="1 0 0 0"/>
-                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.333" quat="1 0 0 0"/>
-                      </body>
-                    </body>
-                    <body name="left_fr3v2_1_link0_sc" pos="0 0 0" quat="1 0 0 0">
-                      <geom class="collision" type="cylinder" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.7071067812 0 0.7071067812 0"/>
-                      <geom class="collision" type="sphere" size="0.09" pos="-0.06 0 0.06" quat="1 0 0 0"/>
-                      <geom class="collision" type="sphere" size="0.09" pos="-0.09 0 0.06" quat="1 0 0 0"/>
                     </body>
                   </body>
                 </body>
@@ -503,6 +503,11 @@
                     <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_9"/>
                     <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_10"/>
                     <geom class="collision" type="mesh" mesh="link0_collision" pos="0 0 0" quat="1 0 0 0"/>
+                    <body name="right_fr3v2_1_link0_sc" pos="0 0 0" quat="1 0 0 0">
+                      <geom class="collision" type="cylinder" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.7071067812 0 0.7071067812 0"/>
+                      <geom class="collision" type="sphere" size="0.09" pos="-0.06 0 0.06" quat="1 0 0 0"/>
+                      <geom class="collision" type="sphere" size="0.09" pos="-0.09 0 0.06" quat="1 0 0 0"/>
+                    </body>
                     <body name="right_fr3v2_1_link0_accelerometer_top" pos="-0.017402 -0.007872 0.04715" quat="-3.673205103e-06 1 0 0"/>
                     <body name="right_fr3v2_1_link0_accelerometer_bottom" pos="-0.019739 0.0015506 0.05075" quat="0.7071054825 0 0 -0.7071080799"/>
                     <body name="right_fr3v2_1_link1" pos="0 0 0.333" quat="1 0 0 0">
@@ -513,6 +518,11 @@
                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_2"/>
                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_3"/>
                       <geom class="collision" type="mesh" mesh="link1_collision" pos="0 0 0" quat="1 0 0 0"/>
+                      <body name="right_fr3v2_1_link1_sc" pos="0 0 0" quat="1 0 0 0">
+                        <geom class="collision" type="cylinder" size="0.09 0.1415" pos="0 0 -0.1915" quat="1 0 0 0"/>
+                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.05" quat="1 0 0 0"/>
+                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.333" quat="1 0 0 0"/>
+                      </body>
                       <body name="right_fr3v2_1_link1_accelerometer_top" pos="0.017402 -0.093352 -0.00787" quat="-2.597343467e-06 2.597353008e-06 -0.7071080799 0.7071054825"/>
                       <body name="right_fr3v2_1_link1_accelerometer_bottom" pos="0.01974 -0.08975 0.00155" quat="0.4999981634 -0.5 0.5 0.5000018366"/>
                       <body name="right_fr3v2_1_link2" pos="0 0 0" quat="0.7071067812 -0.7071067812 0 0">
@@ -523,6 +533,11 @@
                         <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_2"/>
                         <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_3"/>
                         <geom class="collision" type="mesh" mesh="link2_collision" pos="0 0 0" quat="1 0 0 0"/>
+                        <body name="right_fr3v2_1_link2_sc" pos="0 0 0" quat="1 0 0 0">
+                          <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
+                          <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
+                          <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
+                        </body>
                         <body name="right_fr3v2_1_link2_accelerometer_top" pos="0.017403 -0.11515 0.00787" quat="-2.597343467e-06 -2.597353008e-06 0.7071080799 0.7071054825"/>
                         <body name="right_fr3v2_1_link2_accelerometer_bottom" pos="0.019737 -0.11875 -0.00155" quat="0.4999981634 0.5 -0.5 0.5000018366"/>
                         <body name="right_fr3v2_1_link3" pos="0 -0.316 0" quat="0.7071067812 0.7071067812 0 0">
@@ -533,6 +548,11 @@
                           <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_2"/>
                           <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_3"/>
                           <geom class="collision" type="mesh" mesh="link3_collision" pos="0 0 0" quat="1 0 0 0"/>
+                          <body name="right_fr3v2_1_link3_sc" pos="0 0 0" quat="1 0 0 0">
+                            <geom class="collision" type="cylinder" size="0.09 0.075" pos="0 0 -0.145" quat="1 0 0 0"/>
+                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.07" quat="1 0 0 0"/>
+                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.22" quat="1 0 0 0"/>
+                          </body>
                           <body name="right_fr3v2_1_link3_accelerometer_top" pos="0.065099 0.077352 -0.00787" quat="0.7071054825 -0.7071080799 0 0"/>
                           <body name="right_fr3v2_1_link3_accelerometer_bottom" pos="0.062769 0.073756 0.00155" quat="0.4999981634 0.5 0.5 -0.5000018366"/>
                           <body name="right_fr3v2_1_link4" pos="0.0825 0 0" quat="0.7071067812 0.7071067812 0 0">
@@ -543,6 +563,11 @@
                             <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_2"/>
                             <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_3"/>
                             <geom class="collision" type="mesh" mesh="link4_collision" pos="0 0 0" quat="1 0 0 0"/>
+                            <body name="right_fr3v2_1_link4_sc" pos="0 0 0" quat="1 0 0 0">
+                              <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
+                              <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
+                              <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
+                            </body>
                             <body name="right_fr3v2_1_link4_accelerometer_top" pos="-0.0651 0.046152 -0.00787" quat="-2.597343467e-06 2.597353008e-06 0.7071080799 -0.7071054825"/>
                             <body name="right_fr3v2_1_link4_accelerometer_bottom" pos="-0.062775 0.049753 0.00155" quat="0.4999981634 -0.5 0.5 0.5000018366"/>
                             <body name="right_fr3v2_1_link5" pos="-0.0825 0.384 0" quat="0.7071067812 -0.7071067812 0 0">
@@ -554,6 +579,14 @@
                               <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_3"/>
                               <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_4"/>
                               <geom class="collision" type="mesh" mesh="link5_collision" pos="0 0 0" quat="1 0 0 0"/>
+                              <body name="right_fr3v2_1_link5_sc" pos="0 0 0" quat="1 0 0 0">
+                                <geom class="collision" type="cylinder" size="0.09 0.05" pos="0 0 -0.26" quat="1 0 0 0"/>
+                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.21" quat="1 0 0 0"/>
+                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.31" quat="1 0 0 0"/>
+                                <geom class="collision" type="cylinder" size="0.055 0.07" pos="0 0.08 -0.13" quat="0.9992001067 0 0 0.03998933419"/>
+                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.06" quat="1 0 0 0"/>
+                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.2" quat="1 0 0 0"/>
+                              </body>
                               <body name="right_fr3v2_1_link5_accelerometer_top" pos="-0.017363 0.085872 -0.00795" quat="0.7071054825 -0.7071080799 0 0"/>
                               <body name="right_fr3v2_1_link5_accelerometer_bottom" pos="-0.019742 0.082275 0.00146" quat="0.4999981634 0.5 0.5 -0.5000018366"/>
                               <body name="right_fr3v2_1_link6" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0">
@@ -571,6 +604,11 @@
                                 <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_9"/>
                                 <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_10"/>
                                 <geom class="collision" type="mesh" mesh="link6_collision" pos="0 0 0" quat="1 0 0 0"/>
+                                <body name="right_fr3v2_1_link6_sc" pos="0 0 0" quat="1 0 0 0">
+                                  <geom class="collision" type="cylinder" size="0.08 0.04" pos="0 0 -0.03" quat="1 0 0 0"/>
+                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 0.01" quat="1 0 0 0"/>
+                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 -0.07" quat="1 0 0 0"/>
+                                </body>
                                 <body name="right_fr3v2_1_link7" pos="0.088 0 0" quat="0.7071067812 0.7071067812 0 0">
                                   <joint name="right_fr3v2_1_joint7" type="hinge" axis="0 0 1" limited="true" range="-3.05083335 3.05083335" damping="0.003" frictionloss="0.2"/>
                                   <inertial pos="-0.014555 0.00923 0.065858" mass="0.698686" fullinertia="0.000899 0.001099 0.000702 0 -1.3e-05 -2.2e-05"/>
@@ -582,6 +620,14 @@
                                   <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_5"/>
                                   <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_6"/>
                                   <geom class="collision" type="mesh" mesh="link7_collision" pos="0 0 0" quat="1 0 0 0"/>
+                                  <body name="right_fr3v2_1_link7_sc" pos="0 0 0" quat="0.9238795325 0 0 0.3826834324">
+                                    <geom class="collision" type="cylinder" size="0.07 0.07" pos="0 0 0.01" quat="1 0 0 0"/>
+                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 0.08" quat="1 0 0 0"/>
+                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 -0.06" quat="1 0 0 0"/>
+                                    <geom class="collision" type="cylinder" size="0.06 0.005" pos="0.06 0 0.082" quat="0.7071067812 0 0.7071067812 0"/>
+                                    <geom class="collision" type="sphere" size="0.06" pos="0.065 0 0.082" quat="1 0 0 0"/>
+                                    <geom class="collision" type="sphere" size="0.06" pos="0.055 0 0.082" quat="1 0 0 0"/>
+                                  </body>
                                   <body name="right_fr3v2_1_link8" pos="0 0 0.107" quat="1 0 0 0">
                                     <body name="right_fr3v2_1_hand" pos="0 0 0" quat="0.9238795325 0 0 -0.3826834324">
                                       <inertial pos="-3.76e-05 0.0119128 0.020726" mass="0.6544" fullinertia="0.00186 0.0003 0.00174 0 0 -2e-05"/>
@@ -591,6 +637,14 @@
                                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3"/>
                                       <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4"/>
                                       <geom class="collision" type="mesh" mesh="hand_collision" pos="0 0 0" quat="1 0 0 0"/>
+                                      <body name="right_fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
+                                        <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.07" pos="0 0.05 0.04" quat="1 0 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.07" pos="0 -0.05 0.04" quat="1 0 0 0"/>
+                                        <geom class="collision" type="cylinder" size="0.05 0.05" pos="0 0 0.1" quat="0.7071067812 0.7071067812 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.05" pos="0 0.05 0.1" quat="1 0 0 0"/>
+                                        <geom class="collision" type="sphere" size="0.05" pos="0 -0.05 0.1" quat="1 0 0 0"/>
+                                      </body>
                                       <body name="right_fr3v2_1_hand_tcp" pos="0 0 0.1034" quat="1 0 0 0">
                                         <site name="right_fr3v2_1_hand_tcp" size="0.002"/>
                                       </body>
@@ -614,68 +668,14 @@
                                         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="5.914589857e-17 -1.584809576e-17 -0.2588190451 0.9659258263"/>
                                         <geom class="finger_pad" type="box" size="0.00875 0.0076 0.00925" pos="0 0.00758 0.04525" quat="1 0 0 0"/>
                                       </body>
-                                      <body name="right_fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
-                                        <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.07" pos="0 0.05 0.04" quat="1 0 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.07" pos="0 -0.05 0.04" quat="1 0 0 0"/>
-                                        <geom class="collision" type="cylinder" size="0.05 0.05" pos="0 0 0.1" quat="0.7071067812 0.7071067812 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.05" pos="0 0.05 0.1" quat="1 0 0 0"/>
-                                        <geom class="collision" type="sphere" size="0.05" pos="0 -0.05 0.1" quat="1 0 0 0"/>
-                                      </body>
                                     </body>
                                   </body>
-                                  <body name="right_fr3v2_1_link7_sc" pos="0 0 0" quat="0.9238795325 0 0 0.3826834324">
-                                    <geom class="collision" type="cylinder" size="0.07 0.07" pos="0 0 0.01" quat="1 0 0 0"/>
-                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 0.08" quat="1 0 0 0"/>
-                                    <geom class="collision" type="sphere" size="0.07" pos="0 0 -0.06" quat="1 0 0 0"/>
-                                    <geom class="collision" type="cylinder" size="0.06 0.005" pos="0.06 0 0.082" quat="0.7071067812 0 0.7071067812 0"/>
-                                    <geom class="collision" type="sphere" size="0.06" pos="0.065 0 0.082" quat="1 0 0 0"/>
-                                    <geom class="collision" type="sphere" size="0.06" pos="0.055 0 0.082" quat="1 0 0 0"/>
-                                  </body>
-                                </body>
-                                <body name="right_fr3v2_1_link6_sc" pos="0 0 0" quat="1 0 0 0">
-                                  <geom class="collision" type="cylinder" size="0.08 0.04" pos="0 0 -0.03" quat="1 0 0 0"/>
-                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 0.01" quat="1 0 0 0"/>
-                                  <geom class="collision" type="sphere" size="0.08" pos="0 0 -0.07" quat="1 0 0 0"/>
                                 </body>
                               </body>
-                              <body name="right_fr3v2_1_link5_sc" pos="0 0 0" quat="1 0 0 0">
-                                <geom class="collision" type="cylinder" size="0.09 0.05" pos="0 0 -0.26" quat="1 0 0 0"/>
-                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.21" quat="1 0 0 0"/>
-                                <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.31" quat="1 0 0 0"/>
-                                <geom class="collision" type="cylinder" size="0.055 0.07" pos="0 0.08 -0.13" quat="0.9992001067 0 0 0.03998933419"/>
-                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.06" quat="1 0 0 0"/>
-                                <geom class="collision" type="sphere" size="0.055" pos="0 0.08 -0.2" quat="1 0 0 0"/>
-                              </body>
-                            </body>
-                            <body name="right_fr3v2_1_link4_sc" pos="0 0 0" quat="1 0 0 0">
-                              <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
-                              <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
-                              <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
                             </body>
                           </body>
-                          <body name="right_fr3v2_1_link3_sc" pos="0 0 0" quat="1 0 0 0">
-                            <geom class="collision" type="cylinder" size="0.09 0.075" pos="0 0 -0.145" quat="1 0 0 0"/>
-                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.07" quat="1 0 0 0"/>
-                            <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.22" quat="1 0 0 0"/>
-                          </body>
-                        </body>
-                        <body name="right_fr3v2_1_link2_sc" pos="0 0 0" quat="1 0 0 0">
-                          <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
-                          <geom class="collision" type="sphere" size="0.09" pos="0 0 0.06" quat="1 0 0 0"/>
-                          <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.06" quat="1 0 0 0"/>
                         </body>
                       </body>
-                      <body name="right_fr3v2_1_link1_sc" pos="0 0 0" quat="1 0 0 0">
-                        <geom class="collision" type="cylinder" size="0.09 0.1415" pos="0 0 -0.1915" quat="1 0 0 0"/>
-                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.05" quat="1 0 0 0"/>
-                        <geom class="collision" type="sphere" size="0.09" pos="0 0 -0.333" quat="1 0 0 0"/>
-                      </body>
-                    </body>
-                    <body name="right_fr3v2_1_link0_sc" pos="0 0 0" quat="1 0 0 0">
-                      <geom class="collision" type="cylinder" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.7071067812 0 0.7071067812 0"/>
-                      <geom class="collision" type="sphere" size="0.09" pos="-0.06 0 0.06" quat="1 0 0 0"/>
-                      <geom class="collision" type="sphere" size="0.09" pos="-0.09 0 0.06" quat="1 0 0 0"/>
                     </body>
                   </body>
                 </body>

@@ -1,4 +1,4 @@
-name: d455
+name: realsense_d455
 type: sensor
 source:
   type: official-derived

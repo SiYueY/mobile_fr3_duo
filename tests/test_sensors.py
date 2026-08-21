@@ -206,9 +206,9 @@ def test_sensor_rate_profiles():
     import yaml
 
     profile = yaml.safe_load(
-        (REPO_ROOT / "config" / "sensor" / "mobile_fr3_duo.yaml").read_text()
+        (REPO_ROOT / "config" / "sensor.yaml").read_text()
     )
-    assert profile["d455"]["rate_hz"] == 30.0
+    assert profile["realsense_d455"]["rate_hz"] == 30.0
     assert profile["nanoscan3"]["rate_hz"] == 50.0
     assert profile["zed_mini"]["rate_hz"] == 30.0
     assert profile["physics_rate_hz"] == 1000

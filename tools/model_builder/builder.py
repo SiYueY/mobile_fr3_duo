@@ -1,14 +1,7 @@
-"""Internal whole-robot baseline emitter used by the runtime module builders.
-
-This module preserves the official-URDF-to-MJCF semantic conversion.  Its CLI
-is retired: public generation uses ``build_modules.py`` and ``build_robot.py``.
-All parameters not marked official-source/derived are recorded in
-``source/parameter_sources.yaml``.
-"""
+"""Emit the one formal Mobile FR3 Duo MJCF from frozen official inputs."""
 
 from __future__ import annotations
 
-import argparse
 import math
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -16,20 +9,18 @@ from pathlib import Path
 import mujoco
 import numpy as np
 import yaml
-from format_xml import format_element
+from utils.xml import format_element
 from model_builder import BuildContext, contacts, dynamics, geometry
 from model_builder.config import BuilderConfig
 from model_builder.config import load as load_builder_config
-from model_builder.urdf import UrdfModel, children, merge_sc_links
+from model_builder.urdf import UrdfModel, children
 from scipy.spatial.transform import Rotation
-from urdf_common import fmt, fmt_vec, origin_attrib
+from utils.urdf import fmt, fmt_vec, origin_attrib
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 GENERATED = REPO_ROOT / "source" / "generated"
 
-VISUAL_URDF = GENERATED / "mobile_fr3_duo_visual.urdf"
-SC_URDF = GENERATED / "mobile_fr3_duo_self_collision.urdf"
-REDUCED_URDF = GENERATED / "mobile_fr3_duo_reduced.urdf"
+CANONICAL_URDF = GENERATED / "mobile_fr3_duo.urdf"
 COLLISION_EXCLUSIONS = GENERATED / "collision_exclusions.yaml"
 
 SPAWN_CLEARANCE = 0.002  # meters, simulation-only
@@ -51,22 +42,12 @@ def _geom_origin(elem) -> tuple[str, str]:
 
 
 class ModelBuilder:
-    def __init__(self, opts: argparse.Namespace):
-        self.opts = opts
-        urdf_path = REDUCED_URDF if opts.reduced else VISUAL_URDF
-        self.urdf = merge_sc_links(UrdfModel(urdf_path), UrdfModel(SC_URDF))
-        self.actuator_mode = "position" if opts.position else "motor"
+    def __init__(self):
+        self.urdf = UrdfModel(CANONICAL_URDF)
         self.config: BuilderConfig = load_builder_config(REPO_ROOT / "config")
-        simulation_profile = "reduced" if opts.reduced else "default"
-        self.simulation = yaml.safe_load(
-            (REPO_ROOT / "config" / "simulation" / f"{simulation_profile}.yaml").read_text(
-                encoding="utf-8"
-            )
-        )
+        self.simulation = yaml.safe_load((REPO_ROOT / "config" / "simulation.yaml").read_text(encoding="utf-8"))
         self.context = BuildContext(
-            opts,
             self.urdf,
-            self.actuator_mode,
             COLLISION_EXCLUSIONS,
             geometry.load_visual_conversion(),
         )
@@ -101,13 +82,10 @@ class ModelBuilder:
         mujoco_root.append(geometry.defaults())
         mujoco_root.append(geometry.assets(self.context))
 
-        spawn_z = self.opts.spawn_z
-        if spawn_z is None:
-            spawn_z = 0.0
+        spawn_z = SPAWN_CLEARANCE
         worldbody = _el("worldbody")
         worldbody.append(self._emit_body(self.urdf.root_link, spawn_z, is_root=True))
-        if self.opts.sensors:
-            self._attach_sensor_entities(worldbody)
+        self._attach_sensor_entities(worldbody)
         mujoco_root.append(worldbody)
 
         mujoco_root.append(contacts.contacts(self.context))
@@ -115,8 +93,7 @@ class ModelBuilder:
         mujoco_root.append(self._actuators())
         mujoco_root.append(self._sensors())
         mujoco_root.append(self._keyframes(spawn_z))
-        if self.actuator_mode == "motor" and not self.opts.planar:
-            self._fill_gravity_comp_ctrl(mujoco_root)
+        self._fill_gravity_comp_ctrl(mujoco_root)
         return mujoco_root
 
     # ------------------------------------------------------------------
@@ -131,40 +108,7 @@ class ModelBuilder:
         body = _el("body", name=name, pos=pos, quat=quat)
 
         if is_root:
-            if self.opts.planar:
-                body.append(
-                    _el(
-                        "joint",
-                        name="planar_x_joint",
-                        type="slide",
-                        axis="1 0 0",
-                        limited="true",
-                        range="-50 50",
-                        damping="10",
-                    )
-                )
-                body.append(
-                    _el(
-                        "joint",
-                        name="planar_y_joint",
-                        type="slide",
-                        axis="0 1 0",
-                        limited="true",
-                        range="-50 50",
-                        damping="10",
-                    )
-                )
-                body.append(
-                    _el(
-                        "joint",
-                        name="planar_yaw_joint",
-                        type="hinge",
-                        axis="0 0 1",
-                        damping="5",
-                    )
-                )
-            else:
-                body.append(_el("freejoint", name="base_freejoint"))
+            body.append(_el("freejoint", name="base_freejoint"))
         movable_joint = joint is not None and joint.get("type") != "fixed"
         if movable_joint:
             # In URDF, the joint origin is fixed in the parent frame and the
@@ -204,48 +148,6 @@ class ModelBuilder:
     # ------------------------------------------------------------------
     def _actuators(self) -> ET.Element:
         actuator = _el("actuator")
-        if self.opts.planar:
-            for spec in self.config.planar:
-                actuator.append(
-                    _el(
-                        "position",
-                        name=spec.name,
-                        joint=spec.joint,
-                        kp="1000",
-                        ctrllimited="true",
-                        ctrlrange=f"{fmt(spec.ctrlrange[0])} {fmt(spec.ctrlrange[1])}",
-                    )
-                )
-        if self.actuator_mode == "position":
-            kp_map = {
-                "tmrv0_2_joint_": self.config.position_kp["tmr"],
-                "franka_spine_vertical_joint": self.config.position_kp["spine"],
-                "finger_joint1": self.config.position_kp["hand"],
-            }
-            for jname in self._actuator_joints():
-                if jname.startswith("planar_"):
-                    continue
-                jtype = self.urdf.joints[jname].get("type")
-                limit = self.urdf.joints[jname].find("limit")
-                if jtype == "continuous" or limit is None or limit.get("lower") is None:
-                    lower, upper = -1e4, 1e4
-                else:
-                    lower = float(limit.get("lower"))
-                    upper = float(limit.get("upper"))
-                kp = next((v for k, v in kp_map.items() if k in jname), self.config.position_kp["arm"])
-                actuator.append(
-                    _el(
-                        "position",
-                        name=f"{jname}_actuator",
-                        joint=jname,
-                        kp=fmt(kp),
-                        ctrllimited="true",
-                        ctrlrange=f"{fmt(lower)} {fmt(upper)}",
-                    )
-                )
-            return actuator
-
-        # Motor variant.
         for spec in self.config.tmr:
             if spec.joint not in self.urdf.joints:
                 continue
@@ -322,21 +224,14 @@ class ModelBuilder:
         sensor.append(_el("framequat", name="base_quat", objtype="body", objname="base_link"))
         sensor.append(_el("velocimeter", name="base_linear_velocity", site="base_sensor_frame"))
         sensor.append(_el("gyro", name="base_angular_velocity", site="base_sensor_frame"))
-        if self.opts.sensors:
-            sensor.append(_el("gyro", name="imu_angular_velocity", site="imu_sensor_frame"))
-            sensor.append(
-                _el("accelerometer", name="imu_linear_acceleration", site="imu_sensor_frame")
-            )
-            sensor.append(
-                _el("framequat", name="imu_orientation", objtype="site", objname="imu_sensor_frame")
-            )
+        sensor.append(_el("gyro", name="imu_angular_velocity", site="imu_sensor_frame"))
+        sensor.append(_el("accelerometer", name="imu_linear_acceleration", site="imu_sensor_frame"))
+        sensor.append(_el("framequat", name="imu_orientation", objtype="site", objname="imu_sensor_frame"))
         return sensor
 
     def _active_joints_in_order(self) -> list[str]:
         """Non-fixed joints in the same order MuJoCo assigns DOFs."""
         order: list[str] = []
-        if self.opts.planar:
-            order += ["planar_x_joint", "planar_y_joint", "planar_yaw_joint"]
 
         def walk(name: str) -> None:
             for j in self.urdf.joints.values():
@@ -351,8 +246,6 @@ class ModelBuilder:
 
     def _actuator_joints(self) -> list[str]:
         out = []
-        if self.opts.planar:
-            out += ["planar_x_joint", "planar_y_joint", "planar_yaw_joint"]
         out += [spec.joint for spec in self.config.tmr]
         out.append(self.config.spine.joint)
         out += [f"{p}_joint{i}" for p in ARM_PREFIXES for i in range(1, 8)]
@@ -363,15 +256,10 @@ class ModelBuilder:
     def _keyframes(self, spawn_z: float) -> ET.Element:
         keyframe = _el("keyframe")
         dof_order = self._active_joints_in_order()
-        if self.opts.planar:
-            qpos_prefix = [0.0, 0.0, 0.0]
-        else:
-            qpos_prefix = [0.0, 0.0, spawn_z, 1.0, 0.0, 0.0, 0.0]
+        qpos_prefix = [0.0, 0.0, spawn_z, 1.0, 0.0, 0.0, 0.0]
         for name, pose in self.config.keyframes.items():
             qpos = list(qpos_prefix)
             for jname in dof_order:
-                if jname.startswith("planar_"):
-                    continue
                 if jname in ("tmrv0_2_joint_0", "tmrv0_2_joint_2") or jname in ("tmrv0_2_joint_1", "tmrv0_2_joint_3"):
                     qpos.append(0.0)
                 elif jname == "franka_spine_vertical_joint":
@@ -400,14 +288,6 @@ class ModelBuilder:
         return keyframe
 
     def _keyframe_ctrl(self, qpos: list[float], dof_order: list[str]) -> list[float]:
-        if self.actuator_mode == "position" or self.opts.planar:
-            prefix = 3 if self.opts.planar else 7
-            q_dofs = [j for j in dof_order if not j.startswith("planar_")]
-            joint_to_q = dict(zip(q_dofs, qpos[prefix:], strict=True))
-            ctrl = []
-            for jname in self._actuator_joints():
-                ctrl.append(joint_to_q.get(jname, 0.0))
-            return ctrl
         return [0.0] * len(self._actuator_joints())
 
     def _fill_gravity_comp_ctrl(self, mujoco_root: ET.Element) -> None:
@@ -488,7 +368,7 @@ class ModelBuilder:
                 "geom",
                 **{"class": "visual"},
                 type="mesh",
-                mesh="d455",
+                mesh="realsense_d455",
                 pos="0.00465 -0.0475 0",
                 quat=_fmt_quat((math.pi / 2, 0, math.pi / 2)),
             )
@@ -771,13 +651,6 @@ def add_ground_and_light(worldbody: ET.Element) -> None:
     )
 
 
-def main() -> int:
-    raise SystemExit(
-        "tools/build_model.py is an internal baseline emitter; use "
-        "tools/build_modules.py then tools/build_robot.py"
-    )
-
-
 def _build_scene(include_file: str) -> ET.Element:
     root = _el("mujoco", model="scene")
     root.append(_el("include", file=include_file))
@@ -804,7 +677,3 @@ def _build_scene(include_file: str) -> ET.Element:
     )
     root.append(worldbody)
     return root
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

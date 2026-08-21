@@ -2,8 +2,7 @@
 # Generate official URDF files from the fixed franka_description tag (2.8.1).
 #
 # Outputs (deterministic, committed as project-derived baselines):
-#   source/generated/mobile_fr3_duo_visual.urdf
-#   source/generated/mobile_fr3_duo_self_collision.urdf
+#   source/generated/mobile_fr3_duo.urdf
 #   source/generated/collision_exclusions.yaml
 #
 # Requires ROS 2 Humble xacro and the fixed official checkout in the dev cache.
@@ -65,35 +64,23 @@ XACRO_BASE=(
 )
 
 xacro "$FD_DIR/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.urdf.xacro" \
-  "${XACRO_BASE[@]}" "with_sc:=false" \
-  > "$OUT_DIR/mobile_fr3_duo_visual.urdf"
-
-xacro "$FD_DIR/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.urdf.xacro" \
   "${XACRO_BASE[@]}" "with_sc:=true" \
-  > "$OUT_DIR/mobile_fr3_duo_self_collision.urdf"
-
-xacro "$FD_DIR/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.urdf.xacro" \
-  "${XACRO_BASE[@]}" "with_sc:=false" "reduced_version:=true" \
-  > "$OUT_DIR/mobile_fr3_duo_reduced.urdf"
+  > "$OUT_DIR/mobile_fr3_duo.urdf"
 
 # Freeze the official SRDF semantic collision exclusions that the production
-# builder consumes.  Filter against the generated visual URDF just as the
+# builder consumes.  Filter against the canonical URDF just as the
 # builder does, so this is a complete and directly usable derived input.
 xacro "$SRDF" "${XACRO_BASE[@]}" \
   | python3 "$ROOT/tools/extract_collision_exclusions.py" \
-      --urdf "$OUT_DIR/mobile_fr3_duo_visual.urdf" \
+      --urdf "$OUT_DIR/mobile_fr3_duo.urdf" \
       --output "$OUT_DIR/collision_exclusions.yaml" \
       --source "franka_description@2.8.1/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.srdf.xacro"
 
 # Strip absolute dev-cache paths from the xacro header comments so the
 # committed deliverables contain no absolute paths.
 sed -i "s#$FD_DIR#franka_description@2.8.1#g" \
-  "$OUT_DIR/mobile_fr3_duo_visual.urdf" \
-  "$OUT_DIR/mobile_fr3_duo_self_collision.urdf" \
-  "$OUT_DIR/mobile_fr3_duo_reduced.urdf"
+  "$OUT_DIR/mobile_fr3_duo.urdf"
 
 echo "generated:"
-echo "  $OUT_DIR/mobile_fr3_duo_visual.urdf"
-echo "  $OUT_DIR/mobile_fr3_duo_self_collision.urdf"
-echo "  $OUT_DIR/mobile_fr3_duo_reduced.urdf"
+echo "  $OUT_DIR/mobile_fr3_duo.urdf"
 echo "  $OUT_DIR/collision_exclusions.yaml"
