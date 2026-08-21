@@ -1,6 +1,0 @@
-device: olv_imu01
-frames: [imu_sensor_frame]
-rate_hz: 200.0
-ideal: true
-axis_alignment: "ROS ENU conventions; verify per-mount transform"
-

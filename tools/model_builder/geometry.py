@@ -6,7 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from convert_visual_meshes import COMPONENT_MAP
+from _source.convert_visual_meshes import COMPONENT_MAP
 from utils.urdf import fmt, fmt_vec, origin_attrib
 
 from . import BuildContext, el
@@ -58,7 +58,7 @@ def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[s
         outputs = record.get("outputs") if isinstance(record, dict) else None
         if not isinstance(outputs, list) or not outputs:
             raise RuntimeError(
-                f"{path}: {uri} has no outputs[]; rerun tools/convert_visual_meshes.py --force"
+                f"{path}: {uri} has no outputs[]; rerun tools/prepare_source.py"
             )
         paths: list[str] = []
         for output in outputs:

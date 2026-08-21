@@ -12,7 +12,7 @@ from helpers import REPO_ROOT
 
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
-import convert_visual_meshes as converter  # noqa: E402
+from _source import convert_visual_meshes as converter  # noqa: E402
 from model_builder import geometry  # noqa: E402
 
 

@@ -1,13 +1,12 @@
 """Extract normalized model parameters from the generated official URDFs.
 
-Writes `source/generated/model_parameters.json` and the source manifests:
+Writes the source manifests:
 inertial_manifest, frame_manifest, asset_manifest, name_mapping.
 """
 
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 
 import numpy as np
@@ -219,9 +218,6 @@ def main() -> int:
         "n_joints": len(joints),
         "n_inertials": len(inertials),
     }
-    with open(GENERATED / "model_parameters.json", "w", encoding="utf-8") as fh:
-        json.dump(payload, fh, indent=2, ensure_ascii=False)
-
     _write_manifests(payload, chain)
     print(f"extracted {payload['n_links']} links / {payload['n_joints']} joints "
           f"/ {payload['n_inertials']} inertials / total mass {payload['total_mass']:.3f} kg")

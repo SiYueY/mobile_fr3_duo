@@ -8,9 +8,9 @@
 
 ```bash
 python tools/prepare_source.py --franka-root /path/to/franka_description --cache /path/to/cache
-python tools/build_models.py
-python tools/validate_model.py
-python tools/render_scene.py
+python tools/build.py
+python tools/validate.py
+python tools/render.py
 ```
 
 唯一冻结 URDF 为 `source/generated/mobile_fr3_duo.urdf`（完整 self-collision）。
@@ -240,7 +240,7 @@ latest
 
 ### 3.2 URDF 生成
 
-`tools/generate_urdf.sh` 负责调用官方 Xacro，生成至少：
+`tools/prepare_source.py` 在内部调用官方 Xacro，生成：
 
 ```text
 source/generated/
@@ -250,12 +250,12 @@ source/generated/
 
 生产 MJCF 构建阶段应优先消费这些被冻结的生成结果，而不是重新隐式访问开发者机器上的 `franka_description` checkout。
 `collision_exclusions.yaml` 是由固定版本 SRDF 提取并按生成 URDF 过滤后的
-disable-collision pair；正式 `python tools/build_models.py` 只读取这一仓库内输入。
+disable-collision pair；正式 `python tools/build.py` 只读取这一仓库内输入。
 `franka_description` checkout 仅属于 source preparation 阶段。
 Source preparation 必须显式传入固定 checkout/cache 位置，例如：
 
 ```bash
-tools/generate_urdf.sh --cache /path/to/third-party-cache
+python tools/prepare_source.py --franka-root /path/to/franka_description --cache /path/to/third-party-cache
 ```
 
 或设置 `MOBILE_FR3_CACHE_DIR`。任何 production build 命令均不读取该路径。
@@ -322,7 +322,7 @@ unit conversion
 
 ### 3.4 MJCF 生成
 
-`tools/build_models.py` 从冻结的官方 URDF 构造 Canonical IR，一次发射可独立
+`tools/build.py` 从冻结的官方 URDF 构造 Canonical IR，一次发射可独立
 加载的组件模块、唯一完整机器人与 scene。正式模型直接表达全部连接关系，
 不包含子模型引用。
 
@@ -802,13 +802,13 @@ zed_ros2_description
 
 分别 clone 在哪里。
 
-`tools/generate_urdf.sh` 是需要固定 `franka_description@2.8.1` checkout 的 source
+`tools/prepare_source.py` 是需要固定 `franka_description@2.8.1` checkout 的 source
 preparation 入口；它同时生成 URDF 和 `collision_exclusions.yaml`。mesh conversion、
 sensor asset import 与官方文件校验也只在 preparation 阶段使用显式指定的固定 cache。
 之后可在没有第三方源码 checkout 的环境中运行：
 
 ```bash
-python tools/build_models.py
+python tools/build.py
 ```
 
 这使得：

@@ -42,11 +42,11 @@ def main() -> int:
         "FRANKA_DESCRIPTION_ROOT": str(root),
         "MOBILE_FR3_CACHE_DIR": str(cache),
     }
-    _run(["bash", "tools/generate_urdf.sh"], environment)
-    _run([sys.executable, "tools/convert_visual_meshes.py", "--franka-root", str(root)], environment)
-    _run([sys.executable, "tools/convert_collision_meshes.py", "--franka-root", str(root)], environment)
-    _run([sys.executable, "tools/import_sensor_assets.py", "--cache", str(cache)], environment)
-    _run([sys.executable, "tools/extract_urdf_parameters.py"], environment)
+    _run(["bash", "tools/_source/generate_urdf.sh"], environment)
+    _run([sys.executable, "tools/_source/convert_visual_meshes.py", "--franka-root", str(root)], environment)
+    _run([sys.executable, "tools/_source/convert_collision_meshes.py", "--franka-root", str(root)], environment)
+    _run([sys.executable, "tools/_source/import_sensor_assets.py", "--cache", str(cache)], environment)
+    _run([sys.executable, "tools/_source/extract_urdf_parameters.py"], environment)
     return 0
 
 

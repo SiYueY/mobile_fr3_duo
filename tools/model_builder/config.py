@@ -43,7 +43,7 @@ class BuilderConfig:
 def load(config_dir: Path) -> BuilderConfig:
     """Load Builder inputs and reject incomplete or malformed configuration."""
     actuator_data = _mapping(_read(config_dir / "actuator.yaml"), "actuator.yaml")
-    robot_data = _mapping(_read(config_dir / "robot.yaml"), "robot.yaml")
+    robot_data = _mapping(_read(config_dir / "mobile_fr3_duo.yaml"), "mobile_fr3_duo.yaml")
     tmr = _actuators(actuator_data.get("tmr"), "tmr", EXPECTED_TMR_JOINTS, names=True)
     spine = _actuator(actuator_data.get("spine"), "spine", names=True)
     if spine.joint != "franka_spine_vertical_joint" or spine.name != "franka_spine_motor":

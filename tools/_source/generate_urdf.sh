@@ -26,7 +26,7 @@ if [[ -z "$CACHE_DIR" ]]; then
   exit 2
 fi
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 FD_DIR="$CACHE_DIR/franka_description"
 OUT_DIR="$ROOT/source/generated"
 SRDF="$FD_DIR/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.srdf.xacro"
@@ -71,7 +71,7 @@ xacro "$FD_DIR/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.urdf.xacro" \
 # builder consumes.  Filter against the canonical URDF just as the
 # builder does, so this is a complete and directly usable derived input.
 xacro "$SRDF" "${XACRO_BASE[@]}" \
-  | python3 "$ROOT/tools/extract_collision_exclusions.py" \
+  | python3 "$ROOT/tools/_source/extract_collision_exclusions.py" \
       --urdf "$OUT_DIR/mobile_fr3_duo.urdf" \
       --output "$OUT_DIR/collision_exclusions.yaml" \
       --source "franka_description@2.8.1/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.srdf.xacro"

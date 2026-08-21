@@ -24,7 +24,7 @@ def test_frozen_collision_exclusions_are_valid():
     assert all(len(pair) == 2 and all(isinstance(link, str) for link in pair) for pair in pairs)
 
 
-def test_build_models_without_external_source_checkout(tmp_path):
+def test_build_without_external_source_checkout(tmp_path):
     clone = tmp_path / "mobile_fr3_duo"
     shutil.copytree(
         REPO_ROOT,
@@ -34,7 +34,7 @@ def test_build_models_without_external_source_checkout(tmp_path):
     environment = os.environ.copy()
     environment.pop("MOBILE_FR3_CACHE_DIR", None)
     result = subprocess.run(
-        [sys.executable, "tools/build_models.py"],
+        [sys.executable, "tools/build.py"],
         cwd=clone,
         env=environment,
         text=True,
@@ -57,28 +57,20 @@ def test_models_only_have_formal_top_level_xml():
 
 
 def test_source_preparation_requires_explicit_cache_path():
-    """Preparation CLIs never fall back to a developer-specific cache path."""
+    """The sole public source-preparation CLI requires explicit inputs."""
     environment = os.environ.copy()
     environment.pop("MOBILE_FR3_CACHE_DIR", None)
     environment.pop("FRANKA_DESCRIPTION_ROOT", None)
-    commands = (
-        (["bash", "tools/generate_urdf.sh"], "MOBILE_FR3_CACHE_DIR"),
-        ([sys.executable, "tools/convert_visual_meshes.py"], "FRANKA_DESCRIPTION_ROOT"),
-        ([sys.executable, "tools/convert_collision_meshes.py"], "FRANKA_DESCRIPTION_ROOT"),
-        ([sys.executable, "tools/import_sensor_assets.py"], "MOBILE_FR3_CACHE_DIR"),
-        ([sys.executable, "tools/verify_official_model_files.py"], "MOBILE_FR3_CACHE_DIR"),
+    result = subprocess.run(
+        [sys.executable, "tools/prepare_source.py"],
+        cwd=REPO_ROOT,
+        env=environment,
+        text=True,
+        capture_output=True,
+        check=False,
     )
-    for command, expected in commands:
-        result = subprocess.run(
-            command,
-            cwd=REPO_ROOT,
-            env=environment,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        assert result.returncode == 2, result.stderr
-        assert expected in result.stderr
+    assert result.returncode == 2, result.stderr
+    assert "--franka-root" in result.stderr
 
 
 def test_frozen_production_inputs_contain_no_absolute_paths():

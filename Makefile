@@ -5,13 +5,13 @@ install:
 	pre-commit install
 
 verify-official-files:
-	.venv/bin/python tools/verify_official_model_files.py --offline
+	.venv/bin/python tools/_source/verify_official_model_files.py --offline
 
 check:
 	.venv/bin/python -m ruff check .
 	find models -name '*.xml' -print0 | xargs -0 .venv/bin/python tools/utils/xml.py --check
-	.venv/bin/python tools/validate_model.py
-	.venv/bin/python tools/verify_official_model_files.py --offline
+	.venv/bin/python tools/validate.py
+	.venv/bin/python tools/_source/verify_official_model_files.py --offline
 
 test:
 	env -u PYTHONPATH PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -m pytest -v

@@ -11,7 +11,10 @@ from pathlib import Path
 
 import trimesh
 import yaml
-from convert_visual_meshes import source_path, target_path
+try:  # Package import from prepare_source/model_builder.
+    from _source.convert_visual_meshes import source_path, target_path
+except ModuleNotFoundError:  # Direct private helper invocation.
+    from convert_visual_meshes import source_path, target_path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 GENERATED = REPO_ROOT / "source" / "generated"

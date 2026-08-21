@@ -2,8 +2,8 @@
 
 > 当前发布形态已收敛为一个完整直接 MJCF：`models/mobile_fr3_duo.xml`，以及
 > 仅 include 它的 `models/scene.xml`。组件目录独立可加载但不进行 runtime attach。
-> 生成与验证入口分别是 `prepare_source.py`、`build_models.py`、
-> `validate_model.py` 和 `render_scene.py`。
+> 生成与验证入口分别是 `prepare_source.py`、`build.py`、`validate.py` 和
+> `render.py`。
 
 ## 1. 文档信息
 
@@ -374,7 +374,7 @@ latest
 项目提供：
 
 ```text
-tools/verify_official_model_files.py
+tools/_source/verify_official_model_files.py
 ```
 
 该脚本只回答：
@@ -1669,7 +1669,7 @@ install:
 	pre-commit install
 
 verify-official-files:
-	uv run python tools/verify_official_model_files.py
+	uv run python tools/_source/verify_official_model_files.py
 
 check:
 	uv run ruff check .
