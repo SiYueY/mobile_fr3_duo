@@ -49,4 +49,4 @@ def test_component_modules_do_not_embed_other_components():
 def test_formal_composition_has_full_sensor_set():
     model = mujoco.MjModel.from_xml_path(str(MODEL_ROOT / "mobile_fr3_duo.xml"))
     assert model.nbody == 109
-    assert model.nsensor == 84
+    assert model.nsensor == 80

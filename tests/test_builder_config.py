@@ -26,7 +26,6 @@ def test_builder_config_is_complete_and_validated(tmp_path):
     config = load_builder_config(REPO_ROOT / "config")
 
     assert tuple(config.keyframes) == EXPECTED_KEYFRAMES
-    assert len(config.tmr) == 4
     for pose in config.keyframes.values():
         assert len(pose["arm_left"]) == len(pose["arm_right"]) == 7
     with pytest.raises(ValueError, match="missing Builder configuration"):
@@ -35,7 +34,7 @@ def test_builder_config_is_complete_and_validated(tmp_path):
 
 def test_generated_actuator_limits_match_builder_config(base_model):
     config = load_builder_config(REPO_ROOT / "config")
-    for spec in (*config.tmr, config.spine):
+    for spec in (config.spine,):
         assert np.allclose(_actuator_range(base_model, spec.name), spec.ctrlrange)
     for side in ("left", "right"):
         name = f"{side}_fr3v2_1_finger_motor"

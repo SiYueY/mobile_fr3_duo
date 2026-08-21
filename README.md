@@ -14,6 +14,8 @@ python tools/render.py
 ```
 
 唯一冻结 URDF 为 `source/generated/mobile_fr3_duo.urdf`（完整 self-collision）。
+TMR 底盘使用运动学 twist 控制：外部控制器更新 `base_freejoint`，轮关节仅用于
+转向、视觉和里程计状态，不通过轮地接触产生底盘运动。
 
 ## 1. 项目目标与边界
 

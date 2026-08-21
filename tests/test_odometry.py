@@ -1,74 +1,32 @@
-"""Ground-truth and wheel odometry consistency for the TMR base."""
+"""Kinematic TMR odometry is exact by construction."""
+
+import sys
 
 import mujoco
 import numpy as np
 
+from helpers import REPO_ROOT
 
-def _drive(model, data, steps):
-    front = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_ACTUATOR, "front_wheel_motor")
-    rear = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_ACTUATOR, "rear_wheel_motor")
-    data.ctrl[front] = 40
-    data.ctrl[rear] = 40
-    x0 = data.xpos[1].copy()
-    for _ in range(steps):
-        mujoco.mj_step(model, data)
-    return data.xpos[1] - x0
+sys.path.insert(0, str(REPO_ROOT / "tools"))
+from model_builder.kinematic_base import BaseTwist, KinematicBaseController  # noqa: E402
 
 
-def test_ground_truth_odometry_tracks_base(scene_model):
-    """Freejoint velocity integration matches the base displacement."""
+def test_kinematic_twist_integrates_base_pose(scene_model):
     data = mujoco.MjData(scene_model)
     mujoco.mj_resetDataKeyframe(scene_model, data, 0)
-    for _ in range(500):
-        mujoco.mj_step(scene_model, data)
-    front = mujoco.mj_name2id(
-        scene_model, mujoco.mjtObj.mjOBJ_ACTUATOR, "front_wheel_motor"
-    )
-    rear = mujoco.mj_name2id(
-        scene_model, mujoco.mjtObj.mjOBJ_ACTUATOR, "rear_wheel_motor"
-    )
-    data.ctrl[front] = 40
-    data.ctrl[rear] = 40
-    # integrate base velocity over the drive
-    v = np.zeros(3)
+    controller = KinematicBaseController(scene_model)
+    start = data.qpos[:3].copy()
     for _ in range(1000):
-        mujoco.mj_step(scene_model, data)
-        base_dof = 6
-        v += data.qvel[base_dof : base_dof + 3] * scene_model.opt.timestep
-    assert np.linalg.norm(v) > 0.05
+        controller.advance(data, BaseTwist(vx=0.2))
+    assert np.allclose(data.qpos[:2] - start[:2], (0.2, 0.0), atol=2e-3)
 
 
-def test_wheel_odometry_matches_base_motion(scene_model):
-    """Wheel-speed odometry and base displacement agree within slip bound."""
+def test_kinematic_turn_updates_heading_and_wheel_state(scene_model):
     data = mujoco.MjData(scene_model)
     mujoco.mj_resetDataKeyframe(scene_model, data, 0)
+    controller = KinematicBaseController(scene_model)
     for _ in range(500):
-        mujoco.mj_step(scene_model, data)
-    base0 = data.xpos[1].copy()
-    front = mujoco.mj_name2id(
-        scene_model, mujoco.mjtObj.mjOBJ_ACTUATOR, "front_wheel_motor"
-    )
-    rear = mujoco.mj_name2id(
-        scene_model, mujoco.mjtObj.mjOBJ_ACTUATOR, "rear_wheel_motor"
-    )
-    data.ctrl[front] = 40
-    data.ctrl[rear] = 40
-    front_wheel = mujoco.mj_name2id(
-        scene_model, mujoco.mjtObj.mjOBJ_JOINT, "tmrv0_2_joint_1"
-    )
-    rear_wheel = mujoco.mj_name2id(
-        scene_model, mujoco.mjtObj.mjOBJ_JOINT, "tmrv0_2_joint_3"
-    )
-    dx = 0.0
-    for _ in range(1000):
-        mujoco.mj_step(scene_model, data)
-        vf = data.qvel[scene_model.jnt_dofadr[front_wheel]]
-        vr = data.qvel[scene_model.jnt_dofadr[rear_wheel]]
-        dx += 0.5 * (vf + vr) * 0.05 * scene_model.opt.timestep
-    base_dx = np.linalg.norm(data.xpos[1][:2] - base0[:2])
-    assert dx > 0.05
-    # slip tolerance: wheel odometry overestimates under load; require the
-    # base to actually move in the commanded direction with bounded slip.
-    # Discrete wheel-speed integration and contact slip may differ by a small
-    # amount in either direction; preserve a tight 2% consistency bound.
-    assert 0.02 < base_dx <= dx * 1.02
+        controller.advance(data, BaseTwist(vx=0.1, yaw_rate=0.4))
+    assert abs(data.qpos[3] - 1.0) > 1e-3
+    wheel = mujoco.mj_name2id(scene_model, mujoco.mjtObj.mjOBJ_JOINT, "tmrv0_2_joint_1")
+    assert abs(data.qvel[scene_model.jnt_dofadr[wheel]]) > 0

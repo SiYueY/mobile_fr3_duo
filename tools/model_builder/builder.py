@@ -148,19 +148,6 @@ class ModelBuilder:
     # ------------------------------------------------------------------
     def _actuators(self) -> ET.Element:
         actuator = _el("actuator")
-        for spec in self.config.tmr:
-            if spec.joint not in self.urdf.joints:
-                continue
-            actuator.append(
-                _el(
-                    "motor",
-                    name=spec.name,
-                    joint=spec.joint,
-                    gear="1",
-                    ctrllimited="true",
-                    ctrlrange=f"{fmt(spec.ctrlrange[0])} {fmt(spec.ctrlrange[1])}",
-                )
-            )
         actuator.append(
             _el(
                 "motor",
@@ -246,7 +233,6 @@ class ModelBuilder:
 
     def _actuator_joints(self) -> list[str]:
         out = []
-        out += [spec.joint for spec in self.config.tmr]
         out.append(self.config.spine.joint)
         out += [f"{p}_joint{i}" for p in ARM_PREFIXES for i in range(1, 8)]
         out += [f"{s}_fr3v2_1_finger_joint1" for s in HAND_PREFIXES]

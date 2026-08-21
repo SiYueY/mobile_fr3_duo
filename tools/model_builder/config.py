@@ -8,12 +8,6 @@ from typing import Any
 
 import yaml
 
-EXPECTED_TMR_JOINTS = (
-    "tmrv0_2_joint_0",
-    "tmrv0_2_joint_1",
-    "tmrv0_2_joint_2",
-    "tmrv0_2_joint_3",
-)
 EXPECTED_KEYFRAMES = (
     "home",
     "transport",
@@ -33,7 +27,6 @@ class ActuatorSpec:
 
 @dataclass(frozen=True)
 class BuilderConfig:
-    tmr: tuple[ActuatorSpec, ...]
     spine: ActuatorSpec
     hand_ctrlrange: tuple[float, float]
     hand_forcerange: tuple[float, float]
@@ -44,14 +37,12 @@ def load(config_dir: Path) -> BuilderConfig:
     """Load Builder inputs and reject incomplete or malformed configuration."""
     actuator_data = _mapping(_read(config_dir / "actuator.yaml"), "actuator.yaml")
     robot_data = _mapping(_read(config_dir / "mobile_fr3_duo.yaml"), "mobile_fr3_duo.yaml")
-    tmr = _actuators(actuator_data.get("tmr"), "tmr", EXPECTED_TMR_JOINTS, names=True)
     spine = _actuator(actuator_data.get("spine"), "spine", names=True)
     if spine.joint != "franka_spine_vertical_joint" or spine.name != "franka_spine_motor":
         raise ValueError("spine must define franka_spine_vertical_joint/franka_spine_motor")
     hand = _mapping(actuator_data.get("hand"), "hand")
     keyframes = _keyframes(robot_data.get("keyframes"))
     return BuilderConfig(
-        tmr=tmr,
         spine=spine,
         hand_ctrlrange=_range(hand.get("ctrlrange"), "hand.ctrlrange"),
         hand_forcerange=_range(hand.get("forcerange"), "hand.forcerange"),

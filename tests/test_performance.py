@@ -13,7 +13,9 @@ def test_model_size_baseline(base_model):
     assert base_model.nbody == 109
     assert base_model.njnt == 29
     assert base_model.nv == 34
-    assert base_model.nu == 21
+    # TMR pose is prescribed kinematically, so its four wheel motors are not
+    # part of the formal actuator interface.
+    assert base_model.nu == 17
     assert base_model.ngeom == 272
 
 
