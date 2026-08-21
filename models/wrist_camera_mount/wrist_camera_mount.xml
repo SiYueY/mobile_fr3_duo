@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="franka_d435_wrist_camera_mount">
+  <compiler angle="radian" meshdir="assets" inertiafromgeom="false" fusestatic="false"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <material name="franka_printed_mount" rgba="0.82 0.82 0.82 1"/>
+    <mesh name="franka_d435_wrist_camera_mount_visual" file="visual/franka_d435_wrist_camera_mount.obj"/>
+  </asset>
+  <worldbody>
+    <!-- CAD-native origin only. A hand-relative assembly frame is intentionally
+         not declared until it is derived from a common CAD assembly datum. -->
+    <body name="franka_hand_camera_mount">
+      <geom class="visual" type="mesh" mesh="franka_d435_wrist_camera_mount_visual"
+            material="franka_printed_mount"/>
+      <site name="franka_hand_camera_mount_cad_origin" size="0.001"/>
+    </body>
+  </worldbody>
+</mujoco>

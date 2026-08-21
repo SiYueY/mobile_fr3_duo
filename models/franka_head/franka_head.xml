@@ -16,9 +16,6 @@
     <default class="finger_pad">
       <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
     </default>
-    <default class="sensor_collision">
-      <geom group="4" contype="1" conaffinity="1" density="0"/>
-    </default>
   </default>
   <asset>
     <material name="dae_Shell_white_1bf779d349" rgba="1 1 1 1"/>

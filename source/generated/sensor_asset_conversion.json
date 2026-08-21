@@ -9,7 +9,7 @@
         1.0
       ]
     },
-    "asset": "models/realsense_d455/assets/visual/d455.stl",
+    "asset": "models/realsense_d455/assets/visual/d455.obj",
     "bounds": [
       [
         [
@@ -27,16 +27,9 @@
     "input_sha256": "47e8321db7cb42291810c69329ab10b601108d651dfcac28bfc12469fa142fa6",
     "n_faces": 51162,
     "n_vertices": 25581,
-    "output_sha256": "56cbd729686d798f2c35e527135ff542d7882c8f7ea724c6af79e78677984bc3",
+    "output_sha256": "39b004eb368e7a974ddb4175ff517204f4901ddaaf929f3c2176a3dbd30cf68a",
     "scale": 0.001,
     "source": "realsense-ros/realsense2_description/meshes/d455.stl"
-  },
-  "sick_nanoscan3_collision": {
-    "asset": "models/nanoscan3/assets/visual/NANS3_collision.stl",
-    "input_sha256": "2e1d8be320bd605e6e3be5d5a26e738f9c22a7210641c84ba6707d5effa51122",
-    "output_sha256": "2e1d8be320bd605e6e3be5d5a26e738f9c22a7210641c84ba6707d5effa51122",
-    "scale": 1.0,
-    "source": "sick_safetyscanners2/description/meshes/NANS3_collision.stl"
   },
   "sick_nanoscan3_visual": {
     "appearance": {
@@ -65,9 +58,9 @@
         1.0
       ]
     },
-    "asset": "models/zed_mini/assets/visual/zedm.stl",
+    "asset": "models/zed_mini/assets/visual/zedm.obj",
     "input_sha256": "bf0193e6b2f36a348e1cbe3c19e18adc3e90e4b054f4fce47286482380cd149c",
-    "output_sha256": "bf0193e6b2f36a348e1cbe3c19e18adc3e90e4b054f4fce47286482380cd149c",
+    "output_sha256": "569c302cc980f18844567ed8ff1fcc2ad9f61d98afe54b253cbeec315c15a345",
     "scale": 1.0,
     "source": "zed-ros2-description/meshes/zedm.stl"
   }

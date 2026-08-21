@@ -329,14 +329,6 @@ class ModelBuilder:
         body.append(
             _el("geom", **{"class": "visual"}, type="box", size="0.015 0.015 0.005")
         )
-        body.append(
-            _el(
-                "geom",
-                **{"class": "sensor_collision"},
-                type="box",
-                size="0.015 0.015 0.005",
-            )
-        )
         body.append(_el("site", name="imu_sensor_frame", size="0.002"))
         parent.append(body)
 
@@ -359,15 +351,6 @@ class ModelBuilder:
                 material=geometry.sensor_material_name("realsense_d455", self.context.sensor_appearances),
                 pos="0.00465 -0.0475 0",
                 quat=_fmt_quat((math.pi / 2, 0, math.pi / 2)),
-            )
-        )
-        body.append(
-            _el(
-                "geom",
-                **{"class": "sensor_collision"},
-                type="box",
-                size="0.013 0.062 0.0145",
-                pos="-0.00845 -0.0475 0",
             )
         )
         optical_rpy = (-math.pi / 2, 0, -math.pi / 2)
@@ -432,16 +415,6 @@ class ModelBuilder:
                 quat=_fmt_quat((0, 0, math.pi / 2)),
             )
         )
-        body.append(
-            _el(
-                "geom",
-                **{"class": "sensor_collision"},
-                type="mesh",
-                mesh="nanoscan3_collision",
-                pos="-0.01 -0.08 -0.04",
-                quat=_fmt_quat((0, 0, math.pi / 2)),
-            )
-        )
         body.append(_el("site", name=f"{prefix}_scan_frame", size="0.002"))
         parent.append(body)
 
@@ -457,14 +430,6 @@ class ModelBuilder:
                 type="mesh",
                 mesh="zed_mini",
                 material=geometry.sensor_material_name("zed_mini", self.context.sensor_appearances),
-            )
-        )
-        body.append(
-            _el(
-                "geom",
-                **{"class": "sensor_collision"},
-                type="box",
-                size="0.062 0.015 0.015",
             )
         )
         baseline = 0.063

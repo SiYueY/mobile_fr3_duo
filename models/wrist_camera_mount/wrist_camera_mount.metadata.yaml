@@ -1,0 +1,27 @@
+name: franka_d435_wrist_camera_mount
+type: mechanical_attachment
+compatible_hardware:
+  robot: Franka Research 3
+  end_effector: Franka Hand
+  camera: Intel RealSense D435 / D435i
+source:
+  page: https://franka.de/3d-assets
+  step_file: RealSenseD435_Camera_Mount.step
+  step_sha256: 77885b417867c6340162cfb5473af38374579f619a2c5de7148fcac8824ce81d
+  stl_url: https://franka.de/hubfs/RealSenseD435_Camera_Mount.stl?hsLang=en
+  stl_sha256: a06a5a4fa4080c6bf11761f8190093f513351d518cc8074e9e71a093be74c66c
+  license: Franka Robotics 3D Assets terms
+conversion:
+  output: assets/visual/franka_d435_wrist_camera_mount.obj
+  output_sha256: 778a44cf29346c55720e95d899b8001d157828a41cf93064c6523158de88cd4e
+  source_units: millimetres
+  output_units: metres
+  coordinate_transform: scale(0.001)
+  tessellation: 0.15 mm vertex clustering from official STL
+  visual_only: true
+assembly_pose:
+  status: blocked
+  reason: >-
+    The public STEP/STL and franka_description visual meshes do not expose a
+    common hand assembly datum or a numeric hand-to-mount transform.  A pose
+    must not be guessed from screenshots or mesh extents.

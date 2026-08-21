@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="realsense_d435">
+  <compiler angle="radian" meshdir="assets" inertiafromgeom="false" fusestatic="false"/>
+  <default>
+    <geom density="0"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+  </default>
+  <asset>
+    <material name="d435_aluminum" rgba="0.23 0.23 0.23 1"/>
+    <mesh name="d435_visual" file="visual/d435.obj"/>
+  </asset>
+  <worldbody>
+    <!-- Root is the official D435 bottom-screw mounting frame. -->
+    <body name="d435_bottom_screw_frame">
+      <body name="d435_link" pos="0.0106 0.0175 0.0125">
+        <!-- Official _d435.urdf.xacro visual mesh transform. -->
+        <geom class="visual" type="mesh" mesh="d435_visual" material="d435_aluminum"
+              pos="0.0043 -0.0175 0" quat="0.5 0.5 0.5 0.5"/>
+        <site name="d435_depth_frame" size="0.001"/>
+        <site name="d435_depth_optical_frame" size="0.001" quat="0.5 -0.5 0.5 -0.5"/>
+        <site name="d435_infra1_frame" size="0.001"/>
+        <site name="d435_infra1_optical_frame" size="0.001" quat="0.5 -0.5 0.5 -0.5"/>
+        <site name="d435_infra2_frame" size="0.001" pos="0 -0.05 0"/>
+        <site name="d435_infra2_optical_frame" size="0.001" pos="0 -0.05 0" quat="0.5 -0.5 0.5 -0.5"/>
+        <site name="d435_color_frame" size="0.001" pos="0 0.015 0"/>
+        <site name="d435_color_optical_frame" size="0.001" pos="0 0.015 0" quat="0.5 -0.5 0.5 -0.5"/>
+        <!-- MuJoCo camera uses -Z forward; this is the ROS optical frame plus
+             Rx(pi), so its viewing direction equals ROS optical +Z. -->
+        <camera name="d435_rgb" pos="0 0.015 0" quat="0.5 0.5 -0.5 -0.5"
+                fovy="42.5" resolution="1280 720"/>
+        <camera name="d435_depth" pos="0 0 0" quat="0.5 0.5 -0.5 -0.5"
+                fovy="58" resolution="1280 720"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

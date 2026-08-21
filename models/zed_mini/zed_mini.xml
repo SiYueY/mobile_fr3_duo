@@ -16,18 +16,14 @@
     <default class="finger_pad">
       <geom group="3" contype="1" conaffinity="1" condim="4" friction="1.0 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" density="0"/>
     </default>
-    <default class="sensor_collision">
-      <geom group="4" contype="1" conaffinity="1" density="0"/>
-    </default>
   </default>
   <asset>
     <material name="sensor_cam_mat_0d02030f73" rgba="0 0 0 1"/>
-    <mesh name="zed_mini" file="visual/zedm.stl"/>
+    <mesh name="zed_mini" file="visual/zedm.obj" inertia="shell"/>
   </asset>
   <worldbody>
     <body name="head_zed">
       <geom class="visual" type="mesh" mesh="zed_mini" material="sensor_cam_mat_0d02030f73"/>
-      <geom class="sensor_collision" type="box" size="0.062 0.015 0.015"/>
       <site name="head_zed_left_camera_frame" size="0.001" pos="-0.0315 0 0"/>
       <site name="head_zed_left_camera_optical_frame" size="0.001" pos="-0.0315 0 0"/>
       <camera name="head_zed_left" pos="-0.0315 0 0" quat="6.123233996e-17 0 1 0" fovy="60" resolution="1280 720"/>

@@ -1,0 +1,42 @@
+name: realsense_d435
+type: rgbd_camera
+source:
+  repository: https://github.com/IntelRealSense/realsense-ros
+  tag: "4.58.3"
+  commit: 60c850958d651130fc2cc3d10efb37ff5be93da5
+  mesh: realsense2_description/meshes/d435.dae
+  mesh_sha256: 42f3b66f47a1f8f425a2e4dc07c1d9c283183167d8441f520a15623d98f9bf78
+  xacro: realsense2_description/urdf/_d435.urdf.xacro
+  license: Apache-2.0
+conversion:
+  output: assets/visual/d435.obj
+  output_sha256: ae2f5f53e4f5456ed82f5fc4eedcab931ef3059eb7062e3877acc5678539a04c
+  source_units: metres
+  source_up_axis: Z_UP
+  coordinate_transform: identity
+  tessellation: 0.05 mm vertex clustering; visual mesh only
+cad_mechanical_datum:
+  source_file: /home/dongshengzhao/Documents/H10-W(DVT2)/Depth-Cameras/D435_Solid - default__D435 Solid.step
+  sha256: c48da7aa96ae12a47bccecd1b819625d181639ac645ab987f95be802199b0ef8
+  units: metres
+  special_mount_m3_holes:
+    centres: [[-0.0225, -0.02505, 0.0], [0.0225, -0.02505, 0.0]]
+    axis: [0.0, 1.0, 0.0]
+    inner_radius: 0.00125
+mounting_frame: d435_bottom_screw_frame
+cad_datum_status: paired_m3_hole_and_mating_face_fit
+note: >-
+  The RealSense-specific Franka mount uses two M3x10 screws, not the D435
+  1/4-inch bottom socket.  The two 45 mm-spaced D435 CAD M3 centres are paired
+  with the matching two 45 mm-spaced mount holes.  The ROS visual mesh is
+  retained and its body frame is rotated to this CAD-derived device frame.
+streams:
+  rgb:
+    resolution: [1280, 720]
+    fps: 30
+    vertical_fov_degrees: 42.5
+  depth:
+    resolution: [1280, 720]
+    fps: 30
+    vertical_fov_degrees: 58.0
+collision: none

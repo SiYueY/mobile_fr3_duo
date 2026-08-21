@@ -192,7 +192,6 @@ def defaults() -> ET.Element:
         ("collision", dict(group="3", contype="1", conaffinity="1", condim="3", friction="1.0 0.005 0.0001", density="0")),
         ("wheel", dict(group="3", contype="1", conaffinity="1", condim="3", friction="1.2 0.005 0.0001", density="0")),
         ("finger_pad", dict(group="3", contype="1", conaffinity="1", condim="4", friction="1.0 0.005 0.0001", solref="0.02 1", solimp="0.9 0.95 0.001", density="0")),
-        ("sensor_collision", dict(group="4", contype="1", conaffinity="1", density="0")),
     ):
         class_default = el("default", **{"class": class_name})
         class_default.append(el("geom", **attrs))
@@ -238,10 +237,9 @@ def assets(ctx: BuildContext) -> ET.Element:
                         attrs["inertia"] = "shell"
                     asset.append(el("mesh", **attrs))
     for name, path in (
-            ("realsense_d455", "realsense_d455/assets/visual/d455.stl"),
+            ("realsense_d455", "realsense_d455/assets/visual/d455.obj"),
             ("nanoscan3_visual", "nanoscan3/assets/visual/NANS3.obj"),
-            ("nanoscan3_collision", "nanoscan3/assets/visual/NANS3_collision.stl"),
-            ("zed_mini", "zed_mini/assets/visual/zedm.stl"),
+            ("zed_mini", "zed_mini/assets/visual/zedm.obj"),
     ):
         asset.append(el("mesh", name=name, file=path))
     return asset

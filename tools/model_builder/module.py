@@ -158,10 +158,10 @@ def build_modules(repo_root: Path, source_models: dict[str, ET.Element], canonic
     for stale in models_dir.glob("**/metadata.yaml"):
         stale.unlink()
     for stale in (
-        models_dir / "franka_tmr/assets/visual/d455.stl",
+        models_dir / "franka_tmr/assets/visual/d455.obj",
         models_dir / "franka_tmr/assets/visual/NANS3.obj",
         models_dir / "franka_tmr/assets/visual/NANS3_collision.stl",
-        models_dir / "franka_head/assets/visual/zedm.stl",
+        models_dir / "franka_head/assets/visual/zedm.obj",
     ):
         stale.unlink(missing_ok=True)
     for stale in (models_dir / "franka_head/franka_head_body.xml",):

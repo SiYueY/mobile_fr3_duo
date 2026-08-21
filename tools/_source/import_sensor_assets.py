@@ -68,6 +68,28 @@ def convert_stl_meters(
     }
 
 
+def convert_stl_obj(
+    src: Path, name: str, cache: Path, scale: float, appearance: dict[str, object]
+) -> dict:
+    """Convert an upstream STL visual mesh to a metre-scale OBJ mesh."""
+    dst = SENSOR_ASSETS / name
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    mesh = trimesh.load(src, force="mesh")
+    mesh.apply_scale(scale)
+    mesh.export(dst, include_texture=False)
+    return {
+        "source": str(src.relative_to(cache)),
+        "asset": f"models/{name}",
+        "scale": scale,
+        "input_sha256": sha256(src),
+        "output_sha256": sha256(dst),
+        "n_vertices": int(len(mesh.vertices)),
+        "n_faces": int(len(mesh.faces)),
+        "bounds": [mesh.bounds.tolist()],
+        "appearance": appearance,
+    }
+
+
 def convert_dae(src: Path, name: str, cache: Path, appearance: dict[str, object]) -> dict:
     dst = SENSOR_ASSETS / name
     dst.parent.mkdir(parents=True, exist_ok=True)
@@ -99,9 +121,9 @@ def main() -> int:
         ap.error("pass --cache or set MOBILE_FR3_CACHE_DIR")
     cache = args.cache
     records = {
-        "realsense_d455": convert_stl_meters(
+        "realsense_d455": convert_stl_obj(
             cache / "realsense-ros" / "realsense2_description" / "meshes" / "d455.stl",
-            "realsense_d455/assets/visual/d455.stl",
+            "realsense_d455/assets/visual/d455.obj",
             cache,
             scale=0.001,
             appearance={"name": "aluminum", "rgba": [0.5, 0.5, 0.5, 1.0]},
@@ -115,14 +137,9 @@ def main() -> int:
             # represents the source without needless geometry splitting.
             appearance={"name": "nanoscan3_darkgrey", "rgba": [0.2, 0.2, 0.2, 1.0]},
         ),
-        "sick_nanoscan3_collision": copy_stl(
-            cache / "sick_safetyscanners2" / "description" / "meshes" / "NANS3_collision.stl",
-            "nanoscan3/assets/visual/NANS3_collision.stl",
-            cache,
-        ),
-        "zed_mini": copy_stl(
+        "zed_mini": convert_stl_obj(
             cache / "zed-ros2-description" / "meshes" / "zedm.stl",
-            "zed_mini/assets/visual/zedm.stl",
+            "zed_mini/assets/visual/zedm.obj",
             cache,
             scale=1.0,
             appearance={"name": "cam_mat", "rgba": [0.0, 0.0, 0.0, 1.0]},
