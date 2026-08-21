@@ -13,7 +13,8 @@ class BuildContext:
 
     urdf: Any
     collision_exclusions: Path
-    visual_conversion: dict[str, list[str]]
+    visual_conversion: dict[str, list[dict[str, object]]]
+    sensor_appearances: dict[str, dict[str, object]]
 
 
 def el(tag: str, **attrs: object):

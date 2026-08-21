@@ -20,7 +20,7 @@ from pathlib import Path
 
 import yaml
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = REPO_ROOT / "source" / "official_model_files.yaml"
 
 

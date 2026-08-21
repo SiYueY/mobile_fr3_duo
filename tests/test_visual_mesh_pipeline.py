@@ -13,6 +13,7 @@ from helpers import REPO_ROOT
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
 from _source import convert_visual_meshes as converter  # noqa: E402
+from model_builder import BuildContext  # noqa: E402
 from model_builder import geometry  # noqa: E402
 
 
@@ -65,11 +66,55 @@ def test_mesh_record_has_per_output_statistics(tmp_path):
     assert record["bounds"] == [[-1.0, -2.0, -3.0], [1.0, 2.0, 3.0]]
 
 
+def test_mesh_record_normalizes_collada_material_rgba(tmp_path):
+    original_root = converter.REPO_ROOT
+    converter.REPO_ROOT = tmp_path
+    path = tmp_path / "part.obj"
+    mesh = trimesh.creation.box()
+    mesh.visual = trimesh.visual.TextureVisuals(
+        material=trimesh.visual.material.SimpleMaterial(
+            name="franka_white", diffuse=[230, 230, 230, 255]
+        )
+    )
+    mesh.export(path)
+
+    try:
+        record = converter.mesh_record(path, mesh)
+    finally:
+        converter.REPO_ROOT = original_root
+
+    assert record["material"] == {
+        "name": "franka_white",
+        "rgba": [230 / 255, 230 / 255, 230 / 255, 1.0],
+    }
+
+
 def test_dae_unit_scale_reads_declared_meter_value(tmp_path):
     dae = tmp_path / "mesh.dae"
     dae.write_text('<COLLADA><asset><unit meter="0.001"/></asset></COLLADA>')
 
     assert converter.dae_unit_scale(dae) == 0.001
+
+
+def test_collada_materials_extracts_uniquely_bound_diffuse_colour(tmp_path):
+    dae = tmp_path / "mesh.dae"
+    dae.write_text(
+        """<COLLADA xmlns=\"http://www.collada.org/2005/11/COLLADASchema\">
+        <library_effects><effect id=\"effect_white\"><profile_COMMON><technique>
+        <lambert><diffuse><color>0.9 0.8 0.7 1</color></diffuse></lambert>
+        </technique></profile_COMMON></effect></library_effects>
+        <library_materials><material id=\"paint_white\" name=\"Franka White\">
+        <instance_effect url=\"#effect_white\"/></material></library_materials>
+        <library_visual_scenes><visual_scene id=\"scene\"><node>
+        <instance_geometry url=\"#link0_mesh\"><bind_material><technique_common>
+        <instance_material symbol=\"paint\" target=\"#paint_white\"/>
+        </technique_common></bind_material></instance_geometry>
+        </node></visual_scene></library_visual_scenes></COLLADA>"""
+    )
+
+    assert converter.collada_materials(dae) == {
+        "link0_mesh": {"name": "Franka White", "rgba": [0.9, 0.8, 0.7, 1.0]}
+    }
 
 
 def test_normalize_mesh_parts_scales_and_filters_tiny_geometry():
@@ -134,8 +179,14 @@ def test_visual_manifest_drives_split_assets_and_geoms(tmp_path, monkeypatch):
                     "status": "converted",
                     "mesh_count": 2,
                     "outputs": [
-                        {"path": "models/franka_fr3/assets/visual/link6_0.obj"},
-                        {"path": "models/franka_fr3/assets/visual/link6_1.obj"},
+                        {
+                            "path": "models/franka_fr3/assets/visual/link6_0.obj",
+                            "material": {"name": "franka_white", "rgba": [0.9, 0.9, 0.9, 1]},
+                        },
+                        {
+                            "path": "models/franka_fr3/assets/visual/link6_1.obj",
+                            "material": {"name": "franka_black", "rgba": [0.05, 0.05, 0.05, 1]},
+                        },
                     ],
                 }
             }
@@ -159,3 +210,26 @@ def test_visual_manifest_drives_split_assets_and_geoms(tmp_path, monkeypatch):
     assert [geom.get("mesh") for geom in geoms] == ["link6_visual_0", "link6_visual_1"]
     assert all(geom.get("pos") == "1 2 3" for geom in geoms)
     assert all(geom.get("class") == "visual" for geom in geoms)
+    assert all(geom.get("material", "").startswith("dae_franka_") for geom in geoms)
+
+
+def test_dae_manifest_materials_become_mjcf_assets(tmp_path, monkeypatch):
+    monkeypatch.setattr(geometry, "REPO_ROOT", tmp_path)
+    uri = "package://franka_description/meshes/robots/fr3v2_1/visual/link0.dae"
+    visual = ET.fromstring(f'<visual><geometry><mesh filename="{uri}"/></geometry></visual>')
+    link = ET.Element("link")
+    link.append(visual)
+    urdf = type("Urdf", (), {"links": {"fr3v2_1_link0": link}})()
+    conversion = {
+        uri: [{
+            "path": "franka_fr3/assets/visual/link0_0.obj",
+            "material": {"name": "franka_white", "rgba": [0.9, 0.9, 0.9, 1.0]},
+        }]
+    }
+
+    assets = geometry.assets(BuildContext(urdf, tmp_path / "exclusions.yaml", conversion, {}))
+    material = assets.find("material")
+
+    assert material is not None
+    assert material.get("name", "").startswith("dae_franka_white_")
+    assert material.get("rgba") == "0.9 0.9 0.9 1"

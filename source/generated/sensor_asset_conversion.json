@@ -1,5 +1,14 @@
 {
   "realsense_d455": {
+    "appearance": {
+      "name": "aluminum",
+      "rgba": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+      ]
+    },
     "asset": "models/realsense_d455/assets/visual/d455.stl",
     "bounds": [
       [
@@ -30,6 +39,15 @@
     "source": "sick_safetyscanners2/description/meshes/NANS3_collision.stl"
   },
   "sick_nanoscan3_visual": {
+    "appearance": {
+      "name": "nanoscan3_darkgrey",
+      "rgba": [
+        0.2,
+        0.2,
+        0.2,
+        1.0
+      ]
+    },
     "asset": "models/nanoscan3/assets/visual/NANS3.obj",
     "input_sha256": "4d898d8016d91c9b7affda2cad4e3367814e4e7e6ce2d16ad8ac12ce700191f5",
     "n_faces": 2524,
@@ -38,6 +56,15 @@
     "source": "sick_safetyscanners2/description/meshes/NANS3.dae"
   },
   "zed_mini": {
+    "appearance": {
+      "name": "cam_mat",
+      "rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
     "asset": "models/zed_mini/assets/visual/zedm.stl",
     "input_sha256": "bf0193e6b2f36a348e1cbe3c19e18adc3e90e4b054f4fce47286482380cd149c",
     "output_sha256": "bf0193e6b2f36a348e1cbe3c19e18adc3e90e4b054f4fce47286482380cd149c",

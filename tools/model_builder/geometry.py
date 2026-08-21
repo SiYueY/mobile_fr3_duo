@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -13,6 +15,7 @@ from . import BuildContext, el
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 CONVERSION_MANIFEST = REPO_ROOT / "source" / "generated" / "asset_conversion.json"
+SENSOR_CONVERSION_MANIFEST = REPO_ROOT / "source" / "generated" / "sensor_asset_conversion.json"
 
 
 def _mesh_basename(mesh_file: str) -> tuple[str, str, str] | None:
@@ -34,7 +37,7 @@ def _mesh_basename(mesh_file: str) -> tuple[str, str, str] | None:
     return component, kind, stem
 
 
-def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[str]]:
+def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[dict[str, object]]]:
     """Load visual source URI -> committed OBJ paths from the converter manifest.
 
     The production builder deliberately consumes only this committed manifest,
@@ -51,7 +54,7 @@ def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[s
     if not isinstance(data, dict):
         raise RuntimeError(f"invalid visual conversion manifest root: {path}")
 
-    converted: dict[str, list[str]] = {}
+    converted: dict[str, list[dict[str, object]]] = {}
     for uri, record in data.items():
         if not isinstance(uri, str) or not uri.endswith(".dae"):
             continue
@@ -60,7 +63,7 @@ def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[s
             raise RuntimeError(
                 f"{path}: {uri} has no outputs[]; rerun tools/prepare_source.py"
             )
-        paths: list[str] = []
+        entries: list[dict[str, object]] = []
         for output in outputs:
             output_path = output.get("path") if isinstance(output, dict) else None
             if not isinstance(output_path, str) or not output_path.startswith("models/"):
@@ -70,13 +73,35 @@ def load_visual_conversion(path: Path = CONVERSION_MANIFEST) -> dict[str, list[s
                 raise RuntimeError(f"{path}: {uri} has an unsafe OBJ output path: {output_path!r}")
             if not (REPO_ROOT / output_path).is_file():
                 raise RuntimeError(f"{path}: converted output is missing: {output_path}")
-            paths.append(rel)
-        converted[uri] = paths
+            entry = dict(output)
+            entry["path"] = rel
+            entries.append(entry)
+        converted[uri] = entries
     return converted
 
 
+def load_sensor_appearances(
+    path: Path = SENSOR_CONVERSION_MANIFEST,
+) -> dict[str, dict[str, object]]:
+    """Load explicit, official sensor appearance records from source prep."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise RuntimeError(f"missing sensor conversion manifest: {path}") from exc
+    if not isinstance(data, dict):
+        raise RuntimeError(f"invalid sensor conversion manifest root: {path}")
+    appearances: dict[str, dict[str, object]] = {}
+    for key in ("realsense_d455", "sick_nanoscan3_visual", "zed_mini"):
+        record = data.get(key)
+        appearance = record.get("appearance") if isinstance(record, dict) else None
+        if not isinstance(appearance, dict) or _material_rgba({"material": appearance}) is None:
+            raise RuntimeError(f"{path}: {key} has no valid official appearance")
+        appearances[key] = appearance
+    return appearances
+
+
 def mesh_assets(
-    mesh_file: str, visual_conversion: dict[str, list[str]] | None = None
+    mesh_file: str, visual_conversion: dict[str, list[dict[str, object]]] | None = None
 ) -> list[tuple[str, str]] | None:
     """Map a Franka mesh URI to one or more committed MJCF assets."""
     source = _mesh_basename(mesh_file)
@@ -88,12 +113,70 @@ def mesh_assets(
 
     if visual_conversion is None:
         visual_conversion = load_visual_conversion()
-    paths = visual_conversion.get(mesh_file)
-    if not paths:
+    outputs = visual_conversion.get(mesh_file)
+    if not outputs:
         raise RuntimeError(
             f"visual mesh {mesh_file} has no converted OBJ outputs in {CONVERSION_MANIFEST}"
         )
-    return [(f"{stem}_visual_{index}", path) for index, path in enumerate(paths)]
+    return [
+        (f"{stem}_visual_{index}", str(output["path"]))
+        for index, output in enumerate(outputs)
+    ]
+
+
+def _material_rgba(output: dict[str, object]) -> tuple[float, float, float, float] | None:
+    """Read a normalised RGBA record from a converted DAE output."""
+    material = output.get("material")
+    if not isinstance(material, dict):
+        return None
+    rgba = material.get("rgba")
+    if not isinstance(rgba, list) or len(rgba) != 4:
+        return None
+    try:
+        values = tuple(float(value) for value in rgba)
+    except (TypeError, ValueError):
+        return None
+    if any(value < 0 or value > 1 for value in values):
+        return None
+    return values  # type: ignore[return-value]
+
+
+def _material_asset_name(output: dict[str, object]) -> str | None:
+    rgba = _material_rgba(output)
+    if rgba is None:
+        return None
+    source = output.get("material")
+    assert isinstance(source, dict)
+    source_name = source.get("name")
+    stem = re.sub(r"[^A-Za-z0-9_]+", "_", str(source_name or "dae")).strip("_")
+    digest = hashlib.sha256(" ".join(f"{value:.8g}" for value in rgba).encode()).hexdigest()[:10]
+    return f"dae_{stem or 'material'}_{digest}"
+
+
+def sensor_material_name(key: str, appearances: dict[str, dict[str, object]]) -> str:
+    appearance = appearances[key]
+    rgba = _material_rgba({"material": appearance})
+    assert rgba is not None
+    source_name = appearance.get("name")
+    stem = re.sub(r"[^A-Za-z0-9_]+", "_", str(source_name or key)).strip("_")
+    digest = hashlib.sha256(" ".join(f"{value:.8g}" for value in rgba).encode()).hexdigest()[:10]
+    return f"sensor_{stem or key}_{digest}"
+
+
+def visual_mesh_assets(
+    mesh_file: str, visual_conversion: dict[str, list[dict[str, object]]] | None = None
+) -> list[tuple[str, str, str | None]] | None:
+    """Return mesh assets plus their optional DAE-derived MJCF material."""
+    mapped = mesh_assets(mesh_file, visual_conversion)
+    if mapped is None:
+        return None
+    if visual_conversion is None:
+        visual_conversion = load_visual_conversion()
+    outputs = visual_conversion.get(mesh_file, [])
+    return [
+        (name, path, _material_asset_name(output))
+        for (name, path), output in zip(mapped, outputs, strict=True)
+    ]
 
 
 def _origin(elem: ET.Element) -> tuple[str, str]:
@@ -119,6 +202,19 @@ def defaults() -> ET.Element:
 
 def assets(ctx: BuildContext) -> ET.Element:
     asset = el("asset")
+    material_seen: set[str] = set()
+    for outputs in ctx.visual_conversion.values():
+        for output in outputs:
+            name = _material_asset_name(output)
+            rgba = _material_rgba(output)
+            if name is None or rgba is None or name in material_seen:
+                continue
+            material_seen.add(name)
+            asset.append(el("material", name=name, rgba=fmt_vec(rgba)))
+    for key, appearance in ctx.sensor_appearances.items():
+        rgba = _material_rgba({"material": appearance})
+        assert rgba is not None
+        asset.append(el("material", name=sensor_material_name(key, ctx.sensor_appearances), rgba=fmt_vec(rgba)))
     seen: set[str] = set()
     for link in ctx.urdf.links.values():
         for geom_kind in ("visual", "collision"):
@@ -152,7 +248,7 @@ def assets(ctx: BuildContext) -> ET.Element:
 
 
 def visual(
-    geom: ET.Element, visual_conversion: dict[str, list[str]] | None = None
+    geom: ET.Element, visual_conversion: dict[str, list[dict[str, object]]] | None = None
 ) -> list[ET.Element]:
     pos, quat = _origin(geom)
     child = list(geom.find("geometry"))[0]
@@ -166,8 +262,13 @@ def visual(
     if rgba is not None:
         attrs["rgba"] = rgba
     if child.tag == "mesh":
-        mapped = mesh_assets(child.get("filename"), visual_conversion)
-        return [] if mapped is None else [el("geom", **attrs, type="mesh", mesh=name) for name, _ in mapped]
+        mapped = visual_mesh_assets(child.get("filename"), visual_conversion)
+        if mapped is None:
+            return []
+        return [
+            el("geom", **attrs, type="mesh", mesh=name, material=material_name)
+            for name, _, material_name in mapped
+        ]
     if child.tag == "box":
         half = " ".join(fmt(float(value) / 2.0) for value in child.get("size").split())
         return [el("geom", **attrs, type="box", size=half)]

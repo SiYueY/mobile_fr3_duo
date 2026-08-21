@@ -21,6 +21,9 @@
     </default>
   </default>
   <asset>
+    <material name="dae_Material_Plastic__3_0d02030f73" rgba="0 0 0 1"/>
+    <material name="dae_Material_Plastic_14f2552f36" rgba="0.411765 0.411765 0.411765 1"/>
+    <material name="dae_Material_Plastic__2_9cede6a04e" rgba="0.980392 0.980392 0.980392 1"/>
     <mesh name="franka_spine_visual_0" file="visual/franka_spine_0.obj" inertia="shell"/>
     <mesh name="franka_spine_visual_1" file="visual/franka_spine_1.obj" inertia="shell"/>
     <mesh name="franka_spine_visual_2" file="visual/franka_spine_2.obj" inertia="shell"/>
@@ -32,12 +35,12 @@
   <worldbody>
     <body name="franka_spine" pos="0.138289 0 0.35" quat="1 0 0 0">
       <inertial pos="0.042358 0.000378 0.495198" mass="21.909124" fullinertia="3.338968145 3.324560297 0.281489258 -0.000642887 0.299962762 -0.004488422"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_0"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_1"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_2"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_3"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_4"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_5"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_0" material="dae_Material_Plastic__3_0d02030f73"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_1" material="dae_Material_Plastic_14f2552f36"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_2" material="dae_Material_Plastic__2_9cede6a04e"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_3" material="dae_Material_Plastic_14f2552f36"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_4" material="dae_Material_Plastic__2_9cede6a04e"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_5" material="dae_Material_Plastic__2_9cede6a04e"/>
       <geom class="collision" type="mesh" mesh="franka_spine_collision" pos="0 0 0" quat="1 0 0 0"/>
       <body name="franka_spine_mounting_point" pos="0.266711 0 0.1" quat="1 0 0 0">
         <joint name="franka_spine_vertical_joint" type="slide" axis="0 0 1" limited="true" range="0 0.85"/>

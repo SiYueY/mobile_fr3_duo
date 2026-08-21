@@ -50,6 +50,7 @@ class ModelBuilder:
             self.urdf,
             COLLISION_EXCLUSIONS,
             geometry.load_visual_conversion(),
+            geometry.load_sensor_appearances(),
         )
 
     # ------------------------------------------------------------------
@@ -355,6 +356,7 @@ class ModelBuilder:
                 **{"class": "visual"},
                 type="mesh",
                 mesh="realsense_d455",
+                material=geometry.sensor_material_name("realsense_d455", self.context.sensor_appearances),
                 pos="0.00465 -0.0475 0",
                 quat=_fmt_quat((math.pi / 2, 0, math.pi / 2)),
             )
@@ -425,6 +427,7 @@ class ModelBuilder:
                 **{"class": "visual"},
                 type="mesh",
                 mesh="nanoscan3_visual",
+                material=geometry.sensor_material_name("sick_nanoscan3_visual", self.context.sensor_appearances),
                 pos="-0.01 -0.08 -0.04",
                 quat=_fmt_quat((0, 0, math.pi / 2)),
             )
@@ -453,6 +456,7 @@ class ModelBuilder:
                 **{"class": "visual"},
                 type="mesh",
                 mesh="zed_mini",
+                material=geometry.sensor_material_name("zed_mini", self.context.sensor_appearances),
             )
         )
         body.append(

@@ -16,7 +16,7 @@ try:  # Package import from prepare_source/model_builder.
 except ModuleNotFoundError:  # Direct private helper invocation.
     from convert_visual_meshes import source_path, target_path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 GENERATED = REPO_ROOT / "source" / "generated"
 
 

@@ -54,6 +54,10 @@ def _referenced_meshes(root_body: ET.Element) -> set[str]:
     return {geom.get("mesh") for geom in root_body.iter("geom") if geom.get("mesh")}
 
 
+def _referenced_materials(root_body: ET.Element) -> set[str]:
+    return {geom.get("material") for geom in root_body.iter("geom") if geom.get("material")}
+
+
 def _module_xml(repo_root: Path, output_dir: Path, source: ET.Element, body: ET.Element) -> ET.Element:
     """Create one local, standalone module and copy its mesh closure.
 
@@ -74,9 +78,13 @@ def _module_xml(repo_root: Path, output_dir: Path, source: ET.Element, body: ET.
 
     asset = ET.Element("asset")
     wanted = _referenced_meshes(body)
+    wanted_materials = _referenced_materials(body)
     source_assets = source.find("asset")
     if source_assets is None:
         raise ValueError("source model is missing assets")
+    for material in source_assets.findall("material"):
+        if material.get("name") in wanted_materials:
+            asset.append(copy.deepcopy(material))
     for mesh in source_assets.findall("mesh"):
         if mesh.get("name") not in wanted:
             continue

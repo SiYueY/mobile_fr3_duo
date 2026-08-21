@@ -2,88 +2,88 @@ generated_from: franka_description@2.8.1
 assets:
 - source: package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/collision/fr3_duo_cover.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/collision/fr3_duo_mount.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/visual/fr3_duo_cover.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/visual/fr3_duo_mount.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/franka_head_v0_2/collision/franka_head.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/franka_head_v0_2/visual/franka_head.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/franka_spine_v0_1/collision/franka_spine.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/accessories/franka_spine_v0_1/visual/franka_spine.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robot_ee/franka_hand_white/collision/hand.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robot_ee/franka_hand_white/visual/finger.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robot_ee/franka_hand_white/visual/hand.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link0.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link1.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link2.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link3.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link4.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link5.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link6.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/collision/link7.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link0.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link1.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link2.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link3.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link4.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link5.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link6.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/fr3v2_1/visual/link7.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/tmrv0_2/collision/tmrv0_2.stl
   kind: collision
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf
 - source: package://franka_description/meshes/robots/tmrv0_2/visual/tmrv0_2.dae
   kind: visual
-  urdf: mobile_fr3_duo_visual.urdf
+  urdf: mobile_fr3_duo.urdf

@@ -7,13 +7,19 @@ inertial_manifest, frame_manifest, asset_manifest, name_mapping.
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
 import numpy as np
 import yaml
+
+TOOLS_ROOT = Path(__file__).resolve().parents[1]
+if str(TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(TOOLS_ROOT))
+
 from utils.urdf import load_links_and_joints, origin_attrib, quat_multiply
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 GENERATED = REPO_ROOT / "source" / "generated"
 SOURCE = REPO_ROOT / "source"
 

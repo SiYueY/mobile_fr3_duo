@@ -1,156 +1,86 @@
 {
   "package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/collision/fr3_duo_cover.stl": {
     "input_sha256": "cede13bdb428ad46bca27d8e3ad662510bb1c6725705dd03380c016c007dba33",
-    "is_watertight": false,
-    "min_face_area": 1.7139456749027083e-06,
-    "n_degenerate": 0,
-    "n_faces": 328,
-    "n_vertices": 160,
     "output_sha256": "cede13bdb428ad46bca27d8e3ad662510bb1c6725705dd03380c016c007dba33",
-    "status": "copied",
-    "path": "models/franka_head/assets/collision/fr3_duo_cover.stl"
+    "path": "models/franka_head/assets/collision/fr3_duo_cover.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/accessories/fr3_duo_mount_v0_3/collision/fr3_duo_mount.stl": {
     "input_sha256": "362f52515ed9baef1e8db0ddfd62a49211b6688eb63b79d61d80c29ce6d29ad3",
-    "is_watertight": true,
-    "min_face_area": 3.6529455943046615e-07,
-    "n_degenerate": 0,
-    "n_faces": 340,
-    "n_vertices": 176,
     "output_sha256": "362f52515ed9baef1e8db0ddfd62a49211b6688eb63b79d61d80c29ce6d29ad3",
-    "status": "copied",
-    "path": "models/franka_head/assets/collision/fr3_duo_mount.stl"
+    "path": "models/franka_head/assets/collision/fr3_duo_mount.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/accessories/franka_head_v0_2/collision/franka_head.stl": {
     "input_sha256": "7f3b0bb14b5864d19b8ed08987512177c16672ec58e625766640679a69d6ed75",
-    "is_watertight": true,
-    "min_face_area": 3.2932938629337393e-07,
-    "n_degenerate": 0,
-    "n_faces": 192,
-    "n_vertices": 102,
     "output_sha256": "7f3b0bb14b5864d19b8ed08987512177c16672ec58e625766640679a69d6ed75",
-    "status": "copied",
-    "path": "models/franka_head/assets/collision/franka_head.stl"
+    "path": "models/franka_head/assets/collision/franka_head.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/accessories/franka_spine_v0_1/collision/franka_spine.stl": {
     "input_sha256": "7fe5ec4792a063601347adf3378d35159e49a98c2fc2d9c1fd74ba88762af493",
-    "is_watertight": true,
-    "min_face_area": 6.028855103639569e-05,
-    "n_degenerate": 0,
-    "n_faces": 92,
-    "n_vertices": 48,
     "output_sha256": "7fe5ec4792a063601347adf3378d35159e49a98c2fc2d9c1fd74ba88762af493",
-    "status": "copied",
-    "path": "models/franka_spine/assets/collision/franka_spine.stl"
+    "path": "models/franka_spine/assets/collision/franka_spine.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robot_ee/franka_hand_white/collision/hand.stl": {
     "input_sha256": "94493e94f30fe940f2c8ca2f155c3bbe67bbff406d3edf5e261670d2f0f6e2ed",
-    "is_watertight": true,
-    "min_face_area": 2.922725253721263e-06,
-    "n_degenerate": 0,
-    "n_faces": 200,
-    "n_vertices": 102,
     "output_sha256": "94493e94f30fe940f2c8ca2f155c3bbe67bbff406d3edf5e261670d2f0f6e2ed",
-    "status": "copied",
-    "path": "models/franka_hand/assets/collision/hand.stl"
+    "path": "models/franka_hand/assets/collision/hand.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link0.stl": {
     "input_sha256": "b15c1ad04c251323e010641599d539d2569f91299195a90a7be1fd3ef501d093",
-    "is_watertight": true,
-    "min_face_area": 1.0902931451263449e-05,
-    "n_degenerate": 0,
-    "n_faces": 276,
-    "n_vertices": 140,
     "output_sha256": "b15c1ad04c251323e010641599d539d2569f91299195a90a7be1fd3ef501d093",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link0.stl"
+    "path": "models/franka_fr3/assets/collision/link0.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link1.stl": {
     "input_sha256": "7205ad2ebf6d2ad1755e13d0e9d56eaa66c5e534266ab6c0e54decde43d0cd89",
-    "is_watertight": true,
-    "min_face_area": 7.672602812635953e-05,
-    "n_degenerate": 0,
-    "n_faces": 194,
-    "n_vertices": 99,
     "output_sha256": "7205ad2ebf6d2ad1755e13d0e9d56eaa66c5e534266ab6c0e54decde43d0cd89",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link1.stl"
+    "path": "models/franka_fr3/assets/collision/link1.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link2.stl": {
     "input_sha256": "633d6ecf3aaffc78cb2e1682885ef2a1b3fd53e54dfa5df08da1cda9d719e52b",
-    "is_watertight": true,
-    "min_face_area": 9.986469793330568e-05,
-    "n_degenerate": 0,
-    "n_faces": 194,
-    "n_vertices": 99,
     "output_sha256": "633d6ecf3aaffc78cb2e1682885ef2a1b3fd53e54dfa5df08da1cda9d719e52b",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link2.stl"
+    "path": "models/franka_fr3/assets/collision/link2.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link3.stl": {
     "input_sha256": "f3d7b5c02d088fbd9b6be771c678132d957ca509c306058f1c14b6fbb6dfc119",
-    "is_watertight": true,
-    "min_face_area": 8.051802339951917e-05,
-    "n_degenerate": 0,
-    "n_faces": 202,
-    "n_vertices": 103,
     "output_sha256": "f3d7b5c02d088fbd9b6be771c678132d957ca509c306058f1c14b6fbb6dfc119",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link3.stl"
+    "path": "models/franka_fr3/assets/collision/link3.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link4.stl": {
     "input_sha256": "501b122a84a96217c7d4246d2bfb72b3a65907ca8d908fbe3c11887f06beaa8b",
-    "is_watertight": true,
-    "min_face_area": 8.540025819161173e-05,
-    "n_degenerate": 0,
-    "n_faces": 204,
-    "n_vertices": 104,
     "output_sha256": "501b122a84a96217c7d4246d2bfb72b3a65907ca8d908fbe3c11887f06beaa8b",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link4.stl"
+    "path": "models/franka_fr3/assets/collision/link4.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link5.stl": {
     "input_sha256": "293d21d6cfabd24f4855bf18313877d7b10cb957a8874952c2270f654dfd4867",
-    "is_watertight": true,
-    "min_face_area": 8.81132477942646e-05,
-    "n_degenerate": 0,
-    "n_faces": 176,
-    "n_vertices": 90,
     "output_sha256": "293d21d6cfabd24f4855bf18313877d7b10cb957a8874952c2270f654dfd4867",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link5.stl"
+    "path": "models/franka_fr3/assets/collision/link5.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link6.stl": {
     "input_sha256": "26e9536ba35f18534dbf9d9d0a345182b8bf4b42db66aa0c5e6c776747baadee",
-    "is_watertight": true,
-    "min_face_area": 4.316566645998794e-06,
-    "n_degenerate": 0,
-    "n_faces": 262,
-    "n_vertices": 133,
     "output_sha256": "26e9536ba35f18534dbf9d9d0a345182b8bf4b42db66aa0c5e6c776747baadee",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link6.stl"
+    "path": "models/franka_fr3/assets/collision/link6.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/fr3v2_1/collision/link7.stl": {
     "input_sha256": "f0001986a733293afb0a8142eadf5adc582397cfc05e538e60963fc3bb2b6e41",
-    "is_watertight": false,
-    "min_face_area": 4.944421845880764e-06,
-    "n_degenerate": 0,
-    "n_faces": 327,
-    "n_vertices": 166,
     "output_sha256": "f0001986a733293afb0a8142eadf5adc582397cfc05e538e60963fc3bb2b6e41",
-    "status": "copied",
-    "path": "models/franka_fr3/assets/collision/link7.stl"
+    "path": "models/franka_fr3/assets/collision/link7.stl",
+    "status": "up-to-date"
   },
   "package://franka_description/meshes/robots/tmrv0_2/collision/tmrv0_2.stl": {
     "input_sha256": "b6a82add2076ecfc21fc424fe078545d490baafa4c33bade50ea817f477836f9",
-    "is_watertight": true,
-    "min_face_area": 6.463015988611431e-06,
-    "n_degenerate": 0,
-    "n_faces": 1084,
-    "n_vertices": 544,
     "output_sha256": "b6a82add2076ecfc21fc424fe078545d490baafa4c33bade50ea817f477836f9",
-    "status": "copied",
-    "path": "models/franka_tmr/assets/collision/tmrv0_2.stl"
+    "path": "models/franka_tmr/assets/collision/tmrv0_2.stl",
+    "status": "up-to-date"
   }
 }

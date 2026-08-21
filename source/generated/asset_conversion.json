@@ -18,6 +18,15 @@
             0.10705610402288013
           ]
         ],
+        "material": {
+          "name": "Shell_white",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 32466,
         "n_vertices": 65617,
         "path": "models/franka_head/assets/visual/fr3_duo_cover.obj",
@@ -27,7 +36,7 @@
       }
     ],
     "source_mesh_count": 1,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -50,6 +59,15 @@
             0.11870190230551803
           ]
         ],
+        "material": {
+          "name": "Metal",
+          "rgba": [
+            0.438325,
+            0.438325,
+            0.438325,
+            1.0
+          ]
+        },
         "n_faces": 222326,
         "n_vertices": 404797,
         "path": "models/franka_head/assets/visual/fr3_duo_mount.obj",
@@ -59,7 +77,7 @@
       }
     ],
     "source_mesh_count": 1,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -82,6 +100,15 @@
             0.24895571556011298
           ]
         ],
+        "material": {
+          "name": "white",
+          "rgba": [
+            1.0,
+            0.9852707,
+            0.8755715,
+            1.0
+          ]
+        },
         "n_faces": 140290,
         "n_vertices": 310700,
         "path": "models/franka_head/assets/visual/franka_head.obj",
@@ -91,7 +118,7 @@
       }
     ],
     "source_mesh_count": 1,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -114,6 +141,15 @@
             1.081
           ]
         ],
+        "material": {
+          "name": "Material-Plastic__3_",
+          "rgba": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
         "n_faces": 82,
         "n_vertices": 74,
         "path": "models/franka_spine/assets/visual/franka_spine_0.obj",
@@ -134,6 +170,15 @@
             1.11
           ]
         ],
+        "material": {
+          "name": "Material-Plastic",
+          "rgba": [
+            0.411765,
+            0.411765,
+            0.411765,
+            1.0
+          ]
+        },
         "n_faces": 162,
         "n_vertices": 152,
         "path": "models/franka_spine/assets/visual/franka_spine_1.obj",
@@ -154,6 +199,15 @@
             0.3035
           ]
         ],
+        "material": {
+          "name": "Material-Plastic__2_",
+          "rgba": [
+            0.980392,
+            0.980392,
+            0.980392,
+            1.0
+          ]
+        },
         "n_faces": 421,
         "n_vertices": 384,
         "path": "models/franka_spine/assets/visual/franka_spine_2.obj",
@@ -174,6 +228,15 @@
             0.3035
           ]
         ],
+        "material": {
+          "name": "Material-Plastic",
+          "rgba": [
+            0.411765,
+            0.411765,
+            0.411765,
+            1.0
+          ]
+        },
         "n_faces": 530,
         "n_vertices": 475,
         "path": "models/franka_spine/assets/visual/franka_spine_3.obj",
@@ -194,6 +257,15 @@
             1.11
           ]
         ],
+        "material": {
+          "name": "Material-Plastic__2_",
+          "rgba": [
+            0.980392,
+            0.980392,
+            0.980392,
+            1.0
+          ]
+        },
         "n_faces": 728,
         "n_vertices": 645,
         "path": "models/franka_spine/assets/visual/franka_spine_4.obj",
@@ -214,6 +286,15 @@
             1.11
           ]
         ],
+        "material": {
+          "name": "Material-Plastic__2_",
+          "rgba": [
+            0.980392,
+            0.980392,
+            0.980392,
+            1.0
+          ]
+        },
         "n_faces": 728,
         "n_vertices": 645,
         "path": "models/franka_spine/assets/visual/franka_spine_5.obj",
@@ -223,7 +304,7 @@
       }
     ],
     "source_mesh_count": 6,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 0.001
   },
@@ -246,6 +327,15 @@
             0.05389988049864769
           ]
         ],
+        "material": {
+          "name": "Part__Feature_007",
+          "rgba": [
+            0.2509804,
+            0.2509804,
+            0.2509804,
+            1.0
+          ]
+        },
         "n_faces": 262,
         "n_vertices": 722,
         "path": "models/franka_hand/assets/visual/finger_0.obj",
@@ -266,6 +356,15 @@
             0.05385756120085716
           ]
         ],
+        "material": {
+          "name": "Part__Feature001_006",
+          "rgba": [
+            0.9019608,
+            0.9215686,
+            0.9294118,
+            1.0
+          ]
+        },
         "n_faces": 362,
         "n_vertices": 1022,
         "path": "models/franka_hand/assets/visual/finger_1.obj",
@@ -275,7 +374,7 @@
       }
     ],
     "source_mesh_count": 2,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -298,6 +397,15 @@
             0.010114659555256367
           ]
         ],
+        "material": {
+          "name": "Part__Feature002_005_005",
+          "rgba": [
+            0.9019608,
+            0.9215686,
+            0.9294118,
+            1.0
+          ]
+        },
         "n_faces": 690,
         "n_vertices": 1628,
         "path": "models/franka_hand/assets/visual/hand_0.obj",
@@ -318,6 +426,15 @@
             0.06599997729063034
           ]
         ],
+        "material": {
+          "name": "Part__Feature005_001_005",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 3548,
         "n_vertices": 10005,
         "path": "models/franka_hand/assets/visual/hand_1.obj",
@@ -338,6 +455,15 @@
             -0.014404949732124805
           ]
         ],
+        "material": {
+          "name": "Part__Feature_009_005",
+          "rgba": [
+            0.2509804,
+            0.2509804,
+            0.2509804,
+            1.0
+          ]
+        },
         "n_faces": 2310,
         "n_vertices": 6793,
         "path": "models/franka_hand/assets/visual/hand_2.obj",
@@ -358,6 +484,15 @@
             0.018695050850510597
           ]
         ],
+        "material": {
+          "name": "Part__Feature001_008_005",
+          "rgba": [
+            0.2509804,
+            0.2509804,
+            0.2509804,
+            1.0
+          ]
+        },
         "n_faces": 488,
         "n_vertices": 1356,
         "path": "models/franka_hand/assets/visual/hand_3.obj",
@@ -378,6 +513,15 @@
             0.026441270485520363
           ]
         ],
+        "material": {
+          "name": "Part__Feature005_001_005_001",
+          "rgba": [
+            0.9019608,
+            0.9215686,
+            0.9294118,
+            1.0
+          ]
+        },
         "n_faces": 42,
         "n_vertices": 46,
         "path": "models/franka_hand/assets/visual/hand_4.obj",
@@ -387,7 +531,7 @@
       }
     ],
     "source_mesh_count": 5,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -410,6 +554,15 @@
             0.0833021050918914
           ]
         ],
+        "material": {
+          "name": "LED_Lights_white",
+          "rgba": [
+            0.87736,
+            0.9235787,
+            0.9343067,
+            1.0
+          ]
+        },
         "n_faces": 465,
         "n_vertices": 329,
         "path": "models/franka_fr3/assets/visual/link0_0.obj",
@@ -430,6 +583,15 @@
             0.008171273619621
           ]
         ],
+        "material": {
+          "name": "Coordinates_Y",
+          "rgba": [
+            0.9534492,
+            0.989899,
+            0.9323467,
+            1.0
+          ]
+        },
         "n_faces": 100,
         "n_vertices": 104,
         "path": "models/franka_fr3/assets/visual/link0_1.obj",
@@ -450,6 +612,15 @@
             0.009500000451225787
           ]
         ],
+        "material": {
+          "name": "Coordinates_X",
+          "rgba": [
+            1.0,
+            0.9476744,
+            0.9476744,
+            1.0
+          ]
+        },
         "n_faces": 105,
         "n_vertices": 109,
         "path": "models/franka_fr3/assets/visual/link0_2.obj",
@@ -470,6 +641,15 @@
             0.13800000655464828
           ]
         ],
+        "material": {
+          "name": "Reference Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 27,
         "n_vertices": 29,
         "path": "models/franka_fr3/assets/visual/link0_3.obj",
@@ -490,6 +670,15 @@
             0.03230000077122819
           ]
         ],
+        "material": {
+          "name": "EU",
+          "rgba": [
+            0.6372707,
+            0.6372707,
+            0.6372707,
+            1.0
+          ]
+        },
         "n_faces": 49,
         "n_vertices": 51,
         "path": "models/franka_fr3/assets/visual/link0_4.obj",
@@ -510,6 +699,15 @@
             0.004000000189989805
           ]
         ],
+        "material": {
+          "name": "Alignment signs",
+          "rgba": [
+            0.6462899,
+            0.6462899,
+            0.6462899,
+            1.0
+          ]
+        },
         "n_faces": 140,
         "n_vertices": 143,
         "path": "models/franka_fr3/assets/visual/link0_5.obj",
@@ -530,6 +728,15 @@
             0.0720000034198165
           ]
         ],
+        "material": {
+          "name": "Connectors_Metal",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 5459,
         "n_vertices": 4494,
         "path": "models/franka_fr3/assets/visual/link0_6.obj",
@@ -550,6 +757,15 @@
             0.06696598371049856
           ]
         ],
+        "material": {
+          "name": "Connectors_Black",
+          "rgba": [
+            0.0185002,
+            0.0185002,
+            0.01850022,
+            1.0
+          ]
+        },
         "n_faces": 9903,
         "n_vertices": 8278,
         "path": "models/franka_fr3/assets/visual/link0_7.obj",
@@ -570,6 +786,15 @@
             0.14000000664964318
           ]
         ],
+        "material": {
+          "name": "7016_Buttons_Logos_Banderole",
+          "rgba": [
+            0.03820431,
+            0.04970653,
+            0.0561285,
+            1.0
+          ]
+        },
         "n_faces": 7901,
         "n_vertices": 6509,
         "path": "models/franka_fr3/assets/visual/link0_8.obj",
@@ -590,6 +815,15 @@
             0.14000000664964318
           ]
         ],
+        "material": {
+          "name": "Shells_white",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 26901,
         "n_vertices": 20763,
         "path": "models/franka_fr3/assets/visual/link0_9.obj",
@@ -610,6 +844,15 @@
             0.13505530426634493
           ]
         ],
+        "material": {
+          "name": "EUT",
+          "rgba": [
+            1.0,
+            0.07227158,
+            0.03954627,
+            1.0
+          ]
+        },
         "n_faces": 22666,
         "n_vertices": 12533,
         "path": "models/franka_fr3/assets/visual/link0_10.obj",
@@ -619,7 +862,7 @@
       }
     ],
     "source_mesh_count": 11,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -642,6 +885,15 @@
             0.05499999116826748
           ]
         ],
+        "material": {
+          "name": "Shell_White",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 9299,
         "n_vertices": 5548,
         "path": "models/franka_fr3/assets/visual/link1_0.obj",
@@ -662,6 +914,15 @@
             -0.18600000883452594
           ]
         ],
+        "material": {
+          "name": "Rotation_direction",
+          "rgba": [
+            0.9646852,
+            0.991101,
+            0.9646863,
+            1.0
+          ]
+        },
         "n_faces": 124,
         "n_vertices": 117,
         "path": "models/franka_fr3/assets/visual/link1_1.obj",
@@ -682,6 +943,15 @@
             0.0013991940686096382
           ]
         ],
+        "material": {
+          "name": "Reference_Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 54,
         "n_vertices": 58,
         "path": "models/franka_fr3/assets/visual/link1_2.obj",
@@ -702,6 +972,15 @@
             -0.18000000854954123
           ]
         ],
+        "material": {
+          "name": "Axis_Number",
+          "rgba": [
+            0.9734442,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 37,
         "n_vertices": 39,
         "path": "models/franka_fr3/assets/visual/link1_3.obj",
@@ -711,7 +990,7 @@
       }
     ],
     "source_mesh_count": 4,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -734,6 +1013,15 @@
             0.13000000617466867
           ]
         ],
+        "material": {
+          "name": "Shell_White",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 9815,
         "n_vertices": 6067,
         "path": "models/franka_fr3/assets/visual/link2_0.obj",
@@ -754,6 +1042,15 @@
             0.0065000003087334335
           ]
         ],
+        "material": {
+          "name": "Rotation direction",
+          "rgba": [
+            0.966878,
+            0.989899,
+            0.967645,
+            1.0
+          ]
+        },
         "n_faces": 206,
         "n_vertices": 204,
         "path": "models/franka_fr3/assets/visual/link2_1.obj",
@@ -774,6 +1071,15 @@
             0.0065000003087334335
           ]
         ],
+        "material": {
+          "name": "Reference Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 54,
         "n_vertices": 58,
         "path": "models/franka_fr3/assets/visual/link2_2.obj",
@@ -794,6 +1100,15 @@
             0.011700000364985308
           ]
         ],
+        "material": {
+          "name": "Axis Number",
+          "rgba": [
+            0.97093,
+            1.0,
+            0.998062,
+            1.0
+          ]
+        },
         "n_faces": 71,
         "n_vertices": 73,
         "path": "models/franka_fr3/assets/visual/link2_3.obj",
@@ -803,7 +1118,7 @@
       }
     ],
     "source_mesh_count": 4,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -826,6 +1141,15 @@
             0.05495153306660061
           ]
         ],
+        "material": {
+          "name": "Shell_white",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 9601,
         "n_vertices": 5823,
         "path": "models/franka_fr3/assets/visual/link3_0.obj",
@@ -846,6 +1170,15 @@
             -0.1170000055572018
           ]
         ],
+        "material": {
+          "name": "Rotation Direction",
+          "rgba": [
+            0.966878,
+            0.989899,
+            0.967645,
+            1.0
+          ]
+        },
         "n_faces": 126,
         "n_vertices": 119,
         "path": "models/franka_fr3/assets/visual/link3_1.obj",
@@ -866,6 +1199,15 @@
             -0.03757316004878941
           ]
         ],
+        "material": {
+          "name": "Reference Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 92,
         "n_vertices": 94,
         "path": "models/franka_fr3/assets/visual/link3_2.obj",
@@ -886,6 +1228,15 @@
             -0.1110000052722171
           ]
         ],
+        "material": {
+          "name": "Axis Number",
+          "rgba": [
+            0.97093,
+            1.0,
+            0.998062,
+            1.0
+          ]
+        },
         "n_faces": 85,
         "n_vertices": 87,
         "path": "models/franka_fr3/assets/visual/link3_3.obj",
@@ -895,7 +1246,7 @@
       }
     ],
     "source_mesh_count": 4,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -918,6 +1269,15 @@
             0.113000005367212
           ]
         ],
+        "material": {
+          "name": "Shell_white",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 10020,
         "n_vertices": 6249,
         "path": "models/franka_fr3/assets/visual/link4_0.obj",
@@ -938,6 +1298,15 @@
             0.0065000003087334335
           ]
         ],
+        "material": {
+          "name": "Rotation Direction",
+          "rgba": [
+            0.966878,
+            0.989899,
+            0.967645,
+            1.0
+          ]
+        },
         "n_faces": 197,
         "n_vertices": 198,
         "path": "models/franka_fr3/assets/visual/link4_1.obj",
@@ -958,6 +1327,15 @@
             0.0065000003087334335
           ]
         ],
+        "material": {
+          "name": "Reference_Traingle",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 91,
         "n_vertices": 94,
         "path": "models/franka_fr3/assets/visual/link4_2.obj",
@@ -978,6 +1356,15 @@
             0.011700000364985308
           ]
         ],
+        "material": {
+          "name": "Axis_Number",
+          "rgba": [
+            0.97093,
+            1.0,
+            0.998062,
+            1.0
+          ]
+        },
         "n_faces": 156,
         "n_vertices": 155,
         "path": "models/franka_fr3/assets/visual/link4_3.obj",
@@ -987,7 +1374,7 @@
       }
     ],
     "source_mesh_count": 4,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -1010,6 +1397,15 @@
             -0.05344361368345485
           ]
         ],
+        "material": {
+          "name": "7016_Buttons_Logos_Banderole",
+          "rgba": [
+            0.03820431,
+            0.04970653,
+            0.0561285,
+            1.0
+          ]
+        },
         "n_faces": 818,
         "n_vertices": 830,
         "path": "models/franka_fr3/assets/visual/link5_0.obj",
@@ -1030,6 +1426,15 @@
             0.04780332410891486
           ]
         ],
+        "material": {
+          "name": "Shell_White",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 11105,
         "n_vertices": 7856,
         "path": "models/franka_fr3/assets/visual/link5_1.obj",
@@ -1050,6 +1455,15 @@
             -0.25409670701523446
           ]
         ],
+        "material": {
+          "name": "Rotation_Direction",
+          "rgba": [
+            0.966878,
+            0.989899,
+            0.967645,
+            1.0
+          ]
+        },
         "n_faces": 128,
         "n_vertices": 121,
         "path": "models/franka_fr3/assets/visual/link5_2.obj",
@@ -1070,6 +1484,15 @@
             -0.016731819947550797
           ]
         ],
+        "material": {
+          "name": "Reference Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 68,
         "n_vertices": 66,
         "path": "models/franka_fr3/assets/visual/link5_3.obj",
@@ -1090,6 +1513,15 @@
             -0.24809681354177826
           ]
         ],
+        "material": {
+          "name": "Axis_Number",
+          "rgba": [
+            0.97093,
+            1.0,
+            0.998062,
+            1.0
+          ]
+        },
         "n_faces": 79,
         "n_vertices": 81,
         "path": "models/franka_fr3/assets/visual/link5_4.obj",
@@ -1099,7 +1531,7 @@
       }
     ],
     "source_mesh_count": 5,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -1122,6 +1554,15 @@
             0.03429804011173543
           ]
         ],
+        "material": {
+          "name": "7016_Buttons_Logos_Banderole",
+          "rgba": [
+            0.03820431,
+            0.04970653,
+            0.0561285,
+            1.0
+          ]
+        },
         "n_faces": 60748,
         "n_vertices": 40747,
         "path": "models/franka_fr3/assets/visual/link6_0.obj",
@@ -1142,6 +1583,15 @@
             0.001664000113368036
           ]
         ],
+        "material": {
+          "name": "Disc_Lights_Blue",
+          "rgba": [
+            0.01746041,
+            0.4090803,
+            0.7502391,
+            1.0
+          ]
+        },
         "n_faces": 135,
         "n_vertices": 135,
         "path": "models/franka_fr3/assets/visual/link6_1.obj",
@@ -1162,6 +1612,15 @@
             0.05541297412855695
           ]
         ],
+        "material": {
+          "name": "Shell_White",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 12526,
         "n_vertices": 7939,
         "path": "models/franka_fr3/assets/visual/link6_2.obj",
@@ -1182,6 +1641,15 @@
             0.012814000738332054
           ]
         ],
+        "material": {
+          "name": "Disc_Lights_White",
+          "rgba": [
+            0.87736,
+            0.9235787,
+            0.9343067,
+            1.0
+          ]
+        },
         "n_faces": 2472,
         "n_vertices": 1412,
         "path": "models/franka_fr3/assets/visual/link6_3.obj",
@@ -1202,6 +1670,15 @@
             0.02660499126916238
           ]
         ],
+        "material": {
+          "name": "Disc_Lights_Red",
+          "rgba": [
+            0.7032509,
+            0.05003095,
+            0.07311197,
+            1.0
+          ]
+        },
         "n_faces": 22,
         "n_vertices": 24,
         "path": "models/franka_fr3/assets/visual/link6_4.obj",
@@ -1222,6 +1699,15 @@
             0.05474058411248928
           ]
         ],
+        "material": {
+          "name": "7016_Buttons_Logos_Banderole",
+          "rgba": [
+            0.03820431,
+            0.04970653,
+            0.0561285,
+            1.0
+          ]
+        },
         "n_faces": 63,
         "n_vertices": 123,
         "path": "models/franka_fr3/assets/visual/link6_5.obj",
@@ -1242,6 +1728,15 @@
             -0.023142501022915818
           ]
         ],
+        "material": {
+          "name": "Disc_Lights_Green",
+          "rgba": [
+            0.1424608,
+            0.5551335,
+            0.04850078,
+            1.0
+          ]
+        },
         "n_faces": 5,
         "n_vertices": 7,
         "path": "models/franka_fr3/assets/visual/link6_6.obj",
@@ -1262,6 +1757,15 @@
             -0.010701000721893283
           ]
         ],
+        "material": {
+          "name": "Rotation Direction",
+          "rgba": [
+            0.966878,
+            0.989899,
+            0.967645,
+            1.0
+          ]
+        },
         "n_faces": 124,
         "n_vertices": 116,
         "path": "models/franka_fr3/assets/visual/link6_7.obj",
@@ -1282,6 +1786,15 @@
             0.01669938166781182
           ]
         ],
+        "material": {
+          "name": "Flange_Tie_Metal",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 1678,
         "n_vertices": 1567,
         "path": "models/franka_fr3/assets/visual/link6_8.obj",
@@ -1302,6 +1815,15 @@
             -0.010701000721893283
           ]
         ],
+        "material": {
+          "name": "Reference Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 60,
         "n_vertices": 61,
         "path": "models/franka_fr3/assets/visual/link6_9.obj",
@@ -1322,6 +1844,15 @@
             -0.0019886641254852205
           ]
         ],
+        "material": {
+          "name": "Axis Number",
+          "rgba": [
+            0.97093,
+            1.0,
+            0.998062,
+            1.0
+          ]
+        },
         "n_faces": 239,
         "n_vertices": 239,
         "path": "models/franka_fr3/assets/visual/link6_10.obj",
@@ -1331,7 +1862,7 @@
       }
     ],
     "source_mesh_count": 11,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -1354,6 +1885,15 @@
             0.10700000508222729
           ]
         ],
+        "material": {
+          "name": "Flange_Tie_Metal",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 9616,
         "n_vertices": 8672,
         "path": "models/franka_fr3/assets/visual/link7_0.obj",
@@ -1374,6 +1914,15 @@
             0.05598000220114363
           ]
         ],
+        "material": {
+          "name": "Rotation_Direction",
+          "rgba": [
+            0.9668781,
+            0.989899,
+            0.9676455,
+            1.0
+          ]
+        },
         "n_faces": 122,
         "n_vertices": 114,
         "path": "models/franka_fr3/assets/visual/link7_1.obj",
@@ -1394,6 +1943,15 @@
             0.05598000220114363
           ]
         ],
+        "material": {
+          "name": "Reference Triangles",
+          "rgba": [
+            0.6673693,
+            0.6784941,
+            0.681913,
+            1.0
+          ]
+        },
         "n_faces": 33,
         "n_vertices": 32,
         "path": "models/franka_fr3/assets/visual/link7_2.obj",
@@ -1414,6 +1972,15 @@
             0.06345249477408554
           ]
         ],
+        "material": {
+          "name": "Axis Number",
+          "rgba": [
+            0.9709302,
+            1.0,
+            0.998062,
+            1.0
+          ]
+        },
         "n_faces": 60,
         "n_vertices": 59,
         "path": "models/franka_fr3/assets/visual/link7_3.obj",
@@ -1434,6 +2001,15 @@
             0.0938974425092054
           ]
         ],
+        "material": {
+          "name": "7016_Buttons_Logos_Banderole",
+          "rgba": [
+            0.03820431,
+            0.04970653,
+            0.0561285,
+            1.0
+          ]
+        },
         "n_faces": 9071,
         "n_vertices": 6628,
         "path": "models/franka_fr3/assets/visual/link7_4.obj",
@@ -1454,6 +2030,15 @@
             0.0917500653930503
           ]
         ],
+        "material": {
+          "name": "Connectors_black",
+          "rgba": [
+            0.0185002,
+            0.0185002,
+            0.01850022,
+            1.0
+          ]
+        },
         "n_faces": 6371,
         "n_vertices": 4812,
         "path": "models/franka_fr3/assets/visual/link7_5.obj",
@@ -1474,6 +2059,15 @@
             0.09700000460725278
           ]
         ],
+        "material": {
+          "name": "Shell_White",
+          "rgba": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
         "n_faces": 17717,
         "n_vertices": 11359,
         "path": "models/franka_fr3/assets/visual/link7_6.obj",
@@ -1483,7 +2077,7 @@
       }
     ],
     "source_mesh_count": 7,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 1.0
   },
@@ -1513,7 +2107,7 @@
       }
     ],
     "source_mesh_count": 1118,
-    "status": "converted",
+    "status": "up-to-date",
     "tool": "trimesh 5.0.0",
     "unit_scale": 0.001
   }

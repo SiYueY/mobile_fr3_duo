@@ -21,11 +21,12 @@
     </default>
   </default>
   <asset>
+    <material name="sensor_cam_mat_0d02030f73" rgba="0 0 0 1"/>
     <mesh name="zed_mini" file="visual/zedm.stl"/>
   </asset>
   <worldbody>
     <body name="head_zed">
-      <geom class="visual" type="mesh" mesh="zed_mini"/>
+      <geom class="visual" type="mesh" mesh="zed_mini" material="sensor_cam_mat_0d02030f73"/>
       <geom class="sensor_collision" type="box" size="0.062 0.015 0.015"/>
       <site name="head_zed_left_camera_frame" size="0.001" pos="-0.0315 0 0"/>
       <site name="head_zed_left_camera_optical_frame" size="0.001" pos="-0.0315 0 0"/>

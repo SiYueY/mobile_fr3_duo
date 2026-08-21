@@ -21,6 +21,13 @@
     </default>
   </default>
   <asset>
+    <material name="dae_Part__Feature_007_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
+    <material name="dae_Part__Feature001_006_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
+    <material name="dae_Part__Feature002_005_005_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
+    <material name="dae_Part__Feature005_001_005_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_Part__Feature_009_005_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
+    <material name="dae_Part__Feature001_008_005_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
+    <material name="dae_Part__Feature005_001_005_001_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
     <mesh name="hand_visual_0" file="visual/hand_0.obj" inertia="shell"/>
     <mesh name="hand_visual_1" file="visual/hand_1.obj" inertia="shell"/>
     <mesh name="hand_visual_2" file="visual/hand_2.obj" inertia="shell"/>
@@ -33,11 +40,11 @@
   <worldbody>
     <body name="fr3v2_1_hand" pos="0 0 0" quat="0.9238795325 0 0 -0.3826834324">
       <inertial pos="-3.76e-05 0.0119128 0.020726" mass="0.6544" fullinertia="0.00186 0.0003 0.00174 0 0 -2e-05"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_0"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_1"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_2"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3"/>
-      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_0" material="dae_Part__Feature002_005_005_bdaff437a0"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_1" material="dae_Part__Feature005_001_005_1bf779d349"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_2" material="dae_Part__Feature_009_005_325fa00c74"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3" material="dae_Part__Feature001_008_005_325fa00c74"/>
+      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4" material="dae_Part__Feature005_001_005_001_bdaff437a0"/>
       <geom class="collision" type="mesh" mesh="hand_collision" pos="0 0 0" quat="1 0 0 0"/>
       <body name="fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
         <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
@@ -53,8 +60,8 @@
       <body name="fr3v2_1_leftfinger" pos="0 0 0.0584" quat="1 0 0 0">
         <joint name="fr3v2_1_finger_joint1" type="slide" axis="0 1 0" limited="true" range="0 0.04" damping="0.3"/>
         <inertial pos="0 0.015285 0.0219675" mass="0.0291" fullinertia="8.49e-06 8.53e-06 1.77e-06 0 0 -1.06e-06"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0" material="dae_Part__Feature_007_325fa00c74"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1" material="dae_Part__Feature001_006_bdaff437a0"/>
         <geom class="finger_pad" type="box" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" quat="1 0 0 0"/>
         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.9659258263 0.2588190451 0 0"/>
@@ -63,8 +70,8 @@
       <body name="fr3v2_1_rightfinger" pos="0 0 0.0584" quat="6.123233996e-17 0 0 1">
         <joint name="fr3v2_1_finger_joint2" type="slide" axis="0 1 0" limited="true" range="0 0.04" damping="0.3"/>
         <inertial pos="0 0.015285 0.0219675" mass="0.0291" fullinertia="8.49e-06 8.53e-06 1.77e-06 0 0 -1.06e-06"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0" material="dae_Part__Feature_007_325fa00c74"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1" material="dae_Part__Feature001_006_bdaff437a0"/>
         <geom class="finger_pad" type="box" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" quat="1 0 0 0"/>
         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="5.914589857e-17 -1.584809576e-17 -0.2588190451 0.9659258263"/>

@@ -23,12 +23,13 @@ import hashlib
 import json
 import os
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import trimesh
 import yaml
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
 MODELS = REPO_ROOT / "models"
 GENERATED = REPO_ROOT / "source" / "generated"
 MIN_OUTPUT_EXTENT = 1e-4  # meters; matches tools/validate_model.py
@@ -68,6 +69,75 @@ def dae_unit_scale(path: Path) -> float:
         # COLLADA default unit is meter.
         return 1.0
     return float(match.group(1))
+
+
+def _collada_id(value: str | None) -> str | None:
+    """Normalise a COLLADA URI such as ``#paint_white`` to its identifier."""
+    if not value:
+        return None
+    return value.removeprefix("#")
+
+
+def collada_materials(path: Path) -> dict[str, dict[str, object]]:
+    """Map COLLADA geometry identifiers to their bound diffuse materials.
+
+    Trimesh does not consistently retain COLLADA materials after
+    ``Scene.dump()``.  Parse the standard ``effect -> material ->
+    instance_geometry/bind_material`` chain directly so visual appearance is
+    independent of loader implementation details.  A geometry with multiple
+    bindings is intentionally left unassigned: one exported geometry cannot
+    safely represent several different material slots without a further face
+    split.
+    """
+    root = ET.parse(path).getroot()
+    effects: dict[str, list[float]] = {}
+    for effect in root.findall(".//{*}library_effects/{*}effect"):
+        effect_id = effect.get("id")
+        color = effect.find(".//{*}profile_COMMON//{*}diffuse/{*}color")
+        if not effect_id or color is None or not color.text:
+            continue
+        try:
+            rgba = [float(value) for value in color.text.split()]
+        except ValueError:
+            continue
+        if len(rgba) == 3:
+            rgba.append(1.0)
+        if len(rgba) == 4:
+            effects[effect_id] = [max(0.0, min(1.0, value)) for value in rgba]
+
+    materials: dict[str, dict[str, object]] = {}
+    for material in root.findall(".//{*}library_materials/{*}material"):
+        material_id = material.get("id")
+        instance_effect = material.find("{*}instance_effect")
+        if not material_id or instance_effect is None:
+            continue
+        rgba = effects.get(_collada_id(instance_effect.get("url")) or "")
+        if rgba is None:
+            continue
+        materials[material_id] = {
+            "name": material.get("name") or material_id,
+            "rgba": rgba,
+        }
+
+    bindings: dict[str, list[dict[str, object]]] = {}
+    for instance in root.findall(".//{*}instance_geometry"):
+        geometry_id = _collada_id(instance.get("url"))
+        if not geometry_id:
+            continue
+        bound = []
+        for item in instance.findall(".//{*}bind_material/{*}technique_common/{*}instance_material"):
+            material = materials.get(_collada_id(item.get("target")) or "")
+            if material is not None and material not in bound:
+                bound.append(material)
+        if bound:
+            bindings.setdefault(geometry_id, []).extend(
+                material for material in bound if material not in bindings.get(geometry_id, [])
+            )
+
+    # A source geometry with a unique material is safe to map to one emitted
+    # mesh.  Ambiguous multi-slot geometries need a primitive-level split and
+    # are intentionally not assigned a misleading colour.
+    return {geometry_id: bound[0] for geometry_id, bound in bindings.items() if len(bound) == 1}
 
 
 def source_path(package_uri: str, franka_root: Path) -> Path | None:
@@ -191,15 +261,51 @@ def remove_stale_outputs(base: Path, expected: set[Path]) -> None:
         print(f"removed stale {path.relative_to(REPO_ROOT)}")
 
 
-def material_name(mesh: trimesh.Trimesh) -> str | None:
-    """Return the source material name when trimesh exposes one."""
+def material_metadata(mesh: trimesh.Trimesh) -> dict[str, object] | None:
+    """Return a portable COLLADA material record exposed by trimesh.
+
+    OBJ is used only as the geometry carrier in this repository.  Its source
+    material must consequently be captured in the conversion manifest so the
+    MJCF builder can recreate the appearance explicitly.  ``SimpleMaterial``
+    exposes ``diffuse`` while newer trimesh PBR materials expose
+    ``baseColorFactor``; both are normalised to an RGBA tuple in [0, 1].
+    """
     visual = getattr(mesh, "visual", None)
     material = getattr(visual, "material", None)
+    if material is None:
+        return None
+
     name = getattr(material, "name", None)
-    return str(name) if name else None
+    raw_rgba = getattr(material, "baseColorFactor", None)
+    if raw_rgba is None:
+        raw_rgba = getattr(material, "diffuse", None)
+    if raw_rgba is None:
+        return {"name": str(name)} if name else None
+
+    try:
+        rgba = [float(value) for value in raw_rgba]
+    except (TypeError, ValueError):
+        return {"name": str(name)} if name else None
+    if len(rgba) == 3:
+        rgba.append(1.0)
+    if len(rgba) != 4:
+        return {"name": str(name)} if name else None
+    # trimesh SimpleMaterial stores byte colours, while PBR factors are unit
+    # floats.  Keep the manifest independent of that implementation detail.
+    if max(rgba) > 1.0:
+        rgba = [value / 255.0 for value in rgba]
+    rgba = [max(0.0, min(1.0, value)) for value in rgba]
+    record: dict[str, object] = {"rgba": rgba}
+    if name:
+        record["name"] = str(name)
+    return record
 
 
-def mesh_record(path: Path, mesh: trimesh.Trimesh) -> dict:
+def mesh_record(
+    path: Path,
+    mesh: trimesh.Trimesh,
+    collada_material: dict[str, dict[str, object]] | None = None,
+) -> dict:
     record = {
         "path": path.relative_to(REPO_ROOT).as_posix(),
         "sha256": sha256(path),
@@ -208,11 +314,13 @@ def mesh_record(path: Path, mesh: trimesh.Trimesh) -> dict:
         "bounds": mesh.bounds.tolist(),
     }
 
-    name = material_name(mesh)
-    if name is not None:
-        record["material"] = name
-
+    material = material_metadata(mesh)
     source_geometry = mesh.metadata.get("name")
+    if collada_material and source_geometry is not None:
+        material = collada_material.get(str(source_geometry), material)
+    if material is not None:
+        record["material"] = material
+
     source_node = mesh.metadata.get("node")
     if source_geometry is not None:
         record["source_geometry"] = str(source_geometry)
@@ -239,7 +347,7 @@ def preserve_source_metadata(
         if index >= len(previous_outputs) or not isinstance(previous_outputs[index], dict):
             continue
         for key in ("material", "source_geometry", "source_node"):
-            if key in previous_outputs[index]:
+            if key not in output and key in previous_outputs[index]:
                 output[key] = previous_outputs[index][key]
     return outputs
 
@@ -273,6 +381,7 @@ def convert_all(franka_root: Path, force: bool = False) -> dict:
         base_dst.parent.mkdir(parents=True, exist_ok=True)
 
         unit_scale = dae_unit_scale(src)
+        collada_material = collada_materials(src)
         source_meshes = normalize_mesh_parts(load_mesh_parts(src), unit_scale)
         meshes = apply_output_policy(uri, source_meshes)
         destinations = output_paths(base_dst, len(meshes))
@@ -287,7 +396,10 @@ def convert_all(franka_root: Path, force: bool = False) -> dict:
 
         if all_exist and not force:
             outputs = preserve_source_metadata(
-                [existing_mesh_record(path) for path in destinations],
+                [
+                    mesh_record(path, mesh, collada_material)
+                    for path, mesh in zip(destinations, meshes, strict=True)
+                ],
                 previous_records.get(uri),
             )
             records[uri] = {
@@ -305,10 +417,10 @@ def convert_all(franka_root: Path, force: bool = False) -> dict:
 
         output_records = []
         for mesh, dst in zip(meshes, destinations, strict=True):
-            # Material/texture conversion is deliberately out of scope for
-            # this pipeline; emit self-contained geometry-only OBJ files.
+            # OBJ remains geometry-only.  COLLADA appearance is retained in
+            # the manifest and emitted as MJCF assets by the model builder.
             mesh.export(dst, include_texture=False)
-            output_records.append(mesh_record(dst, mesh))
+            output_records.append(mesh_record(dst, mesh, collada_material))
             print(f"converted {dst.relative_to(REPO_ROOT)}")
 
         records[uri] = {

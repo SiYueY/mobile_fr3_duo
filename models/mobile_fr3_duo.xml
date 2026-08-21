@@ -21,6 +21,48 @@
     </default>
   </default>
   <asset>
+    <material name="dae_Shell_white_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_Metal_4126eddbf0" rgba="0.438325 0.438325 0.438325 1"/>
+    <material name="dae_white_5795d0a484" rgba="1 0.9852707 0.8755715 1"/>
+    <material name="dae_Material_Plastic__3_0d02030f73" rgba="0 0 0 1"/>
+    <material name="dae_Material_Plastic_14f2552f36" rgba="0.411765 0.411765 0.411765 1"/>
+    <material name="dae_Material_Plastic__2_9cede6a04e" rgba="0.980392 0.980392 0.980392 1"/>
+    <material name="dae_Part__Feature_007_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
+    <material name="dae_Part__Feature001_006_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
+    <material name="dae_Part__Feature002_005_005_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
+    <material name="dae_Part__Feature005_001_005_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_Part__Feature_009_005_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
+    <material name="dae_Part__Feature001_008_005_325fa00c74" rgba="0.2509804 0.2509804 0.2509804 1"/>
+    <material name="dae_Part__Feature005_001_005_001_bdaff437a0" rgba="0.9019608 0.9215686 0.9294118 1"/>
+    <material name="dae_LED_Lights_white_8d02576bc5" rgba="0.87736 0.9235787 0.9343067 1"/>
+    <material name="dae_Coordinates_Y_0073068c92" rgba="0.9534492 0.989899 0.9323467 1"/>
+    <material name="dae_Coordinates_X_840752252e" rgba="1 0.9476744 0.9476744 1"/>
+    <material name="dae_Reference_Triangles_2ef8ede315" rgba="0.6673693 0.6784941 0.681913 1"/>
+    <material name="dae_EU_abd9b860f7" rgba="0.6372707 0.6372707 0.6372707 1"/>
+    <material name="dae_Alignment_signs_94f7471a10" rgba="0.6462899 0.6462899 0.6462899 1"/>
+    <material name="dae_Connectors_Metal_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_Connectors_Black_2d54d84b5c" rgba="0.0185002 0.0185002 0.01850022 1"/>
+    <material name="dae_7016_Buttons_Logos_Banderole_02a1b3091f" rgba="0.03820431 0.04970653 0.0561285 1"/>
+    <material name="dae_Shells_white_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_EUT_77e3209863" rgba="1 0.07227158 0.03954627 1"/>
+    <material name="dae_Shell_White_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_Rotation_direction_02a7e1fe18" rgba="0.9646852 0.991101 0.9646863 1"/>
+    <material name="dae_Axis_Number_c76ade3a84" rgba="0.9734442 1 1 1"/>
+    <material name="dae_Rotation_direction_c218a22989" rgba="0.966878 0.989899 0.967645 1"/>
+    <material name="dae_Axis_Number_496a271997" rgba="0.97093 1 0.998062 1"/>
+    <material name="dae_Rotation_Direction_c218a22989" rgba="0.966878 0.989899 0.967645 1"/>
+    <material name="dae_Reference_Traingle_2ef8ede315" rgba="0.6673693 0.6784941 0.681913 1"/>
+    <material name="dae_Disc_Lights_Blue_23a7830264" rgba="0.01746041 0.4090803 0.7502391 1"/>
+    <material name="dae_Disc_Lights_White_8d02576bc5" rgba="0.87736 0.9235787 0.9343067 1"/>
+    <material name="dae_Disc_Lights_Red_f81374a4ab" rgba="0.7032509 0.05003095 0.07311197 1"/>
+    <material name="dae_Disc_Lights_Green_bf63119702" rgba="0.1424608 0.5551335 0.04850078 1"/>
+    <material name="dae_Flange_Tie_Metal_1bf779d349" rgba="1 1 1 1"/>
+    <material name="dae_Rotation_Direction_6314377764" rgba="0.9668781 0.989899 0.9676455 1"/>
+    <material name="dae_Axis_Number_79b7d6176a" rgba="0.9709302 1 0.998062 1"/>
+    <material name="dae_Connectors_black_2d54d84b5c" rgba="0.0185002 0.0185002 0.01850022 1"/>
+    <material name="sensor_aluminum_0ecfa78448" rgba="0.5 0.5 0.5 1"/>
+    <material name="sensor_nanoscan3_darkgrey_8afaa4da88" rgba="0.2 0.2 0.2 1"/>
+    <material name="sensor_cam_mat_0d02030f73" rgba="0 0 0 1"/>
     <mesh name="tmrv0_2_visual_0" file="franka_tmr/assets/visual/tmrv0_2.obj" inertia="shell"/>
     <mesh name="tmrv0_2_collision" file="franka_tmr/assets/collision/tmrv0_2.stl"/>
     <mesh name="franka_spine_visual_0" file="franka_spine/assets/visual/franka_spine_0.obj" inertia="shell"/>
@@ -192,7 +234,7 @@
       <body name="front_mounting_point" pos="0.380705 0 0.2345" quat="6.123233996e-17 1 0 0">
         <site name="front_mounting_point" size="0.002"/>
         <body name="camera_front_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" material="sensor_aluminum_0ecfa78448" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_front_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_front_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -209,7 +251,7 @@
       <body name="rear_mounting_point" pos="-0.380705 0 0.2345" quat="3.749399457e-33 6.123233996e-17 1 6.123233996e-17">
         <site name="rear_mounting_point" size="0.002"/>
         <body name="camera_rear_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" material="sensor_aluminum_0ecfa78448" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_rear_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_rear_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -226,7 +268,7 @@
       <body name="right_mounting_point" pos="0 -0.272712 0.1145" quat="4.329780281e-17 0.7071067812 -0.7071067812 -4.329780281e-17">
         <site name="right_mounting_point" size="0.002"/>
         <body name="camera_right_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" material="sensor_aluminum_0ecfa78448" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_right_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_right_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -243,7 +285,7 @@
       <body name="left_mounting_point" pos="0 0.272712 0.1145" quat="4.329780281e-17 0.7071067812 0.7071067812 4.329780281e-17">
         <site name="left_mounting_point" size="0.002"/>
         <body name="camera_left_link" pos="0.01115 0.0475 0.0145">
-          <geom class="visual" type="mesh" mesh="realsense_d455" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
+          <geom class="visual" type="mesh" mesh="realsense_d455" material="sensor_aluminum_0ecfa78448" pos="0.00465 -0.0475 0" quat="0.5 0.5 0.5 0.5"/>
           <geom class="sensor_collision" type="box" size="0.013 0.062 0.0145" pos="-0.00845 -0.0475 0"/>
           <site name="camera_left_depth_frame" size="0.001" pos="0 0 0"/>
           <site name="camera_left_depth_optical_frame" size="0.001" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
@@ -260,7 +302,7 @@
       <body name="lidar_front_mounting_point" pos="0.3275 0.2175 0.19065" quat="2.343260203e-17 -0.9238795325 0.3826834324 5.657130561e-17">
         <site name="lidar_front_mounting_point" size="0.002"/>
         <body name="lidar_front" pos="-0.0803 0.053 0" quat="0.7071067812 0 0 -0.7071067812">
-          <geom class="visual" type="mesh" mesh="nanoscan3_visual" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
+          <geom class="visual" type="mesh" mesh="nanoscan3_visual" material="sensor_nanoscan3_darkgrey_8afaa4da88" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
           <geom class="sensor_collision" type="mesh" mesh="nanoscan3_collision" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
           <site name="lidar_front_scan_frame" size="0.002"/>
         </body>
@@ -268,19 +310,19 @@
       <body name="lidar_rear_mounting_point" pos="-0.3275 -0.2175 0.19065" quat="-5.657130561e-17 -0.3826834324 -0.9238795325 2.343260203e-17">
         <site name="lidar_rear_mounting_point" size="0.002"/>
         <body name="lidar_rear" pos="-0.0803 0.053 0" quat="0.7071067812 0 0 -0.7071067812">
-          <geom class="visual" type="mesh" mesh="nanoscan3_visual" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
+          <geom class="visual" type="mesh" mesh="nanoscan3_visual" material="sensor_nanoscan3_darkgrey_8afaa4da88" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
           <geom class="sensor_collision" type="mesh" mesh="nanoscan3_collision" pos="-0.01 -0.08 -0.04" quat="0.7071067812 0 0 0.7071067812"/>
           <site name="lidar_rear_scan_frame" size="0.002"/>
         </body>
       </body>
       <body name="franka_spine" pos="0.138289 0 0.35" quat="1 0 0 0">
         <inertial pos="0.042358 0.000378 0.495198" mass="21.909124" fullinertia="3.338968145 3.324560297 0.281489258 -0.000642887 0.299962762 -0.004488422"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_0"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_1"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_2"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_3"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_4"/>
-        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_5"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_0" material="dae_Material_Plastic__3_0d02030f73"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_1" material="dae_Material_Plastic_14f2552f36"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_2" material="dae_Material_Plastic__2_9cede6a04e"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_3" material="dae_Material_Plastic_14f2552f36"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_4" material="dae_Material_Plastic__2_9cede6a04e"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_spine_visual_5" material="dae_Material_Plastic__2_9cede6a04e"/>
         <geom class="collision" type="mesh" mesh="franka_spine_collision" pos="0 0 0" quat="1 0 0 0"/>
         <body name="franka_spine_mounting_point" pos="0.266711 0 0.1" quat="1 0 0 0">
           <joint name="franka_spine_vertical_joint" type="slide" axis="0 0 1" limited="true" range="0 0.85"/>
@@ -288,8 +330,8 @@
           <site name="franka_spine_mounting_point" size="0.002"/>
           <body name="fr3_duo_mount_mounting_point" pos="0 0 0" quat="1 0 0 0">
             <inertial pos="-0.011817 -5e-05 0.044431" mass="4.093846" fullinertia="0.0224318121 0.0164193182 0.0217407036 1.38076e-06 -0.0015719371 -1.442621e-06"/>
-            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="fr3_duo_mount_visual_0"/>
-            <geom class="visual" pos="0 0 0.068" quat="1 0 0 0" type="mesh" mesh="fr3_duo_cover_visual_0"/>
+            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="fr3_duo_mount_visual_0" material="dae_Metal_4126eddbf0"/>
+            <geom class="visual" pos="0 0 0.068" quat="1 0 0 0" type="mesh" mesh="fr3_duo_cover_visual_0" material="dae_Shell_white_1bf779d349"/>
             <geom class="collision" type="mesh" mesh="fr3_duo_mount_collision" pos="0 0 0" quat="1 0 0 0"/>
             <geom class="collision" type="mesh" mesh="fr3_duo_cover_collision" pos="0 0 0.068" quat="1 0 0 0"/>
             <site name="fr3_duo_mount_mounting_point" size="0.002"/>
@@ -298,17 +340,17 @@
                 <body name="left_base" pos="0 0 0" quat="1 0 0 0">
                   <body name="left_fr3v2_1_link0" pos="0 0 0" quat="1 0 0 0">
                     <inertial pos="-0.0172 0.0004 0.0745" mass="2.3966" fullinertia="0.009 0.0115 0.0085 0 0.002 0"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_0"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_1"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_2"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_3"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_4"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_5"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_6"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_7"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_8"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_9"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_10"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_0" material="dae_LED_Lights_white_8d02576bc5"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_1" material="dae_Coordinates_Y_0073068c92"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_2" material="dae_Coordinates_X_840752252e"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_3" material="dae_Reference_Triangles_2ef8ede315"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_4" material="dae_EU_abd9b860f7"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_5" material="dae_Alignment_signs_94f7471a10"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_6" material="dae_Connectors_Metal_1bf779d349"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_7" material="dae_Connectors_Black_2d54d84b5c"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_8" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_9" material="dae_Shells_white_1bf779d349"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_10" material="dae_EUT_77e3209863"/>
                     <geom class="collision" type="mesh" mesh="link0_collision" pos="0 0 0" quat="1 0 0 0"/>
                     <body name="left_fr3v2_1_link0_sc" pos="0 0 0" quat="1 0 0 0">
                       <geom class="collision" type="cylinder" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.7071067812 0 0.7071067812 0"/>
@@ -320,10 +362,10 @@
                     <body name="left_fr3v2_1_link1" pos="0 0 0.333" quat="1 0 0 0">
                       <joint name="left_fr3v2_1_joint1" type="hinge" axis="0 0 1" limited="true" range="-2.900740017 2.900740017" damping="0.003" frictionloss="0.2"/>
                       <inertial pos="-0.00458 0.027016 -0.0618" mass="2.4377" fullinertia="0.02324 0.02146 0.0055 0.000333 -0.000676 0.003739"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_0"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_1"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_2"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_3"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_0" material="dae_Shell_White_1bf779d349"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_1" material="dae_Rotation_direction_02a7e1fe18"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_3" material="dae_Axis_Number_c76ade3a84"/>
                       <geom class="collision" type="mesh" mesh="link1_collision" pos="0 0 0" quat="1 0 0 0"/>
                       <body name="left_fr3v2_1_link1_sc" pos="0 0 0" quat="1 0 0 0">
                         <geom class="collision" type="cylinder" size="0.09 0.1415" pos="0 0 -0.1915" quat="1 0 0 0"/>
@@ -335,10 +377,10 @@
                       <body name="left_fr3v2_1_link2" pos="0 0 0" quat="0.7071067812 -0.7071067812 0 0">
                         <joint name="left_fr3v2_1_joint2" type="hinge" axis="0 0 1" limited="true" range="-1.836090017 1.836090017" damping="0.003" frictionloss="0.2"/>
                         <inertial pos="-0.01063 -0.184739 -0.010479" mass="2.2375" fullinertia="0.019026 0.00566 0.017114 0.001241 0.000499 -0.001804"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_0"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_1"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_2"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_3"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_0" material="dae_Shell_White_1bf779d349"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_1" material="dae_Rotation_direction_c218a22989"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_3" material="dae_Axis_Number_496a271997"/>
                         <geom class="collision" type="mesh" mesh="link2_collision" pos="0 0 0" quat="1 0 0 0"/>
                         <body name="left_fr3v2_1_link2_sc" pos="0 0 0" quat="1 0 0 0">
                           <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
@@ -350,10 +392,10 @@
                         <body name="left_fr3v2_1_link3" pos="0 -0.316 0" quat="0.7071067812 0.7071067812 0 0">
                           <joint name="left_fr3v2_1_joint3" type="hinge" axis="0 0 1" limited="true" range="-2.900740017 2.900740017" damping="0.003" frictionloss="0.2"/>
                           <inertial pos="0.091995 0.023003 0.047348" mass="2.196382" fullinertia="0.010225 0.012398 0.006877 0.001144 0.003497 0.002156"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_0"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_1"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_2"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_3"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_0" material="dae_Shell_white_1bf779d349"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_1" material="dae_Rotation_Direction_c218a22989"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_3" material="dae_Axis_Number_496a271997"/>
                           <geom class="collision" type="mesh" mesh="link3_collision" pos="0 0 0" quat="1 0 0 0"/>
                           <body name="left_fr3v2_1_link3_sc" pos="0 0 0" quat="1 0 0 0">
                             <geom class="collision" type="cylinder" size="0.09 0.075" pos="0 0 -0.145" quat="1 0 0 0"/>
@@ -365,10 +407,10 @@
                           <body name="left_fr3v2_1_link4" pos="0.0825 0 0" quat="0.7071067812 0.7071067812 0 0">
                             <joint name="left_fr3v2_1_joint4" type="hinge" axis="0 0 1" limited="true" range="-3.077020017 -0.1169370833" damping="0.003" frictionloss="0.2"/>
                             <inertial pos="-0.084334 0.096836 0.006248" mass="2.186422" fullinertia="0.008878 0.007628 0.010295 -0.003749 0.001139 -0.00046"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_0"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_1"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_2"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_3"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_0" material="dae_Shell_white_1bf779d349"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_1" material="dae_Rotation_Direction_c218a22989"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_2" material="dae_Reference_Traingle_2ef8ede315"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_3" material="dae_Axis_Number_496a271997"/>
                             <geom class="collision" type="mesh" mesh="link4_collision" pos="0 0 0" quat="1 0 0 0"/>
                             <body name="left_fr3v2_1_link4_sc" pos="0 0 0" quat="1 0 0 0">
                               <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
@@ -380,11 +422,11 @@
                             <body name="left_fr3v2_1_link5" pos="-0.0825 0.384 0" quat="0.7071067812 -0.7071067812 0 0">
                               <joint name="left_fr3v2_1_joint5" type="hinge" axis="0 0 1" limited="true" range="-2.87630335 2.87630335" damping="0.003" frictionloss="0.2"/>
                               <inertial pos="3.9e-05 0.011821 -0.054936" mass="2.190783" fullinertia="0.031874 0.029674 0.004751 0.000134 -0.000265 -0.004734"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_0"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_1"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_2"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_3"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_4"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_0" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_1" material="dae_Shell_White_1bf779d349"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_2" material="dae_Rotation_Direction_c218a22989"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_3" material="dae_Reference_Triangles_2ef8ede315"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_4" material="dae_Axis_Number_496a271997"/>
                               <geom class="collision" type="mesh" mesh="link5_collision" pos="0 0 0" quat="1 0 0 0"/>
                               <body name="left_fr3v2_1_link5_sc" pos="0 0 0" quat="1 0 0 0">
                                 <geom class="collision" type="cylinder" size="0.09 0.05" pos="0 0 -0.26" quat="1 0 0 0"/>
@@ -399,17 +441,17 @@
                               <body name="left_fr3v2_1_link6" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0">
                                 <joint name="left_fr3v2_1_joint6" type="hinge" axis="0 0 1" limited="true" range="0.43982265 4.62163335" damping="0.003" frictionloss="0.2"/>
                                 <inertial pos="0.069627 -0.016716 -0.037235" mass="1.583583" fullinertia="0.00286 0.00391 0.00453 -0.000553 -0.000638 -0.00024"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_0"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_1"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_2"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_3"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_4"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_5"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_6"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_7"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_8"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_9"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_10"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_0" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_1" material="dae_Disc_Lights_Blue_23a7830264"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_2" material="dae_Shell_White_1bf779d349"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_3" material="dae_Disc_Lights_White_8d02576bc5"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_4" material="dae_Disc_Lights_Red_f81374a4ab"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_5" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_6" material="dae_Disc_Lights_Green_bf63119702"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_7" material="dae_Rotation_Direction_c218a22989"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_8" material="dae_Flange_Tie_Metal_1bf779d349"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_9" material="dae_Reference_Triangles_2ef8ede315"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_10" material="dae_Axis_Number_496a271997"/>
                                 <geom class="collision" type="mesh" mesh="link6_collision" pos="0 0 0" quat="1 0 0 0"/>
                                 <body name="left_fr3v2_1_link6_sc" pos="0 0 0" quat="1 0 0 0">
                                   <geom class="collision" type="cylinder" size="0.08 0.04" pos="0 0 -0.03" quat="1 0 0 0"/>
@@ -419,13 +461,13 @@
                                 <body name="left_fr3v2_1_link7" pos="0.088 0 0" quat="0.7071067812 0.7071067812 0 0">
                                   <joint name="left_fr3v2_1_joint7" type="hinge" axis="0 0 1" limited="true" range="-3.05083335 3.05083335" damping="0.003" frictionloss="0.2"/>
                                   <inertial pos="-0.014555 0.00923 0.065858" mass="0.698686" fullinertia="0.000899 0.001099 0.000702 0 -1.3e-05 -2.2e-05"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_0"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_1"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_2"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_3"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_4"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_5"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_6"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_0" material="dae_Flange_Tie_Metal_1bf779d349"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_1" material="dae_Rotation_Direction_6314377764"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_3" material="dae_Axis_Number_79b7d6176a"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_4" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_5" material="dae_Connectors_black_2d54d84b5c"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_6" material="dae_Shell_White_1bf779d349"/>
                                   <geom class="collision" type="mesh" mesh="link7_collision" pos="0 0 0" quat="1 0 0 0"/>
                                   <body name="left_fr3v2_1_link7_sc" pos="0 0 0" quat="0.9238795325 0 0 0.3826834324">
                                     <geom class="collision" type="cylinder" size="0.07 0.07" pos="0 0 0.01" quat="1 0 0 0"/>
@@ -438,11 +480,11 @@
                                   <body name="left_fr3v2_1_link8" pos="0 0 0.107" quat="1 0 0 0">
                                     <body name="left_fr3v2_1_hand" pos="0 0 0" quat="0.9238795325 0 0 -0.3826834324">
                                       <inertial pos="-3.76e-05 0.0119128 0.020726" mass="0.6544" fullinertia="0.00186 0.0003 0.00174 0 0 -2e-05"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_0"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_1"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_2"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_0" material="dae_Part__Feature002_005_005_bdaff437a0"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_1" material="dae_Part__Feature005_001_005_1bf779d349"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_2" material="dae_Part__Feature_009_005_325fa00c74"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3" material="dae_Part__Feature001_008_005_325fa00c74"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4" material="dae_Part__Feature005_001_005_001_bdaff437a0"/>
                                       <geom class="collision" type="mesh" mesh="hand_collision" pos="0 0 0" quat="1 0 0 0"/>
                                       <body name="left_fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
                                         <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
@@ -458,8 +500,8 @@
                                       <body name="left_fr3v2_1_leftfinger" pos="0 0 0.0584" quat="1 0 0 0">
                                         <joint name="left_fr3v2_1_finger_joint1" type="slide" axis="0 1 0" limited="true" range="0 0.04" damping="0.3"/>
                                         <inertial pos="0 0.015285 0.0219675" mass="0.0291" fullinertia="8.49e-06 8.53e-06 1.77e-06 0 0 -1.06e-06"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0" material="dae_Part__Feature_007_325fa00c74"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1" material="dae_Part__Feature001_006_bdaff437a0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.9659258263 0.2588190451 0 0"/>
@@ -468,8 +510,8 @@
                                       <body name="left_fr3v2_1_rightfinger" pos="0 0 0.0584" quat="6.123233996e-17 0 0 1">
                                         <joint name="left_fr3v2_1_finger_joint2" type="slide" axis="0 1 0" limited="true" range="0 0.04" damping="0.3"/>
                                         <inertial pos="0 0.015285 0.0219675" mass="0.0291" fullinertia="8.49e-06 8.53e-06 1.77e-06 0 0 -1.06e-06"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0" material="dae_Part__Feature_007_325fa00c74"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1" material="dae_Part__Feature001_006_bdaff437a0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="5.914589857e-17 -1.584809576e-17 -0.2588190451 0.9659258263"/>
@@ -491,17 +533,17 @@
                 <body name="right_base" pos="0 0 0" quat="1 0 0 0">
                   <body name="right_fr3v2_1_link0" pos="0 0 0" quat="1 0 0 0">
                     <inertial pos="-0.0172 0.0004 0.0745" mass="2.3966" fullinertia="0.009 0.0115 0.0085 0 0.002 0"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_0"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_1"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_2"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_3"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_4"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_5"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_6"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_7"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_8"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_9"/>
-                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_10"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_0" material="dae_LED_Lights_white_8d02576bc5"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_1" material="dae_Coordinates_Y_0073068c92"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_2" material="dae_Coordinates_X_840752252e"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_3" material="dae_Reference_Triangles_2ef8ede315"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_4" material="dae_EU_abd9b860f7"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_5" material="dae_Alignment_signs_94f7471a10"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_6" material="dae_Connectors_Metal_1bf779d349"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_7" material="dae_Connectors_Black_2d54d84b5c"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_8" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_9" material="dae_Shells_white_1bf779d349"/>
+                    <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link0_visual_10" material="dae_EUT_77e3209863"/>
                     <geom class="collision" type="mesh" mesh="link0_collision" pos="0 0 0" quat="1 0 0 0"/>
                     <body name="right_fr3v2_1_link0_sc" pos="0 0 0" quat="1 0 0 0">
                       <geom class="collision" type="cylinder" size="0.09 0.015" pos="-0.075 0 0.06" quat="0.7071067812 0 0.7071067812 0"/>
@@ -513,10 +555,10 @@
                     <body name="right_fr3v2_1_link1" pos="0 0 0.333" quat="1 0 0 0">
                       <joint name="right_fr3v2_1_joint1" type="hinge" axis="0 0 1" limited="true" range="-2.900740017 2.900740017" damping="0.003" frictionloss="0.2"/>
                       <inertial pos="-0.00458 0.027016 -0.0618" mass="2.4377" fullinertia="0.02324 0.02146 0.0055 0.000333 -0.000676 0.003739"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_0"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_1"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_2"/>
-                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_3"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_0" material="dae_Shell_White_1bf779d349"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_1" material="dae_Rotation_direction_02a7e1fe18"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link1_visual_3" material="dae_Axis_Number_c76ade3a84"/>
                       <geom class="collision" type="mesh" mesh="link1_collision" pos="0 0 0" quat="1 0 0 0"/>
                       <body name="right_fr3v2_1_link1_sc" pos="0 0 0" quat="1 0 0 0">
                         <geom class="collision" type="cylinder" size="0.09 0.1415" pos="0 0 -0.1915" quat="1 0 0 0"/>
@@ -528,10 +570,10 @@
                       <body name="right_fr3v2_1_link2" pos="0 0 0" quat="0.7071067812 -0.7071067812 0 0">
                         <joint name="right_fr3v2_1_joint2" type="hinge" axis="0 0 1" limited="true" range="-1.836090017 1.836090017" damping="0.003" frictionloss="0.2"/>
                         <inertial pos="-0.01063 -0.184739 -0.010479" mass="2.2375" fullinertia="0.019026 0.00566 0.017114 0.001241 0.000499 -0.001804"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_0"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_1"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_2"/>
-                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_3"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_0" material="dae_Shell_White_1bf779d349"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_1" material="dae_Rotation_direction_c218a22989"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link2_visual_3" material="dae_Axis_Number_496a271997"/>
                         <geom class="collision" type="mesh" mesh="link2_collision" pos="0 0 0" quat="1 0 0 0"/>
                         <body name="right_fr3v2_1_link2_sc" pos="0 0 0" quat="1 0 0 0">
                           <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
@@ -543,10 +585,10 @@
                         <body name="right_fr3v2_1_link3" pos="0 -0.316 0" quat="0.7071067812 0.7071067812 0 0">
                           <joint name="right_fr3v2_1_joint3" type="hinge" axis="0 0 1" limited="true" range="-2.900740017 2.900740017" damping="0.003" frictionloss="0.2"/>
                           <inertial pos="0.091995 0.023003 0.047348" mass="2.196382" fullinertia="0.010225 0.012398 0.006877 0.001144 0.003497 0.002156"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_0"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_1"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_2"/>
-                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_3"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_0" material="dae_Shell_white_1bf779d349"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_1" material="dae_Rotation_Direction_c218a22989"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                          <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link3_visual_3" material="dae_Axis_Number_496a271997"/>
                           <geom class="collision" type="mesh" mesh="link3_collision" pos="0 0 0" quat="1 0 0 0"/>
                           <body name="right_fr3v2_1_link3_sc" pos="0 0 0" quat="1 0 0 0">
                             <geom class="collision" type="cylinder" size="0.09 0.075" pos="0 0 -0.145" quat="1 0 0 0"/>
@@ -558,10 +600,10 @@
                           <body name="right_fr3v2_1_link4" pos="0.0825 0 0" quat="0.7071067812 0.7071067812 0 0">
                             <joint name="right_fr3v2_1_joint4" type="hinge" axis="0 0 1" limited="true" range="-3.077020017 -0.1169370833" damping="0.003" frictionloss="0.2"/>
                             <inertial pos="-0.084334 0.096836 0.006248" mass="2.186422" fullinertia="0.008878 0.007628 0.010295 -0.003749 0.001139 -0.00046"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_0"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_1"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_2"/>
-                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_3"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_0" material="dae_Shell_white_1bf779d349"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_1" material="dae_Rotation_Direction_c218a22989"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_2" material="dae_Reference_Traingle_2ef8ede315"/>
+                            <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link4_visual_3" material="dae_Axis_Number_496a271997"/>
                             <geom class="collision" type="mesh" mesh="link4_collision" pos="0 0 0" quat="1 0 0 0"/>
                             <body name="right_fr3v2_1_link4_sc" pos="0 0 0" quat="1 0 0 0">
                               <geom class="collision" type="cylinder" size="0.09 0.06" pos="0 0 0" quat="1 0 0 0"/>
@@ -573,11 +615,11 @@
                             <body name="right_fr3v2_1_link5" pos="-0.0825 0.384 0" quat="0.7071067812 -0.7071067812 0 0">
                               <joint name="right_fr3v2_1_joint5" type="hinge" axis="0 0 1" limited="true" range="-2.87630335 2.87630335" damping="0.003" frictionloss="0.2"/>
                               <inertial pos="3.9e-05 0.011821 -0.054936" mass="2.190783" fullinertia="0.031874 0.029674 0.004751 0.000134 -0.000265 -0.004734"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_0"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_1"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_2"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_3"/>
-                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_4"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_0" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_1" material="dae_Shell_White_1bf779d349"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_2" material="dae_Rotation_Direction_c218a22989"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_3" material="dae_Reference_Triangles_2ef8ede315"/>
+                              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link5_visual_4" material="dae_Axis_Number_496a271997"/>
                               <geom class="collision" type="mesh" mesh="link5_collision" pos="0 0 0" quat="1 0 0 0"/>
                               <body name="right_fr3v2_1_link5_sc" pos="0 0 0" quat="1 0 0 0">
                                 <geom class="collision" type="cylinder" size="0.09 0.05" pos="0 0 -0.26" quat="1 0 0 0"/>
@@ -592,17 +634,17 @@
                               <body name="right_fr3v2_1_link6" pos="0 0 0" quat="0.7071067812 0.7071067812 0 0">
                                 <joint name="right_fr3v2_1_joint6" type="hinge" axis="0 0 1" limited="true" range="0.43982265 4.62163335" damping="0.003" frictionloss="0.2"/>
                                 <inertial pos="0.069627 -0.016716 -0.037235" mass="1.583583" fullinertia="0.00286 0.00391 0.00453 -0.000553 -0.000638 -0.00024"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_0"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_1"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_2"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_3"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_4"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_5"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_6"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_7"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_8"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_9"/>
-                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_10"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_0" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_1" material="dae_Disc_Lights_Blue_23a7830264"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_2" material="dae_Shell_White_1bf779d349"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_3" material="dae_Disc_Lights_White_8d02576bc5"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_4" material="dae_Disc_Lights_Red_f81374a4ab"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_5" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_6" material="dae_Disc_Lights_Green_bf63119702"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_7" material="dae_Rotation_Direction_c218a22989"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_8" material="dae_Flange_Tie_Metal_1bf779d349"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_9" material="dae_Reference_Triangles_2ef8ede315"/>
+                                <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link6_visual_10" material="dae_Axis_Number_496a271997"/>
                                 <geom class="collision" type="mesh" mesh="link6_collision" pos="0 0 0" quat="1 0 0 0"/>
                                 <body name="right_fr3v2_1_link6_sc" pos="0 0 0" quat="1 0 0 0">
                                   <geom class="collision" type="cylinder" size="0.08 0.04" pos="0 0 -0.03" quat="1 0 0 0"/>
@@ -612,13 +654,13 @@
                                 <body name="right_fr3v2_1_link7" pos="0.088 0 0" quat="0.7071067812 0.7071067812 0 0">
                                   <joint name="right_fr3v2_1_joint7" type="hinge" axis="0 0 1" limited="true" range="-3.05083335 3.05083335" damping="0.003" frictionloss="0.2"/>
                                   <inertial pos="-0.014555 0.00923 0.065858" mass="0.698686" fullinertia="0.000899 0.001099 0.000702 0 -1.3e-05 -2.2e-05"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_0"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_1"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_2"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_3"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_4"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_5"/>
-                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_6"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_0" material="dae_Flange_Tie_Metal_1bf779d349"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_1" material="dae_Rotation_Direction_6314377764"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_2" material="dae_Reference_Triangles_2ef8ede315"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_3" material="dae_Axis_Number_79b7d6176a"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_4" material="dae_7016_Buttons_Logos_Banderole_02a1b3091f"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_5" material="dae_Connectors_black_2d54d84b5c"/>
+                                  <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="link7_visual_6" material="dae_Shell_White_1bf779d349"/>
                                   <geom class="collision" type="mesh" mesh="link7_collision" pos="0 0 0" quat="1 0 0 0"/>
                                   <body name="right_fr3v2_1_link7_sc" pos="0 0 0" quat="0.9238795325 0 0 0.3826834324">
                                     <geom class="collision" type="cylinder" size="0.07 0.07" pos="0 0 0.01" quat="1 0 0 0"/>
@@ -631,11 +673,11 @@
                                   <body name="right_fr3v2_1_link8" pos="0 0 0.107" quat="1 0 0 0">
                                     <body name="right_fr3v2_1_hand" pos="0 0 0" quat="0.9238795325 0 0 -0.3826834324">
                                       <inertial pos="-3.76e-05 0.0119128 0.020726" mass="0.6544" fullinertia="0.00186 0.0003 0.00174 0 0 -2e-05"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_0"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_1"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_2"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3"/>
-                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_0" material="dae_Part__Feature002_005_005_bdaff437a0"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_1" material="dae_Part__Feature005_001_005_1bf779d349"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_2" material="dae_Part__Feature_009_005_325fa00c74"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_3" material="dae_Part__Feature001_008_005_325fa00c74"/>
+                                      <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="hand_visual_4" material="dae_Part__Feature005_001_005_001_bdaff437a0"/>
                                       <geom class="collision" type="mesh" mesh="hand_collision" pos="0 0 0" quat="1 0 0 0"/>
                                       <body name="right_fr3v2_1_hand_sc" pos="0 0 0" quat="1 0 0 0">
                                         <geom class="collision" type="cylinder" size="0.07 0.05" pos="0 0 0.04" quat="0.7071067812 0.7071067812 0 0"/>
@@ -651,8 +693,8 @@
                                       <body name="right_fr3v2_1_leftfinger" pos="0 0 0.0584" quat="1 0 0 0">
                                         <joint name="right_fr3v2_1_finger_joint1" type="slide" axis="0 1 0" limited="true" range="0 0.04" damping="0.3"/>
                                         <inertial pos="0 0.015285 0.0219675" mass="0.0291" fullinertia="8.49e-06 8.53e-06 1.77e-06 0 0 -1.06e-06"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0" material="dae_Part__Feature_007_325fa00c74"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1" material="dae_Part__Feature001_006_bdaff437a0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.9659258263 0.2588190451 0 0"/>
@@ -661,8 +703,8 @@
                                       <body name="right_fr3v2_1_rightfinger" pos="0 0 0.0584" quat="6.123233996e-17 0 0 1">
                                         <joint name="right_fr3v2_1_finger_joint2" type="slide" axis="0 1 0" limited="true" range="0 0.04" damping="0.3"/>
                                         <inertial pos="0 0.015285 0.0219675" mass="0.0291" fullinertia="8.49e-06 8.53e-06 1.77e-06 0 0 -1.06e-06"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0"/>
-                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_0" material="dae_Part__Feature_007_325fa00c74"/>
+                                        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="finger_visual_1" material="dae_Part__Feature001_006_bdaff437a0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0075 0.01" pos="0 0.0185 0.011" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" quat="1 0 0 0"/>
                                         <geom class="finger_pad" type="box" size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="5.914589857e-17 -1.584809576e-17 -0.2588190451 0.9659258263"/>
@@ -683,13 +725,13 @@
             </body>
             <body name="head_link" pos="0 0 0.167" quat="1 0 0 0">
               <inertial pos="0 0 0" mass="0.350865" fullinertia="0.003020352 0.003067069 0.000160526 -2.194e-05 0.00016159 -5.8102e-05"/>
-              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_head_visual_0"/>
+              <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_head_visual_0" material="dae_white_5795d0a484"/>
               <geom class="collision" type="mesh" mesh="franka_head_collision" pos="0 0 0" quat="1 0 0 0"/>
               <body name="head_camera_mounting_point" pos="0.04246378894 -0.014113 0.2235259008" quat="0.9366695615 0 0.3502144094 0">
                 <inertial pos="0 0 0" mass="0.001" fullinertia="1e-07 1e-07 1e-07 0 0 0"/>
                 <site name="head_camera_mounting_point" size="0.002"/>
                 <body name="head_zed">
-                  <geom class="visual" type="mesh" mesh="zed_mini"/>
+                  <geom class="visual" type="mesh" mesh="zed_mini" material="sensor_cam_mat_0d02030f73"/>
                   <geom class="sensor_collision" type="box" size="0.062 0.015 0.015"/>
                   <site name="head_zed_left_camera_frame" size="0.001" pos="-0.0315 0 0"/>
                   <site name="head_zed_left_camera_optical_frame" size="0.001" pos="-0.0315 0 0"/>
