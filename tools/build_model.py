@@ -15,6 +15,7 @@ from pathlib import Path
 
 import mujoco
 import numpy as np
+import yaml
 from format_xml import format_element
 from model_builder import BuildContext, contacts, dynamics, geometry
 from model_builder.config import BuilderConfig
@@ -56,6 +57,12 @@ class ModelBuilder:
         self.urdf = merge_sc_links(UrdfModel(urdf_path), UrdfModel(SC_URDF))
         self.actuator_mode = "position" if opts.position else "motor"
         self.config: BuilderConfig = load_builder_config(REPO_ROOT / "config")
+        simulation_profile = "reduced" if opts.reduced else "default"
+        self.simulation = yaml.safe_load(
+            (REPO_ROOT / "config" / "simulation" / f"{simulation_profile}.yaml").read_text(
+                encoding="utf-8"
+            )
+        )
         self.context = BuildContext(
             opts,
             self.urdf,
@@ -83,12 +90,12 @@ class ModelBuilder:
         mujoco_root.append(
             _el(
                 "option",
-                timestep="0.001",
-                integrator="implicitfast",
-                solver="Newton",
-                iterations="50",
-                ls_iterations="10",
-                gravity="0 0 -9.81",
+                timestep=self.simulation["timestep"],
+                integrator=self.simulation["integrator"],
+                solver=self.simulation["solver"],
+                iterations=self.simulation["iterations"],
+                ls_iterations=self.simulation["ls_iterations"],
+                gravity=fmt_vec(np.asarray(self.simulation["gravity"])),
             )
         )
         mujoco_root.append(geometry.defaults())
@@ -211,9 +218,9 @@ class ModelBuilder:
                 )
         if self.actuator_mode == "position":
             kp_map = {
-                "tmrv0_2_joint_": 100.0,
-                "franka_spine_vertical_joint": 30000.0,
-                "finger_joint1": 200.0,
+                "tmrv0_2_joint_": self.config.position_kp["tmr"],
+                "franka_spine_vertical_joint": self.config.position_kp["spine"],
+                "finger_joint1": self.config.position_kp["hand"],
             }
             for jname in self._actuator_joints():
                 if jname.startswith("planar_"):
@@ -225,7 +232,7 @@ class ModelBuilder:
                 else:
                     lower = float(limit.get("lower"))
                     upper = float(limit.get("upper"))
-                kp = next((v for k, v in kp_map.items() if k in jname), 500.0)
+                kp = next((v for k, v in kp_map.items() if k in jname), self.config.position_kp["arm"])
                 actuator.append(
                     _el(
                         "position",
@@ -767,7 +774,7 @@ def add_ground_and_light(worldbody: ET.Element) -> None:
 def main() -> int:
     raise SystemExit(
         "tools/build_model.py is an internal baseline emitter; use "
-        "tools/build_modules.py then tools/build_robot.py --all"
+        "tools/build_modules.py then tools/build_robot.py"
     )
 
 

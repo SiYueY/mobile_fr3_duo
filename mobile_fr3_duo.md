@@ -200,7 +200,7 @@ simulate models/scene.xml
 Menagerie 的模型目录将机器人定义放在 `<model>.xml` 中，地面、灯光和额外对象放在 `scene.xml` 中。本项目的 `scene*.xml` 也遵循该方式：每个场景只用 `<include>`
 引用对应的 `models/mobile_fr3_duo*.xml`，并定义渐变 skybox、checker 地面、主方向光
 和保留的 `preview` 相机；它不内联机器人 attach、asset、contact、actuator、sensor 或
-keyframe。对应的 `*_flattened` 场景 include flattened 机器人文件。
+keyframe。正式场景只 include `mobile_fr3_duo.xml`。
 
 ## 4.5 禁止非物理稳定手段
 
@@ -294,15 +294,7 @@ mobile_fr3_duo.xml
 * joint 和 base state sensor；
 * keyframe。
 
-不实例化外部相机、LiDAR 和 IMU 实体。
-
-## 6.2 当前传感器增强模型
-
-```text
-mobile_fr3_duo_with_sensors.xml
-```
-
-在基础模型上增加：
+直接实例化完整传感器组成：
 
 * D455 × 4；
 * nanoScan3 × 2；
@@ -312,36 +304,9 @@ mobile_fr3_duo_with_sensors.xml
 * scan frame；
 * nominal sensor 参数。
 
-该文件属于当前 `v1.0.0` 正式交付物，不是长期 Vision Kit 文件。
-
-## 6.3 位置控制变体
-
-```text
-mobile_fr3_duo_position.xml
-```
-
-用于：
-
-* Viewer 调试；
-* 轨迹回放；
-* MoveIt 轨迹验证；
-* 功能测试。
-
-## 6.4 Reduced 变体
-
-```text
-mobile_fr3_duo_reduced.xml
-```
-
-采用官方 reduced TMR，用于性能受限场景，不用于完整底盘动力学验证。
-
-## 6.5 Planar Debug 变体
-
-```text
-mobile_fr3_duo_planar_debug.xml
-```
-
-仅用于上层软件调试，可使用平面代理关节，但不得纳入正式动力学质量评级。
+position、reduced 与 planar 仅为临时 build profile，使用
+`python tools/build_robot.py --variant <profile>` 输出到 `build/`；它们不是
+`models/` 中的正式资产，也不随发布包分发。
 
 ## 6.6 长期 Vision Kit 变体
 
@@ -544,12 +509,15 @@ mobile_fr3_duo/
 ├── models/
 │   ├── mobile_fr3_duo*.xml
 │   ├── scene*.xml
-│   ├── franka_tmr/{franka_tmr*.xml, assets/, dependencies/}
-│   ├── franka_spine/{franka_spine*.xml, assets/, dependencies/}
-│   ├── franka_head/{franka_head*.xml, assets/, dependencies/}
-│   ├── franka_fr3/{franka_fr3.xml, assets/, dependencies/}
+│   ├── franka_tmr/{franka_tmr.xml, assets/}
+│   ├── franka_spine/{franka_spine.xml, assets/}
+│   ├── franka_head/{franka_head.xml, assets/}
+│   ├── franka_fr3/{franka_fr3.xml, assets/}
 │   ├── franka_hand/{franka_hand.xml, assets/}
-│   └── sensors/<name>/{<name>.xml, assets/}
+│   ├── d455/{d455.xml, assets/}
+│   ├── imu/{imu.xml, assets/}
+│   ├── nanoscan3/{nanoscan3.xml, assets/}
+│   └── zed_mini/{zed_mini.xml, assets/}
 │
 ├── config/
 │   ├── control/
@@ -557,16 +525,8 @@ mobile_fr3_duo/
 │   │   ├── spine_control.yaml
 │   │   ├── arm_control.yaml
 │   │   └── hand_control.yaml
-│   └── sensors/
-│       ├── simulation_default.yaml
-│       ├── official_runtime_reference.yaml
-│       ├── navigation.yaml
-│       ├── full_perception.yaml
-│       └── profiles/
-│           ├── d455.yaml
-│           ├── nanoscan3.yaml
-│           ├── imu.yaml
-│           └── zed_mini.yaml
+│   ├── sensor/mobile_fr3_duo.yaml
+│   └── simulation/{default.yaml,reduced.yaml}
 │
 ├── source/
 │   ├── official_model_files.yaml
@@ -590,7 +550,7 @@ mobile_fr3_duo/
 │   ├── build_robot.py
 │   ├── generate_contact_excludes.py
 │   ├── verify_official_model_files.py
-│   ├── validate_assets.py
+│   ├── validate.py
 │   ├── format_xml.py
 │   └── render_preview.py
 │
@@ -705,18 +665,17 @@ manifest 后，使用：
 
 ```bash
 python tools/build_modules.py
-python tools/build_robot.py --all
-python tools/validate_assets.py
+python tools/build_robot.py
+python tools/validate.py
 ```
 
-`build_modules.py` 从冻结 URDF 发射 `models/` 下的结构模块。每个模块在
-自身目录中保存 `assets/`、metadata 和运行时 attach 依赖闭包，因此可单独
-复制并加载。`build_robot.py` 生成顶层 attach XML、五个模型变体、三个 scene
-以及对应 `*_flattened.xml`；runtime scene 是仅 include 机器人 XML 的环境层，
-flattened 文件不依赖模块 XML，但仍相对 `models/` 定位模块资产。
+`build_modules.py` 从冻结 URDF 发射 `models/` 下的结构模块。每个模块仅含
+自己的 body subtree、`assets/` 和 metadata，因此可单独复制并加载；不存在
+`dependencies/` 嵌套包。`build_robot.py` 生成直接包含完整机构、连接关系、
+执行器与传感器的唯一顶层 XML，以及仅 include 它的 `scene.xml`。
 
 根目录不保留 `assets/`。visual、collision 和 sensor conversion manifest 中
-的输出路径均以 `models/` 开头，并由 `validate_assets.py` 校验。
+的输出路径均以 `models/` 开头，并由 `validate.py` 校验。
 
 ## 11.6 自动验证
 
@@ -1506,12 +1465,7 @@ sensor_reference_state
 
 ```text
 mobile_fr3_duo.xml
-mobile_fr3_duo_with_sensors.xml
-mobile_fr3_duo_position.xml
-mobile_fr3_duo_reduced.xml
-mobile_fr3_duo_planar_debug.xml
 scene.xml
-scene_with_sensors.xml
 ```
 
 要求：
@@ -1716,7 +1670,7 @@ verify-official-files:
 check:
 	uv run ruff check .
 	uv run python tools/format_xml.py --check
-	uv run python tools/validate_assets.py
+	uv run python tools/validate.py
 	uv run python tools/verify_official_model_files.py
 
 test:
@@ -2137,8 +2091,8 @@ test_whole_body_stability.py
 ### 交付物
 
 ```text
-mobile_fr3_duo_with_sensors.xml
-scene_with_sensors.xml
+mobile_fr3_duo.xml
+scene.xml
 sensor profiles
 camera renderer
 LiDAR raycast module

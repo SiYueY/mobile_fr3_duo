@@ -1,0 +1,21 @@
+profile: motor
+tmr:
+  - joint: tmrv0_2_joint_0
+    name: front_steering_motor
+    ctrlrange: [-20.0, 20.0]
+  - joint: tmrv0_2_joint_1
+    name: front_wheel_motor
+    ctrlrange: [-80.0, 80.0]
+  - joint: tmrv0_2_joint_2
+    name: rear_steering_motor
+    ctrlrange: [-20.0, 20.0]
+  - joint: tmrv0_2_joint_3
+    name: rear_wheel_motor
+    ctrlrange: [-80.0, 80.0]
+spine:
+  joint: franka_spine_vertical_joint
+  name: franka_spine_motor
+  ctrlrange: [-600.0, 600.0]
+hand:
+  ctrlrange: [-20.0, 20.0]
+  forcerange: [-100.0, 100.0]

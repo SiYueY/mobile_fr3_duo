@@ -34,7 +34,7 @@ def test_build_robot_without_external_source_checkout(tmp_path):
     environment = os.environ.copy()
     environment.pop("MOBILE_FR3_CACHE_DIR", None)
     result = subprocess.run(
-        [sys.executable, "tools/build_robot.py", "--all"],
+        [sys.executable, "tools/build_robot.py"],
         cwd=clone,
         env=environment,
         text=True,
@@ -48,6 +48,22 @@ def test_build_robot_without_external_source_checkout(tmp_path):
     assert ET.parse(output).find("contact") is not None
     model = mujoco.MjModel.from_xml_path(str(output))
     assert model.nbody > 0
+
+
+def test_temporary_variants_do_not_enter_models():
+    formal = REPO_ROOT / "models" / "mobile_fr3_duo.xml"
+    before = formal.read_bytes()
+    result = subprocess.run(
+        [sys.executable, "tools/build_robot.py", "--variant", "position"],
+        cwd=REPO_ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    assert (REPO_ROOT / "build" / "mobile_fr3_duo_position.xml").is_file()
+    assert not (REPO_ROOT / "models" / "mobile_fr3_duo_position.xml").exists()
+    assert formal.read_bytes() == before
 
 
 def test_source_preparation_requires_explicit_cache_path():

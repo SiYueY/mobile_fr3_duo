@@ -1,9 +1,0 @@
-name: franka_head_body
-type: accessory
-source:
-  type: official-derived
-  version: franka_description@2.8.1
-root_body: head_link
-attachments:
-- name: world
-  body: head_link

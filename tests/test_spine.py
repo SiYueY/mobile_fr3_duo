@@ -1,12 +1,20 @@
-"""Spine position control and full-travel checks (position variant)."""
+"""Spine position control and full-travel checks (temporary position build)."""
+
+import subprocess
+import sys
 
 import mujoco
 from helpers import REPO_ROOT
 
 
 def _load_position():
-    """Grounded scene built from the position variant."""
-    path = REPO_ROOT / "models/scene_position.xml"
+    """Build and load the non-release position-control scene."""
+    subprocess.run(
+        [sys.executable, "tools/build_robot.py", "--variant", "position"],
+        cwd=REPO_ROOT,
+        check=True,
+    )
+    path = REPO_ROOT / "build/scene_position.xml"
     return mujoco.MjModel.from_xml_path(str(path)), None
 
 

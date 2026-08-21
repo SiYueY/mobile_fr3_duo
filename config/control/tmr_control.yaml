@@ -1,5 +1,5 @@
 # Runtime controller policy.  command_limit is intentionally distinct from
-# the Builder's MJCF actuator ctrlrange in config/actuators.yaml.
+# the Builder's MJCF actuator ctrlrange in config/control/motor.yaml.
 steering:
   motor_type: motor
   command_limit: [-20.0, 20.0]

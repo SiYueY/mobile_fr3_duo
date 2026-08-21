@@ -9,11 +9,12 @@ import numpy as np
 def test_model_size_baseline(base_model):
     # The URDF-correct joint transform attaches movable joints directly to
     # their child bodies, eliminating the obsolete 28 intermediate frames.
-    assert base_model.nbody == 101
+    # The formal model includes the complete default sensor suite.
+    assert base_model.nbody == 109
     assert base_model.njnt == 29
     assert base_model.nv == 34
     assert base_model.nu == 21
-    assert base_model.ngeom >= 140
+    assert base_model.ngeom == 272
 
 
 def test_step_time_and_rtf(scene_model):

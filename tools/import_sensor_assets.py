@@ -16,7 +16,7 @@ from pathlib import Path
 import trimesh
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SENSOR_ASSETS = REPO_ROOT / "models" / "sensors"
+SENSOR_ASSETS = REPO_ROOT / "models"
 GENERATED = REPO_ROOT / "source" / "generated"
 
 
@@ -30,7 +30,7 @@ def copy_stl(src: Path, name: str, cache: Path, scale: float = 1.0) -> dict:
     shutil.copyfile(src, dst)
     return {
         "source": str(src.relative_to(cache)),
-        "asset": f"models/sensors/{name}",
+        "asset": f"models/{name}",
         "scale": scale,
         "input_sha256": sha256(src),
         "output_sha256": sha256(dst),
@@ -46,7 +46,7 @@ def convert_stl_meters(src: Path, name: str, cache: Path, scale: float) -> dict:
     mesh.export(dst)
     return {
         "source": str(src.relative_to(cache)),
-        "asset": f"models/sensors/{name}",
+        "asset": f"models/{name}",
         "scale": scale,
         "input_sha256": sha256(src),
         "output_sha256": sha256(dst),
@@ -63,7 +63,7 @@ def convert_dae(src: Path, name: str, cache: Path) -> dict:
     mesh.export(dst)
     return {
         "source": str(src.relative_to(cache)),
-        "asset": f"models/sensors/{name}",
+        "asset": f"models/{name}",
         "input_sha256": sha256(src),
         "output_sha256": sha256(dst),
         "n_vertices": int(len(mesh.vertices)),

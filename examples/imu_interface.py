@@ -11,7 +11,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
 class ImuInterface:
-    """Reads the IMU sensors from the with_sensors model at a given rate."""
+    """Reads the IMU sensors from the formal complete robot model."""
 
     def __init__(self, model: mujoco.MjModel, rate_hz: float = 200.0):
         self.model = model
@@ -37,7 +37,7 @@ class ImuInterface:
 
 def demo(duration_s: float = 0.5) -> None:
     model = mujoco.MjModel.from_xml_path(
-        str(REPO_ROOT / "models/mobile_fr3_duo_with_sensors.xml")
+        str(REPO_ROOT / "models/mobile_fr3_duo.xml")
     )
     data = mujoco.MjData(model)
     imu = ImuInterface(model)

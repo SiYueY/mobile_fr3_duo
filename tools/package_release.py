@@ -26,7 +26,6 @@ def _top_level_entries() -> list[str]:
         "models",
         "mobile_fr3_duo.png",
         "mobile_fr3_duo_manipulation.png",
-        "mobile_fr3_duo_with_sensors.png",
         "README.md",
         "CHANGELOG.md",
         "LICENSE",

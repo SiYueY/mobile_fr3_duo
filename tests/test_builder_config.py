@@ -8,7 +8,7 @@ import mujoco
 import numpy as np
 import pytest
 import yaml
-from helpers import REPO_ROOT, load
+from helpers import REPO_ROOT
 
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
@@ -44,9 +44,6 @@ def test_generated_actuator_limits_match_builder_config(base_model):
         aid = mujoco.mj_name2id(base_model, mujoco.mjtObj.mjOBJ_ACTUATOR, name)
         assert np.allclose(base_model.actuator_forcerange[aid], config.hand_forcerange)
 
-    planar_model = load("mobile_fr3_duo_planar_debug.xml")
-    for spec in config.planar:
-        assert np.allclose(_actuator_range(planar_model, spec.name), spec.ctrlrange)
 
 
 def test_generated_keyframes_match_builder_config(base_model):

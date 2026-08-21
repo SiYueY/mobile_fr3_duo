@@ -31,7 +31,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MODELS = REPO_ROOT / "models"
 GENERATED = REPO_ROOT / "source" / "generated"
-MIN_OUTPUT_EXTENT = 1e-4  # meters; matches tools/validate_assets.py
+MIN_OUTPUT_EXTENT = 1e-4  # meters; matches tools/validate.py
 
 # These CAD assemblies contain hundreds of material-less helper geometries.
 # Preserve their source-part count in the manifest while exporting one visual

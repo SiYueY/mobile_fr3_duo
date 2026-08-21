@@ -1,9 +1,0 @@
-name: imu
-type: sensor
-source:
-  type: official-derived
-  version: franka_description@2.8.1
-root_body: imu_link
-attachments:
-- name: mount
-  body: imu_link

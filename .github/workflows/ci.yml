@@ -20,7 +20,9 @@ jobs:
         run: |
           uv run ruff check .
           find models -name '*.xml' -print0 | xargs -0 uv run python tools/format_xml.py --check
-          uv run python tools/validate_assets.py
+          uv run python tools/build_modules.py
+          uv run python tools/build_robot.py
+          uv run python tools/validate.py
           uv run python tools/verify_official_model_files.py --offline
       - name: Test
         run: uv run pytest -v

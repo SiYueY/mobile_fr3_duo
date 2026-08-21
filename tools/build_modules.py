@@ -10,8 +10,8 @@ from model_builder.canonical import CanonicalModel
 from model_builder.modules import build_modules
 
 
-def _source_model(*, sensors: bool = False, reduced: bool = False, planar: bool = False):
-    opts = SimpleNamespace(position=False, sensors=sensors, reduced=reduced, planar=planar, spawn_z=0.0 if planar else 0.002)
+def _source_model(*, sensors: bool = False):
+    opts = SimpleNamespace(position=False, sensors=sensors, reduced=False, planar=False, spawn_z=0.002)
     return ModelBuilder(opts).build()
 
 
@@ -24,8 +24,6 @@ def main() -> int:
         {
             "base": builder.build(),
             "sensors": _source_model(sensors=True),
-            "reduced": _source_model(reduced=True),
-            "planar": _source_model(planar=True),
         },
         canonical,
     )

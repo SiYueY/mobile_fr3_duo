@@ -184,10 +184,9 @@ Golden URDF 用于验证：
 simulate models/scene.xml
 ```
 
-`scene*.xml` 是薄环境层：它们通过 `<include>` 引用同目录的
-`mobile_fr3_duo*.xml`，只增加 Menagerie 风格的渐变天空、棋盘地面、主方向光和
-`preview` 相机。机器人、attach、执行器、传感器与 keyframe 始终由被 include 的
-机器人模型定义；`*_flattened` 场景则引用对应的 flattened 机器人 XML。
+`scene.xml` 是薄环境层：它通过 `<include>` 引用同目录的
+`mobile_fr3_duo.xml`，只增加 Menagerie 风格的渐变天空、棋盘地面、主方向光和
+`preview` 相机。机器人、attach、执行器、传感器与 keyframe 始终由机器人模型定义。
 
 ---
 
@@ -239,7 +238,7 @@ source/generated/
 生产 MJCF 构建阶段应优先消费这些被冻结的生成结果，而不是重新隐式访问开发者机器上的 `franka_description` checkout。
 `collision_exclusions.yaml` 是由固定版本 SRDF 提取并按生成 URDF 过滤后的
 disable-collision pair；正式 `python tools/build_modules.py` 与
-`python tools/build_robot.py --all` 只读取这一仓库内输入。
+`python tools/build_robot.py` 只读取这一仓库内输入。
 `franka_description` checkout 仅属于 source preparation 阶段。
 Source preparation 必须显式传入固定 checkout/cache 位置，例如：
 
@@ -313,50 +312,40 @@ unit conversion
 
 `tools/build_modules.py` 从冻结的官方 URDF 构造 Canonical IR，并在明确的
 固定连接边界发射可独立加载的 runtime 模块。`tools/build_robot.py` 读取
-`config/robots/mobile_fr3_duo.yaml`，以 MuJoCo `<asset><model>` / `<attach>`
-组合模块；同一入口还会由 MuJoCo `MjSpec` 保存不依赖模块 XML 的
-`*_flattened.xml` 发布版本。
+`config/robot/mobile_fr3_duo.yaml`，生成唯一正式的完整机器人模型。模块用于
+独立分发与验证；正式模型直接表达全部连接关系，不包含子模型引用。
 
 ```text
-Frozen official URDF → Canonical IR → runtime modules
+Frozen official URDF → Canonical IR → independent component modules
                                       ↓
-                         robot composition YAML → attach MJCF + flattened MJCF
+                         robot configuration → mobile_fr3_duo.xml + scene.xml
 ```
 
 模块持有并发布自己的 assets；视觉 OBJ 与其多子网格映射仍以
 `source/generated/asset_conversion.json` 为事实来源。
 
-模块目录包含其 attach 依赖闭包：复制一个模块目录即可加载该模块。整机
-runtime XML 使用 `franka_tmr/franka_tmr.xml` 作为顶层 attach 入口；flattened
-XML 不依赖模块 XML，但继续使用 `models/<module>/assets/` 的相对资源路径。
+每个模块只包含自身的 body subtree、metadata 与 `assets/`；复制一个模块目录
+即可加载，且不存在嵌套 `dependencies/`。正式 `mobile_fr3_duo.xml` 直接包含
+整机连接关系，发布包保留各模块的 `models/<module>/assets/` 相对资源路径。
 
 ---
 
 ## 4. MJCF 模型设计
 
-### 4.1 模型变体
+### 4.1 正式模型
 
 当前正式输出位于 `models/`：
 
 ```text
 mobile_fr3_duo.xml
-mobile_fr3_duo_position.xml
-mobile_fr3_duo_with_sensors.xml
-mobile_fr3_duo_reduced.xml
-mobile_fr3_duo_planar_debug.xml
-
-每个机器人变体同时发布 `*_flattened.xml`，它不依赖 runtime 模块 XML。
-
 scene.xml
-scene_position.xml
-scene_with_sensors.xml
 ```
 
 其中：
 
 **`mobile_fr3_duo.xml`**
 
-基础动力学模型：
+完整数字孪生模型：
 
 * 完整机械结构；
 * 双 Franka Hand；
@@ -366,29 +355,11 @@ scene_with_sensors.xml
 * mounting site；
 * state sensors；
 * keyframes。
+* 4×D455、ZED Mini、IMU 与 2×nanoScan3。
 
-**`mobile_fr3_duo_with_sensors.xml`**
-
-在基础模型之上加入外部传感器实体。
-
-**`mobile_fr3_duo_position.xml`**
-
-面向：
-
-* Viewer；
-* 轨迹回放；
-* MoveIt 轨迹验证；
-* 功能测试。
-
-**`mobile_fr3_duo_reduced.xml`**
-
-使用官方 reduced TMR，用于性能受限场景。
-
-**`mobile_fr3_duo_planar_debug.xml`**
-
-仅供上层软件调试。
-
-Planar joint 不属于正式 TMR 动力学实现，不参与正式动力学质量评级。
+position、reduced 与 planar 是临时构建 profile：使用
+`python tools/build_robot.py --variant <profile>` 生成到被 Git 忽略的 `build/`，
+不会出现在正式 `models/` 目录。
 
 ### 4.2 Robot 与 Scene 分离
 
@@ -706,7 +677,7 @@ documented sensor installation transform
 ### 7.1 Builder 模块化
 
 `tools/build_modules.py` 负责从 Canonical IR 发射结构模块；
-`tools/build_robot.py` 负责组合层的 contact、equality、actuator、sensor、
+`tools/build_robot.py` 负责完整机器人层的 contact、equality、actuator、sensor、
 keyframe 与 variant：
 
 * URDF parsing；
@@ -730,7 +701,10 @@ models/
 ├── franka_head/
 ├── franka_fr3/
 ├── franka_hand/
-└── sensors/
+├── d455/
+├── imu/
+├── nanoscan3/
+└── zed_mini/
 ```
 
 其中：
@@ -769,16 +743,16 @@ simulation-only contact tuning
 
 ```text
 config/
-├── actuators.yaml
+├── control/{motor.yaml,position.yaml}
 ├── contacts.yaml
 ├── keyframes.yaml
-├── sensors.yaml
-└── simulation.yaml
+├── sensor/mobile_fr3_duo.yaml
+└── simulation/{default.yaml,reduced.yaml}
 ```
 
 其中官方参数和项目参数必须继续保持来源分类。
 
-`config/actuators.yaml` 的 `ctrlrange` 是 Builder 写入 MJCF 的 actuator 硬上限；
+`config/control/motor.yaml` 的 `ctrlrange` 是 Builder 写入 MJCF 的 actuator 硬上限；
 `config/control/` 的 `command_limit` 则是外部控制器策略，允许更保守，且不得命名为
 `ctrlrange`。
 
@@ -826,7 +800,7 @@ sensor asset import 与官方文件校验也只在 preparation 阶段使用显�
 
 ```bash
 python tools/build_modules.py
-python tools/build_robot.py --all
+python tools/build_robot.py
 ```
 
 这使得：

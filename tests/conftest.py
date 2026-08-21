@@ -1,6 +1,9 @@
 import os
+import subprocess
 import sys
+from pathlib import Path
 
+import mujoco
 import pytest
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -21,7 +24,7 @@ def base_model():
 
 @pytest.fixture(scope="session")
 def sensor_model():
-    return load("mobile_fr3_duo_with_sensors.xml")
+    return load("mobile_fr3_duo.xml")
 
 
 @pytest.fixture(scope="session")
@@ -31,7 +34,13 @@ def scene_model():
 
 @pytest.fixture(scope="session")
 def position_model():
-    return load("mobile_fr3_duo_position.xml")
+    """Position control is a temporary build artifact, never a release XML."""
+    subprocess.run(
+        [sys.executable, str(REPO_ROOT / "tools" / "build_robot.py"), "--variant", "position"],
+        cwd=REPO_ROOT,
+        check=True,
+    )
+    return mujoco.MjModel.from_xml_path(str(Path(REPO_ROOT) / "build/mobile_fr3_duo_position.xml"))
 
 
 @pytest.fixture(scope="session")

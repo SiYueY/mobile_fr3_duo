@@ -70,7 +70,7 @@ class CameraWorker:
 
 def demo(duration_s: float = 1.5, rate_hz: float = 30.0) -> None:
     model = mujoco.MjModel.from_xml_path(
-        str(REPO_ROOT / "models/scene_with_sensors.xml")
+        str(REPO_ROOT / "models/scene.xml")
     )
     worker = CameraWorker(model, "camera_front_color", rate_hz)
     worker.start()

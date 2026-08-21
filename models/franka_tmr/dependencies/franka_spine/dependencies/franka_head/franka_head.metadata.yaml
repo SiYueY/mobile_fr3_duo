@@ -1,9 +1,0 @@
-name: franka_head
-type: accessory
-source:
-  type: official-derived
-  version: franka_description@2.8.1
-root_body: fr3_duo_mount_mounting_point
-attachments:
-- name: spine_mount
-  body: fr3_duo_mount_mounting_point

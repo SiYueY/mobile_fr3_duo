@@ -8,13 +8,7 @@ from helpers import MODEL_ROOT, load
 
 VARIANTS = [
     "mobile_fr3_duo.xml",
-    "mobile_fr3_duo_with_sensors.xml",
-    "mobile_fr3_duo_position.xml",
-    "mobile_fr3_duo_reduced.xml",
-    "mobile_fr3_duo_planar_debug.xml",
     "scene.xml",
-    "scene_with_sensors.xml",
-    "scene_position.xml",
 ]
 
 
@@ -60,7 +54,7 @@ def test_actuator_targets_exist(base_model):
 
 def test_no_state_override_or_helpers():
     """No qpos/qvel overrides or planar proxies in the official variants."""
-    for xml in ("mobile_fr3_duo.xml", "mobile_fr3_duo_with_sensors.xml"):
+    for xml in ("mobile_fr3_duo.xml",):
         text = (MODEL_ROOT / xml).read_text(encoding="utf-8")
         assert "<qpos" not in text
         assert "<qvel" not in text
@@ -72,11 +66,6 @@ def test_no_state_override_or_helpers():
     ("scene", "robot"),
     (
         ("scene.xml", "mobile_fr3_duo.xml"),
-        ("scene_with_sensors.xml", "mobile_fr3_duo_with_sensors.xml"),
-        ("scene_position.xml", "mobile_fr3_duo_position.xml"),
-        ("scene_flattened.xml", "mobile_fr3_duo_flattened.xml"),
-        ("scene_with_sensors_flattened.xml", "mobile_fr3_duo_with_sensors_flattened.xml"),
-        ("scene_position_flattened.xml", "mobile_fr3_duo_position_flattened.xml"),
     ),
 )
 def test_scene_is_thin_environment_include(scene, robot):
@@ -112,8 +101,6 @@ def test_scene_is_thin_environment_include(scene, robot):
     ("scene", "robot"),
     (
         ("scene.xml", "mobile_fr3_duo.xml"),
-        ("scene_with_sensors.xml", "mobile_fr3_duo_with_sensors.xml"),
-        ("scene_position.xml", "mobile_fr3_duo_position.xml"),
     ),
 )
 def test_scene_adds_only_ground_to_robot(scene, robot):
@@ -128,7 +115,7 @@ def test_scene_adds_only_ground_to_robot(scene, robot):
 
 @pytest.mark.parametrize(
     "scene",
-    ("scene.xml", "scene_with_sensors.xml", "scene_position.xml"),
+    ("scene.xml",),
 )
 def test_scene_loads_from_command_line_relative_path(scene):
     """Match ``simulate ./models/scene.xml`` resource resolution."""

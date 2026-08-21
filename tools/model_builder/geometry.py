@@ -143,10 +143,10 @@ def assets(ctx: BuildContext) -> ET.Element:
                     asset.append(el("mesh", **attrs))
     if ctx.opts.sensors:
         for name, path in (
-            ("d455", "sensors/d455/assets/visual/d455.stl"),
-            ("nanoscan3_visual", "sensors/nanoscan3/assets/visual/NANS3.obj"),
-            ("nanoscan3_collision", "sensors/nanoscan3/assets/visual/NANS3_collision.stl"),
-            ("zed_mini", "sensors/zed_mini/assets/visual/zedm.stl"),
+            ("d455", "d455/assets/visual/d455.stl"),
+            ("nanoscan3_visual", "nanoscan3/assets/visual/NANS3.obj"),
+            ("nanoscan3_collision", "nanoscan3/assets/visual/NANS3_collision.stl"),
+            ("zed_mini", "zed_mini/assets/visual/zedm.stl"),
         ):
             asset.append(el("mesh", name=name, file=path))
     return asset

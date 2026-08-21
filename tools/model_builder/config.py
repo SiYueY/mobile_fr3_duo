@@ -39,19 +39,22 @@ class BuilderConfig:
     hand_ctrlrange: tuple[float, float]
     hand_forcerange: tuple[float, float]
     planar: tuple[ActuatorSpec, ...]
+    position_kp: dict[str, float]
     keyframes: dict[str, dict[str, float | list[float]]]
 
 
 def load(config_dir: Path) -> BuilderConfig:
     """Load Builder inputs and reject incomplete or malformed configuration."""
-    actuator_data = _mapping(_read(config_dir / "actuators.yaml"), "actuators.yaml")
+    actuator_data = _mapping(_read(config_dir / "control" / "motor.yaml"), "control/motor.yaml")
+    position_data = _mapping(_read(config_dir / "control" / "position.yaml"), "control/position.yaml")
     keyframe_data = _mapping(_read(config_dir / "keyframes.yaml"), "keyframes.yaml")
     tmr = _actuators(actuator_data.get("tmr"), "tmr", EXPECTED_TMR_JOINTS, names=True)
     spine = _actuator(actuator_data.get("spine"), "spine", names=True)
     if spine.joint != "franka_spine_vertical_joint" or spine.name != "franka_spine_motor":
         raise ValueError("spine must define franka_spine_vertical_joint/franka_spine_motor")
     hand = _mapping(actuator_data.get("hand"), "hand")
-    planar = _actuators(actuator_data.get("planar_debug"), "planar_debug", EXPECTED_PLANAR_JOINTS, names=False)
+    planar = _actuators(position_data.get("planar_debug"), "planar_debug", EXPECTED_PLANAR_JOINTS, names=False)
+    position_kp = _position_kp(position_data.get("kp"))
     keyframes = _keyframes(keyframe_data.get("keyframes"))
     return BuilderConfig(
         tmr=tmr,
@@ -59,6 +62,7 @@ def load(config_dir: Path) -> BuilderConfig:
         hand_ctrlrange=_range(hand.get("ctrlrange"), "hand.ctrlrange"),
         hand_forcerange=_range(hand.get("forcerange"), "hand.forcerange"),
         planar=planar,
+        position_kp=position_kp,
         keyframes=keyframes,
     )
 
@@ -102,6 +106,14 @@ def _range(value: Any, label: str) -> tuple[float, float]:
     if lower >= upper:
         raise ValueError(f"{label} must have lower < upper")
     return lower, upper
+
+
+def _position_kp(value: Any) -> dict[str, float]:
+    data = _mapping(value, "position.kp")
+    expected = {"tmr", "spine", "hand", "arm"}
+    if set(data) != expected:
+        raise ValueError("position.kp must define tmr, spine, hand, arm")
+    return {name: _number(data[name], f"position.kp.{name}") for name in expected}
 
 
 def _keyframes(value: Any) -> dict[str, dict[str, float | list[float]]]:

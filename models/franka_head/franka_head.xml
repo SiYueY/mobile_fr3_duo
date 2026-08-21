@@ -25,8 +25,8 @@
     <mesh name="fr3_duo_cover_visual_0" file="visual/fr3_duo_cover.obj" inertia="shell"/>
     <mesh name="fr3_duo_mount_collision" file="collision/fr3_duo_mount.stl"/>
     <mesh name="fr3_duo_cover_collision" file="collision/fr3_duo_cover.stl"/>
-    <model name="fr3" file="dependencies/franka_fr3/franka_fr3.xml"/>
-    <model name="head" file="franka_head_body.xml"/>
+    <mesh name="franka_head_visual_0" file="visual/franka_head.obj" inertia="shell"/>
+    <mesh name="franka_head_collision" file="collision/franka_head.stl"/>
   </asset>
   <worldbody>
     <body name="fr3_duo_mount_mounting_point" pos="0 0 0" quat="1 0 0 0">
@@ -37,14 +37,18 @@
       <geom class="collision" type="mesh" mesh="fr3_duo_cover_collision" pos="0 0 0.068" quat="1 0 0 0"/>
       <site name="fr3_duo_mount_mounting_point" size="0.002"/>
       <body name="fr3_duo_mount_origin" pos="0.037 0 0.05" quat="1 0 0 0">
-        <body name="fr3_duo_mount_left" pos="0 0.05018 0" quat="0.8658066723 -0.4368783192 0.02228791485 -0.2429390648">
-          <attach model="fr3" body="base" prefix="left_"/>
-        </body>
-        <body name="fr3_duo_mount_right" pos="0 -0.05018 0" quat="0.8658066723 0.4368783192 0.02228791485 0.2429390648">
-          <attach model="fr3" body="base" prefix="right_"/>
+        <body name="fr3_duo_mount_left" pos="0 0.05018 0" quat="0.8658066723 -0.4368783192 0.02228791485 -0.2429390648"/>
+        <body name="fr3_duo_mount_right" pos="0 -0.05018 0" quat="0.8658066723 0.4368783192 0.02228791485 0.2429390648"/>
+      </body>
+      <body name="head_link" pos="0 0 0.167" quat="1 0 0 0">
+        <inertial pos="0 0 0" mass="0.350865" fullinertia="0.003020352 0.003067069 0.000160526 -2.194e-05 0.00016159 -5.8102e-05"/>
+        <geom class="visual" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="franka_head_visual_0"/>
+        <geom class="collision" type="mesh" mesh="franka_head_collision" pos="0 0 0" quat="1 0 0 0"/>
+        <body name="head_camera_mounting_point" pos="0.04246378894 -0.014113 0.2235259008" quat="0.9366695615 0 0.3502144094 0">
+          <inertial pos="0 0 0" mass="0.001" fullinertia="1e-07 1e-07 1e-07 0 0 0"/>
+          <site name="head_camera_mounting_point" size="0.002"/>
         </body>
       </body>
-      <attach model="head" body="head_link" prefix=""/>
     </body>
   </worldbody>
 </mujoco>

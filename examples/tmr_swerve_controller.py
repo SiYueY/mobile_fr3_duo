@@ -58,7 +58,7 @@ def demo(duration_s: float = 3.0) -> None:
     from pathlib import Path
 
     model = mujoco.MjModel.from_xml_path(
-        str(Path(__file__).resolve().parent.parent / "models/scene_position.xml")
+        str(Path(__file__).resolve().parent.parent / "build/scene_position.xml")
     )
     data = mujoco.MjData(model)
     mujoco.mj_resetDataKeyframe(model, data, 0)

@@ -1,10 +1,9 @@
-"""Runtime attach modules, composition contract, and flattened releases."""
+"""Independent component modules and the formal whole-robot contract."""
 
 from __future__ import annotations
 
 import shutil
 import sys
-from pathlib import Path
 from xml.etree import ElementTree as ET
 
 import mujoco
@@ -16,18 +15,7 @@ sys.path.insert(0, str(REPO_ROOT / "tools"))
 
 from model_builder.composition import load_robot_config  # noqa: E402
 
-MODULES = sorted(
-    path
-    for path in (REPO_ROOT / "models").glob("**/*.metadata.yaml")
-    if "dependencies" not in path.parts
-)
-RELEASES = (
-    "mobile_fr3_duo.xml",
-    "mobile_fr3_duo_position.xml",
-    "mobile_fr3_duo_with_sensors.xml",
-    "mobile_fr3_duo_reduced.xml",
-    "mobile_fr3_duo_planar_debug.xml",
-)
+MODULES = sorted((REPO_ROOT / "models").glob("*/*.metadata.yaml"))
 
 
 def test_modules_load_and_metadata_interfaces_exist(tmp_path):
@@ -47,45 +35,28 @@ def test_modules_load_and_metadata_interfaces_exist(tmp_path):
             ) >= 0, (metadata_path, interface)
 
 
-@pytest.mark.parametrize("name", RELEASES)
-def test_composition_and_flattened_release_have_same_model_shape(name):
-    composed = mujoco.MjModel.from_xml_path(str(MODEL_ROOT / name))
-    flattened = mujoco.MjModel.from_xml_path(
-        str(MODEL_ROOT / f"{Path(name).stem}_flattened.xml")
-    )
-    assert (composed.nbody, composed.njnt, composed.ngeom, composed.nu, composed.nsensor) == (
-        flattened.nbody,
-        flattened.njnt,
-        flattened.ngeom,
-        flattened.nu,
-        flattened.nsensor,
-    )
-
-
-def test_composition_has_unique_attach_prefixes():
+def test_formal_model_is_a_direct_complete_mjcf():
     xml = ET.parse(MODEL_ROOT / "mobile_fr3_duo.xml").getroot()
-    attaches = xml.findall(".//attach")
-    assert len(attaches) == 1
-    assert attaches[0].get("model") == "mobile_base"
+    assert not xml.findall(".//attach")
+    assert not xml.findall(".//asset/model")
 
 
-def test_flattened_release_loads_without_module_xml(tmp_path):
-    release = tmp_path / "release"
-    model_dir = release / "models"
-    shutil.copytree(MODEL_ROOT, model_dir)
-    for path in model_dir.glob("**/*.xml"):
-        if path.name != "mobile_fr3_duo_flattened.xml":
-            path.unlink()
-    root = ET.parse(model_dir / "mobile_fr3_duo_flattened.xml").getroot()
-    assert not root.findall(".//model")
-    assert not root.findall(".//attach")
-    model = mujoco.MjModel.from_xml_path(str(model_dir / "mobile_fr3_duo_flattened.xml"))
-    assert model.nbody == 101
+def test_component_modules_do_not_embed_other_components():
+    arm = mujoco.MjModel.from_xml_path(str(MODEL_ROOT / "franka_fr3/franka_fr3.xml"))
+    assert mujoco.mj_name2id(arm, mujoco.mjtObj.mjOBJ_BODY, "fr3v2_1_hand") == -1
+    base = mujoco.MjModel.from_xml_path(str(MODEL_ROOT / "franka_tmr/franka_tmr.xml"))
+    assert mujoco.mj_name2id(base, mujoco.mjtObj.mjOBJ_BODY, "franka_spine") == -1
+
+
+def test_formal_composition_has_full_sensor_set():
+    model = mujoco.MjModel.from_xml_path(str(MODEL_ROOT / "mobile_fr3_duo.xml"))
+    assert model.nbody == 109
+    assert model.nsensor == 84
 
 
 def test_invalid_runtime_config_is_rejected(tmp_path):
     payload = yaml.safe_load(
-        (REPO_ROOT / "config/robots/mobile_fr3_duo.yaml").read_text(encoding="utf-8")
+        (REPO_ROOT / "config/robot/mobile_fr3_duo.yaml").read_text(encoding="utf-8")
     )
     payload["arms"]["right"]["prefix"] = payload["arms"]["left"]["prefix"]
     path = tmp_path / "bad.yaml"

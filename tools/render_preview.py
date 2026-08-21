@@ -57,7 +57,6 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     render_preview(out / "mobile_fr3_duo.png", "scene.xml", 0)
     render_preview(out / "mobile_fr3_duo_manipulation.png", "scene.xml", 2)
-    render_preview(out / "mobile_fr3_duo_with_sensors.png", "scene_with_sensors.xml", 0)
     return 0
 
 
