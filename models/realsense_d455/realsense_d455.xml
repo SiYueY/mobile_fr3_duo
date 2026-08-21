@@ -19,7 +19,7 @@
   </default>
   <asset>
     <material name="sensor_aluminum_0ecfa78448" rgba="0.5 0.5 0.5 1"/>
-    <mesh name="realsense_d455" file="visual/d455.obj" inertia="shell"/>
+    <mesh name="realsense_d455" file="visual/d455.obj"/>
   </asset>
   <worldbody>
     <body name="link" pos="0.01115 0.0475 0.0145">

@@ -141,13 +141,13 @@
     <mesh name="hand_collision" file="franka_hand/assets/collision/hand.stl"/>
     <mesh name="finger_visual_0" file="franka_hand/assets/visual/finger_0.obj" inertia="shell"/>
     <mesh name="finger_visual_1" file="franka_hand/assets/visual/finger_1.obj" inertia="shell"/>
-    <mesh name="realsense_d455" file="realsense_d455/assets/visual/d455.obj" inertia="shell"/>
+    <mesh name="realsense_d455" file="realsense_d455/assets/visual/d455.obj"/>
     <material name="d435_aluminum" rgba="0.23 0.23 0.23 1"/>
     <material name="franka_printed_mount" rgba="0.82 0.82 0.82 1"/>
     <mesh name="d435_visual" file="realsense_d435/assets/visual/d435.obj"/>
     <mesh name="franka_d435_wrist_camera_mount_visual" file="wrist_camera_mount/assets/visual/franka_d435_wrist_camera_mount.obj"/>
     <mesh name="nanoscan3_visual" file="nanoscan3/assets/visual/NANS3.obj"/>
-    <mesh name="zed_mini" file="zed_mini/assets/visual/zedm.obj" inertia="shell"/>
+    <mesh name="zed_mini" file="zed_mini/assets/visual/zedm.obj"/>
   </asset>
   <worldbody>
     <body name="base_link" pos="0 0 0.002" quat="1 0 0 0">

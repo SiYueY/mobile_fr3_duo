@@ -19,7 +19,7 @@
   </default>
   <asset>
     <material name="sensor_cam_mat_0d02030f73" rgba="0 0 0 1"/>
-    <mesh name="zed_mini" file="visual/zedm.obj" inertia="shell"/>
+    <mesh name="zed_mini" file="visual/zedm.obj"/>
   </asset>
   <worldbody>
     <body name="head_zed">
